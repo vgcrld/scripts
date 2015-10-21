@@ -1,0 +1,33 @@
+validate_vdev () {
+
+        TMPNUM=$RANDOM$RANDOM
+        REPTFILE=$TMP_PATH/rpt1.$TMPNUM
+
+        # Get the bcv groups; Build list in GROUPS
+        set_parms "-snap_main_dg -snap_log_dg" $*
+        set $snap_main_dg $snap_log_dg
+
+	#----------------------------------------
+        # Now validate each DATA vdev 
+	#----------------------------------------
+	SKIP_TYPE=LOG
+        FTYPE=std_vdev
+        for i in $snap_main_dg
+        do
+            validate $i $FTYPE
+        done
+
+	#----------------------------------------
+        # Now validate each LOG vdev 
+	#----------------------------------------
+	SKIP_TYPE=DATA
+        FTYPE=std_vdev
+        for i in $snap_log_dg
+        do
+            validate $i $FTYPE
+        done
+
+        cat $REPTFILE | tee -a $LOG
+	mail -s "$ENVIRONMENT vdev Validate" rdavis@leasedirect.com < $REPTFILE
+        rm $REPTFILE
+}

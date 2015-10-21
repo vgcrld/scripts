@@ -1,0 +1,161 @@
+build_symdb () {
+
+	#---------------------------------------------------
+	# Read the <host>_vg parm based on which host 
+	#---------------------------------------------------
+	set_parms "-${HOST}_vg -${HOST}_proxy ${HOST}_log_vg nosyminq" $*
+	
+	#------------------------------------------------------------
+	# Now find values in cfg based on the host *_vg
+	#------------------------------------------------------------
+	CMD="echo \"\$${HOST}_vg\""
+	VGDATA=`eval "$CMD"`
+	build_search $VGDATA
+	logIt "Search Pattern Created: '$SEARCH'"
+
+	VGDATA=`lsvg | egrep -e "$SEARCH" | awk ' { printf "%s ",$1 } '`
+	logIt "Data and App Volume Group List: $VGDATA"
+
+        CMD="echo \"\$${HOST}_log_vg\""
+        VGLOG=`eval "$CMD"`
+        if [[ $VGLOG = "" ]] ; then  
+            logIt "$HOST has no volume group(s) specified for oracle logs."
+	else
+	    build_search $VGLOG
+	    logIt "Search Pattern Created: '$SEARCH'"
+	    VGLOG=`lsvg | egrep -e "$SEARCH" | awk ' { printf "%s ",$1 } '`
+	    logIt "Oracle Log Volume Group List: $VGLOG"
+	fi
+
+        CMD="echo \$${HOST}_proxy"
+        HOST_PROXY=`eval $CMD`
+        logIt "$HOST uses $HOST_PROXY as the proxy TSM server."
+
+	#------------------------------------------------------------
+	# We should not build_symdb on a proxy; Only on prod servers.
+	#------------------------------------------------------------
+	if [[ $HOST = $HOST_PROXY ]] ; then
+	    logIt "The PROXY and the PRODUCTION host cannot be identical."
+	    logIt "There should be no need to run build_symdb on a proxy host."
+	    set_RC 1 stop
+	fi 
+
+	# --------------------------------------------
+	# We are basically merging lspv and syminq
+	# --------------------------------------------
+	logIt "Building the symdb database..."
+
+	pdevfile=$TMP_PATH/$HOST.pdevfile; 
+	lspv=$TMP_PATH/$HOST.lspv
+
+	logIt "Cleaning up old pdevfile and lspv..."
+	rm $pdevfile  > /dev/null 2>&1
+	rm $lspv > /dev/null 2>&1
+	
+	# --------------------------------------------
+	# Get an lspv of active disks; 
+	# --------------------------------------------
+	logIt "Getting lspv....................: $lspv"
+
+	for i in $VGDATA $VGLOG
+	do
+		lsvg -o | grep $i >> $LOG 2>&1 
+		if [[ $? -ne 0 ]] ; then
+		    logIt "Volume Group $i is not found or is not online."
+		    set_RC 10
+		fi 
+
+		lspv | grep $i >> $lspv
+		if [[ $? -ne 0 ]] ; then
+		    logIt "WARNING: Volume Groups $i obsolete.  Delete from cfg file."
+		fi
+	done
+
+	# --------------------------------------------
+	# get -pdevfile format of syminq
+	# --------------------------------------------
+	logIt "Getting syminq -pdevfile........: $pdevfile"
+
+	if [[ -f /opt/emc/SYMCLI/syminq ]] 
+	then
+		/opt/emc/SYMCLI/syminq -pdevfile > $pdevfile
+	elif [[ $nosyminq = "ok" ]] 
+	then
+		logIt "nosyminq is set to ok.  Will skip EMC volume collection."
+		touch $pdevfile
+	else
+		logIt "syminq link is not found at /opt/emc/SYMCLI/syminq"
+		find /opt/emc -name syminq  > /dev/null 2>&1 
+		if [[ $? -eq 0 ]]
+		then
+		    logIt "Found a version of syminq above. Create manually."
+		    for i in `find /opt/emc -name syminq`
+		    do
+			logIt "ln -s $i /opt/emc/SYMCLI/syminq"
+		    done
+		    exit 1 
+		fi
+	fi
+
+	# --------------------------------------------
+	# Now get a line from each lspv/merge syminq data
+	# --------------------------------------------
+	rm $SYMDB > /dev/null 2>&1 
+	logIt "Merging information to..........: $SYMDB"
+
+	#print "DEBUG::$VGDATA"
+	#print "DEBUG::$VGLOG"
+	
+	while read line
+	do
+
+		# --------------------------------------
+        	# Set lspv as pos. parms.
+		# --------------------------------------
+        	set $line
+		vg=$3; hdisk=$1; pvid=$2; state=$4; raw=/dev/r$hdisk
+		
+		# --------------------------------------
+		# Is this vg an oracle log destination?
+		# --------------------------------------
+		echo $VGLOG | grep $vg > /dev/null 2>&1
+		if [[ $? -eq 0 ]] 
+		then
+		    VGTYPE=LOG
+		else
+		    VGTYPE=DATA
+		fi
+	
+		# --------------------------------------
+        	# Now get pdevfile data by awking 
+		# for the raw device in pdevfile
+		# --------------------------------------
+        	symmdata=""
+        	symmdata=$(awk '$2 == "'$raw'"' $pdevfile)
+	
+        	if [[ -z $symmdata ]] ;then
+		    logIt "Warning: Could not find device in pdevfile: $vg $raw (padding with NA)."
+        	    ssid="NA"; rdev="NA"; devv="NA"; dir="NA"; port="NA"
+		else	
+        	    # Set symmdata (if found) as pos. parms
+        	    set $symmdata
+        	    ssid=$1; rdev=$2; devv=$3; dir=$4; port=$5
+        	    ssid=$(echo $ssid | cut -c 9-12)
+		fi
+	
+		# --------------------------------------
+        	# Now write out the db
+		# --------------------------------------
+        	print $HOST $HOST_PROXY $ssid $devv $vg $hdisk $pvid $state $rdev $dir $port $VGTYPE $logdate >> $SYMDB
+	
+	done < $lspv
+
+	COPYNAME=${MASTER}.${RANDOM}
+	logIt "Copy current to name: $COPYNAME"
+	cp ${MASTER} ${COPYNAME}
+	set_RC $? 
+
+	logIt "Recreating master symdb database: $MASTER"
+	find $TMP_PATH -follow -name $ENVIRONMENT'.*.symdb' -exec cat {} \; > $MASTER
+
+}

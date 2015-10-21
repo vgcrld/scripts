@@ -1,0 +1,80 @@
+# --------------------------------------------
+# General Usage Script
+# --------------------------------------------
+usage () {
+
+	cat <<- EOF
+
+	saas v3.1 - August 2011
+
+	Usage: $0 environmentName functionName [options ...]
+ 			 
+	Where Function is one of the following:
+	
+	  bcv_establish      --bcv_sid sym_sid --version a1|a2 --sync_wait yes|no
+                             --bcv_a1_dg file1 file2 ... 
+                             --bcv_a2_dg file3 file4 ... 
+	  bcv_mask           --action --version --bcv_sid
+                             --bcv_a1_dg devFile1 wwn1 fa1 port1 ...  
+                             --bcv_a2_dg devFile1 wwn1 fa1 port1 ...  
+	  bcv_split          --bcv_sid sym_sid --version a1|a2 
+                     	     --bcv_a1_dg file1 file2
+                   	     --bcv_a2_dg file3 file4
+	  bcv_status         --bcv_sid sym_sid --version a1|a2 
+                             --bcv_a1_dg file1 file2
+                   	     --bcv_a2_dg file3 file4
+	  build_symdb        --{HOST}_vg --{HOST}_proxy {HOST}_log_vg 
+	  change_owner       --owner owner --group grp --filesys sys1 sys2 ... sysx
+	  fs_bkup            [ --retain 14|25|1095|2555 ] [ --hostname host ]
+	  saw                --saw saw_tag --cc email1,email2 --subject Email subject
+	  shutdown_env       --sequence shutdown_tag --wait x
+	  snap               --snap_sid --snap_type --snap_log_dg --snap_main_dg --snap_pool 
+	  snap_backup        --snap_sid nnnn --snap_pool POOL_NAME --snap_dg GRP_NAME [--rerun 1 2 3 4 5]
+	  startup_env        --sequence 
+	  activate_clone     --bcv_sid --version --bcv_a1_dg --bcv_a2_dg 
+	  recreate_clone     --bcv_sid --version --bcv_a1_dg --bcv_a2_dg 
+	  validate_bcv       --bcv_a1_dg a1file1 a2file2 ... a3filex --bcv_a2_dg a2file1 a2file2 ... a2filex
+	  validate_vdev      --snap_main_dg file1 file2 ... filex --snap_log_dg file1 file2 ... filex
+	  verify_clone       --version a1|a2 --count x --interval n
+	  vg_dismount        [ --hostname host ]
+	  vg_mount           [ --hostname host ]
+
+	  asm_dismount       --asmuser xxxx --asm_dg_prefix xxxx
+	  asm_hb_dir_check   --asmuser xxxx --asm_arch_dest_mount xxxx
+	  asm_mount          --asmuser xxxx --asm_dg_prefix xxxx
+	  asm_set_diskset    --asmuser xxxx --asm_dg_prefix xxxx --asm_diskset_name xxxx --asm_diskset_cfgfile xxxx
+	  backup_db 	     --sid --bkup_user --time_stamp --keep_time --log_opts --rman_connect
+	  clone_status 	     --bcv_sid -version -bcv_a1_dg -bcv_a2_dg type
+	  get_vio_data	     --hmc xxxx
+	  hb_begin	     --orauser xxxx
+	  hb_begin_v9	     --orauser xxxx
+	  hb_end	     --orauser xxxx --rman_connect xxxx
+	  hb_end_v9 	     --orauser xxxx --rman_connect xxxx
+	  hb_preparedb 	     --bkup_user --sid --rman_connect 
+	  ora_backup_archive -sid -dbname -bkup_user -time_stamp -keep_time -rman_connect
+	  ora_backup_db      -sid -dbname -bkup_user -time_stamp -keep_time -log_opts -rman_connect
+	  query_symdb        -type -host
+	  rman_backup 	     --sid xxxx --orauser xxxx --time_stamp xxxx --keep_time xxxx 
+		         	    --log_opts xxxx --rman_connect xxxx --channels xx
+	  tsm_bkup	     --filesys xxxx --run xxxx --thread_gb xxxx [--opts xxxx]
+	  vtd_clone_add	     --source_host xxxx --vhost xxxx --env xxxx [--run_cfgmgr yes|no]
+	  vtd_clone_remove   --vhost xxxx --env xxxx
+
+	  build_symdb_vio_update --vioserver xxxx
+	  ora_cb_proxydb_prepare --bkup_user xxxx --sid xxxx --rman_catalog xxxx
+	  ora_chkpt_global       --oradbuser xxxx
+	  ora_env_capture        --oradbuser xxxx
+	  ora_hb_begin           --oradbuser xxxx
+	  ora_hb_ctl_bckup       --oradbuser xxxx --rman_catalog xxxx --asm_arch_dest_mount xxxx
+	  ora_hb_end             --oradbuser xxxx
+	  ora_hb_proxydb_prepare --bkup_user xxxx --sid xxxx --rman_catalog xxxx
+	  ora_hb_resync_catalog  --oradbuser xxxx --rman_catalog xxxx
+	  ora_switch_archivelog  --oradbuser xxxx
+
+	  
+	The configuration file should be in: $CONFIG_PATH
+
+	EOF
+		
+       	exit 1
+}

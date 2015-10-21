@@ -1,0 +1,36 @@
+bcv_status () {
+
+	#-------------------------------------------------------
+	# Set -fileid and -sleep_time for this function
+	#-------------------------------------------------------
+	set_parms "-bcv_sid -version -bcv_a1_dg -bcv_a2_dg"  $*
+
+	#-------------------------------------------------------
+        # Select the dg
+        #-------------------------------------------------------
+        if [[ $version = [Aa]1 ]] ; then
+            GROUPS=$bcv_a1_dg
+        elif [[ $version = [Aa]2 ]] ; then
+            GROUPS=$bcv_a2_dg
+        else
+            logIt "The version parameter is require: A1|A2"
+            set_RC 1 stop
+        fi
+
+        set $GROUPS
+
+        #--------------------------------------------
+        # Loop for each DG and issue establish
+        #--------------------------------------------
+        until [ $# -eq 0 ]
+        do
+	
+	    DG=$GROUP_PATH/$1
+	    shift 4
+	
+	    symmir -sid $bcv_sid -f $DG query 
+
+	done
+
+
+}

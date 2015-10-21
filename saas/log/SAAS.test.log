@@ -1,0 +1,53 @@
+09/02/2014 18:16:09 test gpedevdb01.ats.local bob(54617184) ======================================= 
+09/02/2014 18:16:09 test gpedevdb01.ats.local bob(54617184) Starting Operation: bob 
+09/02/2014 18:16:09 test gpedevdb01.ats.local bob(54617184) ======================================= 
+09/02/2014 18:16:09 test gpedevdb01.ats.local bob(54617184) Configuration file: /home/ATS/rdavis/scripts/saas/cfg/test.cfg 
+09/02/2014 18:16:09 test gpedevdb01.ats.local bob(54617184) Log file: /home/ATS/rdavis/scripts/saas/log/SAAS.test.log 
+09/02/2014 18:16:09 test gpedevdb01.ats.local bob(54617184) Operation bob is not a valid operation! 
+09/02/2014 18:16:33 test gpedevdb01.ats.local bobo(42468760) ======================================= 
+09/02/2014 18:16:33 test gpedevdb01.ats.local bobo(42468760) Starting Operation: bobo 
+09/02/2014 18:16:33 test gpedevdb01.ats.local bobo(42468760) ======================================= 
+09/02/2014 18:16:33 test gpedevdb01.ats.local bobo(42468760) Configuration file: /home/ATS/rdavis/scripts/saas/cfg/test.cfg 
+09/02/2014 18:16:33 test gpedevdb01.ats.local bobo(42468760) Log file: /home/ATS/rdavis/scripts/saas/log/SAAS.test.log 
+09/02/2014 18:16:33 test gpedevdb01.ats.local bobo(42468760) Operation bobo is not a valid operation! 
+09/02/2014 18:16:35 test gpedevdb01.ats.local bob(474823333) ======================================= 
+09/02/2014 18:16:35 test gpedevdb01.ats.local bob(474823333) Starting Operation: bob 
+09/02/2014 18:16:35 test gpedevdb01.ats.local bob(474823333) ======================================= 
+09/02/2014 18:16:35 test gpedevdb01.ats.local bob(474823333) Configuration file: /home/ATS/rdavis/scripts/saas/cfg/test.cfg 
+09/02/2014 18:16:35 test gpedevdb01.ats.local bob(474823333) Log file: /home/ATS/rdavis/scripts/saas/log/SAAS.test.log 
+09/02/2014 18:16:35 test gpedevdb01.ats.local bob(474823333) Completed operation "bob" with highest exit code 0 
+09/02/2014 18:16:58 test gpedevdb01.ats.local bob(780631128) ======================================= 
+09/02/2014 18:16:58 test gpedevdb01.ats.local bob(780631128) Starting Operation: bob 
+09/02/2014 18:16:58 test gpedevdb01.ats.local bob(780631128) ======================================= 
+09/02/2014 18:16:58 test gpedevdb01.ats.local bob(780631128) Configuration file: /home/ATS/rdavis/scripts/saas/cfg/test.cfg 
+09/02/2014 18:16:58 test gpedevdb01.ats.local bob(780631128) Log file: /home/ATS/rdavis/scripts/saas/log/SAAS.test.log 
+09/02/2014 18:16:58 test gpedevdb01.ats.local bob(780631128) Error: Missing parameter: --data 
+09/02/2014 18:16:58 test gpedevdb01.ats.local bob(780631128) ERROR: Operation bob requires the attention indicated above. 
+09/02/2014 18:17:07 test gpedevdb01.ats.local bob(86807777) ======================================= 
+09/02/2014 18:17:07 test gpedevdb01.ats.local bob(86807777) Starting Operation: bob 
+09/02/2014 18:17:07 test gpedevdb01.ats.local bob(86807777) ======================================= 
+09/02/2014 18:17:07 test gpedevdb01.ats.local bob(86807777) Configuration file: /home/ATS/rdavis/scripts/saas/cfg/test.cfg 
+09/02/2014 18:17:07 test gpedevdb01.ats.local bob(86807777) Log file: /home/ATS/rdavis/scripts/saas/log/SAAS.test.log 
+09/02/2014 18:17:07 test gpedevdb01.ats.local bob(86807777) Found Configuration value: data="this is my data" 
+09/02/2014 18:17:07 test gpedevdb01.ats.local bob(86807777) Completed operation "bob" with highest exit code 0 
+09/02/2014 18:17:20 test gpedevdb01.ats.local bob(1114124652) ======================================= 
+09/02/2014 18:17:20 test gpedevdb01.ats.local bob(1114124652) Starting Operation: bob 
+09/02/2014 18:17:20 test gpedevdb01.ats.local bob(1114124652) ======================================= 
+09/02/2014 18:17:20 test gpedevdb01.ats.local bob(1114124652) Configuration file: /home/ATS/rdavis/scripts/saas/cfg/test.cfg 
+09/02/2014 18:17:20 test gpedevdb01.ats.local bob(1114124652) Log file: /home/ATS/rdavis/scripts/saas/log/SAAS.test.log 
+09/02/2014 18:17:20 test gpedevdb01.ats.local bob(1114124652) Found Configuration value: data="this is my data" 
+09/02/2014 18:17:20 test gpedevdb01.ats.local bob(1114124652) Completed operation "bob" with highest exit code 0 
+09/02/2014 18:17:50 test gpedevdb01.ats.local bob(1475416873) ======================================= 
+09/02/2014 18:17:50 test gpedevdb01.ats.local bob(1475416873) Starting Operation: bob 
+09/02/2014 18:17:50 test gpedevdb01.ats.local bob(1475416873) ======================================= 
+09/02/2014 18:17:50 test gpedevdb01.ats.local bob(1475416873) Configuration file: /home/ATS/rdavis/scripts/saas/cfg/test.cfg 
+09/02/2014 18:17:50 test gpedevdb01.ats.local bob(1475416873) Log file: /home/ATS/rdavis/scripts/saas/log/SAAS.test.log 
+09/02/2014 18:17:50 test gpedevdb01.ats.local bob(1475416873) Found Configuration value: data="this is my test" 
+09/02/2014 18:17:50 test gpedevdb01.ats.local bob(1475416873) Completed operation "bob" with highest exit code 0 
+09/02/2014 18:19:44 test gpedevdb01.ats.local bob(2904229177) ======================================= 
+09/02/2014 18:19:44 test gpedevdb01.ats.local bob(2904229177) Starting Operation: bob 
+09/02/2014 18:19:44 test gpedevdb01.ats.local bob(2904229177) ======================================= 
+09/02/2014 18:19:44 test gpedevdb01.ats.local bob(2904229177) Configuration file: /home/ATS/rdavis/scripts/saas/cfg/test.cfg 
+09/02/2014 18:19:44 test gpedevdb01.ats.local bob(2904229177) Log file: /home/ATS/rdavis/scripts/saas/log/SAAS.test.log 
+09/02/2014 18:19:44 test gpedevdb01.ats.local bob(2904229177) Found Configuration value: data="this is my test" 
+09/02/2014 18:19:44 test gpedevdb01.ats.local bob(2904229177) Completed operation "bob" with highest exit code 0 

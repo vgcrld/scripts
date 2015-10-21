@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Rebuilding Documentation..."
+cd /home/ATS/rdavis/src/gpe-server/sources
+yard doc --private ./**/*.rb

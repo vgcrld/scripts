@@ -1,0 +1,70 @@
+snap () {
+	
+	# Get the parms.  snap_tape is best used on command line.
+	# The the *_dg parms should be put in the env.cfg file.
+	##Tset_parms "-snap_type -snap_log_dg -snap_main_dg -snap_pool" $*
+	set_parms "-snap_sid -snap_type -snap_log_dg -snap_main_dg -snap_pool" $*
+
+	# Let's pick the hours in which this is running
+	HOUR=`date +"%H"`
+	
+	# Decide which DG in parm list to use based on Hour
+	case $HOUR in 
+	    23|00|01|02|03|04) PICK_DG=1 ;;
+	    05|06|07|08|09|10) PICK_DG=2 ;;
+	    11|12|13|14|15|16) PICK_DG=3 ;;
+	    17|18|19|20|21|22) PICK_DG=4 ;;
+	esac
+
+	# Set var USE_DG to either MAIN or log 
+	if [[ $snap_type = main ]] ; then 
+	    set $snap_main_dg
+	    USE_DG=$( eval echo \$$PICK_DG )
+   	elif [[ $snap_type = log ]] ; then 
+	    set $snap_log_dg
+	    USE_DG=$( eval echo \$$PICK_DG )
+   	else
+	    logIt "ERROR: $snap_type is not valid.  Respecify."
+	    exit 1
+	fi	 	
+
+	logIt "Disk Group selected...: $USE_DG"
+	logIt "Snap type selected....: $snap_type"
+	logIt "Snap pool selected....: $snap_pool"
+
+	##T Added to support files and not groups
+	USE_DG=$GROUP_PATH/$USE_DG
+	touch $USE_DG
+
+	# Issue the snap sequence one at a time
+	##TCMD="symsnap -noprompt -g $USE_DG terminate"
+	CMD="symsnap -sid $snap_sid -noprompt -f $USE_DG terminate"
+	logIt "Issue: $CMD"
+	echo $CMD >> $LOG 2>&1
+	set_RC $? stop
+
+	##TCMD="symsnap -noprompt -svp $snap_pool -g $USE_DG create -concurrent"
+	CMD="symsnap -noprompt -svp $snap_pool -sid $snap_sid -f $USE_DG create -concurrent"
+	logIt "Issue: $CMD"
+	echo $CMD >> $LOG 2>&1
+	set_RC $? stop
+
+	##TCMD="symsnap -g $USE_DG verify -created"
+	CMD="symsnap -sid $snap_sid -f $USE_DG verify -created"
+	logIt "Issue: $CMD"
+	echo $CMD >> $LOG 2>&1
+	set_RC $? stop
+
+	##TCMD="symsnap -noprompt -g $USE_DG activate -concurrent"
+	CMD="symsnap -noprompt -sid $snap_sid -f $USE_DG activate -concurrent"
+	logIt "Issue: $CMD"
+	echo $CMD >> $LOG 2>&1
+	set_RC $? stop
+
+	##TCMD="symsnap -g $USE_DG verify -copyonwrite"
+	CMD="symsnap -sid $snap_sid -f $USE_DG verify -copyonwrite"
+	logIt "Issue: $CMD"
+	echo $CMD >> $LOG 2>&1
+	set_RC $? stop
+
+}

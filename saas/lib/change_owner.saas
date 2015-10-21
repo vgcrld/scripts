@@ -1,0 +1,90 @@
+# ---------------------------------------------------
+# This will change owner in parallel.
+# ---------------------------------------------------
+change_owner () {
+
+	set -o noglob
+	set_parms "-tag -run" "$*"
+
+        VAL="chown_${tag}"
+        set_parms "-$VAL"
+	eval "set \$$VAL"
+
+	#------------------------------------------------
+	# Clean up logs and report on output
+	#------------------------------------------------
+	if [[ $run = "yes" ]] 
+	then
+		logIt "Parameter --run is Yes.  Chown commands will be run."
+	elif [[ $run = "no" ]] 
+	then
+		logIt "Parameter --run is No.  Chown commands will NOT be run. (preview)"
+	else
+		logIt "Parameter --run must be Yes or No"
+		set_RC 1 stop
+	fi
+
+	#------------------------------------------------
+	# Clean up logs and report on output
+	#------------------------------------------------
+	LOGPRE=CHOWN_$$_$RANDOM 
+	while [[ $# -ne 0 ]] 
+	do
+	
+	    SEARCH=""
+	    owner=$1; shift 
+	
+	    # Change all / in file systems to \/ (escape them)
+   	    filesystem=`echo $1 | awk '{ gsub(/,/," "); print $0 }' `
+	    build_search `echo $filesystem | awk '{ gsub(/\//,"\\\/"); print $0 }'`
+	    shift
+
+	    for FILESYS in `df -g | sort | awk '$7 ~ /^\// { print $7 }'`
+	    do
+		    if echo $FILESYS | egrep $SEARCH > /dev/null 2>&1 
+		    then
+		            script_log=$TMP_PATH/${LOGPRE}_$RANDOM.log
+			    III="chown -R -P $owner $FILESYS"
+            		    if [[ $run = "yes" ]] 
+			    then
+            		        echo "$III" > $script_log
+				##T
+				##T Changed to output all output to script_log
+			        ##T ( eval "$III" > /dev/null 2>&1; RC=$?; echo "$RC" >> ${script_log} ) &
+				##T
+			        ( eval "$III" >> $script_log 2>&1; RC=$?; echo "$RC" >> ${script_log} ) &
+				##T
+				##T
+				LASTPID=$!
+			        logIt "Execute command: $III, PID: $LASTPID"
+			    else
+			        logIt "Command NOT run (preview only): $III "
+			    fi
+		    fi
+	    done
+		
+	done
+
+	wait
+	
+	#------------------------------------------------
+	# Clean up logs and report on output
+	#------------------------------------------------
+	if [[ $run = "yes" ]] 
+	then
+		set +o noglob
+		# Cleanup and report
+		for i in `ls $TMP_PATH/$LOGPRE*`
+		do
+			cat $i >> $LOG
+			set_RC `cat $i | tail -1`
+			logIt "Deleting log File: $i"
+			rm $i
+		done
+	else
+		logIt "Commands were not run.  --run flag was not set."
+	fi
+
+
+
+}

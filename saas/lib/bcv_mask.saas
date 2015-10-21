@@ -1,0 +1,127 @@
+bcv_mask () {
+
+        #------------------------------------------------------------------
+        # What filelist should we use? bcv_xx_dg
+        #------------------------------------------------------------------
+        set_parms "-bcv_sid -version -action debug" $*
+        VAL="bcv_${version}_dg"
+
+        #------------------------------------------------------------------
+        # Use that to find the proper --version value. Must be in cfg file.
+        #------------------------------------------------------------------
+        set_parms "-$VAL"
+        CMD="echo \$${VAL}"
+        PARMS=`eval $CMD`
+
+	#-------------------------------------------------------------
+	# Make the correct "version" the args (set) to this fucntion.
+	#-------------------------------------------------------------
+	if [[ $version = [Aa]1 ]] ; then
+    	    set $bcv_a1_dg
+	elif [[ $version = [Aa]2 ]] ; then 	
+	    set $bcv_a2_dg
+	else 
+            logIt "The version parameter is freeform."
+            set $PARMS
+
+	fi
+	
+	#--------------------------------------------------
+	# If action is add then use noprompt in symmask
+	#--------------------------------------------------
+	NOPROMPT=""
+	[[ $action = add ]] && NOPROMPT='-noprompt'
+
+	#--------------------------------------------------
+	# Until there is no more bcvdata (shifted out)
+	#--------------------------------------------------
+	logIt "Processing Disk groups from config file..."
+        until [ $# = 0 ]
+	do
+
+	    if [[ $# -lt 4 ]] ; then
+		logIt "ERROR: There are not enough positional values in the bcv_xx_dg specification."
+		logIt "ERROR: These values where not processed: $*"
+		logIt "ERROR: Check the cfg file and rerun."
+		exit 1
+	    fi
+
+	    DG=$1;   shift
+	    typeset -u WWN=$1;  shift
+	    FA=$1;   shift
+	    PORT=$1; shift
+
+	    #--------------------------------------------------
+	    # If WWN is an actual WWN
+	    #--------------------------------------------------
+	    if [[ $WWN = [0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F] ]] 
+	    then
+		mask_type=symmask
+		logIt "Mask type is $mask_type for file $DG.  symmask WWN=$WWN"
+
+	    #--------------------------------------------------
+	    # If WWN looks like a masking group
+	    #--------------------------------------------------
+	    elif [[ $WWN = SG_* ]]
+	    then
+		mask_type=symaccess
+		logIt "Mask type is $mask_type for file $DG.  symaccess SG=$WWN"
+
+	    #--------------------------------------------------
+	    # If WWN is the word NONE
+	    #--------------------------------------------------
+	    elif [[ $WWN = NONE ]]
+	    then
+		logIt "$DG has no masking view - it will be skipped."
+		continue	
+
+	    #--------------------------------------------------
+	    # If the sytax appears incorrect fail. 
+	    #--------------------------------------------------
+	    else
+		logIt "ERROR: The value $WWN does not appear to be a valid WWN or an SG!"
+		logIt "ERROR: Correct the value and rerun."
+		set_RC 1 stop
+	    fi
+
+	    #--------------------------------------------------
+	    # Run the commands, either: symmask or symaccess
+	    #--------------------------------------------------
+	    if [[ $mask_type = symmask ]] 
+	    then
+	        DG=$GROUP_PATH/$DG
+	        CMD="symmask $NOPROMPT -sid $bcv_sid -f $DG tgt -wwn $WWN -dir $FA -p $PORT $action"
+	        logIt "symmask CMD: $CMD"
+		if [[ -z $debug ]] ; then
+	        	$CMD >> $LOG 2>&1 
+		else
+			logIt "DEBUG:: --debug is set.  Command is not run!!!!"
+		fi
+	        set_RC $? 
+	    elif [[ $mask_type = symaccess ]]
+	    then
+	        DG=$GROUP_PATH/$DG
+	        CMD="symaccess -sid $bcv_sid -name $WWN -type storage $action -file $DG tgt"
+	        logIt "symaccess CMD: $CMD"
+		if [[ -z $debug ]] ; then
+	        	$CMD >> $LOG 2>&1 
+		else
+			logIt "DEBUG:: --debug is set.  Command is not run!!!!"
+		fi
+	        set_RC $? 
+	    fi
+
+	done
+
+	#----------------------------------------------------------------------
+	# After all symmask commands are submitted, refresh the table in sym
+	#----------------------------------------------------------------------
+    	CMD="symmask -sid $bcv_sid refresh -noprompt"
+	logIt "Refreshing masking table: $CMD"
+	if [[ -z $debug ]] ; then
+		$CMD >> $LOG 2>&1
+	else
+		logIt "DEBUG:: --debug is set.  Masking table is not refreshed; no commands run in DEBUG!"
+	fi
+	set_RC $? 
+}

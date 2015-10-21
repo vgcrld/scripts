@@ -1,0 +1,131 @@
+ora_switch_archivelog () {
+
+	#-------------------------------------------------------------
+	# Set the parms for this function
+	#-------------------------------------------------------------
+	set_parms "-oradbuser" $*
+
+	#-------------------------------------------------------------
+	# Let's switch to the oracle user
+	#-------------------------------------------------------------
+	switch_user $oradbuser
+
+	#-------------------------------------------------------------
+	# Set the profile for this user
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1
+	set_RC $? stop
+	
+	#-------------------------------------------------------------
+	# Switch logfile 3x
+	#-------------------------------------------------------------
+        logIt "${ORACLE_SID}: Switch logfile (3x)"
+        SLOG=/tmp/ora_switch_archivelog_$$
+
+	##T There is no -s for this sqlplus?
+	##T What about error checking on this?
+        sqlplus <<- EOF
+		/ as sysdba
+		whenever sqlerror exit -1 rollback;
+		spool ${SLOG}.tmp
+		column SCN for 999999999999999999
+		column CHANGE# for 999999999999999999
+		set pages 200 lines 200
+		set echo on
+		set feedback on
+		
+		alter session set nls_date_format='dd-mon-yyyy hh24:mi:ss';
+		
+		select 'Before archivelog switch:'||to_char(SYS.DBMS_FLASHBACK.GET_SYSTEM_CHANGE_NUMBER)
+        		|| '_'|| to_char(sysdate,'dd-mon-yyyy hh24:mi:ss') "SCN#" from dual;
+		
+		alter system switch logfile;
+		alter system switch logfile;
+		alter system switch logfile;
+		
+		alter system archive log current;
+		
+		select 'After archivelog switch:'||to_char(SYS.DBMS_FLASHBACK.GET_SYSTEM_CHANGE_NUMBER)
+        		|| '_'|| to_char(sysdate,'dd-mon-yyyy hh24:mi:ss') "SCN#" from dual;
+		
+		spool off
+		exit
+		EOF
+
+	#-------------------------------------------------------------
+	# Capture the log
+	#-------------------------------------------------------------
+	cat ${SLOG}.tmp|while read LINE
+	do
+		logIt "$LINE"
+	done
+	rm ${SLOG}.tmp
+
+        #-------------------------------------------------------------
+        # Sleep to ensure I/O has completed for archive logs
+        #-------------------------------------------------------------
+        
+	# 2011-08-14 - ERT - Commented out the sleep	
+	#logIt "Sleeping for 120 seconds..."
+        #sleep 120
+
+        #-------------------------------------------------------------
+        # List the archive logs
+        #-------------------------------------------------------------
+        logIt "${ORACLE_SID}: List archive logs"
+        SQLCMD 'archive log list;'
+        set_RC $? stop
+
+        cat $SQLTEMP > $LOG_PATH/${ORACLE_SID}.logseq
+
+        #-------------------------------------------------------------
+        # capture most current ARchive log sequence 
+	##T Where is the error checking on this.
+        #-------------------------------------------------------------
+        SLOG=/tmp/ora_switch_archivelog_$$.log
+
+        sqlplus -s <<- EOF
+		/ as sysdba
+		whenever sqlerror exit -1 rollback;
+		column "ARCHIVE_SEQ" for a120
+		set pages 200 lines 200
+		spool ${SLOG}
+		select
+		t1.* from
+		(
+		select
+ 		thread# ||'|'||
+ 		archival_thread#|| '|'||
+ 		sequence#||'|'||
+ 		ltrim(to_char( first_change#,99999999999999999))|| '|'||
+ 		to_char(first_time,'dd-mon-yyyy hh24:mi:ss') || '|'||
+ 		to_char(completion_time,'dd-mon-yyyy hh24:mi:ss') "ARCHIVE_SEQ"
+		from
+   		v\$archived_log
+		where first_time > sysdate -1
+		and thread# = (select thread# from v\$instance)
+		order by completion_time desc, thread#
+		) t1
+		where rownum < 2
+		;
+		spool off;
+		exit;
+		EOF
+
+	
+        #-------------------------------------------------------------
+	# Capture the log
+        #-------------------------------------------------------------
+	cat $SLOG|while read LINE
+	do
+		logIt "$LINE"
+	done
+
+        #-------------------------------------------------------------
+        # Write out Archive Seq to startup files...
+        #-------------------------------------------------------------
+	tail -2 $SLOG|head -1|sed -e 's/ //g'> $LOG_PATH/${ORACLE_SID}.logseqRAC
+	rm $SLOG
+
+}

@@ -1,0 +1,79 @@
+bcv_establish () {
+
+	#-------------------------------------------------------
+	# Set -fileid and -sleep_time for this function
+	#-------------------------------------------------------
+	set_parms "-bcv_sid -version -bcv_a1_dg -bcv_a2_dg -sync_wait" $*
+
+	#-------------------------------------------------------
+	# Check if sync_wait is yes or no
+	#-------------------------------------------------------
+	if [[ $sync_wait != yes ]] && [[ $sync_wait != no ]] ; then
+	    logIt "--sync_wait must be yes|no"
+	    exit 1
+	fi
+
+	#-------------------------------------------------------
+	# Select the dg
+	#-------------------------------------------------------
+	if [[ $version = [Aa]1 ]] ; then
+	    GROUPS=$bcv_a1_dg
+	elif [[ $version = [Aa]2 ]] ; then 	
+	    GROUPS=$bcv_a2_dg
+	else 
+	    logIt "The version parameter is require: A1|A2"
+	    set_RC 1 stop
+	fi
+	
+	set $GROUPS
+
+	#--------------------------------------------
+	# Loop for each DG and issue establish
+	#--------------------------------------------
+        until [ $# -eq 0 ] 
+        do
+	    #-------------------------------------------------------
+	    # Make sure the shift is correct
+	    #-------------------------------------------------------
+	    if [[ $# -lt 4 ]] ; then
+		logIt "ERROR: There are not enough positional values in the bcv_xx_dg specification."
+		logIt "ERROR: These values where not processed: $*"
+		logIt "ERROR: Check the cfg file and rerun."
+		exit 1
+	    fi
+	    DG=$1; shift 4
+
+	    #-------------------------------------------------------
+	    ##T Used to support files
+	    DG=$GROUP_PATH/$DG
+	    #-------------------------------------------------------
+
+            logIt "Starting re-establish for disk group: $DG"
+	    ##Tsymmir -g $DG -noprompt establish >> $LOG 2>&1
+	    symmir -sid $bcv_sid -f $DG -noprompt establish >> $LOG 2>&1
+            set_RC $? stop
+            sleep 10
+        done
+
+	[[ $sync_wait = no ]] && return 
+
+	#--------------------------------------------
+	# Check to be sure they are established
+	#--------------------------------------------
+	CHECKRC=1
+	logIt "Validating all groups are synched..."
+        until [ $CHECKRC -eq 0 ] 
+        do
+	    CHECKRC=0
+	    set $GROUPS
+            until [ $# -eq 0 ] 
+            do
+	        DG=/saas/groups/$1; shift 4
+                logIt "Validate $DG is established"
+	        ##Tsymmir -g $DG verify -synched >> $LOG 2>&1
+	        symmir -sid $bcv_sid -f $DG verify -synched >> $LOG 2>&1
+		[[ $? -ne 0 ]] && CHECKRC=$(( $CHECKRC+1 ))
+	    done
+	    sleep 5
+        done
+}

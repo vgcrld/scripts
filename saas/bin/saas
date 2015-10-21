@@ -1,0 +1,628 @@
+#!/bin/ksh
+#--------------------------------------------------------------------------------------
+# Created: July 2009
+#
+# Last Updated:
+#   02/26/2009 - Copied to production
+#
+# This script is used to control the AIX, EMC and TSM FS bkup functions of the
+# BCV split/snap operations.  Oracle DB functions are controlled by specific
+# DBA Scripts.  Applications are also controlled by specific apps scripts.
+#
+# For detailed information on usage see the saas word doc on sharepoint.
+#
+# Each function that this script can perform is self-contained within a
+# an inline ksh function with the name name (below):
+#--------------------------------------------------------------------------------------
+
+# --------------------------------------------
+# Setup the paths for execution
+# --------------------------------------------
+SAAS_PGM=`basename $0`
+SAAS_PARMS=$*
+ENVIRONMENT=$1
+FUNCTION=$2
+
+cd `dirname $0`
+BIN_PATH=`pwd`
+SAAS_HOME=$(dirname $BIN_PATH)
+INCL_PATH=$SAAS_HOME/lib
+CONFIG_PATH=$SAAS_HOME/cfg
+LOG_PATH=$SAAS_HOME/log
+TMP_PATH=$SAAS_HOME/tmp
+GROUP_PATH=$SAAS_HOME/groups
+LOG_PREFIX=SAAS
+CONFIG=$CONFIG_PATH/$ENVIRONMENT.cfg
+HOST=$(hostname)
+SYMDB=$TMP_PATH/$ENVIRONMENT.$HOST.symdb
+MASTER=$LOG_PATH/$ENVIRONMENT.symdb
+LOG_LOCK=$LOG_PATH/$ENVIRONMENT.LOCK
+JOB=${$}${RANDOM}
+typeset -i RC=0
+
+# --------------------------------------------
+# Include usage
+# --------------------------------------------
+. $INCL_PATH/usage.saas
+. $INCL_PATH/switch_user.saas
+. $INCL_PATH/get_vgdata.saas
+
+# --------------------------------------------
+# Place SYMCLI env stuff here.
+# --------------------------------------------
+export SYMCLI_CLONE_EMULATION=ENABLED
+export SYMCLI_CTL_ACCESS=PARALLEL
+
+# --------------------------------------------------------------------------
+# Pass a file with a list of commands to run.  Returns count of non 0 rc
+# --------------------------------------------------------------------------
+cmdRunner () {
+
+        infile=$*
+
+        date=`date +"%m/%d/%Y"`
+        time=`date +"%H:%M:%S"`
+
+        typeset -i FAILCOUNT=0
+        cat ${infile} | { while read CMDTORUN
+        do
+
+                $CMDTORUN > /dev/null 2>&1
+                CMDTORUN_RC=$?
+
+                # Wait until the log is not in use
+                while [ -f $LOG_LOCK ]
+                do
+                : # Don't do anything but wait "while" LOCK exists
+                done
+
+                touch $LOG_LOCK
+
+                if [[ $CMDTORUN_RC -ne 0 ]]
+                then
+                        printf "%s %s %s %s %s(%s) %8s (%4u) %s \n" $date $time $ENVIRONMENT $HOST $FUNCTION $JOB \
+                                "FAIL" $CMDTORUN_RC "$CMDTORUN" | tee -a $LOG
+                        FAILCOUNT=$(( $FAILCOUNT+1 ))
+                else
+                        printf "%s %s %s %s %s(%s) %8s (%4u) %s \n" $date $time $ENVIRONMENT $HOST $FUNCTION $JOB \
+                                "OK" $CMDTORUN_RC "$CMDTORUN" | tee -a $LOG
+                fi
+
+                rm $LOG_LOCK
+
+        done
+        }
+
+        return $FAILCOUNT
+
+
+}
+
+# --------------------------------------------------------------------------
+# Pass a type and filename and RETURN TEMPDG
+# --------------------------------------------------------------------------
+cutfiles () {
+
+        typeset -u TYPE=""
+
+        INFILE=$1
+        TYPE=$2
+
+        if [[ -z $TYPE ]]
+        then
+                logIt "Type was set to <null>, entire file will be processed (LOG and DATA)."
+                return 0
+        fi
+
+        # -----------------------------------------------------------------
+        # Normalize the DG file to ensure a match - caps and leading zeros
+        # -----------------------------------------------------------------
+        DGFILE=/tmp/DGFILE_$JOB
+        cat $INFILE | while read LINE
+        do
+                set \ $LINE
+                if [[ $LINE = "" ]]
+                then
+                        logIt "WARNING: Blank lines found in $INFILE."
+                else
+                        typeset -u STD=$1
+                        typeset -u BCV=$2
+                        printf "%04s %04s \n" $STD $BCV >> $DGFILE
+                fi
+        done
+
+        if [[ $TYPE == "LOG" ]]
+        then
+                GREPPARM=""
+        elif [[ $TYPE == "DATA" ]]
+        then
+                GREPPARM="-v"
+        else
+                logIt "ERROR: Type was not LOG,  DATA or <null>.  Please respecify."
+                set_RC 1 stop
+        fi
+
+        logIt "Trimming file $INFILE based on type $TYPE"
+
+        TEMPDG=/tmp/TEMPDG_$JOB
+        LOGDEVS=`awk '$12 == "LOG" { print $4 }' $MASTER`
+        build_search $LOGDEVS
+        egrep $GREPPARM "$SEARCH" $DGFILE > $TEMPDG
+
+        ##X
+        EGREP_SEARCH=$?
+        logIt "Search (egrep $GREPPARM \"$SEARCH\" $DGFILE) (exit=$EGREP_SEARCH)"
+        ##X
+
+        TEMPDG_COUNT=`wc -l $TEMPDG | awk '{print $1}'`
+        DG=$TEMPDG
+        rm $DGFILE > /dev/null 2>&1
+
+        if [[ $TEMPDG_COUNT -eq 0 ]]
+        then
+                logIt "There are no devices of type $TYPE in $INFILE.(count=${TEMPDG_COUNT})"
+                return 1
+        else
+                logIt "Found devices of type $TYPE to process in file: $INFILE (count=${TEMPDG_COUNT})"
+                logIt "Temporary DG is: $DG, Devices are:"
+                cat $DG
+                return 0
+        fi
+
+}
+
+# --------------------------------------------------------------------------
+# Build a search pattern
+#   Pass: A list of regex (eg: root.* .* perfvg0[12])
+#   Sets: $SEARCH
+# Return: > 0 if invalid
+# --------------------------------------------------------------------------
+build_search () {
+
+        SEARCH=""
+        while [[ $# -ne 0 ]]
+        do
+                if [[ $# -gt 1 ]]
+                then
+                        sep="|"
+                else
+                        sep=""
+                fi
+                SEARCH="${SEARCH}${1}${sep}"
+                shift
+        done
+
+        echo WILLNEVERFINDTHIS | egrep "$SEARCH" > /dev/null 2>&1
+        if [[ $? -gt 1 ]]
+        then
+                print $SEARCH
+                logIt "The regex may be invalid in the build_search function."
+                echo WILLNEVERFINDTHIS | egrep "$SEARCH"
+                exit 1
+        fi
+
+}
+
+# --------------------------------------------
+# Run a command to rman
+# --------------------------------------------
+RMANCMD () {
+
+        CMD_TO_RUN="$*"
+
+        rm $RMANTEMP > /dev/null 2>&1
+        RMANTEMP=/tmp/RMANTEMP.$$.$RANDOM.$RANDOM
+
+        logIt "Running RMAN command"
+        ${rman_connect} <<- RMANEND >> $RMANTEMP
+		$CMD_TO_RUN
+		RMANEND
+
+        EXITCODE=$?
+        cat $RMANTEMP | tee -a $LOG
+        rm $RMANTEMP > /dev/null 2>&1
+        return $EXITCODE
+}
+
+# --------------------------------------------
+# Run a command to sqlserver
+# --------------------------------------------
+SQLCMD () {
+
+        CMD_TO_RUN="$*"
+
+        rm $SQLTEMP > /dev/null 2>&1
+        SQLTEMP=/tmp/SQLTEMP.$$.$RANDOM.$RANDOM
+
+        sqlplus -s /nolog <<- SQL >> $SQLTEMP
+		set pages 200 lines 200
+		conn / as sysdba
+		whenever sqlerror exit -1 rollback;
+		$CMD_TO_RUN
+		exit
+		SQL
+
+        EXITCODE=$?
+        cat $SQLTEMP | tee -a $LOG
+        return $EXITCODE
+
+
+}
+
+logFile () {
+
+        TEMPFILE=$1
+
+        # Wait until the log is not in use
+        while [ -f $LOG_LOCK ]
+        do
+        : # Don't do anything but wait "while" LOCK exists
+        done
+
+        touch $LOG_LOCK
+        cat $TEMPFILE >> $LOG
+        rm $LOG_LOCK
+}
+
+# --------------------------------------------
+# Routine to parse a configfile if specified
+# --------------------------------------------
+parse_parm () {
+
+        CHECKFOR=$1
+        PARMS=""; VALUES=""; CALL_PARMS=""
+
+        for i in $(awk '$1 == "--'$CHECKFOR'",/;/ {gsub(/\;/,""); print $0}' $CONFIG)
+        do
+
+            if [[ $i = \#* ]] ; then
+                logIt "$CHECKFOR is commented out."
+                return
+            fi
+
+            # Remove -- and ; from the parms
+            value=${i#--}
+            value=${value#;}
+
+            # Concat the values found
+            PARMS="$PARMS $value"
+        done
+
+        if [ -z "$PARMS" ] ; then
+            [[ -n $DEBUG ]] && print "parse_parm,DEBUG::$CHECKFOR is not in the config file."
+        else
+            set $PARMS
+            PARM=$1
+            shift
+            VALUES=$*
+            CALL_PARMS='--'$PARM' '$VALUES
+        fi
+
+}
+
+
+# --------------------------------------------
+# Routine to parse a configfile if specified
+# --------------------------------------------
+cleanup_disks () {
+
+        ##T Need to check better for  None - not inuse
+        while read XX
+        do
+                set $XX
+                hdisk=`lspv | awk '/'$7'/ { print $1 }'`
+                echo rmdev -dl $hdisk
+        done < $MASTER
+
+}
+
+# --------------------------------------------
+# Routine to check for a file
+# --------------------------------------------
+check_file () {
+
+        if [[ ! -f $1 ]]
+        then
+                logIt "File $1 is not found."
+                set_RC 1 $2
+        fi
+}
+
+# --------------------------------------------
+# Include the function
+# --------------------------------------------
+include_it () {
+
+        . $INCL_PATH/${1}.saas
+}
+
+# --------------------------------------------
+# Routine to parse a configfile if specified
+# --------------------------------------------
+set_RC () {
+
+        if [[ $1 -gt $RC ]] ; then
+            logIt "ERROR: Setting (highest) non 0 exit code: $1"
+            RC=$1
+        else
+            logIt "Operation ended with exit code: $1"
+        fi
+
+        if [[ $2 == 'stop' && $1 != 0 ]] ; then
+            RC=$1
+            exit_rc
+        fi
+
+        return $1
+}
+
+# --------------------------------------------
+# Exit the code
+# --------------------------------------------
+exit_rc () {
+        logIt "Completed operation \"$FUNCTION\" with highest exit code $RC"
+        exit $RC
+}
+
+# --------------------------------------------
+# Basic logging functions
+# --------------------------------------------
+logIt () {
+
+        date=`date +"%m/%d/%Y"`
+        time=`date +"%H:%M:%S"`
+        logdate=`date +"%Y%m%d"`
+        ts=`date +"%Y%m%d%H%M%S`
+
+        if [[ -z $LOG ]]
+        then
+            LOG=$LOG_PATH/$LOG_PREFIX.$ENVIRONMENT.log
+        fi
+
+        # Make it world read/write
+        if [[ ! -f $LOG ]] ; then
+            touch $LOG
+            chmod 777 $LOG
+        fi
+
+        # Wait until the log is not in use
+        while [ -f $LOG_LOCK ]
+        do
+        :
+        done
+
+        touch $LOG_LOCK
+        printf "%s %s %s %s %s(%s) $* \n" $date $time $ENVIRONMENT $HOST $FUNCTION $JOB | tee -a $LOG
+        rm $LOG_LOCK
+}
+
+# --------------------------------------------
+# Process the parms
+# --------------------------------------------
+set_parms () {
+
+        #DEBUG=YES
+
+        [[ -n $DEBUG ]] && print -R "set_parms,DEBUG::Start of set_parms"
+        [[ -n $DEBUG ]] && print -R "set_parms,DEBUG::Parms as sent to set_parms: $*"
+
+        # Called like this, eg:  set_parms "-parm1 -parm2 parm3" $*
+        validParms=$1; shift
+        parmList=$*
+
+        [[ -n $DEBUG ]] && print "set_parms,DEBUG::Split of parms into validParms=$validParms, parmList=$parmList"
+
+        if [[ -n $USING_CONFIG ]]
+        then
+            parmListCfg=""
+            for VP in $validParms
+            do
+                VP=${VP#-}
+                ##logIt "Parse Config File for: "$VP
+                parse_parm $VP
+                parmListCfg="$parmListCfg $CALL_PARMS"
+            done
+            [[ -n $DEBUG ]] && print "set_parms,DEBUG::Parms found in config file: $parmListCfg "
+            # Make these positional not what was passed
+            set \ $parmListCfg $parmList
+        fi
+
+        [[ -n $DEBUG ]] && print "set_parms,DEBUG::validParms=$validParms"
+        [[ -n $DEBUG ]] && print "set_parms,DEBUG::parmList=$parmList"
+
+        typeset -i c=0
+        set -A value
+
+
+        while [[ $# != 0 ]]
+        do
+                if [[ $1 == --* ]] ; then
+                        X=$1
+                        c=$(( $c+1 ))
+                        parm[c]=${X#--}
+                        [[ -n $DEBUG ]] && print "set_parms,DEBUG::parm[$c] = ${parm[c]}"
+                else
+                        if [[ -z ${value[c]} ]] ; then
+                                value[c]=$1
+                        else
+                                value[c]="${value[c]} $1"
+                        fi
+                        [[ -n $DEBUG ]] && print "set_parms,DEBUG::value[$c] = ${value[c]}"
+                fi
+
+                shift
+
+        done
+        numParms=$c
+
+        # Setup the values using eval
+        c=1
+        while [[ c -le $numParms ]]
+        do
+                if [[ -z ${value[c]} ]] ; then
+                        ##T Removed setting this to "" to allow blank snap_log_dg
+                        ##T value[c]="FLAG"
+                        value[c]=""
+                fi
+                CMD="${parm[c]}=\"${value[c]}\""
+                logIt "Found Configuration value: $CMD"
+
+                [[ -n $DEBUG ]] && print "set_parms,DEBUG::eval $CMD"
+                [[ -n $DEBUG ]] && print "set_parms,DEBUG:: parm is: ${parm[c]} , value is: ${value[c]}, validparms is: $validParms"
+
+                # is this parm Valid?
+                isValid=no
+                [[ -n $DEBUG ]] && print "set_parms,DEBUG::isValid=$isValid"
+                for II in $validParms
+                do
+                        [[ ${parm[c]} = ${II#-} ]] && isValid=yes
+                done
+                [[ -n $DEBUG ]] && print "set_parms,DEBUG::isValid=$isValid"
+
+                if [[ $isValid = "no" ]] ; then
+                        logIt "Value ${parm[c]} is an invalid parameter or MUST be placed in configuration file: $CONFIG."
+                fi
+
+                eval "$CMD"
+                c=$((c+1))
+        done
+
+        # Check the values
+        for II in $validParms
+        do
+                VALREQ=
+                [[ $II = -* ]] && VALREQ=1
+
+                [[ -n $DEBUG ]] && print "set_parms,DEBUG::VALREQ=$VALREQ"
+                [[ -n $DEBUG ]] && print "set_parms,DEBUG::validParm is ($II): $II (in iteration)"
+
+                II=${II#-}
+                if [[ -z $VALREQ ]] ; then
+                    CMD="[[ -z \$$II ]] && logIt Warning: Option not specified, defaults will be used: --$II"
+                else
+                    CMD="[[ -z \$$II ]] && PARMERR=1 && logIt Error: Missing parameter: --$II"
+                fi
+                [[ -n $DEBUG ]] && print "set_parms,DEBUG::CMD=$CMD"
+                eval "$CMD"
+
+                if [[ -z $VALREQ ]] ; then
+                    CMD="[[ \$$II = FLAG ]] && logIt \"Parameter flag --$II set.\""
+                else
+                    CMD="[[ \$$II = FLAG ]] && PARMERR=1 && logIt \"Error: Parameter --$II missing value(s).\""
+                fi
+                [[ -n $DEBUG ]] && print "set_parms,DEBUG::CMD=$CMD"
+                eval "$CMD"
+
+        done
+
+        if [[ -n $PARMERR || $isValid = "no" ]] ; then
+                logIt "ERROR: Operation $FUNCTION requires the attention indicated above."
+                exit 1
+        fi
+
+        [[ -n $DEBUG ]] && print -R "set_parms,DEBUG::End of set_parms"
+}
+
+# --------------------------------------------
+#                 Start Main
+# --------------------------------------------
+[[ -z $ENVIRONMENT || -z $FUNCTION ]] && usage
+
+# --------------------------------------------
+# Grab whats left afer ENV and FUNC as ARGS
+# --------------------------------------------
+shift
+shift
+ARGS=$*
+
+# --------------------------------------------
+# Be sure there is a config file
+# --------------------------------------------
+if [[ -f $CONFIG ]]
+then
+        USING_CONFIG=yes
+else
+        logIt "ERROR: No config file found (searched for $CONFIG)"
+        exit 1
+fi
+
+# --------------------------------------------
+# Issue a message for start of FUNCTION
+# --------------------------------------------
+if [[ -z $SAAS_RESTARTED_AS_USER ]]
+then
+        logIt "======================================="
+        logIt "Starting Operation: $FUNCTION"
+        logIt "======================================="
+        logIt "Configuration file: $CONFIG"
+        logIt "Log file: $LOG"
+fi
+
+# --------------------------------------------
+# Select the FUNCTION; If in list then invoke
+# --------------------------------------------
+
+# DEBUG=yes
+
+[[ -n $DEBUG ]] && env
+
+case $FUNCTION in
+
+           vg_dismount) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+              vg_mount) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+         bcv_establish) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+             bcv_split) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+              bcv_mask) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+            bcv_status) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+          clone_status) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+                  snap) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+           snap_backup) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+               fs_bkup) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+           build_symdb) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+build_symdb_vio_update) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+          validate_bcv) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+         validate_vdev) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+                   saw) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+          shutdown_env) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+           startup_env) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+        recreate_clone) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+        activate_clone) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+          verify_clone) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+          change_owner) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+           query_symdb) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+              hb_begin) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+           hb_begin_v9) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+             hb_end_v9) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+                hb_end) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+         symdb_getdevs) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+          hb_preparedb) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+             backup_db) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+      vtd_clone_remove) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+         vtd_clone_add) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+       ora_env_capture) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+          ora_hb_begin) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+            ora_hb_end) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+      asm_hb_dir_check) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+      ora_chkpt_global) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+ ora_switch_archivelog) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+      ora_hb_ctl_bckup) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+ ora_hb_resync_catalog) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+          asm_dismount) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+             asm_mount) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+       asm_set_diskset) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+ora_hb_proxydb_prepare) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+ora_cb_proxydb_prepare) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+         ora_backup_db) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+    ora_backup_archive) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+           rman_backup) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+          clone_cycled) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+                   bob) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+                 usage) include_it "$FUNCTION"; "$FUNCTION" "$ARGS" ;;
+
+               *) logIt "Operation $FUNCTION is not a valid operation!"; usage ;;
+esac
+
+# --------------------------------------------------
+# Exit with the value of RC (maintained by set_RC)
+# --------------------------------------------------
+exit_rc

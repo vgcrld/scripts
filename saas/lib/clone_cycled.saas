@@ -1,0 +1,104 @@
+clone_cycled () {
+	#-------------------------------------------------------
+	# Set values
+	#-------------------------------------------------------
+	set_parms "-bcv_sid -version -count -interval type debug" $*
+	VAL="bcv_${version}_dg"
+
+	#------------------------------------------------------------------
+	# Use that to find the proper --version value. Must be in cfg file.
+	#------------------------------------------------------------------
+	set_parms "-$VAL"
+	CMD="echo \$${VAL}"
+	PARMS=`eval $CMD`
+
+	#-------------------------------------------------------
+	# Select the dg
+	#-------------------------------------------------------
+	if [[ $version = [Aa]1 ]] ; then
+	    GROUPS=$bcv_a1_dg
+	elif [[ $version = [Aa]2 ]] ; then 	
+	    GROUPS=$bcv_a2_dg
+	elif [[ $version = db_only ]] ; then 	
+	    GROUPS=$bcv_db_only_dg
+	else 
+	    logIt "The version parameter is required: A1|A2|db_only"
+	    set_RC 1 stop
+	fi
+
+	if echo $interval | grep [^0-9] > /dev/null
+	then
+  	    logIt "Value --interval is not numeric."
+	    exit 1
+	fi
+
+	if echo $count | grep [^0-9] > /dev/null
+	then
+  	    logIt "Value --count is not numeric."
+	    exit 1
+	fi
+
+        #--------------------------------------------
+        # Check to be sure clones are cycled
+        #--------------------------------------------
+        CHECKRC=1
+        logIt "Validating all groups have completed one precopy cycle..."
+        until [[ $CHECKRC -eq 0 || $count -eq 0 ]]
+        do
+            CHECKRC=0
+            set $GROUPS
+            until [ $# -eq 0 ]
+            do
+	        if [[ $# -lt 4 ]] ; then
+	    	    logIt "ERROR: There are not enough positional values in the bcv_xx_dg specification."
+	    	    logIt "ERROR: These values where not processed: $*"
+	    	    logIt "ERROR: Check the cfg file and rerun."
+	    	    exit 1
+	        fi
+                DG=$GROUP_PATH/$1
+		shift 4
+                logIt "Validate $DG is in copied state."
+		cutfiles $DG $TYPE
+                symclone -sid $bcv_sid -f $DG verify -precopy -cycled >> $LOG 2>&1
+		TEMPRC=$?
+		logIt "Verify copied for $DG returned: $TEMPRC"
+                [[ $TEMPRC -ne 0 ]] && CHECKRC=$(( $CHECKRC+1 ))
+            done
+	    count=$(( $count-1 ))
+	    if [[ $count -ne 0 && $CHECKRC -ne 0 ]] 
+	    then
+	    	logIt "Sleeping for $interval seconds... ( count: $count )."
+		sleep $interval
+	    else 
+		set_RC $CHECKRC stop
+	    fi
+        done
+
+        #--------------------------------------------
+        # Loop for each DG and issue query
+        #--------------------------------------------
+	set $GROUPS
+        until [ $# -eq 0 ]
+        do
+	
+	    DG=$GROUP_PATH/$1
+	    shift 4
+
+	    if cutfiles $DG $type
+	    then
+		if [[ -z $debug ]] ; then
+			logIt "SYMCLONE command: symclone -sid $bcv_sid -f $DG query | grep -p Total"
+			echo $DG | tee -a $LOG
+			symclone -sid $bcv_sid -f $DG query 2>&1 | grep -p Total | tee -a $LOG
+		else
+			logIt "DEBUG:: --debug is set.  Command not run!!!"
+			logIt "DEBUG:: symclone -sid $bcv_sid -f $DG query | grep -p Total"
+		fi
+	        set_RC $?
+	    fi
+
+	    rm $TEMPDG > /dev/null 2>&1 
+
+	done
+
+}

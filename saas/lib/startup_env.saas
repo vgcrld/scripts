@@ -1,0 +1,77 @@
+startup_env () {
+
+	#------------------------------------------------------------------
+	# This module is used to start the application based on conifg 
+	# data in the configuration file.  
+	# The --sequence x; value selects the --startup_x parm.
+	#------------------------------------------------------------------
+	logIt "Begin $ENVIRONMENT application/DB startup."
+	
+	#------------------------------------------------------------------
+	# First get the sequence #
+	#------------------------------------------------------------------
+	set_parms "-sequence" $*
+	VAL="startup_${sequence}"
+	
+	#------------------------------------------------------------------
+	# Use that to find the proper --startup_x value.
+	#------------------------------------------------------------------
+	set_parms "-$VAL"
+	
+	#------------------------------------------------------------------
+	# Now set that startup data as the parms to loop through
+	#------------------------------------------------------------------
+	CMD="echo \$${VAL}"
+	PARMS=`eval $CMD`
+	
+	#------------------------------------------------------------------
+	# Parse the data by position
+	#------------------------------------------------------------------
+	set $PARMS
+	RUNHOST=$1;  shift
+	RUNTYPE=$1;  shift
+
+        #------------------------------------------------------------------
+        # Figure out the user and cmd if this is an su
+        #------------------------------------------------------------------
+        if [[ $* = su* ]] ; then
+            RUNUSER=`id -un`
+            RUNUSER=`echo $* | awk -F 'su - | ' '{ print $2}'`
+            STARTCMD=`echo $* | awk -F '-c ' '{ print $2}'`
+        else
+            RUNUSER=`id -un`
+            STARTCMD=$*
+        fi
+
+	#------------------------------------------------------------------
+	# Display some info.
+	#------------------------------------------------------------------
+	logIt "Script to be executed.....: $STARTCMD"
+	logIt "Run as user...............: $RUNUSER"
+	logIt "Run on host...............: $RUNHOST"
+	logIt "Run type (db | app).......: $RUNTYPE"
+	
+	#------------------------------------------------------------------
+	# Is this meant to run on this host.
+	#------------------------------------------------------------------
+	if [[ $RUNHOST != $HOST ]] ; then
+    	    logIt "This sequence is not configured to run on this host!"
+    	    exit 1
+	fi 
+
+	#------------------------------------------------------------------
+	# Now, run the script
+	#------------------------------------------------------------------
+    	script_log=$TMP_PATH/appstart_$RANDOM$RANDOM.log
+    	script_detail=$TMP_PATH/appstart_RANDOM$RANDOM.detail
+
+    	su - $RUNUSER -c $STARTCMD > $script_detail 2>&1
+	set_RC $?
+
+	logIt "DB/app stop Script detail...:"
+	cat $script_detail | awk '{print "\t| "$0}' >> $LOG
+
+	rm $script_detail > /dev/null 2>&1 
+	rm $script_log > /dev/null 2>&1 
+	
+}

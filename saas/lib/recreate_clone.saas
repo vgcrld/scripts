@@ -1,0 +1,64 @@
+recreate_clone () {
+
+        #------------------------------------------------------------------
+        # What filelist should we use? bcv_xx_dg
+        #------------------------------------------------------------------
+        set_parms "-bcv_sid -version debug" $*
+        VAL="bcv_${version}_dg"
+
+        #------------------------------------------------------------------
+        # Use that to find the proper --shutdown_x value.
+        #------------------------------------------------------------------
+        set_parms "-$VAL"
+        CMD="echo \$${VAL}"
+        PARMS=`eval $CMD`
+
+	#-------------------------------------------------------
+	# Select the dg
+	#-------------------------------------------------------
+	if [[ $version = [Aa]1 ]] ; then
+	    GROUPS=$bcv_a1_dg
+	elif [[ $version = [Aa]2 ]] ; then 	
+	    GROUPS=$bcv_a2_dg
+	else 
+            logIt "The version parameter is free form."
+            GROUPS=$PARMS
+	fi
+	
+	set $GROUPS
+
+	#--------------------------------------------
+	# Loop for each DG and issue recreate
+	#--------------------------------------------
+        until [ $# -eq 0 ] 
+        do
+	    #-------------------------------------------------------
+	    # Make sure the shift is correct
+	    #-------------------------------------------------------
+	    if [[ $# -lt 4 ]] ; then
+		logIt "ERROR: There are not enough positional values in the bcv_xx_dg specification."
+		logIt "ERROR: These values where not processed: $*"
+		logIt "ERROR: Check the cfg file and rerun."
+		exit 1
+	    fi
+	    DG=$1; shift 4
+
+	    #-------------------------------------------------------
+	    # Recreate the devices in clone
+	    #-------------------------------------------------------
+	    DG=$GROUP_PATH/$DG
+            logIt "Starting re-create for disk group: $DG"
+	    logIt "SYMCLONE command: symclone -sid $bcv_sid -f $DG -noprompt recreate -precopy"
+	    if [[ -z $debug ]] ; then
+	    	symclone -sid $bcv_sid -f $DG -noprompt recreate -precopy >> $LOG 2>&1
+            	set_RC $? stop
+            	sleep 2
+		# RDF link issues cause this to run too long. 1/25/2012 - davisr
+	    	# symclone -sid $bcv_sid -f $DG -noprompt query >> $LOG 2>&1
+	    else
+		logIt "DEBUG:: --debug is set.  Commands not run."
+		logIt "DEBUG:: symclone -sid $bcv_sid -f $DG -noprompt recreate -precopy"
+	    fi
+        done
+
+}

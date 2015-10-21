@@ -1,0 +1,46 @@
+symdb_getdevs () {
+
+	typeset -u type=""
+	typeset -l hostname=""
+
+	set_parms "-type -hostname -bcv_a1_dg -bcv_a2_dg -version" $*
+
+        # Select the dg
+        if [[ $version = [Aa]1 ]] ; then
+            set $bcv_a1_dg
+        elif [[ $version = [Aa]2 ]] ; then
+            set $bcv_a2_dg
+        else
+            logIt "ERROR:The version parameter is require: A1|A2"
+            set_RC 1 stop
+        fi
+
+	logIt "Version Selected.....: $version"
+
+	while [[ $# -ne 0 ]] 
+	do
+		DGS=$1 $DGS
+		shift 4
+	done
+
+	logIt "Disk Groups..........: $DGS"
+
+	for DG in $DGS
+	do
+		DG=$GROUP_PATH/$DG
+		DG_TEMP=/tmp/DG_TEMP_${$}.${RANDOM}.${RANDOM}
+
+		logIt "Processing Disk group file: $DG"
+
+		typeset -u XXX
+		cat $DG | while read XXX
+		do
+        		set $XXX
+        		printf "%04s %04s\n" $XXX >> $DG_TEMP
+			cat $DG_TEMP
+		done
+	
+	 	rm $DG_TEMP
+	done
+
+}

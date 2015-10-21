@@ -1,0 +1,122 @@
+ora_hb_proxydb_prepare () {
+
+	typeset -u sid
+
+	set_parms "-bkup_user -sid" $*
+
+	#----------------------------------------------------------
+        # Let's switch to the oracle user
+	#----------------------------------------------------------
+	logIt "Switch to backup user: $bkup_user"
+        switch_user $bkup_user
+
+	#----------------------------------------------------------
+	# Setup our env
+	#----------------------------------------------------------
+	logIt "Source the environment file on  proxy: $LOG_PATH/${sid}.env"
+	. $LOG_PATH/${sid}.env
+	
+	INITORA=${ORACLE_HOME}/dbs/init${ORACLE_SID}.ora.proxy 
+	PRODENV=$LOG_PATH/${ORACLE_SID}.env
+	PRODSEQ=$LOG_PATH/${ORACLE_SID}.logseqRAC
+
+	logIt "Oracle SID.............: $ORACLE_SID"
+	logIt "Oracle Home............: $ORACLE_HOME"
+	logIt "Backup User............: $bkup_user"
+	logIt "Control File for Start.:$CTLCOPY2"
+	logIt "Control File for BACKUP:$CTLCOPY1"
+	logIt "Log Sequence info......: $PRODSEQ"
+	logIt "Proxy Init.ora.........: $INITORA"
+	logIt "Prod Environment.......: $PRODENV"
+	
+	#----------------------------------------------------------
+	# Check for init<SID>.ora - if ok Fix it up
+	#----------------------------------------------------------
+	if [[ -f $INITORA ]] ; then 
+		logIt "Oracle init file found for PROXY.: $INITORA"
+	else
+		logIt "Oracle init file $INITORA was not found!"
+		set_RC 1 stop
+	fi
+
+
+	#----------------------------------------------------------
+	# change the PROXY Init.ora for backup settings...
+        # needed for RMAN HOT BACKUP!
+	#----------------------------------------------------------
+        cp $INITORA ${INITORA}.bck.${RANDOM}
+
+        egrep -v 'dump_dest' ${INITORA}  | \
+		egrep -v '__db_cache_size' | \
+		egrep -v '__java_pool_size' | \
+		egrep -v '__large_pool_size' | \
+		egrep -v '__oracle_base' | \
+		egrep -v '__pga_aggregate_target' | \
+		egrep -v '__sga_target' | \
+		egrep -v '__shared_io_pool_size' | \
+		egrep -v '__shared_pool_size' | \
+		egrep -v '__streams_pool_size' | \
+                egrep -v 'sessions'| \
+                egrep -v 'processes'| \
+                egrep -v 'diagnostic_dest' | \
+                egrep -v 'control_files' | \
+                egrep -v 'local_listener' | \
+                egrep -v 'remote_listener'| \
+                egrep -v 'shared_pool_reserved_size'| \
+                egrep -v 'shared_pool_size'| \
+                egrep -v 'pga_aggregate_target'| \
+                egrep -v 'sga_target'| \
+                egrep -v 'sga_max_size'| \
+                egrep -v 'large_pool_size' \
+         > ${INITORA}.tmp
+
+	echo "*.control_files=$CTLCOPY2"  >  $INITORA
+	echo "*.sessions=300"             >> $INITORA
+	echo "*.processes=150"            >> $INITORA
+	echo "*.shared_pool_size=900M"    >> $INITORA
+	echo "*.large_pool_size=1G"       >> $INITORA
+	echo "*.sga_target=7G"            >> $INITORA
+	echo "*.pga_aggregate_target=3G"  >> $INITORA
+
+	cat ${INITORA}.tmp >>  ${INITORA}
+        rm ${INITORA}.tmp
+
+	#----------------------------------------------------------
+	# Startup mount the database
+	#----------------------------------------------------------
+	SQLCMD "startup mount pfile=${INITORA}"
+	set_RC $? stop
+
+	#----------------------------------------------------------
+	#  Check the DB's control type
+	#----------------------------------------------------------
+	logIt "Query the controlfile_type:"          
+	SQLCMD 'select controlfile_type from v$database;'
+	set_RC $? stop
+
+        CTLFILE_TYPE=`tail -2 $SQLTEMP |head -1 |sed -e 's/ //g'` 
+
+        echo "Evaluation of Oracle Control_type: CTLFILE_TYPE=|$CTLFILE_TYPE|" 
+
+	if [[ "${CTLFILE_TYPE}" != "BACKUP" ]] ; then 
+    		#----------------------------------------------------------
+        	# For non-11gR2 oracle Databases - to ensure the 
+        	# the Controlfile is changed to BACKUP type
+        	# before starting the RMAN backups
+		# Recover until Cancel
+    		#----------------------------------------------------------
+		sqlplus "/ as sysdba" <<- ENDSQL 
+			recover automatic database using backup controlfile until cancel;
+			cancel
+			ENDSQL
+
+		set_RC $? stop
+	else
+		logIt " Control file is of type \"${CTLFILE_TYPE}\" - NO NEED to run recover until cancel"
+		logIt " Control file is of type \"${CTLFILE_TYPE}\" "
+	fi
+
+	logIt "The database can now be backed up."
+
+}
+

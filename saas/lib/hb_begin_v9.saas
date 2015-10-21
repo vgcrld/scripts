@@ -1,0 +1,71 @@
+hb_begin_v9 () {
+
+	# --------------------------------------------------------------
+	# Get the parms
+	# --------------------------------------------------------------
+        set_parms "-orauser" $*
+
+	# --------------------------------------------------------------
+        # Let's switch to the oracle user
+	# --------------------------------------------------------------
+        switch_user $orauser
+
+	# --------------------------------------------------------------
+	# Set upt the profile
+	# --------------------------------------------------------------
+        logIt "Set profile ${HOME}/.profile"
+        . ${HOME}/.profile > /dev/null 2>&1
+        set_RC $? stop
+
+        #-------------------------------------------------------------
+        # Switch the log 
+        #-------------------------------------------------------------
+        logIt "Switching Logfile for DB SID: ${ORACLE_SID}"
+        SQLCMD 'alter system switch logfile;'
+        set_RC $? stop
+
+        #-------------------------------------------------------------
+        # Make sure that the init<SID>.ora is current
+        #-------------------------------------------------------------
+        logIt "Create pfile from spfile"
+        SQLCMD "create pfile from spfile;"
+        set_RC $? stop
+
+        #-------------------------------------------------------------
+	# Put Tablespaces in backup mode and check if sql was OK           
+        #-------------------------------------------------------------
+	BEGINSQL=/tmp/BEGIN_BACKUP_SQL_${JOB}.sql
+	logIt "Place each tablespace into backup mode."
+	SQLCMD "select 'alter tablespace '||TABLESPACE_NAME||' begin backup;' from dba_tablespaces where contents <> 'TEMPORARY';"
+	grep -E '^alter tablespace' $SQLTEMP > $BEGINSQL
+	SQLCMD "@${BEGINSQL}"
+	set_RC $? stop
+
+        #-------------------------------------------------------------
+	# Make sure all are in backup-mode 
+        #-------------------------------------------------------------
+	SQLCMD "select 'NOT_IN_BACKUP_MODE '||count(STATUS)  from v\$backup where status = 'NOT ACTIVE';"
+
+	grep NOT_IN_BACKUP_MODE $SQLTEMP | while read NOTGOOD
+	do
+   		export FILES_IN_BU_MODE="`echo ${NOTGOOD} | awk '{ print $2 }'`"
+	done 
+
+	if [[ ${FILES_IN_BU_MODE} -gt 0 ]]
+	then
+   		logIt "There are still files NOT in backup mode, please check, script will stop" 
+   		set_RC 1 stop
+	else
+   		logIt "All datafiles are put in BACKUP mode, no issues."
+	fi
+
+	#-------------------------------------------------------------
+	# Remove the SQL code
+	#-------------------------------------------------------------
+	rm $BEGINSQL > /dev/null 2>&1
+
+        # Added to help with spfile null issue while it's being remediated
+        sleep 120
+
+}
+

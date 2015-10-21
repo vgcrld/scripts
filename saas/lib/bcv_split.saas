@@ -1,0 +1,66 @@
+bcv_split () {
+
+	# Set -fileid and -sleep_time for this function
+	set_parms "-bcv_sid -version -bcv_a1_dg -bcv_a2_dg" $*
+
+	# Select the dg
+	if [[ $version = [Aa]1 ]] ; then
+    	    set $bcv_a1_dg
+	elif [[ $version = [Aa]2 ]] ; then 	
+	    set $bcv_a2_dg
+	else 
+	    logIt "The version parameter is require: A1|A2"
+	    set_RC 1 stop
+	fi
+	
+	until [ $# -eq 0 ] 
+	do
+	    # Make sure the shift is correct
+	    if [[ $# -lt 4 ]] ; then
+		logIt "ERROR: There are not enough positional values in the bcv_xx_dg specification."
+		logIt "ERROR: These values where not processed: $*"
+		logIt "ERROR: Check the cfg file and rerun."
+		exit 1
+	    fi
+	    DG=$1; shift 4
+
+	    ##T Used to support files
+	    DG=$GROUP_PATH/$DG
+
+            # Verify All are synch'd for each device file listed.
+            logIt "Verifing sync of device group $DG before split."
+
+            ##Tsymmir -g $DG verify -synched >> $LOG 2>&1
+            symmir -sid $bcv_sid -f $DG verify -synched >> $LOG 2>&1
+	    set_RC $?
+            ##Twhile [ $? -ne 0 ]
+            ##Tdo
+                ##T### This will never exit if they don't sync.
+                ##TlogIt "Devices in group $DG not syncd. Waiting..."
+                ##Tsleep 10
+                ##T# Don't move code, while loop requires symmir be last in block!
+                ##Tsymmir -sid $bcv_sid -f $DG verify -synched >> $LOG 2>&1
+            ##Tdone
+            ##TlogIt "Verify sync for devices in group $DG complete!"
+    
+            logIt "Splitting BCVs in device group $DG"
+            ##Tsymmir -g $DG -noprompt split >> $LOG 2>&1
+            symmir -sid $bcv_sid -f $DG -noprompt split >> $LOG 2>&1
+            set_RC $? ##T Do we really want to stop here? -NO!
+    
+            # Now check the split is complete.
+            logIt "Verifying split for devices in group $DG. Waiting..."
+            ##Tsymmir -g $DG verify -split >> $LOG 2>&1
+            symmir -sid $bcv_sid -f $DG verify -split >> $LOG 2>&1
+            while [ $? -ne 0 ]
+            do
+                logIt "Split is not complete for devices in group $DG. Waiting..."
+                sleep 10
+                # Don't move code, while loop requires symmir be last in block!
+                ##Tsymmir -g $DG verify -split >> $LOG 2>&1
+                symmir -sid $bcv_sid -f $DG verify -split >> $LOG 2>&1
+            done
+            logIt "Verify split complete for devices in group group $DG."
+	done
+    
+}

@@ -1,0 +1,60 @@
+ora_chkpt_global () {
+
+	#-------------------------------------------------------------
+	# Set the parms for this function
+	#-------------------------------------------------------------
+	set_parms "-oradbuser" $*
+
+	#-------------------------------------------------------------
+	# Let's switch to the oracle user
+	#-------------------------------------------------------------
+	switch_user $oradbuser
+
+	#-------------------------------------------------------------
+	# Set the profile for this user
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1
+	set_RC $? stop
+	
+	#-------------------------------------------------------------
+	# Checkpoint!!!! -  Use '' around SQLCMD and ; end of sql cmd
+	#-------------------------------------------------------------
+	logIt "Checkpoint Global on  DB SID: ${ORACLE_SID}" 
+	SQLCMD 'alter system checkpoint global;'
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+        # capture time and SCN
+	#-------------------------------------------------------------
+        SLOG=/tmp/ora_chkpt_global_$$
+        sqlplus -s  <<- EOF
+		/ as sysdba
+		whenever sqlerror exit -1 rollback;
+		column SCN for 999999999999999999
+		column CHANGE# for 999999999999999999
+		set pages 200 lines 200
+		set echo on
+		set feedback on
+		
+		alter session set nls_date_format='dd-mon-yyyy hh24:mi:ss';
+		
+		spool ${SLOG}.tmp
+		select to_char(SYS.DBMS_FLASHBACK.GET_SYSTEM_CHANGE_NUMBER)
+        		|| '_'|| to_char(sysdate,'dd-mon-yyyy hh24:mi:ss') "SCN#" from dual;
+		
+		spool off
+		
+		exit
+		EOF
+		
+        cat ${SLOG}.tmp|while read LINE
+        do
+        	logIt "$LINE"
+        done
+
+	##T Why is this here
+	set_RC $? stop
+    
+	rm ${SLOG}.tmp
+}

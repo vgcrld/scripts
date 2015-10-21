@@ -1,0 +1,81 @@
+fs_bkup () {
+
+	# -----------------------------------------
+        # asnode will be the prod name
+	# -----------------------------------------
+        set_parms "retain hostname" $*
+
+        # ------------------------------------------------------------
+        # TYPE and VGDATA is returned by get_vgdata
+        # ------------------------------------------------------------
+        TYPE="standard";
+        if [[ -z $hostname ]] ; then
+            get_vgdata
+        else
+            get_vgdata $hostname
+        fi
+
+	# -----------------------------------------
+        # Set asnode (for TSM) to the prod hostname in symdb MASTER
+	# -----------------------------------------
+        asnode=$PROD
+
+    ##T
+    #print asnode=$asnode
+    #print retain=$retain
+    #print HOST=$HOST
+    #print VGDATA=$VGDATA
+    #print VGDATA_LIST=$VGDATA
+    #exit
+
+	# -----------------------------------------
+	# The FS list can get too long for dsmc
+	# So we have to split it up.
+	# -----------------------------------------
+	FILESYS=`lsvg -l $VGDATA_LITE | awk '$7 ~ /^\// {x=$7" "x} END {print x}'`
+	c=0; l=1
+	set $FILESYS
+	while [ $# -ne 0 ] 
+	do 
+		FS_LIST[$l]="$1 ${FS_LIST[$l]}"
+		shift 
+		c=$(( c + 1 ))
+		if [ $c -ge 10 ] ; then
+	    	    c=0
+		    l=$(( l + 1 ))
+		fi
+	done
+
+	# -----------------------------------------
+	# Change the node name for long term needs
+	# -----------------------------------------
+	case $retain in
+		
+          14|36|[Dd]) logIt "Daily / Weekly retention (14 or 36 days), using node: $asnode"
+                      ;;
+    	   1095|[Qq]) asnode="${asnode}_3y"
+    	              logIt "Monthly retention (3 years), using node: $asnode"
+		      ;;
+           2555|[Yy]) asnode="${asnode}_7y"
+    	              logIt "Yearly retention (7 years), using node: $asnode"
+	              ;;
+	           *) logIt "ERROR: The retain parm is either invalid or missing ($retain)."
+		      exit 1
+		      ;;
+
+	esac
+		   
+	# ---------------------------------------------------------------------
+	# Run the backup using -asnodename; exit RC accordingly
+	# This TSM backup should not get 4 or 8 as is common with typicall 
+	# fs backup.  Nothing is in use.
+	# ---------------------------------------------------------------------
+	while [ $l -gt 0 ] 
+	do
+	    logIt "Incremental Backup of filesystems: ${FS_LIST[$l]}, Using asnodename=$asnode"
+	    dsmc i ${FS_LIST[$l]} -asnodename=$asnode -quiet >> $LOG 2>&1
+	    set_RC $?
+	    l=$(( l-1 ))
+	done
+
+}

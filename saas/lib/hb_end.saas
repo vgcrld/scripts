@@ -1,0 +1,107 @@
+hb_end () {
+
+	#-------------------------------------------------------------
+	# Get the parms
+	#-------------------------------------------------------------
+	set_parms "-orauser -rman_connect" $*
+
+	#-------------------------------------------------------------
+	# Switch the user to $orauser
+	#-------------------------------------------------------------
+	switch_user $orauser
+
+	#-------------------------------------------------------------
+	# Setup the user profile 
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1 
+	set_RC $? stop
+	
+	#-------------------------------------------------------------
+	# If ORACLE_SID is found then get the archive dir location
+	#-------------------------------------------------------------
+	if [[ -z ${ORACLE_SID} ]] 
+	then
+		logIt "ERROR:The oracle SID is not set.  Check the environment."
+		set_RC 1 stop
+	fi
+
+	SQLCMD 'archive log list;' 
+
+	arch_dest=`awk '/Archive destination/ { print $3 }' $SQLTEMP`
+	arch_dest_mount=`df $arch_dest | awk '$7 ~ /\/.+/ {print $7}'`
+	ctlcopy1=$arch_dest_mount/${ORACLE_SID}/ctl
+	ctlcopy2=$arch_dest_mount/${ORACLE_SID}/startctl
+
+	logIt "Archive log destination..........: $arch_dest"
+	logIt "Archive log destination mount....: $arch_dest_mount"
+	logIt "Bkup ctl file bkup destination...: $ctlcopy1"
+	logIt "Bkup ctl file start destination..: $ctlcopy2"
+
+	[[ ! -d $ctlcopy1 ]] && mkdir -p $ctlcopy1
+	[[ ! -d $ctlcopy2 ]] && mkdir -p $ctlcopy2
+
+	#-------------------------------------------------------------
+	# Remove the DB from backup mode
+	#-------------------------------------------------------------
+	logIt "${ORACLE_SID}: End Backup"
+	SQLCMD 'alter database end backup;'
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+	# Switch the log File and make current
+	#-------------------------------------------------------------
+	logIt "${ORACLE_SID}: Switch logfile (3x)"
+	SQLCMD 'alter system switch logfile;'
+	SQLCMD 'alter system switch logfile;'
+	SQLCMD 'alter system switch logfile;'
+	set_RC $? stop
+
+	logIt "${ORACLE_SID}: Archive log current"
+	SQLCMD 'alter system archive log current;'
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+	# List the archive logs
+	#-------------------------------------------------------------
+	logIt "${ORACLE_SID}: List archive logs"
+	SQLCMD 'archive log list;'
+	set_RC $? stop
+	
+	#-------------------------------------------------------------
+	# Capture data
+	#-------------------------------------------------------------
+	cat $SQLTEMP > $LOG_PATH/${ORACLE_SID}.logseq
+
+	env | awk '/^PATH=/ { print "export "$0 }' > $LOG_PATH/${ORACLE_SID}.env
+	env | awk '/^ORACLE_HOME=/ { print "export "$0 }' >> $LOG_PATH/${ORACLE_SID}.env
+	env | awk '/^ORACLE_SID=/ { print "export "$0 }' >> $LOG_PATH/${ORACLE_SID}.env
+	env | awk '/^TNS_ADMIN=/ { print "export "$0 }' >> $LOG_PATH/${ORACLE_SID}.env
+	env | awk '/^LIBPATH/ { print "export "$0 }' >> $LOG_PATH/${ORACLE_SID}.env
+	env | awk '/^LD_LIBRARY_PATH/ { print "export "$0 }' >> $LOG_PATH/${ORACLE_SID}.env
+
+	echo export CTLCOPY1=$ctlcopy1/controlfile.ctl >> $LOG_PATH/${ORACLE_SID}.env
+	echo export CTLCOPY2=$ctlcopy2/controlfile.ctl >> $LOG_PATH/${ORACLE_SID}.env
+
+	#-------------------------------------------------------------
+	# Resync the recovery catalog
+	#-------------------------------------------------------------
+	logIt "${ORACLE_SID}: Resync the recovery catalog"
+	RMANCMD 'resync catalog;'
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+	# Backup the control files
+	#-------------------------------------------------------------
+	logIt "${ORACLE_SID}: Create a copy of the controlfile"
+	RMANCMD "RUN
+		{allocate channel foo type disk;
+		copy current controlfile to '$ctlcopy1/controlfile.ctl';
+		copy current controlfile to '$ctlcopy2/controlfile.ctl';
+		release channel foo;}"
+	set_RC $? stop
+
+        # Added to help with spfile null issue while it's being remediated
+        sleep 120
+
+}

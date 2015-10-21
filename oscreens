@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Open screens script...
+
+# Are we in Screen?  If so $STY will be set
+if [[ $STY != "" ]]
+then
+  exit
+fi
+
+PS3="Enter a screen number or q to quit: "
+select i in `screen -list | ruby -e 'ARGF.each{ |x| m = x.match(/([0-9]+)\.pts-/);puts m[1] if m }'`
+do
+  case $REPLY in
+    [0-9]*) screen -ln -d -r $i
+      break
+    ;;
+    [q]) exit
+    ;;
+    *) echo "Invalid Response"
+    ;;
+  esac
+done

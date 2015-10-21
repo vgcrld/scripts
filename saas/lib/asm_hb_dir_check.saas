@@ -1,0 +1,128 @@
+asm_hb_dir_check () {
+
+	#-------------------------------------------------------------
+	# Set the parms for this function
+	#-------------------------------------------------------------
+	set_parms "-asmuser -asm_arch_dest_mount" $*
+
+	#-------------------------------------------------------------
+	# Let's switch to the oracle user
+	#-------------------------------------------------------------
+	switch_user $asmuser
+
+	#-------------------------------------------------------------
+	# Set the profile for this user
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1
+	set_RC $? stop
+	
+	#-------------------------------------------------------------
+	# Verify ASM Directories exist for Control Files used in Hot split Backups 
+	#-------------------------------------------------------------
+        ASMLOG=/tmp/asm_hb_dir_check_$$
+        logIt "ASMLOG               : ${ASMLOG}"
+        logIt "asmuser              : ${asmuser}"
+        logIt "asm_arch_dest_mount  : ${asm_arch_dest_mount}"
+
+	#-------------------------------------------------------------
+	# - 1st directory check
+	#-------------------------------------------------------------
+	sqlplus -s <<- EOF
+		/ as sysasm
+		whenever sqlerror exit -1 rollback;
+		
+		set pages 200 lines 200
+		column FULL_PATH format A60
+		set echo off
+		set feedback off
+		spool ${ASMLOG}.tmp
+		SELECT 
+   		full_path
+  		-- dir, SYS
+  		FROM (SELECT     CONCAT ('+' || gname,
+                           		SYS_CONNECT_BY_PATH (aname, '/')
+                          		) full_path,
+                   		dir, SYS
+              		FROM (SELECT g.NAME gname, a.parent_index pindex, a.NAME aname,
+                           		a.reference_index rindex, a.alias_directory dir,
+                           		a.system_created SYS
+                      		FROM v\$asm_alias a, v\$asm_diskgroup g
+                     		WHERE a.group_number = g.group_number)
+        		START WITH (MOD (pindex, POWER (2, 24))) = 0
+        		CONNECT BY PRIOR rindex = pindex
+          		ORDER BY dir DESC, full_path ASC)
+ 		WHERE
+        		UPPER(full_path) = UPPER ('${asm_arch_dest_mount}/PROXYCTL') and Dir ='Y'
+		;
+		spool off
+		exit 
+		EOF
+	set_RC $? stop
+
+	PROXY_CTL_STRING=`tail -1 ${ASMLOG}.tmp|sed -e 's/ //g'`
+
+	if [[ "${PROXY_CTL_STRING}" = "" ]] ; then 
+		logIt "Creating ASM PROXY CONTROL DIR "
+		logIt "asmcmd mkdir ${asm_arch_dest_mount}/PROXYCTL"
+	
+		asmcmd mkdir ${asm_arch_dest_mount}/PROXYCTL
+		set_RC $? stop
+
+	else 
+		logIt "ASM PROXY CONTROL DIR found: |${PROXY_CTL_STRING}|"
+	fi
+
+	#-------------------------------------------------------------
+	# - 2nd directory check
+	#-------------------------------------------------------------
+	sqlplus -s <<- EOF
+		/ as sysasm
+		whenever sqlerror exit -1 rollback;
+		
+		set pages 200 lines 200
+		column FULL_PATH format A60
+		set echo off
+		set feedback off
+		spool ${ASMLOG}.tmp
+		SELECT 
+   		full_path
+  		-- dir, SYS
+  		FROM (SELECT     CONCAT ('+' || gname,
+                           		SYS_CONNECT_BY_PATH (aname, '/')
+                          		) full_path,
+                   		dir, SYS
+              		FROM (SELECT g.NAME gname, a.parent_index pindex, a.NAME aname,
+                           		a.reference_index rindex, a.alias_directory dir,
+                           		a.system_created SYS
+                      		FROM v\$asm_alias a, v\$asm_diskgroup g
+                     		WHERE a.group_number = g.group_number)
+        		START WITH (MOD (pindex, POWER (2, 24))) = 0
+        		CONNECT BY PRIOR rindex = pindex
+          		ORDER BY dir DESC, full_path ASC)
+ 		WHERE
+        		UPPER(full_path) = UPPER ('${asm_arch_dest_mount}/CTL') and Dir ='Y'
+		;
+		spool off
+		exit 
+		EOF
+	set_RC $? stop
+
+       CTL_STRING=`tail -1 ${ASMLOG}.tmp|sed -e 's/ //g'`
+
+
+       if [[ "${CTL_STRING}" = "" ]] ; then 
+           logIt "Creating ASM Hot Back CONTROL File DIR "
+           logIt "asmcmd mkdir ${asm_arch_dest_mount}/CTL"
+
+           asmcmd mkdir ${asm_arch_dest_mount}/CTL
+	   set_RC $? stop
+
+
+       else 
+          logIt "ASM CONTROL DIR found: |${CTL_STRING}|"
+       fi
+
+	rm ${ASMLOG}.tmp > /dev/null 2>&1
+
+}

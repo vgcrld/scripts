@@ -1,0 +1,72 @@
+hb_preparedb () {
+
+	typeset -u sid
+
+	set_parms "-bkup_user -sid -rman_connect" $*
+
+	#----------------------------------------------------------
+        # Let's switch to the oracle user
+	#----------------------------------------------------------
+	logIt "Switch to backup user: $bkup_user"
+        switch_user $bkup_user
+
+	#----------------------------------------------------------
+	# Setup our env
+	#----------------------------------------------------------
+	logIt "Source the environment on proxy: $LOG_PATH/${sid}.env"
+	. $LOG_PATH/${sid}.env
+	
+	INITORA=${ORACLE_HOME}/dbs/init${ORACLE_SID}.ora
+	PRODENV=$LOG_PATH/${ORACLE_SID}.env
+	PRODSEQ=$LOG_PATH/${ORACLE_SID}.logseq
+
+	logIt "Oracle SID..........: $ORACLE_SID"
+	logIt "Oracle Home.........: $ORACLE_HOME"
+	logIt "Backup User.........: $bkup_user"
+	logIt "Start ctl...........: $CTLCOPY2"
+	logIt "Log Sequence info...: $PRODSEQ"
+	logIt "Prod Environment....: $PRODENV"
+	
+	#----------------------------------------------------------
+	# Check for init<SID>.ora - if ok Fix it up
+	#----------------------------------------------------------
+	if [[ -f $INITORA ]]
+	then
+		logIt "Oracle init file....: $INITORA"
+	else
+		logIt "Oracle init file $INITORA was not found!"
+		set_RC 1 stop
+	fi
+
+	cd $ORACLE_HOME/dbs
+	rm temp_init.ora > /dev/null 2>&1
+	cp $INITORA ${INITORA}.old.${RANDOM}
+	egrep -v 'dump_dest' $INITORA | \
+		egrep -v 'diagnostic_dest' | \
+		egrep -v 'control_files' > \
+		temp_init.ora
+	echo control_files=$CTLCOPY2 > $INITORA
+	cat temp_init.ora >> $INITORA
+
+	#----------------------------------------------------------
+	# Startup mount the database
+	#----------------------------------------------------------
+	SQLCMD "startup mount pfile=${INITORA}"
+	set_RC $? stop
+
+	logIt "Query the controlfile_type:"          
+	SQLCMD 'select controlfile_type from v$database;'
+
+	#----------------------------------------------------------
+	# Recover until Cancel
+	#----------------------------------------------------------
+	sqlplus "/ as sysdba" <<- ENDSQL 
+		recover automatic database using backup controlfile until cancel;
+		cancel
+		ENDSQL
+        set_RC $? stop
+
+	logIt "The database can now be backed up."
+
+}
+

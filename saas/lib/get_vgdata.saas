@@ -1,0 +1,79 @@
+get_vgdata () {
+
+	MANUALHOST=$1
+
+	#----------------------------------------------------------
+	# Set: PROD, PROXY, TYPE and VGDATA
+        # Default is a standard type mount; but if this is
+        # a proxy server then switch to bcv mount
+	#----------------------------------------------------------
+	PROD=""; PROXY=""; TYPE=""; VGDATA=""; VGDATA_LITE="";
+
+	#----------------------------------------------------------
+	# Did the user identify a manual host 
+	#----------------------------------------------------------
+	if [[ -n $MANUALHOST ]] ; then 
+	    logIt "Host value manually set by user to $MANUALHOST.  Forcing HOST to $MANUALHOST."
+	fi
+	    
+	#-----------------------------------------------------------------
+	# Read each line of symdb to find vgdata
+	#-----------------------------------------------------------------
+        while read XX
+        do
+                set $XX
+
+                if [[ $MANUALHOST = $1 ]] ; then
+                    PROD=$1
+                    PROXY=$2
+                    TYPE=bcv
+                    break
+                fi
+
+                if [[ $HOST = $2 && -z $MANUALHOST ]] ; then
+                    PROD=$1
+                    PROXY=$2
+                    TYPE=bcv
+                    logIt "This is a proxy host ($PROXY).  Production host is $PROD."
+                    break
+                elif [[ $HOST = $1 && -z $MANUALHOST ]] ; then
+                    PROD=$1
+                    PROXY=$2
+                    TYPE=standard
+                    logIt "This is a production host ($PROD).  Proxy host is $PROXY."
+                    break
+                fi
+
+        done < $MASTER
+
+	# ---------------------------------------------------------------------
+	# If there is no data found in the symdb then we have to exit
+	# ---------------------------------------------------------------------
+	if [[ $TYPE = "" ]] ; then
+	    logIt "There is no data in the symdb ($MASTER) to determine this host!"
+	    logIt "The proxy host is most likely incorrect.  Correct and rerun build_symdb on all hosts."
+	    exit 1
+	fi
+
+	# ---------------------------------------------------------------------
+	# If this a proxy and the hostname is not what was found, exit.
+	# ---------------------------------------------------------------------
+	if [[ $TYPE = 'bcv' && $HOST != $PROXY ]] ; then
+	    logIt "$HOST is not the proxy for $MANUALHOST.  Run this command on $PROXY."
+	    exit 10
+	fi
+
+	# ---------------------------------------------------------------------
+	# VG data paired with pvid
+	# ---------------------------------------------------------------------
+        VGDATA=`awk '$1 == "'$PROD'" {vg[$5]=$7} END { for ( i in vg ) { print i,vg[i] } }' $MASTER`
+
+	# ---------------------------------------------------------------------
+	# Just volume Groups
+	# ---------------------------------------------------------------------
+        VGDATA_LITE=`awk '$1 == "'$PROD'" {vg[$5]=$7} END { for ( i in vg ) { print i } }' $MASTER`
+
+        logIt "VG data found in $MASTER:"
+	print $VGDATA >> $LOG
+
+}

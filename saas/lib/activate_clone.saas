@@ -1,0 +1,65 @@
+activate_clone () {
+	
+        #------------------------------------------------------------------
+        # What filelist should we use? bcv_xx_dg
+	##T Removed type
+	##T 
+        #------------------------------------------------------------------
+	set_parms "-bcv_sid -version type debug" $*
+        VAL="bcv_${version}_dg"
+
+        #------------------------------------------------------------------
+        # Use that to find the proper --shutdown_x value.
+        #------------------------------------------------------------------
+        set_parms "-$VAL"
+        CMD="echo \$${VAL}"
+        PARMS=`eval $CMD`
+
+	# ------------------------------------------------------
+	# Select the dg
+	# ------------------------------------------------------
+	if [[ $version = [Aa]1 ]] ; then
+    	    set $bcv_a1_dg
+	elif [[ $version = [Aa]2 ]] ; then 	
+	    set $bcv_a2_dg
+	else 
+	    logIt "The version parameter is free form."
+	    set $PARMS
+	fi
+	
+	# ------------------------------------------------------
+	# For each group file - we need to activate
+	# ------------------------------------------------------
+	until [ $# -eq 0 ] 
+	do
+	    # ------------------------------------------------------
+	    # Make sure the shift is correct
+	    # ------------------------------------------------------
+	    if [[ $# -lt 4 ]] ; then
+		logIt "ERROR: There are not enough positional values in the bcv_xx_dg specification."
+		logIt "ERROR: These values where not processed: $*"
+		logIt "ERROR: Check the cfg file and rerun."
+		exit 1
+	    fi
+	    DG=$GROUP_PATH/$1
+	    shift 4
+
+	    if cutfiles $DG $type
+	    then
+            	logIt "Activating clone devices in: $DG"
+            	logIt "SYMCLONE command: symclone -sid $bcv_sid -f $DG -noprompt activate -consistent"
+		if [[ -z $debug ]] ; then
+            		symclone -sid $bcv_sid -f $DG -noprompt activate -consistent >> $LOG 2>&1
+	 	else
+			logIt "--debug is set:  Command it not run!!!"
+            		logIt "DEBUG:: symclone -sid $bcv_sid -f $DG -noprompt activate -consistent"
+		fi
+			
+            	set_RC $? stop
+	    else
+		logIt "Warning: No volumes returned."
+	    fi
+
+	done
+    
+}

@@ -1,0 +1,91 @@
+saw () {
+
+	export DSM_LOG=/tmp/
+
+        #------------------------------------------------------------------
+        # Use this module to run a list of commands in parallel.
+        #------------------------------------------------------------------
+        logIt "Begin submit and watch (SAW)"
+
+        #------------------------------------------------------------------
+        # What saw_? should we use
+        #------------------------------------------------------------------
+        set_parms "-saw -cc -subject" $*
+        VAL="saw_${saw}"
+
+        #------------------------------------------------------------------
+        # Use that to find the proper --shutdown_x value.
+        #------------------------------------------------------------------
+        set_parms "-$VAL" 
+        CMD="echo \$${VAL}"
+        PARMS=`eval $CMD`
+
+	# ----------------------------------------------------------------------------
+	# Make sure we are root
+	# ----------------------------------------------------------------------------
+	if [[ `id -u` -ne 0 ]] ; then
+    		logIt "SAW must be run as root!"
+    		set_RC 1 stop
+	fi
+
+	# ----------------------------------------------------------------------------
+	# Some setup
+	# ----------------------------------------------------------------------------
+	SAWLOG=$TMP_PATH/saw_master_$$.log
+	SAWDETAIL=$TMP_PATH/saw_logall_$$.log
+
+        #------------------------------------------------------------------
+        # Submit
+        #------------------------------------------------------------------
+	oIFS=$IFS
+	IFS=","
+	for III in $PARMS
+	do
+	    III=${III# }
+            script_log=/tmp/saw_${ENVIRONMENT}_${RANDOM}${RANDOM}.log
+            echo "$III" >> $script_log
+            (eval "$III" >> $script_log 2>&1; RC=$?; echo "$RC" >> ${script_log} ) &
+            script_PID=$!
+            logIt "Submitted ( $script_PID ): $III"
+            all_pids="$all_pids,$script_PID"
+            all_logs="$all_logs $script_log"
+            sleep 1
+	done
+	IFS=$oIFS
+
+
+	# ----------------------------------------------------------------------------
+	# and Watch
+	# ----------------------------------------------------------------------------
+	while ps -fp $all_pids > /dev/null 2>&1
+	do
+        	sleep 1
+	done
+
+	# ----------------------------------------------------------------------------
+	# Once we get past above we report on them
+	# ----------------------------------------------------------------------------
+	MAX=0
+	for log_name in $all_logs
+	do
+        	script=`head -1 $log_name`
+        	code=`tail -1 $log_name`
+        	print "$code\t$script" >> $SAWLOG
+	
+		echo '================================================' >> $SAWDETAIL
+		echo $log_name >> $SAWDETAIL
+		cat $log_name >> $SAWDETAIL
+	
+        	if [[ $code -gt $MAX ]] ; then
+            	    MAX=$code
+        	fi
+        	rm $log_name
+	done
+	
+	# ----------------------------------------------------------------------------
+	# Cleanup and Mail to users
+	# ----------------------------------------------------------------------------
+	cat $SAWLOG $SAWDETAIL | mail -s "$subject ($MAX)" $cc
+	rm $SAWLOG $SAWDETAIL $script_log > /dev/null 2>&1 
+	set_RC $MAX
+}

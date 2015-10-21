@@ -1,0 +1,126 @@
+---
+# Valide Types
+#   Datacenter
+#   ClusterComputeResource
+#   HostSystem
+#   VirtualMachine
+:collect:
+  :Datacenter:
+    - vmop.numpoweron.latest
+    - vmop.numpoweroff.latest
+    - vmop.numsuspend.latest
+    - vmop.numreset.latest
+    - vmop.numrebootguest.latest
+    - vmop.numstandbyguest.latest
+    - vmop.numshutdownguest.latest
+    - vmop.numcreate.latest
+    - vmop.numdestroy.latest
+    - vmop.numregister.latest
+    - vmop.numunregister.latest
+    - vmop.numreconfigure.latest
+    - vmop.numclone.latest
+    - vmop.numdeploy.latest
+    - vmop.numchangehost.latest
+    - vmop.numchangeds.latest
+    - vmop.numchangehostds.latest
+    - vmop.numvmotion.latest
+    - vmop.numsvmotion.latest
+  :Datastore:
+    - datastore.write.average
+  :ResourcePool:
+    - cpu.usage.average
+  :ClusterComputeResource:
+    - clusterservices.effectivecpu.average
+    - clusterservices.effectivemem.average
+    - clusterservices.failover.latest
+    - cpu.usage.average
+    - cpu.usagemhz.average
+    - mem.active.average
+    - mem.consumed.average
+    - mem.granted.average
+    - mem.shared.average
+    - mem.swapused.average
+    - mem.usage.average
+    - mem.vmmemctl.average
+  :HostSystem:
+    - clusterservices.cpufairness.latest
+    - clusterservices.memfairness.latest
+    - cpu.demand.average
+    - cpu.ready.summation
+    - cpu.usage.average
+    - cpu.usagemhz.average
+    - cpu.wait.summation
+    - disk.read.average
+    - disk.usage.average
+    - disk.write.average
+    - mem.active.average
+    - mem.consumed.average
+    - mem.granted.average
+    - mem.shared.average
+    - mem.swapin.average
+    - mem.swapout.average
+    - mem.swapused.average
+    - mem.usage.average
+    - mem.vmmemctl.average
+    - net.droppedrx.summation
+    - net.droppedtx.summation
+    - net.errorsrx.summation
+    - net.errorstx.summation
+    - net.packetsrx.summation
+    - net.packetstx.summation
+    - net.received.average
+    - net.transmitted.average
+    - net.usage.average
+    - storageadapter.maxtotallatency.latest
+    - storagpath.maxtotallatency.latest
+    - sys.uptime.latest
+  :VirtualMachine:
+    - cpu.ready.summation
+    - cpu.usage.average
+    - cpu.usagemhz.average
+    - cpu.wait.summation
+    - disk.read.average
+    - disk.usage.average
+    - disk.write.average
+    - mem.active.average
+    - mem.consumed.average
+    - mem.granted.average
+    - mem.shared.average
+    - mem.swapin.average
+    - mem.swapinrate.average
+    - mem.swapout.average
+    - mem.swapoutrate.average
+    - mem.swapped.average
+    - mem.usage.average
+    - mem.vmmemctl.average
+    - mem.vmmemctltarget.average
+    - net.droppedrx.summation
+    - net.droppedtx.summation
+    - net.packetsrx.summation
+    - net.packetstx.summation
+    - net.received.average
+    - net.transmitted.average
+    - net.usage.average
+    - sys.heartbeat.summation
+    - sys.uptime.latest
+    - virtualdisk.read.average
+    - virtualdisk.write.average
+    - vmop.numpoweron.latest
+    - vmop.numpoweroff.latest
+    - vmop.numsuspend.latest
+    - vmop.numreset.latest
+    - vmop.numrebootguest.latest
+    - vmop.numstandbyguest.latest
+    - vmop.numshutdownguest.latest
+    - vmop.numcreate.latest
+    - vmop.numdestroy.latest
+    - vmop.numregister.latest
+    - vmop.numunregister.latest
+    - vmop.numreconfigure.latest
+    - vmop.numclone.latest
+    - vmop.numdeploy.latest
+    - vmop.numchangehost.latest
+    - vmop.numchangeds.latest
+    - vmop.numchangehostds.latest
+    - vmop.numvmotion.latest
+    - vmop.numsvmotion.latest

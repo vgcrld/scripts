@@ -1,0 +1,28 @@
+validate_bcv () {
+
+        TMPNUM=$RANDOM$RANDOM
+        REPTFILE=$TMP_PATH/rpt1.$TMPNUM
+
+	# Get the bcv groups; Build list in GROUPS
+ 	set_parms "-bcv_a1_dg -bcv_a2_dg" $*
+	set $bcv_a1_dg $bcv_a2_dg
+
+	FTYPE=std_bcv
+	SKIP_TYPE=""
+
+	while [ $# -ne 0 ] 
+	do
+	    GROUPS="$GROUPS $1"
+	    shift 4
+	done
+
+	# Now validate each bcv group
+	for i in $GROUPS
+	do
+	    validate $i $FTYPE
+	done
+
+	cat $REPTFILE | tee -a $LOG
+	mail -s "$ENVIRONMENT bcv Validate" rdavis@leasedirect.com < $REPTFILE
+	rm $REPTFILE
+}

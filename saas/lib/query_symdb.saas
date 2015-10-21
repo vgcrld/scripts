@@ -1,0 +1,37 @@
+query_symdb () {
+
+        set_parms "-type -host" $*
+
+	logIt "Query symdb $MASTER for $type"
+	logIt "This make take serveral minutes..."
+
+	if ! grep -e '^'$host $MASTER > /dev/null 2>&1
+	then
+		logIt "The host ($host) is not found in the master file: $MASTER"
+		set_RC 1 stop
+	fi
+
+	#------------------------------------------------------------
+	# Generate the commands
+	#------------------------------------------------------------
+        BCV_QUERY=$TMP_PATH/BCV_QUERY_${RANDOM}${RANDOM}
+        awk -v outf=$BCV_QUERY '/^'$host'/ { cmd="symdev -sid "$3" show "$4" >> " outf; system(cmd) }' $MASTER
+
+	#------------------------------------------------------------
+	# Get the BCV information
+	#------------------------------------------------------------
+        awk '   /^    Device Symmetrix Name/ {
+                    "grep "$5" /DLL_unix/saas2/log/perf.symdb"|getline db
+                    split(db,a)
+                    print $5,a[1],a[5],a[6]
+                }
+                /Target \(TGT\) Device Symmetrix Name/ {
+                    print "\tClone: ",$7
+                }
+                /BCV Device Symmetrix Name/ {
+                    print "\t  BCV: ",$6
+                }
+        ' $BCV_QUERY | tee -a $LOG
+
+
+}

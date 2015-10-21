@@ -1,0 +1,56 @@
+build_symdb_vio_update () {
+
+        set_parms "-vioserver" $*
+
+        POWERMT=$TMP_PATH/${vioserver}.powermt
+        LSPV=${TMP_PATH}/${vioserver}.lspv
+        VIODISKS=${TMP_PATH}/${vioserver}.disks
+	NEW_MASTER=${MASTER}.vio
+
+        logIt "Capture powermt data from VIO server $vioserver."
+        ssh -oBatchMode=yes -n root@${vioserver} powermt display dev=all > $POWERMT
+
+        logIt "Capture lspv  data from VIO server $vioserver."
+        ssh -oBatchMode=yes -n root@${vioserver} lspv > $LSPV
+
+        #----------------------------------------------------------------
+        # Put VIO powermt display and lspv (pvid) together
+        #----------------------------------------------------------------
+        awk -v lspv=$LSPV -F "=" '
+                /^Pseudo/    { hd=$2 }
+                /^Symmetrix/ { sym=substr($2,length($2)-3,4) }
+                /^Logical/   { dev=$2
+                        "grep "hd" "lspv | getline pvid
+                        x=split(pvid,A," ");
+                        print hd,sym,dev,A[2]
+                }
+                ' $POWERMT > $VIODISKS
+
+        #----------------------------------------------------------------
+        # We need to now change the missing data (NA NA)
+        #----------------------------------------------------------------
+        while read XXX
+        do
+                set $XXX
+                if grep $7 $VIODISKS > /dev/null 2>&1
+                then
+                        set `grep $7 $VIODISKS`
+                        ZAP="$2 $3"
+                        echo $XXX | sed "s/NA NA/$ZAP/"
+                else
+			echo $XXX
+                fi
+        done < $MASTER > $NEW_MASTER
+	
+	logIt "Copy original master to old: ${MASTER}.old"
+	cp $MASTER ${MASTER}.old
+
+	logIt "Copy updated master to original: ${MASTER}"
+	cp $NEW_MASTER ${MASTER}
+
+	rm ${NEW_MASTER}
+        rm ${POWERMT}
+        rm ${LSPV}
+        rm ${VIODISKS}
+	
+}

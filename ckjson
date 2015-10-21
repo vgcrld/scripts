@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+#
+# Sample rb - simple startup
+#
+require 'rubygems'
+require 'bundler/setup'
+require 'mysql'
+require 'awesome_print'
+require 'gpe2load'
+require 'yajl/json_gem'
+
+
+json = JSON.parse( 
+  File.open(ARGV[0]).read, 
+  :symbolize_keys => true 
+)
+
+ap json

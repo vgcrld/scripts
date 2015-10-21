@@ -1,0 +1,167 @@
+vg_recreate () {
+#/saas/bin/saas prf1rac vg_recreate --sid prf1
+	# ------------------------------------------------------------
+	# symdb layout
+	# ------------------------------------------------------------
+	# $HOST $HOST_PROXY $ssid $devv $vg $hdisk $pvid $state $rdev $dir $port $VGTYPE $logdate
+
+	# ------------------------------------------------------------
+	# Allow user to pick which host to mount
+	# ------------------------------------------------------------
+	set_parms "hostname run_cfgmgr fs_chg sid" $*
+
+	if [[ -z $run_cfgmgr ]] 
+	then
+		run_cfgmgr=yes
+	fi
+
+	if [[ -z $fs_chg ]]
+	then
+		fs_chg=yes
+	fi
+
+	# ------------------------------------------------------------
+	# TYPE and VGDATA is returned by get_vgdata
+	# ------------------------------------------------------------
+	TYPE="standard";
+	if [[ -z $hostname ]] ; then
+	    get_vgdata
+	else
+	    get_vgdata $hostname
+	fi
+
+	# -----------------------------------------------------------
+	# Perform cfgmgr and mkbcv only if this is a proxy/bcv
+	# -----------------------------------------------------------
+        if [[ $TYPE = "bcv" && $run_cfgmgr = yes ]] ; then
+                logIt "Running cfgmgr and mkbcv -a"
+                cfgmgr >> $LOG 2>&1 
+		/usr/lpp/EMC/Symmetrix/bin/mkbcv -a $LOG 2>&1
+		if which powermt > /dev/null 2>&1
+		then
+			powermt config
+		else
+			logIt "WARNING: powermt is not found in path - it will not run."
+		fi
+        elif [[ $TYPE = "standard" ]] ; then
+                logIt "Run type standard, cfgmgr was NOT run."
+        elif [[ $run_cfgmgr = "no" ]] ; then
+                logIt "run_cfgmgr is set to $run_cfgmgr.  cfgmgr and mkbcv have been skipped."
+        else
+                logIt "ERROR: TYPE was not set.  This is a programming error! line=$LINENUM"
+                exit 1
+        fi
+
+	# -----------------------------------------------------------
+	# $VGDATA does not contain all PVIDs - so I create VGDATA_ALL here
+	# -----------------------------------------------------------
+	VGDATA_ALL="$(awk '$1 == "'$PROD'" {vg[$5]=vg[$5]" "$7} END { for ( i in vg ) { print i,vg[i] } }' $MASTER)"
+	logIt "VG with ALL PVIDS from symdb file:$VGDATA_ALL"
+
+	# -----------------------------------------------------------
+	# Build PVID to hdisk name file - associative array in ksh93
+	# -----------------------------------------------------------
+	lspv |grep -v none>$TMP_PATH/$HOST.lspv
+
+	# -----------------------------------------------------------
+	# Loop for each line in vgdata
+	# -----------------------------------------------------------
+	echo "$VGDATA_ALL" | while read line
+	do
+		# Set line as positional parameters
+		set $line
+		vg=$1; shift
+
+		
+	    # Check to see if the vg is already available
+	    lsvg $vg > /dev/null 2>&1
+
+	    if [[ $? -eq 0 ]] 
+ 	    then
+	       logIt "WARNING: Volume Group $vg is already imported. Checking LVs."
+	       set_RC 10    
+	       #---Build logic to check if each FS is mounted properly.
+	    else
+		# Import the volume group and set RC to value of import exit
+		until [ $# = 0 ]
+		do
+			disks="$disks $(awk '$2 == "'$1'" {print $1}' $TMP_PATH/$HOST.lspv)"
+			shift
+		done
+		CMD="recreatevg -y ${vg} -Y cl -L /cl ${disks}"
+		logIt "Recreate VG: $CMD"
+		$CMD >> $LOG 2>&1
+		set_RC $?
+		unset disks
+		
+		if [[ $fs_chg = "yes" && $sid != "" ]]
+		then
+		  for fs in $(lsvgfs $vg)
+		  do
+			new_fs=`echo ${fs} | sed 's/^........//' `
+			logIt "Rename Filesystem from $fs to /$sid$new_fs"
+			CMD="chfs -m /${sid}${new_fs} $fs"
+			logIt "Change FS: $CMD"
+			$CMD >> $LOG 2>&1
+			set_RC $?
+			
+			CMD="mount /${sid}${new_fs}"
+			logIt "Mount FS: $CMD"
+			$CMD >> $LOG 2>$1
+			set_RC $?
+		  done
+		fi
+
+	    fi
+	done 
+	rm $TMP_PATH/$HOST.lspv
+
+# ---- DELETE BELOW ------
+#	# -----------------------------------------------------------
+#	# Loop for each value in vgdata
+#	# -----------------------------------------------------------
+#        until [ $# = 0 ]
+#        do
+#	    # Set vg as value 1 and pvid as value 2 in vgdata; 
+#	    # Shifting to next value until 0
+#            vg=$1; shift
+#	    pvid=$1; shift
+#
+#	    # Check to see if the vg is already available
+#            lsvg $vg > /dev/null 2>&1
+#
+#            if [[ $? -eq 0 ]] 
+# 	    then
+#               logIt "WARNING: Volume Group $vg ($pvid) is already imported."
+#               set_RC 10    
+#            else
+#	        # Import the volume group and set RC to value of import exit
+#	        CMD="importvg -y $vg $pvid"
+#                logIt "Import volume Group: $CMD"
+#	 	$CMD >> $LOG 2>&1
+#                set_RC $?
+#
+#	        # ------------------------------------------------------------
+#		# We need to make sure all the disks come back
+#	        # ------------------------------------------------------------
+#		lsvg -p $vg | grep missing
+#		if [[ $? -eq 0 ]] ; then
+#			set_RC 1
+#			logIt "Volume Group $vg disks are not all available.  Please investigate."
+#			lsvg -p $vg
+#		fi
+#
+#	    fi
+#
+#	    #--------------------------------------------------------------------------
+#	    # For that volume group mount the the file systems; set RC accordingly
+#	    #--------------------------------------------------------------------------
+#            logIt "Mount file systems in volume group: $vg"
+#            for i in `lsvg -l $vg | grep -v jfs2log | awk '$7 ~ /^\// { print $7 }'`
+#            do
+#                logIt Mounting FS: $i
+#		mount $i >> $LOG 2>&1
+#                set_RC $?
+#            done
+#        done
+}

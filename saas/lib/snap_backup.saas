@@ -1,0 +1,72 @@
+snap_backup () {
+	
+	# Get the parms
+	set_parms "-snap_sid -snap_dg -snap_pool rerun" $*
+
+	logIt "Disk Group file.......: $snap_dg"
+	logIt "Snap pool selected....: $snap_pool"
+	logIt "Snap SID..............: $snap_sid" 
+	logIt "Rerun from step.......: $rerun"    
+
+	if [[ -z $rerun ]]
+	then
+		logIt "Running from the top, rerun is not specified."
+		rerun="1 2 3 4 5"
+	fi
+	
+	USE_DG=$GROUP_PATH/$snap_dg
+
+	if [[ -f $USE_DG ]] 
+	then
+		logIt "Found device file in group path ($GROUP_PATH): $USE_DG"
+	else
+		logIt "ERROR: Device file $USE_DG is not found in $GROUP_PATH,  Please respecify!"
+		set_RC 1 stop
+	fi
+	
+	# Issue the snap sequence one at a time
+
+	for STEP in $rerun
+	do
+
+	    case $STEP in
+
+	      1) CMD="symsnap -sid $snap_sid -noprompt -f $USE_DG terminate"
+	        logIt "Snap, step $STEP: TERMINATE: $CMD"
+	        $CMD | tee -a $LOG 2>&1
+	        set_RC $? stop
+	        ;;
+    
+	      2) CMD="symsnap -noprompt -svp $snap_pool -sid $snap_sid -f $USE_DG create"
+	        logIt "Snap, step $STEP: CREATE: $CMD"
+	        $CMD | tee -a $LOG 2>&1
+	        set_RC $? stop
+	        ;;
+        
+	      3) CMD="symsnap -sid $snap_sid -f $USE_DG verify -created"
+	        logIt "Snap, step $STEP: VERIFY: $CMD"
+	        $CMD | tee -a $LOG 2>&1
+	        set_RC $? stop
+	        ;;
+        
+	      4) CMD="symsnap -noprompt -sid $snap_sid -f $USE_DG activate -consistent"
+	        logIt "Snap, step $STEP: ACTIVATE: $CMD"
+	        $CMD | tee -a $LOG 2>&1
+	        set_RC $? stop
+	        ;;
+        
+	      5) CMD="symsnap -sid $snap_sid -f $USE_DG verify -copyonwrite"
+	        logIt "Snap, step $STEP: VERIFY: $CMD"
+	        $CMD | tee -a $LOG 2>&1
+	        set_RC $? stop
+	        ;;
+    
+	      *) logIt "ERROR: Rerun step is invalid.  Range is 1-5!"
+	        set_RC 1 stop
+	        ;;
+    
+ 	    esac 
+
+	done
+    
+}

@@ -1,0 +1,56 @@
+clone_status () {
+
+        #------------------------------------------------------------------
+        # What filelist should we use? bcv_xx_dg
+        #------------------------------------------------------------------
+        set_parms "-bcv_sid -version type debug" $*
+        VAL="bcv_${version}_dg"
+
+        #------------------------------------------------------------------
+        # Use that to find the proper --version value. Must be in cfg file.
+        #------------------------------------------------------------------
+        set_parms "-$VAL"
+        CMD="echo \$${VAL}"
+        PARMS=`eval $CMD`
+
+	#-------------------------------------------------------
+        # Select the dg
+        #-------------------------------------------------------
+        if [[ $version = [Aa]1 ]] ; then
+            GROUPS=$bcv_a1_dg
+        elif [[ $version = [Aa]2 ]] ; then
+            GROUPS=$bcv_a2_dg
+        else
+            logIt "The version parameter is freeform."
+	    GROUPS=$PARMS
+        fi
+
+        set $GROUPS
+
+        #--------------------------------------------
+        # Loop for each DG and issue establish
+        #--------------------------------------------
+        until [ $# -eq 0 ]
+        do
+	
+	    DG=$GROUP_PATH/$1
+	    shift 4
+
+	    if cutfiles $DG $type
+	    then
+		if [[ -z $debug ]] ; then
+			logIt "SYMCLONE command: symclone -sid $bcv_sid -f $DG query"
+			symclone -sid $bcv_sid -f $DG query 2>&1 | tee -a $LOG
+		else
+			logIt "DEBUG:: --debug is set.  Command not run!!!"
+			logIt "DEBUG:: symclone -sid $bcv_sid -f $DG query"
+		fi
+	        set_RC $?
+	    fi
+
+	    rm $TEMPDG > /dev/null 2>&1 
+
+	done
+
+
+}

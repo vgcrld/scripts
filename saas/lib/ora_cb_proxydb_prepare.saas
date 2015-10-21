@@ -1,0 +1,105 @@
+ora_cb_proxydb_prepare () {
+
+        # function for COLD RMAN BAckups#
+	typeset -u sid
+
+	set_parms "-bkup_user -sid -rman_catalog" $*
+
+	#----------------------------------------------------------
+        # Let's switch to the oracle user
+	#----------------------------------------------------------
+	logIt "Switch to backup user: $bkup_user"
+        switch_user $bkup_user
+
+	#----------------------------------------------------------
+	# Setup our env
+	#----------------------------------------------------------
+	logIt "Source the environment file on  proxy: $LOG_PATH/${sid}.env"
+
+        if [ -f ${LOG_PATH}/${sid}.env  ] ; then 
+		. $LOG_PATH/${sid}.env
+        else
+           logIt "Env Flle: ${LOG_PATH}/${sid}.env not found"
+           logIt "Please run saas lib function: ora_env_capture on Source System"
+           set_RC 1 stop
+        fi
+
+        if [ -f ${PROXY_PFILE} ] ; then 
+	   INITORA=${PROXY_PFILE}
+        else
+           logIt "PROXY_PFILE is not found!"
+           logit "Please run saas lib function: ora_env_capture on Source System"
+           set_RC 1 stop
+        fi 
+
+	logIt "Oracle SID..................: $ORACLE_SID"
+	logIt "Oracle Home.................: $ORACLE_HOME"
+	logIt "Backup User.................: $bkup_user"
+	logIt "Proxy Init.ora..............: $INITORA"
+	logIt "Prod Environment............: $PRODENV"
+	
+	#----------------------------------------------------------
+	# Check for init<SID>.ora - if ok Fix it up
+	#----------------------------------------------------------
+	if [[ -f $INITORA ]] ; then 
+		logIt "Oracle init file found for PROXY.: $INITORA"
+	else
+		logIt "Oracle init file $INITORA was not found!"
+		set_RC 1 stop
+	fi
+
+	#----------------------------------------------------------
+	# change the PROXY Init.ora for backup settings...
+        # needed for RMAN COLD BACKUP!
+        # we should used the existing CONTROL FILE for the 
+        # DISK Splits are to be done when the DB is down! 
+	#----------------------------------------------------------
+        cp $INITORA ${INITORA}.bck.${RANDOM}
+ 
+        egrep -v 'dump_dest' ${INITORA}  | \
+		egrep -v '__db_cache_size' | \
+		egrep -v '__java_pool_size' | \
+		egrep -v '__large_pool_size' | \
+		egrep -v '__oracle_base' | \
+		egrep -v '__pga_aggregate_target' | \
+		egrep -v '__sga_target' | \
+		egrep -v '__shared_io_pool_size' | \
+		egrep -v '__shared_pool_size' | \
+		egrep -v '__streams_pool_size' | \
+                egrep -v 'sessions'| \
+                egrep -v 'processes'| \
+                egrep -v 'diagnostic_dest' | \
+#               egrep -v 'control_files' | \
+                egrep -v 'local_listener' | \
+                egrep -v 'remote_listener'| \
+                egrep -v 'shared_pool_reserved_size'| \
+                egrep -v 'shared_pool_size'| \
+                egrep -v 'large_pool_size'| \
+                egrep -v 'pga_aggregate_target'| \
+                egrep -v 'sga_target'| \
+                egrep -v 'sga_max_size'| \
+                egrep -v 'large_pool_size' \
+         > ${INITORA}.tmp
+
+# no need to switch the control files! - this is supposed to be a COLD!!!
+#	echo "*.control_files=$CTLCOPY2"  >  $INITORA
+	echo "*.sessions=300"             >> $INITORA
+	echo "*.processes=150"            >> $INITORA
+	echo "*.shared_pool_size=600M"    >> $INITORA
+	echo "*.large_pool_size=200M"     >> $INITORA
+	echo "*.sga_target=4G"            >> $INITORA
+	echo "*.pga_aggregate_target=1G"  >> $INITORA
+
+	cat ${INITORA}.tmp >>  ${INITORA}
+        rm ${INITORA}.tmp
+
+	#----------------------------------------------------------
+	# Startup mount the database
+	#----------------------------------------------------------
+	SQLCMD "startup mount pfile=${INITORA}"
+	set_RC $? stop
+
+       logIt "The database is in MOUNT mode - proceed with  backed up."
+
+}
+

@@ -1,0 +1,33 @@
+objects:
+  tsmdb:
+    id: 100
+    parents:
+      - tsmdb_obj
+
+metrics:
+  TSMDBPrecentUtilized:
+    desc:       "TS Database Utilization"
+    units:      "%"
+    item_type:  "tsmdb"
+
+chart_options:
+  start_id: 4000
+
+groups: !!omap
+  - _defaults:
+      tags:
+        - TSMDB@LAYER
+  - TSMDBOverview: !!omap
+      - _desc:    "TSM Database"
+      - PrecentUtilized:
+          name: "TSMDBPrecentUtilized"
+          desc: "TSM Database Utilization"
+          $AxisY1.Text: "precentage"
+          series: !!omap
+            - _defaults:
+                display:       line
+                stacked:       false
+            - TSMDBPrecentUtilized:
+                desc:   'utilized'
+                color:  'Green'
+

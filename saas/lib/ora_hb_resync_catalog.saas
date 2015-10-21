@@ -1,0 +1,36 @@
+ora_hb_resync_catalog () {
+
+	#-------------------------------------------------------------
+	# Get the parms
+	#-------------------------------------------------------------
+	set_parms "-oradbuser -rman_connect" $*
+
+	#-------------------------------------------------------------
+	# Switch the user to $orauser
+	#-------------------------------------------------------------
+	switch_user $oradbuser
+
+	#-------------------------------------------------------------
+	# Setup the user profile 
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1 
+	set_RC $? stop
+	
+        #-------------------------------------------------------------
+        # Resync the RMAN catalog
+	##T Missing error checking
+        #-------------------------------------------------------------
+        logIt "${ORACLE_SID}: Create a copy of the controlfile "
+        logIt "rman_catalog: ${rman_connect}"
+
+        RLOG=/tmp/ora_hb_resync_catalog_$$
+
+	RMANCMD "set echo on;
+	 	 resync catalog;
+		 exit;"
+	
+	set_RC $? stop
+
+}	
+

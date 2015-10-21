@@ -1,0 +1,32 @@
+ora_backup_archive () {
+
+        #----------------------------------------------------------
+	# Get the parms
+        #----------------------------------------------------------
+	typeset -u SID
+	set_parms "-sid -oradbuser -time_stamp -rman_connect" $*
+
+        #----------------------------------------------------------
+        # Let's switch to the oracle user
+        #----------------------------------------------------------
+        switch_user $oradbuser 
+	logIt "Source the environment from:  $LOG_PATH/${sid}.env"
+	. $LOG_PATH/${sid}.env
+
+        #----------------------------------------------------------
+        # Create command and start backup
+        #----------------------------------------------------------
+	logIt "Starting Oracle DB ARCHIVELOGS for $ENVIRONMENT"
+
+	COMMAND="run {
+                allocate channel t1 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${DB_NAME}.opt)';
+                allocate channel t2 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${DB_NAME}.opt)';
+                 backup archivelog all delete input
+                   tag='${DB_NAME}_ARC_${time_stamp}';
+		}" 
+	
+	RMANCMD "$COMMAND"
+	set_RC $? stop
+}

@@ -1,0 +1,11 @@
+06/27/2014 19:32:37 ANS8017E Command line parameter 2: 'display=xml' is not valid.
+06/27/2014 19:37:34 ANS8017E Command line parameter 2: 'display=xml' is not valid.
+06/27/2014 20:42:37 ANS5216E Could not establish a TCP/IP connection with address '192.168.100.156:1500'. The TCP/IP error is 'No route to host' (errno = 113). 
+06/27/2014 20:42:37 ANS9020E Could not establish a session with a TSM server or client agent.  The TSM return code is -50. 
+06/27/2014 20:42:37 ANS1017E Session rejected: TCP/IP connection failure
+06/27/2014 20:42:37 ANS8023E Unable to establish session with server.
+06/28/2014 00:58:27 ANS8035E Interrupted by user.
+06/28/2014 04:16:31 ANS8034E Your administrator ID is not recognized by this server.
+06/28/2014 04:16:31 ANS8023E Unable to establish session with server.
+06/30/2014 20:57:31 ANS8035E Interrupted by user.
+10/21/2015 19:02:52 ANS8035E Interrupted by user.

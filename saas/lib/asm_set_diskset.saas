@@ -1,0 +1,160 @@
+asm_set_diskset () {
+
+	#-------------------------------------------------------------
+	# Set the parms for this function
+	#-------------------------------------------------------------
+	set_parms "-asmuser -asm_dg_prefix -asm_diskset_name -asm_diskset_cfgfile" $*
+
+	#-------------------------------------------------------------
+	# Let's switch to the oracle user
+	#-------------------------------------------------------------
+	switch_user $asmuser
+
+	#-------------------------------------------------------------
+	# Set the profile for this user
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+        # ASM diskgroup prefix to UPPER case
+	#-------------------------------------------------------------
+        ASM_DG_PREFIX=`echo ${asm_dg_prefix}|tr a-z A-Z`
+        ASM_DSK_PREFIX=`echo ${asm_diskset_name}|tr a-z A-Z`
+        CFG_FILE=${CONFIG_PATH}/${asm_diskset_cfgfile}
+
+	logIt "ASM Disk groups Prefix  : $ASM_DG_PREFIX"
+	logIt "ASM Disk Set[A1|A2|NONE]: $ASM_DSK_PREFIX"
+	logIt "ASM Disk Set CFG file   : $CFG_FILE"
+
+	#-------------------------------------------------------------
+        # String used to search in the CFG_FILE for /device names
+	#-------------------------------------------------------------
+        ASM_DSKSET_STRING="${ASM_DG_PREFIX}_${ASM_DSK_PREFIX}"
+
+	#-------------------------------------------------------------
+        # other shell variables
+	#-------------------------------------------------------------
+        STMP=/tmp/asm_set_diskset_$$.tmp
+
+	#-------------------------------------------------------------
+        # get and assign values from Configuration file....
+	#-------------------------------------------------------------
+        GRID_DISKSTRING=`grep GRID ${CFG_FILE}|awk -F"=" '{print $2}'`
+        ASM_DISKSTRING=`grep $ASM_DSKSET_STRING ${CFG_FILE}|awk -F"=" '{print $2}'`
+
+        if [[ ${ASM_DISKSTRING} = "" ]] || [[ ${ASM_DSKSET_STRING} = "NONE" ]] ; then 
+           ASM_PFILE_SETTING="'${GRID_DISKSTRING}*'"
+        else
+           ASM_PFILE_SETTING="'${GRID_DISKSTRING}*','${ASM_DISKSTRING}*'"
+        fi
+
+        ASM_SQL_CMD="alter system set asm_diskstring = ${ASM_PFILE_SETTING} scope=BOTH sid='*';"
+	#-------------------------------------------------------------
+        # end of get and assign values from Configuration file....
+	#-------------------------------------------------------------
+
+        # ------------------------------------------------------------------
+        #  get the current ASM disk string from ASM instance
+        # ------------------------------------------------------------------
+        sqlplus -s <<- EOF 
+		connect / as sysasm
+		set linesize 132
+		set pages 0
+		alter session set nls_date_format='dd-mon-yyyy hh24:mi.ss';
+		col disk_name for a40
+		col path for a60
+		spool $STMP
+		variable diskstring varchar2(200);
+		begin
+ 		:diskstring :='';
+ 		select value into :diskstring from v\$parameter where name='asm_diskstring';
+		end;
+		/
+		spool $STMP
+		print :diskstring 
+		spool off
+		exit;
+		EOF
+
+	CURRENT_ASM_DISKSTRING=`cat $STMP |sed -e's/ //g'`
+        logIt "Current ASM INSTANCE asm_diskstring: ${CURRENT_ASM_DISKSTRING}" 
+
+        #-------------------------------------------------------------------
+        # End of get the current ASM disk string from ASM instance
+        #-------------------------------------------------------------------
+
+        #-------------------------------------------------------------------
+        # Change the ASM Discover String in init.ora
+	##T Error checking is missing / -s is missing
+        #-------------------------------------------------------------------
+        logIt " changing current asm_diskstring setting from " 
+        sqlplus  <<- EOF  
+		connect / as sysasm
+		set linesize 132
+		set pages 0
+		alter session set nls_date_format='dd-mon-yyyy hh24:mi.ss';
+		set echo on
+		spool $STMP
+		alter session set nls_date_format='dd-mon-yyyy hh24:mi.ss';
+		select sysdate from dual;
+		
+		$ASM_SQL_CMD
+		
+		select name||':'||value from v\$parameter where name ='asm_diskstring';
+		
+		select name||':'|| state from v\$asm_diskgroup;
+		select name||':'|| path from v\$asm_disk;
+		spool off
+		exit;
+		EOF
+
+        cat ${STMP}|while read LINE
+        do
+        	logIt "$LINE"
+        done
+
+	#-------------------------------------------------------------------
+	# End Change the ASM Discover String in init.ora
+	#-------------------------------------------------------------------
+
+         #-------------------------------------------------------
+         # error check to see if DISK Discovery String is correct 
+         # ASM_DSK_PREFIX is A1|A2|NONE
+         #-----------------------------------------------------
+         case "$ASM_DSK_PREFIX" in
+              "NONE") 
+                     CHK=`asmcmd lsdsk|egrep "A1|A2"|wc -l|sed -e 's/ //g'`
+                     echo "check value from asmcmd: ${CHK}"
+                     if [[ ${CHK} -gt 0 ]] ; then
+                         logIt "asm_set_diskset failed - Setting to NONE failed."
+                          set_RC 1  stop
+                     fi
+              ;;
+             "A1")
+                     CHK=`asmcmd lsdsk|egrep "A2"|wc -l|sed -e 's/ //g'`
+                     echo "check value from asmcmd: ${CHK}"
+                     if [[ ${CHK} -gt 0 ]] ; then
+                         logIt "asm_set_diskset failed - Setting to A1 failed."
+                          set_RC 1  stop
+                     fi
+              ;;
+              "A2")
+                     CHK=`asmcmd lsdsk|egrep "A1"|wc -l|sed -e 's/ //g'`
+                     echo "check value from asmcmd: ${CHK}"
+                     if [[ ${CHK} -gt 0 ]] ; then
+                         logIt "asm_set_diskset failed - Setting to A2 failed."
+                          set_RC 1  stop
+                     fi
+              ;;
+        esac
+         # ------------------------------------------------------------------
+
+
+	#-------------------------------------------------------------------
+	# Clean	up
+	#-------------------------------------------------------------------
+	rm $STMP
+       
+}

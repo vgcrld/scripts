@@ -1,0 +1,81 @@
+crp1_resume() {
+
+	#-------------------------------------------------------------
+	# Get the parms
+	#-------------------------------------------------------------
+	set_parms "-orauser -sid" $*
+
+	#-------------------------------------------------------------
+	# Switch the user to $orauser
+	#-------------------------------------------------------------
+	switch_user $orauser
+
+	#-------------------------------------------------------------
+	# Setup the user profile 
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1 
+	set_RC $? stop
+	
+	#-------------------------------------------------------------
+	# If ORACLE_SID is found then get the archive dir location
+	#-------------------------------------------------------------
+	if [[ -z ${ORACLE_SID} ]] 
+	then
+		logIt "ERROR:The oracle SID is not set.  Check the environment."
+		set_RC 1 stop
+	fi
+
+        #-------------------------------------------------------------
+        # Show timestamp, instance_name, hostname and db_status
+        #-------------------------------------------------------------
+        SQLCMD "select to_char(sysdate,'dd-mm-yyyy hh24:mi:ss') timestamp,INSTANCE_NAME,HOST_NAME,DATABASE_STATUS from v\$instance;"
+        #cat $SQLTEMP|while read LINE
+        #do
+        #        logIt "$LINE"
+        #done
+        #-------------------------------------------------------------
+
+	#-------------------------------------------------------------
+	# Resume the DB 
+	#-------------------------------------------------------------
+	logIt "${ORACLE_SID}: Resume"
+	SQLCMD 'alter system resume;'
+	set_RC $? stop
+         
+	SQLCMD "select to_char(sysdate,'dd-mm-yyyy hh24:mi:ss') timestamp,INSTANCE_NAME,HOST_NAME,DATABASE_STATUS from v\$instance;"
+        #cat $SQLTEMP|while read LINE
+        #do
+        #        logIt "$LINE"
+        #done
+	#-------------------------------------------------------------
+	# Remove the DB from backup mode
+	#-------------------------------------------------------------
+	logIt "${ORACLE_SID}: End Backup"
+	SQLCMD 'alter database end backup;'
+	set_RC $? stop
+        
+	# Wait a little bit...
+        sleep 5
+
+        #-------------------------------------------------------------
+        # Make sure all are out of backup-mode
+        #-------------------------------------------------------------
+        SQLCMD "select 'STILL_IN_BACKUP_MODE '||count(STATUS)  from v\$backup where status = 'ACTIVE';"
+
+        grep STILL_IN_BACKUP_MODE $SQLTEMP | while read NOTGOOD
+        do
+                export FILES_IN_BU_MODE="`echo ${NOTGOOD} | awk '{ print $2 }'`"
+        done
+
+        if [[ ${FILES_IN_BU_MODE} -gt 0 ]]
+        then
+                logIt "There are still files in backup mode, please check, script will stop"
+                logIt "Commands executed:"
+                set_RC 2 stop
+        else
+                logIt "All files are taken OUT of backup mode, no issues."
+        fi
+        #-------------------------------------------------------------
+
+}

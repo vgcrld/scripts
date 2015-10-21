@@ -1,0 +1,73 @@
+ora_hb_end () {
+
+	#-------------------------------------------------------------
+	# Get the parms
+	#-------------------------------------------------------------
+	set_parms "-oradbuser" $*
+
+	#-------------------------------------------------------------
+	# Switch the user to $orauser
+	#-------------------------------------------------------------
+	switch_user $oradbuser
+
+	#-------------------------------------------------------------
+	# Setup the user profile 
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1 
+	set_RC $? stop
+	
+	#-------------------------------------------------------------
+	# If ORACLE_SID is found then get the archive dir location
+	#-------------------------------------------------------------
+	if [[ -z ${ORACLE_SID} ]] 
+	then
+		logIt "ERROR:The oracle SID is not set.  Check the environment."
+		set_RC 1 stop
+	fi
+
+	#-------------------------------------------------------------
+	# Remove the DB from backup mode
+	#-------------------------------------------------------------
+        SLOG=/tmp/ora_hb_end_$$
+        sqlplus -s  <<- EOF
+		/ as sysdba
+		whenever sqlerror exit -1 rollback;
+		spool ${SLOG}.tmp
+		column SCN for 999999999999999999
+		column CHANGE# for 999999999999999999
+		set pages 200 lines 200
+		set echo on
+		set feedback on
+		
+		alter session set nls_date_format='dd-mon-yyyy hh24:mi:ss';
+		
+		select to_char(SYS.DBMS_FLASHBACK.GET_SYSTEM_CHANGE_NUMBER)
+        		|| '_'|| to_char(sysdate,'dd-mon-yyyy hh24:mi:ss') "SCN#" from dual;
+		
+		select Change#,status, count(*)  from v\$backup group  by Change#,status;
+		
+		alter database end backup;
+		
+		select to_char(SYS.DBMS_FLASHBACK.GET_SYSTEM_CHANGE_NUMBER)
+        		|| '_'|| to_char(sysdate,'dd-mon-yyyy hh24:mi:ss') "SCN#" from dual;
+		
+		select Change#,status, count(*)  from v\$backup group  by Change#,status;
+		
+		spool off
+		
+		exit
+		EOF
+
+	set_RC $? exit
+
+	#-------------------------------------------------------------
+	# Capture the output to the log
+	#-------------------------------------------------------------
+	cat ${SLOG}.tmp|while read LINE
+	do
+		logIt "$LINE"
+	done 
+	rm ${SLOG}.tmp > /dev/null 2>&1
+
+}	

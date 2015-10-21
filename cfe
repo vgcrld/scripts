@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+
+#
+# Sample rb - simple startup
+#
+require 'rubygems'
+require 'bundler/setup'
+require 'mysql'
+require 'awesome_print'
+
+def nmon_error?(file)
+  cmd = "gunzip -c #{file} | grep 'gpe-error'"
+  io = IO.popen(cmd)
+  status = io.readlines.select{ |line| /gpe-error/.match(line) }
+  io.close
+  return false if status.empty?
+  return true
+end
+
+def windows_error?(file)
+  cmd = "unzip -c #{file} | grep 'GPE-Error'"
+  io = IO.popen(cmd)
+  status = io.readlines.select{ |line| /GPE-Error/.match(line) }
+  io.close
+  return false if status.empty?
+  return true
+end
+
+# create list of files.
+# determine the type (nmon, win, etc.)
+# process each looking for errors.
+# print filename with <--ERROR in date / input order
+
+files_not_processed = []
+
+files  = Dir.glob(ARGV)
+
+files.each do |file|
+
+  if /nmon.gz$/.match(file)
+    puts sprintf "%-6s %s", nmon_error?(file), file
+
+  elsif /windows.zip$/.match(file)
+    puts sprintf "%-6s %s", windows_error?(file), file
+
+  else
+    files_not_processed << file
+    
+  end
+
+end
+
+puts "There are #{files_not_processed.length} file(s) that were not processed."

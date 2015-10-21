@@ -1,0 +1,45 @@
+#!sh
+
+hb_begin () {
+
+	#-------------------------------------------------------------
+	# Set the parms for this function
+	#-------------------------------------------------------------
+	set_parms "-orauser" $*
+
+	#-------------------------------------------------------------
+	# Let's switch to the oracle user
+	#-------------------------------------------------------------
+	switch_user $orauser
+
+	#-------------------------------------------------------------
+	# Set the profile for this user
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+	# Switch the log -  Use '' around SQLCMD and ; end of sql cmd
+	#-------------------------------------------------------------
+	logIt "Switching Logfile for DB SID: ${ORACLE_SID}"
+	SQLCMD 'alter system switch logfile;'
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+	# Make sure that the init<SID>.ora is current
+	#-------------------------------------------------------------
+        logIt "Create pfile from spfile"
+        SQLCMD "create pfile from spfile;"
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+	# Let's put it into backup mode now
+	#-------------------------------------------------------------
+	logIt "Placing the database into backup mode: ${ORACLE_SID}"
+	SQLCMD 'alter database begin backup;'
+	set_RC $? stop
+
+	# Added to help with spfile null issue while it's being remediated
+	sleep 120
+}

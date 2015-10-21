@@ -1,0 +1,80 @@
+#!/bin/sh
+
+export BUNDLE_GEMFILE=~/src/gpe-server/Gemfile
+
+runtest () {
+
+  current_pwd=`pwd`
+  filename=$1; shift
+  gpe_file=`ruby -e 'puts ARGV[0].sub(/\.gz$/,"\.gpe\.gz")' $filename`
+
+  file=`basename $filename`
+  path=`dirname $filename`
+
+  echo "Running test on filename: $file"
+
+  # Create a test location
+  testloc=/tmp/unittest-${RANDOM}${RANDOM}
+  mkdir -p $testloc
+  cd $testloc
+  cp $filename .
+  cp $gpe_file .
+
+  # Unzip and rename the orig GPE file to *_orig
+  gpe_gz=`ls *.gpe.gz`
+  gunzip $gpe_gz
+  gpe=`ls *.gpe`
+  gpe_orig=${gpe}_orig
+  mv ${gpe} ${gpe_orig}
+
+  # Run test-single-file on the vmware gz
+  vmware=`ls *.vmware.gz`
+  test-single-file vmware $vmware
+
+  # Now unzip the new
+  gunzip $gpe_gz
+
+  if [ -f $gpe_orig ] && [ -f $gpe ]
+  then
+    # Look at the diff
+    zdiff $gpe_orig $gpe | less
+    #~/scripts/compjson.rb $gpe_orig $gpe
+  else
+    echo "Both files do not exist."
+  fi
+
+  # Cleanup
+  cd $current_pwd
+  if [ -d "$testloc" ] ; then
+    rm -r $testloc
+  fi
+}
+
+endme () {
+  echo "Done!"
+  exit
+}
+
+#------------------------------------------------
+# START HERE: Get Current Location
+#------------------------------------------------
+search_location=$*
+
+if [ -d "$search_location" ]
+then
+  echo "Searching location: $search_location"
+else
+  echo "$search_location is not a directory or is not found."
+  endme
+fi
+
+select filename in `find $search_location -name '*.vmware.gz'`
+do
+  if [[ -f $filename ]] ; then
+    runtest $filename
+  elif [[ $REPLY == "q" ]] ; then
+    endme
+  else
+    echo $filename does NOT exist!
+  fi
+done

@@ -1,0 +1,8 @@
+bob() {
+
+  set_parms "-data" $*
+
+  echo $data
+
+}
+

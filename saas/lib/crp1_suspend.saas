@@ -1,0 +1,67 @@
+crp1_suspend() {
+
+	#-------------------------------------------------------------
+	# Set the parms for this function
+	#-------------------------------------------------------------
+	set_parms "-orauser" $*
+
+	#-------------------------------------------------------------
+	# Let's switch to the oracle user
+	#-------------------------------------------------------------
+	switch_user $orauser
+
+	#-------------------------------------------------------------
+	# Set the profile for this user
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1
+	set_RC $? stop
+	
+	#-------------------------------------------------------------
+	# Let's put it into backup mode now
+	#-------------------------------------------------------------
+	logIt "Placing the database into backup mode: ${ORACLE_SID}"
+	SQLCMD 'alter database begin backup;'
+	set_RC $? stop
+
+	# Wait a little bit...
+        sleep 5
+
+	#-------------------------------------------------------------
+        # Make sure all are in backup-mode
+        #-------------------------------------------------------------
+        SQLCMD "select 'NOT_IN_BACKUP_MODE '||count(STATUS)  from v\$backup where status = 'NOT ACTIVE';"
+
+        grep NOT_IN_BACKUP_MODE $SQLTEMP | while read NOTGOOD
+        do
+                export FILES_IN_BU_MODE="`echo ${NOTGOOD} | awk '{ print $2 }'`"
+        done
+
+        if [[ ${FILES_IN_BU_MODE} -gt 0 ]]
+        then
+                logIt "There are still files NOT in backup mode, please check, script will stop"
+                set_RC 1 stop
+        else
+                logIt "All datafiles are put in BACKUP mode, no issues."
+        fi
+	#-------------------------------------------------------------
+        # Show timestamp, instance_name, hostname and db_status
+        #-------------------------------------------------------------
+	SQLCMD "select to_char(sysdate,'dd-mm-yyyy hh24:mi:ss') timestamp,INSTANCE_NAME,HOST_NAME,DATABASE_STATUS from v\$instance;"
+        #cat $SQLTEMP|while read LINE
+        #do
+        #        logIt "$LINE"
+        #done
+	#-------------------------------------------------------------
+	# Now suspend all activity in the database to accomodate the clone_activate
+	#-------------------------------------------------------------
+	logIt "Suspending database : ${ORACLE_SID}"
+	SQLCMD 'alter system suspend;'
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+	# Sleep 60 to allow suspend to complete
+	#-------------------------------------------------------------
+	logIt "Sleeping 15 minutes to allow suspend to complete"
+	sleep 900
+}

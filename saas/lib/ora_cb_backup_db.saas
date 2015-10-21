@@ -1,0 +1,52 @@
+ora_cb_backup_db () {
+
+        #----------------------------------------------------------
+	# Get the parms
+        #----------------------------------------------------------
+	typeset -u SID
+	set_parms "-sid -dbname -bkup_user -time_stamp -keep_time -log_opts -rman_connect" $*
+
+        #----------------------------------------------------------
+        # Let's switch to the oracle user
+        #----------------------------------------------------------
+        switch_user $bkup_user
+	logIt "Source the environment from:  $LOG_PATH/${sid}.env"
+	. $LOG_PATH/${sid}.env
+
+        #----------------------------------------------------------
+        # Create command and start backup
+        #----------------------------------------------------------
+	logIt "Starting DB backup for $ENVIRONMENT"
+
+	COMMAND="run {
+                allocate channel t1 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${DB_NAME}.opt)';
+                allocate channel t2 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${DB_NAME}.opt)';
+                allocate channel t3 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${DB_NAME}.opt)';
+                allocate channel t4 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${DB_NAME}.opt)';
+
+                backup incremental level 0 database
+                    tag='${DB_NAME}_LEVEL0_${time_stamp}'
+                    keep until time 'sysdate +${keep_time}' ${log_opts};
+		}" 
+	
+        RMANCMD "$COMMAND"
+
+        #capture RMAN run return code - stopping the db instance next...
+        RMAN_CR=$?
+
+        #----------------------------------------------------------
+        # Stop the database no mater if RMAN failed or not.
+        #----------------------------------------------------------
+        logIt "The database backup is complete.  Stoping database."
+        SQLCMD "shutdown immediate;"
+
+        #----------------------------------------------------------
+        # Return to SAAS RMAN run return code
+        #----------------------------------------------------------
+        set_RC $RMAN_RC stop
+
+}

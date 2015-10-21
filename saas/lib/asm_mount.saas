@@ -1,0 +1,116 @@
+asm_mount () {
+	#-------------------------------------------------------------
+	# Set the parms for this function
+	#-------------------------------------------------------------
+	set_parms "-asmuser -asm_dg_prefix" $*
+
+	#-------------------------------------------------------------
+	# Let's switch to the oracle user
+	#-------------------------------------------------------------
+	switch_user $asmuser
+
+	#-------------------------------------------------------------
+	# Set the profile for this user
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1
+	set_RC $? stop
+
+	#-------------------------------------------------------------
+        # ASM diskgroup prefix to UPPER case
+	#-------------------------------------------------------------
+        ASM_DG_PREFIX=`echo ${asm_dg_prefix}|tr a-z A-Z`
+	logIt "ASM Disk groups Prefix: $ASM_DG_PREFIX"
+
+       
+        # ------------------------------------------------------------------
+        #  check for ASM disk groups with SID prefix name in DISMOUNTED STATE
+        # ------------------------------------------------------------------
+        SLOG=/tmp/asm_mount_$$.log
+
+	sqlplus -s <<- EOF
+		connect / as sysasm
+		whenever sqlerror exit -1 rollback;
+		set linesize 80
+		set heading off
+		set pages 0
+		alter session set nls_date_format='dd-mon-yyyy hh24:mi.ss';
+		spool ${SLOG}.log
+		
+		select sysdate || ':' || name || ':'|| state from v\$asm_diskgroup 
+		where
+    		upper(name) like '%${ASM_DG_PREFIX}%' and state ='DISMOUNTED'
+		and upper(name) not like '%CFG%'
+		;
+		exit;
+		EOF
+
+	# ------------------------------------------------------------------
+	# generate SQL scommands
+	# ------------------------------------------------------------------
+	NUM_MOUNTED=`cat ${SLOG}.log |grep "${ASM_DG_PREFIX}" |grep MOUNTED |wc -l|sed -e 's/ //g'`
+	if [[ $NUM_MOUNTED -ne 0 ]] ; then 
+		logIt "generating dismount ASM disks SQL commands for  \"${ASM_DG_PREFIX}\" "
+		sqlplus -s <<- EOF
+		connect / as sysasm
+		whenever sqlerror exit -1 rollback;
+		set linesize 80
+		set heading off
+		set pages 0
+		set echo off
+		alter session set nls_date_format='dd-mon-yyyy hh24:mi.ss';
+		spool ${SLOG}.sql
+		
+		select 'alter diskgroup ' || name || ' mount;'  from v\$asm_diskgroup 
+		where
+    		upper(name) like '%${ASM_DG_PREFIX}%' and state ='DISMOUNTED'
+		and upper(name) not like '%CFG%'
+		;
+		exit;
+		EOF
+         fi
+
+        # ------------------------------------------------------------------
+        # Run the SQL commands 
+        # ------------------------------------------------------------------
+	if [[ $NUM_MOUNTED -eq 0 ]] ; then
+        	logIt " ASM disks with SID prefix  \"${ASM_DG_PREFIX}\" are being mounted."
+         	logIt " no action taken"
+        else
+		sqlplus <<- EOF
+		connect / as sysasm
+		whenever sqlerror exit -1 rollback;
+		alter session set nls_date_format='dd-mon-yyyy hh24:mi.ss';
+		set echo on
+		spool ${SLOG}.log
+		prompt running sql file: ${SLOG}.sql
+		@${SLOG}.sql
+		exit;
+		EOF
+		
+            	cat ${SLOG}.log|while read LINE
+            	do
+               		logIt "$LINE"
+		done
+
+         fi
+
+         #-------------------------------------------------------
+         # error check to see if the DISKGROUPS are mounted
+         #-----------------------------------------------------
+         CHK=`asmcmd lsdsk|egrep "A1|A2"|wc -l|sed -e 's/ //g'`
+         echo "check value from asmcmd: ${CHK}"
+         if [[ ${CHK} -eq 0 ]] ; then
+            logIt "asm_mount errored  - check the asm diskgroups if mounted"
+            set_RC 1  stop
+         fi
+         # ------------------------------------------------------------------
+
+
+
+        # ------------------------------------------------------------------
+        # Cleanup
+        # ------------------------------------------------------------------
+        rm  ${SLOG}.log > /dev/null 2>&1
+        rm  ${SLOG}.sql > /dev/null 2>&1
+}

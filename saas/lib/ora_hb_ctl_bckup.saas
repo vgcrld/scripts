@@ -1,0 +1,85 @@
+ora_hb_ctl_bckup () {
+
+	#-------------------------------------------------------------
+	# Get the parms
+	#-------------------------------------------------------------
+	set_parms "-oradbuser -rman_connect -asm_arch_dest_mount" $*
+
+	#-------------------------------------------------------------
+	# Switch the user to $orauser
+	#-------------------------------------------------------------
+	switch_user $oradbuser
+
+	#-------------------------------------------------------------
+	# Setup the user profile 
+	#-------------------------------------------------------------
+	logIt "Set profile ${HOME}/.profile"
+	. ${HOME}/.profile > /dev/null 2>&1 
+	set_RC $? stop
+	
+	#-------------------------------------------------------------
+	# If ORACLE_SID is found then get the archive dir location
+	#-------------------------------------------------------------
+        if [[ -z ${ORACLE_SID} ]]  ; then
+                logIt "ERROR:The oracle SID is not set.  Check the environment."
+                set_RC 1 stop
+        else
+
+          SQLCMD 'archive log list;'
+          arch_dest=`awk '/Archive destination/ { print $3 }' $SQLTEMP`
+
+          # check for where the ARCHIVE logs are in ASM or Filesystem
+          if [[ "$arch_dest" = "USE_DB_RECOVERY_FILE_DEST" ]] ; then
+              SQLTEMP_HOLD=$SQLTEMP
+
+              SQLCMD "select value from v\$parameter where name ='db_recovery_file_dest';"
+              arch_dest_mount=`tail -2 $SQLTEMP |head -1`
+              ctlcopy1=$arch_dest_mount/PROXYCTL/controlfile.ctl
+              ctlcopy2=$arch_dest_mount/CTL/controlfile.ctl
+
+              # --add verify step - see asm_hb_check.saas
+
+          else
+             arch_dest_mount=`df $arch_dest | awk '$7 ~ /\/.+/ {print $7}'`
+             ctlcopy1=$arch_dest_mount/${ORACLE_SID}/ctl
+             ctlcopy2=$arch_dest_mount/${ORACLE_SID}/startctl
+
+             [[ ! -d $ctlcopy1 ]] && mkdir -p $ctlcopy1
+             [[ ! -d $ctlcopy2 ]] && mkdir -p $ctlcopy2
+           fi
+
+          logIt "Archive log destination..........: $arch_dest"
+          logIt "Archive log destination mount....: $arch_dest_mount"
+          logIt "Bkup ctl file bkup destination...: $ctlcopy1"
+          logIt "Bkup ctl file start destination..: $ctlcopy2"
+        fi
+
+
+        #-------------------------------------------------------------
+        # Backup the control files
+        #-------------------------------------------------------------
+        logIt "${ORACLE_SID}: Create a copy of the controlfile "
+        logIt "rman_catalog: ${rman_connect}"
+
+        RLOG=/tmp/ora_hb_ctl_bckup_$$
+
+	RMANCMD "set echo on;
+		 run {
+ 		 allocate channel ch1 type disk;
+	  	 copy current controlfile to '${ctlcopy1}';
+	 	 copy current controlfile to '${ctlcopy2}';
+ 		 release channel ch1;
+		 }
+		 exit; "
+
+	set_RC $? stop
+        
+	#-------------------------------------------------------------
+        # Sleep to ensure I/O has completed for archive logs
+        #-------------------------------------------------------------
+        
+        # 2011-08-14 - ERT - Steve requested the sleep be added
+        logIt "Sleeping for 120 seconds..."
+        sleep 120
+	
+}	

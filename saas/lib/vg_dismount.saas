@@ -1,0 +1,167 @@
+vg_dismount () {
+	
+
+        # ------------------------------------------------------------
+        # Allow user to pick which host to dis_mount
+        # ------------------------------------------------------------
+        set_parms "hostname run" $*
+
+	if [[ $run = yes || $run = no ]] 
+	then
+		logIt "--run has been set to $run.  Commands will execute!"
+	else
+		logIt "WARNING: --run was not set.  Default is yes" 
+		run=yes
+	fi
+
+        # ------------------------------------------------------------
+        # TYPE and VGDATA is returned by get_vgdata
+        # ------------------------------------------------------------
+        TYPE="standard";
+        if [[ -z $hostname ]] ; then
+            get_vgdata
+        else
+            get_vgdata $hostname
+        fi
+
+	#-------------------------------------------------------------
+	# Temp Files - Use real /tmp not the saas tmp
+	#-------------------------------------------------------------
+	vgs=/tmp/sys_${$}_${RANDOM}${RANDOM}${RANDOM}${RANDOM}
+	disks=/tmp/sys_${$}_${RANDOM}${RANDOM}${RANDOM}${RANDOM}
+	remove_vg=/tmp/sys_${$}_${RANDOM}${RANDOM}${RANDOM}${RANDOM}
+	cleanup_disks=/tmp/sys_${$}_${RANDOM}${RANDOM}${RANDOM}${RANDOM}
+	
+	#------------------------------------------------------------
+	# Put the vgs in the $vgs files
+	#------------------------------------------------------------
+	set $VGDATA_LITE
+	while [[ $# -ne 0 ]] 
+	do
+		if lsvg $1 > /dev/null 2>&1
+		then
+			logIt "VG was found online.  It will be exported from the system: $1 (type: $TYPE)"
+			print $1 >> $vgs
+		else
+			logIt "WARNING: $1 vg was not found online: skipping."
+			shift
+			continue
+		fi
+		shift
+	done
+
+	if [[ ! -f $vgs ]] 
+	then
+		logIt "No VG's in $MASTER are online."
+		set_RC 1 stop
+	fi
+
+	#------------------------------------------------------------
+	# unmount the fs; get the disks from the vg
+	#------------------------------------------------------------
+	x=""
+	sort -u $vgs | while read x
+	do
+		for i in `lsvg -l $x | awk '$7 ~ /^\// { print $7 }'`
+		do
+		    if [[ $run = yes ]] 
+		    then
+		    	unmount_fs $i
+		    else
+			print "Run Manually: umount $i"
+		    fi
+		done
+		print varyoffvg $x >> $remove_vg
+		print exportvg $x >> $remove_vg
+		lsvg -p $x | awk '$1 ~ /^hdisk/ { print $1 }' >> $disks 
+	done
+	
+	#------------------------------------------------------------
+	# Cleanup the disks
+	#------------------------------------------------------------
+	x=""
+	cat $disks | while read x 
+	do
+		if [[ $x = hdiskpower* ]] 
+		then
+			print powermt remove dev=$x >> $cleanup_disks
+			print rmdev -dl $x >> $cleanup_disks
+			powermt display dev=$x | awk '/fscsi/ { print "rmdev -dl "$3 }' >> $cleanup_disks
+		else
+			print rmdev -dl $x >> $cleanup_disks
+		fi
+	done
+	
+	#------------------------------------------------------------
+	# Only remove the vg's and not the disks if type=standard
+	#------------------------------------------------------------
+	cmds_to_run="$remove_vg"
+	if [[ $TYPE = bcv ]]
+	then
+		cmds_to_run="$remove_vg $cleanup_disks"
+	fi
+
+	#------------------------------------------------------------
+	# Loop through commands; 
+	#------------------------------------------------------------
+	x=""
+	cat $cmds_to_run | while read x
+	do
+		if [[ $run = yes ]] 
+		then
+		    logIt "Executing: $x"
+	    	    eval "$x"
+		    set_RC $?
+		else
+	    	    print "Run Manually: $x"
+		fi
+	done
+	
+	#------------------------------------------------------------
+	# Cleanup
+	#------------------------------------------------------------
+	rm $vgs
+	rm $disks
+	rm $remove_vg
+	rm $cleanup_disks
+}
+
+unmount_fs () {
+
+	FS=$1
+
+        logIt "Forcing Users and umouting filesystem: $FS"
+
+        # -----------------------------------------------
+        # Make sure its mounted before fuser and unmount
+        # -----------------------------------------------
+        if df $FS | awk 'BEGIN{rc=1} $7 == "'$FS'" { rc=0 } END { exit rc } '
+        then
+                logIt "Force users off filesystem: $FS"
+                fuser -kuxc $FS >> $LOG 2>&1
+                sleep 1
+                logIt "Re-issue force users and umount."
+                fuser -kuxc $FS >> $LOG 2>&1
+                umount $FS >> $LOG 2>&1
+                # -----------------------------------------------
+                # If it didn't unmount, sleep and try again
+                # -----------------------------------------------
+                if [ $? -ne 0 ] ; then
+                    logIt "umount of $FS has failed.  Sleeping for 60 seconds before retry..."
+                    sleep 60
+                    if df $FS | awk 'BEGIN{rc=1} $7 == "'$FS'" { rc=0 } END { exit rc } '
+                    then
+                        fuser -kuxc $FS >> $LOG 2>&1
+                    fi
+                    umount $FS
+                    set_RC $?
+                else
+                    logIt "The umount for $FS was successful."
+                fi
+        else
+                logIt "The filesystem ( $FS ) was not mounted? fuser kill was skipped to protect root (/)."
+                set_RC 10
+        fi
+
+
+}

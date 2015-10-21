@@ -1,0 +1,67 @@
+verify_clone () {
+
+	#-------------------------------------------------------
+	# Set values
+	#-------------------------------------------------------
+	set_parms "-bcv_sid -version -bcv_a1_dg -bcv_a2_dg -count -interval" $*
+
+	#-------------------------------------------------------
+	# Select the dg
+	#-------------------------------------------------------
+	if [[ $version = [Aa]1 ]] ; then
+	    GROUPS=$bcv_a1_dg
+	elif [[ $version = [Aa]2 ]] ; then 	
+	    GROUPS=$bcv_a2_dg
+	else 
+	    logIt "The version parameter is require: A1|A2"
+	    set_RC 1 stop
+	fi
+
+	if echo $interval | grep [^0-9] > /dev/null
+	then
+  	    logIt "Value --interval is not numeric."
+	    exit 1
+	fi
+
+	if echo $count | grep [^0-9] > /dev/null
+	then
+  	    logIt "Value --count is not numeric."
+	    exit 1
+	fi
+
+        #--------------------------------------------
+        # Check to be sure they are copied
+        #--------------------------------------------
+        CHECKRC=1
+        logIt "Validating all groups are in copied state..."
+        until [[ $CHECKRC -eq 0 || $count -eq 0 ]]
+        do
+            CHECKRC=0
+            set $GROUPS
+            until [ $# -eq 0 ]
+            do
+	        if [[ $# -lt 4 ]] ; then
+	    	    logIt "ERROR: There are not enough positional values in the bcv_xx_dg specification."
+	    	    logIt "ERROR: These values where not processed: $*"
+	    	    logIt "ERROR: Check the cfg file and rerun."
+	    	    exit 1
+	        fi
+                DG=$GROUP_PATH/$1
+		shift 4
+                logIt "Validate $DG is in copied state."
+                symclone -sid $bcv_sid -f $DG verify -copied >> $LOG 2>&1
+		TEMPRC=$?
+		logIt "Verify copied for $DG returned: $TEMPRC"
+                [[ $TEMPRC -ne 0 ]] && CHECKRC=$(( $CHECKRC+1 ))
+            done
+	    count=$(( count-1 ))
+	    if [[ $count -ne 0 && $CHECKRC -ne 0 ]] 
+	    then
+	    	logIt "Sleeping for $interval seconds... ( count: $count )."
+		sleep $interval
+	    else 
+		set_RC $CHECKRC stop
+ 	    fi
+        done
+
+}

@@ -1,0 +1,49 @@
+vtd_clone_remove () {
+
+        # ----------------------------------------------------
+        # Remove the old Mapping from the vio Server
+        # ----------------------------------------------------
+        logIt "Removing Devices from VIO server."
+
+        # ----------------------------------------------------
+        # Is this a VIO server?
+        # ----------------------------------------------------
+        logIt "Check to ensure this is a VIO server:"
+        /usr/ios/cli/ioscli ioslevel > /dev/null 2>&1
+
+        if [[ $? -ne 0 ]]
+        then
+                logIt "This does not appear to be a VIO server."
+        ##T     exit 1
+        fi
+	
+        # ----------------------------------------------------
+	# Get the parms
+        # ----------------------------------------------------
+        set_parms "-vhost -env" $*
+
+        # ----------------------------------------------------
+        # Get all vtargets and hdiskpowers
+        # ----------------------------------------------------
+        RMDEV=$TMP_PATH/VTDREMOVE_RMDEV_${HOST}_$RANDOM
+
+        /usr/ios/cli/ioscli lsmap -vadapter $vhost | \
+                awk '/VTD/{v=$2}/Backing/{print v,$3}' | \
+                awk '$1 ~ /'${env}'_.*_.*/' | \
+                awk '{
+                        print "/usr/ios/cli/ioscli rmvdev -vtd",$1
+                        print "powermt remove dev="$2
+                        while ("powermt display dev="$2 | getline x) {
+                                split(x,A);
+                                if ( x ~ /fscsi/ ) print "rmdev -dl "A[3]
+                        }
+
+                }' > ${RMDEV}
+
+        logIt "Running commands in RMDEV command file: ${RMDEV}"
+        cmdRunner ${RMDEV}
+        set_RC $? stop
+        rm ${RMDEV} > /dev/null 2>&1
+
+
+}

@@ -1,0 +1,190 @@
+shutdown_env () {
+
+	#------------------------------------------------------------------
+	# This module is used to stop the application based on conifg 
+	# data in the configuration file.  --shutdown_x ... 
+	# The --sequence x value selects the --shutdown_x parm.
+	#------------------------------------------------------------------
+	logIt "Begin $ENVIRONMENT application/DB shutdown."
+	
+	#------------------------------------------------------------------
+	# First get the sequence # and the wait time.
+	#------------------------------------------------------------------
+	set_parms "-sequence -wait" $*
+	VAL="shutdown_${sequence}"
+	
+	#------------------------------------------------------------------
+	# Use that to find the proper --shutdown_x value.
+	#------------------------------------------------------------------
+	set_parms "-$VAL"
+	
+	#------------------------------------------------------------------
+	# Now set that shutdown data as the parms to loop through
+	#------------------------------------------------------------------
+	CMD="echo \$${VAL}"
+	PARMS=`eval $CMD`
+	
+	#------------------------------------------------------------------
+	# Parse the data by position
+	#------------------------------------------------------------------
+	set $PARMS
+	RUNHOST=$1;  shift
+	RUNTYPE=$1;  shift
+	
+	#------------------------------------------------------------------
+	# Figure out the user and cmd if this is an su
+	#------------------------------------------------------------------
+        if [[ $* = su* ]] ; then
+            RUNUSER=`id -un`
+            RUNUSER=`echo $* | awk -F 'su - | ' '{ print $2}'`
+            STOPCMD=`echo $* | awk -F '-c ' '{ print $2}'`
+        else
+            STOPCMD=$*
+            RUNUSER=`id -un`
+        fi
+	
+	#------------------------------------------------------------------
+	# Figure out the abort script if this is a db
+	#------------------------------------------------------------------
+	if [[ $RUNTYPE = db ]] ; then
+	    abort_script=`dirname $STOPCMD`
+	    abort_script=$abort_script/stop_db_abort.sh
+
+	    test -x $abort_script > /dev/null 2>&1 
+	    if [[ $? -eq 0 ]] ; then
+		logIt "Abort script found and is executable."
+	    else
+		logIt "Warning: Abort script $abort_script is not found or not executable!"
+		abort_not_found=1
+	    fi
+	
+	else
+	    abort_script="n/a"
+	fi
+
+	#------------------------------------------------------------------
+	# Did the user override with a command (ususally for testing.)
+	#------------------------------------------------------------------
+	if [[ -n $override_cmd ]] ; then
+	    logIt "You have requested to override the stop CMD: $STOPCMD"
+	    logIt "Replacing with command: $override_cmd"
+	    STOPCMD=$override_cmd
+	fi
+
+	#------------------------------------------------------------------
+	# Display some info.
+	#------------------------------------------------------------------
+	logIt "Script to be executed.....: $STOPCMD"
+	logIt "Abort Script..............: $abort_script"
+	logIt "Run as user...............: $RUNUSER"
+	logIt "Run on host...............: $RUNHOST"
+	logIt "Run type (db | app).......: $RUNTYPE"
+	logIt "Wait duration (seconds)...: $wait"
+	
+	#------------------------------------------------------------------
+	# Is this meant to run on this host.
+	#------------------------------------------------------------------
+	if [[ $RUNHOST != $HOST ]] ; then
+    	logIt "This sequence is not configured to run on this host!"
+    	exit 1
+	fi 
+	
+	#------------------------------------------------------------------
+	# How many procs are left running?
+	#------------------------------------------------------------------
+        procs_running=`ps -ef | awk 'BEGIN{ x=0 } $1 == "'$RUNUSER'" { x++ } END { print x }'`
+        logIt "User $RUNUSER is running $procs_running procs."
+
+	#------------------------------------------------------------------
+	# Now run the script; unless it's immediate (--wait 0)
+	#------------------------------------------------------------------
+	if [[ $wait != 0 ]] ; then
+    	    script_log=$TMP_PATH/appstop_$RANDOM$RANDOM.log
+    	    script_detail=$TMP_PATH/appstop_$RANDOM$RANDOM.detail
+
+    	    ( su - $RUNUSER -c $STOPCMD > $script_detail 2>&1; echo $? > $script_log ) &
+    	    script_PID=$!
+
+    	    logIt "Submitted script ($script_PID): $STOPCMD as user: $RUNUSER"
+	else
+    	    logIt "This is an immediate/abort shutdown! (wait=$wait)"
+	fi
+	
+	#------------------------------------------------------------------
+	# And wait for the script or the timeout
+	#------------------------------------------------------------------
+	loops=$(( $wait / 5 ))
+	looper=0
+	isTimeout=yes
+
+	until [[ $looper -eq $loops ]] 
+	do
+    	    looper=$(( looper + 1 ))
+    	    logIt "Waiting...:\t$(( $looper * 5 )) Seconds."
+    	    sleep 5
+	    #---------------------------------------------
+	    # Is the script process ended
+	    #---------------------------------------------
+    	    ps -p $script_PID > /dev/null 2>&1 
+    	    if [[ $? -eq 1 ]] ; then
+		script_exit=`cat $script_log`
+		rm $script_log
+        	logIt "Script completed before timeout, code=$script_exit"
+		isTimeout=no
+		#------------------------------------------------------------------
+		# Get the app/db script output
+		#------------------------------------------------------------------
+		logIt "DB/app stop Script detail.:"
+		cat $script_detail | awk '{print "\t| "$0}' >> $LOG
+		rm $script_detail > /dev/null 2>&1 
+		break
+    	    fi 
+	done
+	
+	#------------------------------------------------------------------
+	# Did this time out or is wait 0.  If so kill the procs.
+	#------------------------------------------------------------------
+	if [[ $isTimeout = yes ]] ; then
+	
+   	    if [[ $wait != 0 ]] ; then
+      	        logIt "Stopping script $STOPCMD, PID=$script_PID"
+      	        kill -9 $script_PID >> $LOG 2>&1
+      	        sleep 1
+    	    fi
+	
+    	    # killall - but we don't want to killall on root
+    	    if [[ $RUNUSER = root ]] ; then
+        	logIt "Cannot run killall for user $RUNUSER."
+
+    	    elif [[ $RUNTYPE = app ]] ; then
+        	logIt "Killing all processes for user: $RUNUSER"
+        	logIt "Issue killall -9 for user: $RUNUSER"
+        	##X su - $RUNUSER -c "killall -9" >> $LOG 2>&1 
+        	set_RC 0
+
+    	    elif [[ $RUNTYPE = db ]] ; then
+		if [[ -n $abort_not_found ]] ; then
+		    logIt "Abort script was not found.  Unable to execute!"
+		    set_RC 1 stop
+		else
+        	    logIt "Running DB abort: $abort_script"
+		    su - $RUNUSER -c "$abort_script"
+		    sleep 5
+		fi
+    	    fi
+
+	#------------------------------------------------------------------
+	# If it did not time out
+	#------------------------------------------------------------------
+	else
+    	    logIt "The script has run to normal completion."
+    	    set_RC $script_exit
+	fi
+
+	#------------------------------------------------------------------
+	# How many procs are left running?
+	#------------------------------------------------------------------
+        procs_running=`ps -ef | awk 'BEGIN{ x=0 } $1 == "'$RUNUSER'" { x++ } END { print x }'`
+        logIt "User $RUNUSER is running $procs_running procs."
+	
+}

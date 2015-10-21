@@ -1,0 +1,49 @@
+validate () {
+
+	DG=$1 
+	FTYPE=$2
+        TMPNUM=$RANDOM$RANDOM
+        TMPFILE1=$TMP_PATH/tmp1.$TMPNUM
+        TMPFILE2=$TMP_PATH/tmp2.$TMPNUM
+        CMD="symdg dg2file $DG -f $TMPFILE1 -ftype $FTYPE"
+	ERROR_MSG=""
+
+        logIt "Building dg2file for dg $DG:"
+        logIt "$CMD"
+        $CMD > /dev/null 2>&1 
+	set_RC $?
+	if [[ $? -ne 0 ]] ; then
+	    logIt "ERROR: Unable to obtain a dg2file for $DG"
+	    logIt "ERROR: Failing CMD: $CMD"
+            ERROR_MSG="  ** Unable to obtain a dg2file ** "
+	fi
+        awk '{ print substr($1,4,4),substr($2,4,4) }' $TMPFILE1 > $TMPFILE2
+        rm $TMPFILE1 > /dev/null 2>&1
+
+        printf "\n$DG $ERROR_MSG \n\n" >> $REPTFILE
+        printf "\t%-7s %-4s %-4s %-20s %-20s %-20s %-5s\n" \
+            "STATUS" "STD#" "TGT#" "VG" "HDISK" "PVID" "TYPE" >> $REPTFILE
+        printf "\t%-7s %-4s %-4s %-20s %-20s %-20s %-5s\n" \
+            "------" "----" "----" "--------------------" "--------------------" \
+            "--------------------" "----" >> $REPTFILE
+
+        while read line
+        do
+            set $line
+            if [[ ${12} = $SKIP_TYPE ]] ; then
+                continue
+            fi
+            grep -i $4 $TMPFILE2 > /dev/null 2>&1
+            if [ $? -eq 0 ] ; then
+		TGT=`grep -i $4 $TMPFILE2 | cut -f2 -d" "`
+                printf "\t%-7s %-4s %-4s %-20s %-20s %-20s %-5s\n" "OK" $4 $TGT $5 $6 $7 ${12} >> $REPTFILE
+            else
+		TGT='----'
+                printf "\t%-7s %-4s %-4s %-20s %-20s %-20s %-5s\n" "ERROR" $4 $TGT $5 $6 $7 ${12} >> $REPTFILE
+                FAIL=10
+            fi
+        done < $MASTER
+
+        printf "\n" >> $REPTFILE
+        rm $TMPFILE2 
+}

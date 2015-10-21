@@ -1,0 +1,27 @@
+switch_user () {
+
+        CURR_USER=`id -un`
+	RUN_USER=$1
+
+        if  [[ $CURR_USER != $1 ]]
+        then
+                logIt "Switching user to $RUN_USER"
+                if lsuser $RUN_USER > /dev/null
+                then
+			exec su - $RUN_USER -c \
+			    "export SAAS_RESTARTED_AS_USER=$RUN_USER; $BIN_PATH/$SAAS_PGM $SAAS_PARMS"
+			set_RC $? stop
+                else
+                        logIt "User $RUN_USER does not exist."
+                        exit 1
+                fi
+        else
+		if [[ -n $SAAS_RESTARTED_AS_USER ]] 
+		then
+               	    logIt "User has been switched to $RUN_USER"
+		else
+		    logIt "User is already running as $RUN_USER"
+		fi
+        fi
+
+}

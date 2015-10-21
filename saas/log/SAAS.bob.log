@@ -1,0 +1,7 @@
+09/02/2014 18:19:51 bob gpedevdb01.ats.local bob(3005322970) ======================================= 
+09/02/2014 18:19:51 bob gpedevdb01.ats.local bob(3005322970) Starting Operation: bob 
+09/02/2014 18:19:51 bob gpedevdb01.ats.local bob(3005322970) ======================================= 
+09/02/2014 18:19:51 bob gpedevdb01.ats.local bob(3005322970) Configuration file: /home/ATS/rdavis/scripts/saas/cfg/bob.cfg 
+09/02/2014 18:19:51 bob gpedevdb01.ats.local bob(3005322970) Log file: /home/ATS/rdavis/scripts/saas/log/SAAS.bob.log 
+09/02/2014 18:19:51 bob gpedevdb01.ats.local bob(3005322970) Found Configuration value: data="this is my test" 
+09/02/2014 18:19:51 bob gpedevdb01.ats.local bob(3005322970) Completed operation "bob" with highest exit code 0 

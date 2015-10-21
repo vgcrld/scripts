@@ -1,0 +1,49 @@
+backup_db () {
+
+        #----------------------------------------------------------
+	# Get the parms
+        #----------------------------------------------------------
+	typeset -u SID
+	set_parms "-sid -bkup_user -time_stamp -keep_time -log_opts -rman_connect" $*
+
+        #----------------------------------------------------------
+        # Let's switch to the oracle user
+        #----------------------------------------------------------
+        switch_user $bkup_user
+	logIt "Source the environment from:  $LOG_PATH/${sid}.env"
+	. $LOG_PATH/${sid}.env
+
+        #----------------------------------------------------------
+        # Create command and start backup
+        #----------------------------------------------------------
+	logIt "Starting DB backup for $ENVIRONMENT"
+
+	COMMAND="run {
+                allocate channel t1 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${ORACLE_SID}.opt)';
+                allocate channel t2 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${ORACLE_SID}.opt)';
+                allocate channel t3 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${ORACLE_SID}.opt)';
+                allocate channel t4 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${ORACLE_SID}.opt)';
+                allocate channel t5 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${ORACLE_SID}.opt)';
+                allocate channel t6 TYPE 'SBT_TAPE' PARMS
+                    'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo_${ORACLE_SID}.opt)';
+                backup incremental level 0 database
+                    tag='${ORACLE_SID}_LEVEL0_${time_stamp}'
+                    keep until time 'sysdate +${keep_time}' ${log_opts};
+                backup controlfilecopy '${CTLCOPY1}' tag='${ORACLE_SID}_CTL_${time_stamp}';
+		}" 
+	
+	RMANCMD "$COMMAND"
+	set_RC $? stop
+
+        #----------------------------------------------------------
+	# Stop the database
+        #----------------------------------------------------------
+	logIt "The database backup is complete.  Stoping database."
+	SQLCMD "shutdown abort;"
+	set_RC $? stop
+}

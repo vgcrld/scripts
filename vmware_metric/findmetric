@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [[ -z $* ]] ; then
+  echo "Make sure you enter a metric"
+  exit 1
+fi
+awk -F, '/'$*'/ {gsub(/"/,"");printf "%-45s %s\n",$5,FILENAME}' host cluster vm | uniq -d

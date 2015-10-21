@@ -1,0 +1,87 @@
+vtd_clone_add () {
+
+        # ----------------------------------------------------
+        # Map
+        # ----------------------------------------------------
+        logIt "Adding Devices to vio Server."
+
+        # ----------------------------------------------------
+        # Is this a VIO server?
+        # ----------------------------------------------------
+        logIt "Check to ensure this is a VIO server:"
+        /usr/ios/cli/ioscli ioslevel > /dev/null 2>&1
+
+        if [[ $? -ne 0 ]]
+        then
+                logIt "This does not appear to be a VIO server."
+                exit 1
+        fi
+
+        # ----------------------------------------------------
+	# Get the appropriate parms
+        # ----------------------------------------------------
+        set_parms "-source_host -vhost -env run_cfgmgr" $*
+
+	if [[ $run_cfgmgr = "no" ]] 
+	then
+		logIt "User requested cfgmgr not be run."
+	else
+        	logIt "Running configuration manager (cfgmgr)"
+        	cfgmgr
+	fi
+
+        # ----------------------------------------------------
+        # Lets use symdb to find the disks by pvid
+        # ----------------------------------------------------
+	LSPV=$TMP_PATH/${HOST}_LSPV_${RANDOM}
+	logIt "Collecting lspv data to file:" $LSPV
+	lspv > $LSPV
+
+        # ----------------------------------------------------
+        # Now for each disk chdev reserve_lock=no
+        # ----------------------------------------------------
+	CHDEV=$TMP_PATH/VTDADD_CHDEV_${HOST}_$RANDOM
+        awk '$1 == "'${source_host}'"' /saas/log/${ENVIRONMENT}.symdb | {
+        while read x
+        do
+                set $x
+                grep $7 $LSPV | \
+		    awk '{print("chdev -l "$1" -a reserve_lock=no")}' >> ${CHDEV}
+        done } 
+
+        # ----------------------------------------------------
+	# And now let's map them
+        # ----------------------------------------------------
+	MKVDEV=$TMP_PATH/VTDADD_MKVDEV_${HOST}_$RANDOM
+	awk '$1 == "'${source_host}'"' /saas/log/${ENVIRONMENT}.symdb | {
+	    while read x
+	    do
+        	    set $x
+    
+		    sid=$3
+		    dev=$4
+		    pvid=$7
+    
+        	    grep $pvid $LSPV | \
+		    awk -v v=$vhost -v s=$sid -v d=$dev -v e=$env \
+	    		'{ print("/usr/ios/cli/ioscli mkvdev -vdev "$1" -vadapter "v" -dev "e"_"s"_"d);}' \
+		    	>> ${MKVDEV}
+	    done 
+	} 
+
+	logIt "Cleaning up LSPV file: $LSPV"
+	rm $LSPV > /dev/null 2>&1
+
+	
+	logIt "Running commands in CHDEV command file: ${CHDEV}"
+	cmdRunner ${CHDEV}
+	set_RC $? stop
+	rm ${CHDEV} > /dev/null 2>&1 
+
+	logIt "Running commands in MKVDEV command file: ${MKVDEV}"
+	cmdRunner ${MKVDEV}
+	set_RC $? stop
+	rm ${MKVDEV} > /dev/null 2>&1 
+
+
+}
