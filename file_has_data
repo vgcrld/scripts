@@ -1,0 +1,34 @@
+#!/bin/env sh
+
+
+
+#: _file_is_older <older> <newer>
+#
+# Returns a 0 if the <older> file is newer then <newer>
+#-
+_file_is_older() {
+
+  _old="$1"
+  _new="$2"
+
+  test "${_old}" -ot "${_new}" > /dev/null 2>&1
+  _rc="$?"
+
+  return "${_rc}"
+
+}
+
+#: _file_has_data <file_name>
+#
+# Returns a 0 if the file passed has data and a 1 if not
+#-
+_file_has_no_data() {
+
+  _file="$1"
+
+  ! test -s "${_file}" > /dev/null 2>&1
+  _rc="$?"
+
+  return "${_rc}"
+
+}

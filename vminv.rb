@@ -66,10 +66,15 @@ def get_props(filter)
 end
 
 start_time = Time.now
-objects = get_entity(@root,['HostSystem'],true)
+objects = get_entity(@root,['DistributedVirtualSwitch'],true)
 objects.each do |o|
   ap o.name
 end
+
+require 'debug'
+puts 'here'
+
+exit
 filter = create_prop_filter(objects)
 props = get_props(filter)
 puts "Total Time: #{Time.now-start_time}"

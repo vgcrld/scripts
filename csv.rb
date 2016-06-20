@@ -11,6 +11,12 @@ require 'awesome_print'
 require 'csv'
 
 
+table = CSV::Table.new(CSV.foreach("/tmp/vmware/ConfigVirtualMachine.txt"))
+
+ap table.class
+
+require 'debug'; puts :HERE
+exit
 header = %w[ name age ]
 output = CSV.open("test.csv","w",{ write_headers: true, headers: header, force_quotes: true} )
 

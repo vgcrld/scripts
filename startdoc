@@ -1,11 +1,11 @@
 #!/bin/sh
 
 echo "Stoping yard server if already running..."
-ps -ef | awk '/yard *server/ {system("kill " $2)}'
+echo "Stop status" $?
 
 echo "Rebuilding Documentation..."
 cd /home/ATS/rdavis/src/gpe-server/sources
-yard doc --private ./**/*.rb
+yard doc --private galileo*/**/*.rb
 
 echo "Starting yard server with --reload..."
 yard server --bind gpedevdb01.ats.local --reload > /dev/null 2>&1 &

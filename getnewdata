@@ -1,0 +1,2 @@
+#!/bin/sh
+scp -i ~/src/gpe-agent-flash/etc/gpe-agent-flash.d/gvicfs900.key gpeuser@gvicfs900:/dumps/tejasstats/current_short/$*  .

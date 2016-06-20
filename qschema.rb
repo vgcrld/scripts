@@ -8,23 +8,37 @@ require 'bundler/setup'
 require 'mysql'
 require 'awesome_print'
 
-#----------- issue the query
-def q_db(cmd="")
+@connect = {
+  :host     => ENV['database_host'],
+  :user     => ENV['database_user'] || 'root',
+  :password => ENV['database_password_root'],
+  :db       => ENV['database_db'] || 'data_TEST',
+  :port     => ENV['database_port'].to_i,
+}
 
-  return false if cmd == "" 
+#----------- issue the query
+def q_db( cmd="", connect=@connect )
+
+  return false if cmd == ""
 
   begin
-    con = Mysql.new 'gpedevdb01.ats.local', 'rdavis', 'J0s3phsf|', 'data_EDGE1', 5029
+    con = Mysql.new(
+      connect[:host],
+      connect[:user],
+      connect[:password],
+      connect[:db],
+      connect[:port]
+    )
     rs = con.query cmd
-  
+
   rescue Mysql::Error => e
     puts "ERROR_MSG  : " + e.error
     puts "ERROR_NO   : " + e.errno.to_s
     return false
-  
-  ensure 
+
+  ensure
     con.close if con
-  
+
   end
 
   return rs
@@ -34,11 +48,11 @@ end
 #----------- print the rows
 def print_rs(rs)
   rs.each do |row|
-    puts row.join(" | ") 
+    puts row.join(" | ")
   end
 end
 
-results = []
-q_db("show tables in data_LIVE_atsgroup;").each do |table|
-   results << q_db( "desc data_LIVE_atsgroup.#{table};" )
-end
+require 'debug'
+puts :DEBUG
+
+exit
