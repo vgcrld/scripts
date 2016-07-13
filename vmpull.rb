@@ -100,7 +100,7 @@ module GpeVmware
       @start_ts, @end_ts  = calculate_time_range
       @inventory_refs     = get_vcenter_inventory_references
       @inventory          = build_inventory( @inventory_refs )
-      #@trend              = get_trend
+      @trend              = get_trend
     end
 
     def get_trend
@@ -262,12 +262,12 @@ metric_map = {
 #puts "total time is #{endts-startts}ms"
 #vc1.close
 
-ap c2
+ap c1
 startts = Time.now.to_f
-vc2 = GpeVmware::Inventory.new( c2, metric_map, 1 )
+require 'debug'; puts :DEBUG
+vc1 = GpeVmware::Inventory.new( c1, metric_map, 1 )
 endts = Time.now.to_f
 puts "total time is #{endts-startts}ms"
 
-require 'debug'; puts :DEBUG
 
-vc2.close
+vc1.close
