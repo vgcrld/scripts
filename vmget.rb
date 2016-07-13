@@ -76,6 +76,21 @@ def get_trend( entities, counters, interval_id=20 )
   return ret
 end
 
+# Get vmware logs
+def get_logs(start=0,lines=0)
+  parms = Hash.new
+  parms.store( :start, start ) if start > 0
+  parms.store( :lines, lines ) if lines > 0
+  logfiles = @diagman.QueryDescriptions.map{ |x| x.key }
+  logs = {}
+  logfiles.each do |file|
+    parms.store( :key, file )
+    logs[file] = @diagman.BrowseDiagnosticLog( parms )
+    ap parms
+  end
+  return logs
+end
+
 # Options
 opts = Trollop::options do
   version( "0.1" )
@@ -88,6 +103,7 @@ opts = Trollop::options do
   opt( :insecure, "vSphere API insesure",   :type => :flag,   :required => false, :default => true )
   opt( :debug,    "vSphere API debug",      :type => :flag,   :required => false, :default => false )
 end
+
 
 # Create the connect string
 connect = {
@@ -110,6 +126,7 @@ root     = content.rootFolder
 @stime   = (time - ( 60*20 )).strftime("%Y-%m-%dT%H:%M:%SZ")
 @viewman = content.viewManager
 @perfman = content.perfManager
+@diagman = content.diagnosticManager
 @counters= @perfman.perfCounter.each_with_object(Hash.new) do |c,ret|
   ret[c.key] = [
     c.groupInfo.key,
