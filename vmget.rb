@@ -1,4 +1,5 @@
 #!/bin/env ruby
+# Merge me in.
 
 ENV['BUNDLE_GEMFILE'] ||= "#{ENV['HOME']}/src/gpe-agent-vmware/SOURCES/Gemfile"
 
