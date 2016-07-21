@@ -68,12 +68,12 @@ module GpeVmware
   end
 
   # Sub classes
-  class Cluster < Entity; end
-  class Resource < Entity; end
-  class Host < Entity; end
-  class Guest < Entity; end
-  class Datacenter < Entity; end;
-  class Datastore < Entity; end
+  class Cluster     < Entity; end
+  class Resource    < Entity; end
+  class Host        < Entity; end
+  class Guest       < Entity; end
+  class Datacenter  < Entity; end
+  class Datastore   < Entity; end
 
   class Inventory
 
@@ -228,6 +228,8 @@ end # end Module
 # START Here
 # ============================================
 
+require 'debug'
+
 c1 = {
   host: "nosprdvcapp01.ats.local",
   user: 'rdavis@ats.local',
@@ -255,17 +257,10 @@ metric_map = {
   #:VirtualMachine           => { :trend => [ ], :config => [ ] },
 }
 
-#ap c1
-#startts = Time.now.to_f
-#vc1 = GpeVmware::Inventory.new( c1, metric_map, 4 )
-#endts = Time.now.to_f
-#puts "total time is #{endts-startts}ms"
-#vc1.close
-
 ap c1
 startts = Time.now.to_f
 require 'debug'; puts :DEBUG
-vc1 = GpeVmware::Inventory.new( c1, metric_map, 1 )
+vc1 = GpeVmware::Inventory.new( c1, metric_map, 4 )
 endts = Time.now.to_f
 puts "total time is #{endts-startts}ms"
 

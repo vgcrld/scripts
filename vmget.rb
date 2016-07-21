@@ -1,6 +1,6 @@
 #!/bin/env ruby
 # Merge me in.
-
+#
 ENV['BUNDLE_GEMFILE'] ||= "#{ENV['HOME']}/src/gpe-agent-vmware/SOURCES/Gemfile"
 
 # gems
@@ -10,7 +10,6 @@ require 'awesome_print'
 require 'rbvmomi'
 require 'trollop'
 
-
 # Show the duplicate counters on this system
 def duplicate_counters
   dups = @counters.values.each_with_object({}) do |val,hash|
@@ -18,13 +17,11 @@ def duplicate_counters
     hash[val] +=1
   end
   summary = dups.select{ |k,v| v > 1 }.keys
-  ret = summary.each_with_object({}){ |x,h| h[x] = counters_by_name(x)  }
-  return ret
+  return summary
 end
 
 # Return an array of objects to pass to get_trend
 def entity_by_name( *names )
-  ap names
   ret = []
   names.each_slice(2) do |slice|
     type, name = slice
@@ -34,12 +31,18 @@ def entity_by_name( *names )
 end
 
 # Return an array of counters matching the /name/ regex
-def counters_by_name( *names )
+def get_counters( names, opts={ by: :key } )
   ret = []
   names.each do |rx|
-    ret += @counters.map{ |key,val| key if val.match(rx) }.compact
+    ret += @counters.map{ |key,val| [ key, rx[1] ] if val.match(rx[0]) }.compact
   end
-  return ret
+  if opts[:by] == :key
+    return ret
+  elsif opts[:by] == :name
+    return ret.map{ |x| [ @counters[x[0]], x[1] ] }
+  else 
+    return nil
+  end
 end
 
 # Rates provided for each inventory object
@@ -49,6 +52,7 @@ end
 
 # Build the "querySpec"
 def query_specs( entities, counters, interval_id=20 )
+  entities = [ entities ].flatten
   entities.map do |entity|
     {
       entity: entity,
@@ -58,7 +62,6 @@ def query_specs( entities, counters, interval_id=20 )
       intervalId: interval_id,
       metricId: counters.map do |c|
         cc, ii = c
-        ii ||= ""
         { counterId: cc, instance: ii }
       end
     }
@@ -67,17 +70,21 @@ end
 
 # Get the trend data
 def get_trend( entities, counters, interval_id=20 )
+  entities = [ entities ].flatten
   specs = query_specs( entities, counters, interval_id )
   trend = @perfman.QueryPerf( querySpec: specs )
   ret = []
   trend.each_with_index do |perf,i|
     name = perf.entity.name
-    ret += perf.value.map{ |series| [ name, series.id.counterId, @counters[series.id.counterId], series.id.instance, series.value] }
+    ret += perf.value.map do |series| 
+      [ name, series.id.counterId, @counters[series.id.counterId], series.id.instance, series.value]
+    end
   end
   return ret
 end
 
 # Get vmware logs
+# This is not getting everything
 def get_logs(start=0,lines=0)
   parms = Hash.new
   parms.store( :start, start ) if start > 0
@@ -87,11 +94,37 @@ def get_logs(start=0,lines=0)
   logfiles.each do |file|
     parms.store( :key, file )
     logs[file] = @diagman.BrowseDiagnosticLog( parms )
-    ap parms
   end
   return logs
 end
 
+# Return the non info lines
+def get_vpxd_log
+  lines = []
+  eof = false
+  i = 0
+  while( ! eof )
+    new = @diagman.BrowseDiagnosticLog(key: "vpxd:vpxd.log", start: i).lineText
+    lines += new
+    i += 500
+    eof = true if new.empty?
+  end
+  return lines.select{ |line| ! line.match(/ info /) }
+end
+
+# Convert the metrics list to a search regex array  [ [ id, '' ], [ id, '*' ] ]
+def convert_metrics_list( metrics, opts={} )
+  instances = metrics.split(",").each_with_index.map{ |str,i| str.match(/\!$/) ? "" : "*" }
+  metrics.split(',').each_with_index.map do |str,i| 
+    str.gsub!('!',"")
+    if opts[:no_instance]
+      Regexp.new(str.gsub('/',''))
+     else
+      [ Regexp.new(str.gsub('/','')), instances[i] ]
+     end
+  end
+end
+  
 # Options
 opts = Trollop::options do
   version( "0.1" )
@@ -137,6 +170,7 @@ root     = content.rootFolder
 end
 
 # Get the inventory; hash by type
+# @inv[:HostSystem] = [ ent1, ent2, ... ]
 @inv = @viewman.CreateContainerView( container: root, recursive: true ).view.flatten
 @inv = @inv.each_with_object(Hash.new) do |i,o|
   type = i.class.to_s.to_sym
@@ -144,13 +178,8 @@ end
   o[type] << i
 end
 
-# Turn option metrics to a list of regex
-search_rx           = opts[:metrics].split(',').map {|str| Regexp.new(str.gsub('/','')) }
-metrics_to_collect  = counters_by_name( *search_rx )
-
-# Turn option metrics to a list of regex
-#search_rx           = opts[:entities].split(',').map {|str| Regexp.new(str.gsub('/','')) }
-#entities_to_collect = entity_by_name( *search_rx )
+search_rx = convert_metrics_list( opts[:metrics] )
+metrics_to_collect  = get_counters( search_rx )
 
 eval opts[:code] if opts[:code]
 
