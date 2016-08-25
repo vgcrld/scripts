@@ -8,6 +8,7 @@
 
 require 'awesome_print'
 require 'trollop'
+require 'tempfile'
 
 @procs = []
 

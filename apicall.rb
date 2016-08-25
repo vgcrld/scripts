@@ -4,6 +4,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'galileo_api'
 require 'galileo_api_client'
+require 'rest-client'
 
 api   = Galileo::API.new('development')
 login = api.user_login( username: "galileo", password: "galileo", customer: "TEST" )

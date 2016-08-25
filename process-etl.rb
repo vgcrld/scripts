@@ -27,11 +27,17 @@ type     = opts[:type]
 count    = opts[:count]
 
 log.info "Current log level is #{log.level}"
-log.info "Number of input files is #{ARGV.length}"
 log.info "Customer: #{site}"
 
-files = ARGV.map{ |file| file }
+if type == "gpe"
+  files = Dir.glob("#{output}/*").sort
+else 
+  files = ARGV.map{ |file| file }
+end
+
 files = files.select{ |file| file.match(/#{type}.gz$/) }
+
+log.info "Number of input files is #{files.length}"
 
 if count
   files = files.last(count)
