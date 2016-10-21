@@ -15,6 +15,7 @@ opts = Trollop::options do
   opt :site,     'Site/Customer',    :type => String, :required => true
   opt :output,   'Stagging dir',     :type => String, :required => true
   opt :debug,    'Debug Level logs'
+  opt :move_dir, 'Move to after gpe file is loaded', :type => String, :require => true
   opt :count,    'Proces x files from input query', :type => Integer, :required => false
 end
 
@@ -25,9 +26,15 @@ site     = opts[:site]
 output   = opts[:output]
 type     = opts[:type]
 count    = opts[:count]
+move_to  = opts[:move_dir]
+
+output_dir = "#{output}/#{move_to}"
 
 log.info "Current log level is #{log.level}"
 log.info "Customer: #{site}"
+log.info "GPE Move Dir: #{output_dir}"
+
+abort "Move directory does not exist.  Create #{output_dir} and rerun!" unless File.exist? output_dir
 
 if type == "gpe"
   files = Dir.glob("#{output}/*").sort
@@ -49,7 +56,7 @@ files.each do |file|
   rc = system("OUTPUT=#{output} CUSTOMER=#{site} test-single-file #{type} #{file} > /dev/null 2>&1")
   if rc and type == 'gpe'
     log.info( "Move #{file} to ./saved" )
-    system("mv #{file} /home/ATS/rdavis/gpe/saved/")
+    system("mv #{file} #{output_dir}")
   end
   if ! rc
     log.error( "File Failed to process: #{file}" )

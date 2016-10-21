@@ -9,7 +9,10 @@ require 'rest-client'
 api   = Galileo::API.new('development')
 login = api.user_login( username: "galileo", password: "galileo", customer: "TEST" )
 
-ret = api.analytics_pie_report( "vmcluster_by_mem_max_24h_perf", [{:name=>"vmcluster_by_mem_max_24h_perf", :type=>"vmwarecluster", :selector=>{:class=>"tag", :value=>"VMWARECLUSTER@LAYER"}, :slice_by=>{:trends=>[{:name=>"mem", :type=>"vmwarecluster", :agg_func=>"MAX", :hours_back=>24, :sql_formula=>"(VMCLUSTERmemUsageAverage/100)"}], :matchers=>[{:for=>"all", :numeric_partition=>{:order=>[10, 20, 80], :labels=>["<11%", "11-20%", "21-80%", ">80%"]}}]}}], {:range_type=>nil, :timezone=>"EST5EDT", :start_local_ts=>nil, :end_local_ts=>nil, :utc_ts=>nil}, {:timezone=>"EST5EDT", :range_type=>"last_1440", :mode=>"avg", :max=>100, :other=>true, :splat=>[], :captures=>["TEST", "vmcluster_by_mem_max_24h_perf"], :customer=>"TEST", :id=>"vmcluster_by_mem_max_24h_perf"} )
+ret = api.item_last_data_children( "374", {:range_type=>"last_5", :timezone=>"EST5EDT", :start_local_ts=>nil, :end_local_ts=>nil, :utc_ts=>"2016-09-12T16:47:00"}, "dsdisk", "DISKPOOL@LAYER", ["config_CfgName", "config_CfgDSDiskpoolStatus", "config_CfgDSDiskpoolRAIDLevel", "config_CfgDSDiskpoolMediaType", "config_CfgDSDiskpoolInterfaceType", "config_CfgDSDiskpoolCurrentOwner", "config_CfgDSArrayOrDiskpoolCurrentOwner", "config_CfgDSDiskpoolTotalCapacity", "config_CfgDSDiskpoolUsedCapacity", "config_CfgDSDiskpoolFreeCapacity"] )
+#ret = api.item_last_data_children( "374", {:range_type=>"last_5", :timezone=>"EST5EDT", :start_local_ts=>nil, :end_local_ts=>nil, :utc_ts=>"2016-09-12T16:47:00"}, "dsdisk", "ARRAY@LAYER", ["config_CfgName", "config_CfgDSDiskpoolStatus", "config_CfgDSDiskpoolRAIDLevel", "config_CfgDSDiskpoolMediaType", "config_CfgDSDiskpoolInterfaceType", "config_CfgDSDiskpoolCurrentOwner", "config_CfgDSArrayOrDiskpoolCurrentOwner", "config_CfgDSDiskpoolTotalCapacity", "config_CfgDSDiskpoolUsedCapacity", "config_CfgDSDiskpoolFreeCapacity"] )
+
+ap ret
 
 exit
 
