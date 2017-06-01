@@ -55,7 +55,7 @@ files.each do |file|
   log.info( "Process file: #{file}" )
   rc = system("OUTPUT=#{output} CUSTOMER=#{site} test-single-file #{type} #{file} > /dev/null 2>&1")
   if rc and type == 'gpe'
-    log.info( "Move #{file} to ./saved" )
+    log.info( "Move #{file} to #{output_dir}" )
     system("mv #{file} #{output_dir}")
   end
   if ! rc

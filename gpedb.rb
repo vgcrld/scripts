@@ -1,7 +1,5 @@
 #!/bin/env ruby
 
-ENV['BUNDLE_GEMFILE'] ||= "#{ENV['HOME']}/src/gpe-server/Gemfile"
-
 #
 # Sample rb - simple startup
 #
@@ -12,52 +10,64 @@ require 'mysql'
 require 'ostruct'
 require 'trollop'
 require 'galileo_db'
+require 'logger'
 
-class Customer < ActiveRecord::Base; end
 
-log     = Logger.new( STDERR )
-config  = Galileo::Config.new(:development)
 
-# Establish master connection
-master_params   = config.database("api","master")
+class VmwareInstallations
 
-# Set Active Record
-ActiveRecord::Base.establish_connection(master_params)
-ActiveRecord::Base.logger = log
+  class Customer < ActiveRecord::Base; end
+  class Items < ActiveRecord::Base; end
+  class Tags < ActiveRecord::Base; end
+  class TagObjects < ActiveRecord::Base; end
 
-# Get the connection
-conn = ActiveRecord::Base.connection
+  attr_accessor :customers
+ 
+  QUERY = "select * from items, tags, tag_objects where item_type_id = 130;"
+ 
+  def initialize(env)
 
-# Save to
-data = {}
+    # Keep info
+    @customers = []
+    
+    # Setup
+    config = Galileo::Config.new(env)
+    master_params = config.database("api","master")
 
-Customer.all.each_with_index do |c,i|
+    # Connect
+    log = Logger.new( STDERR )
+    ActiveRecord::Base.establish_connection(master_params)
+    ActiveRecord::Base.logger = log
+    conn = ActiveRecord::Base.connection
 
-    schema = c.customer_db_schema
-    data[schema] = []
-
-    query = %Q[
-      select * from #{schema}.config_values
-      where config_id in (select config_id from #{schema}.configs where config_name = 'CfgCollectionInterval')
-        and item_id in (select item_id from #{schema}.items where item_type_id in (131))
-        order by poll_epoch DESC;
-    ]
-
-    begin
-      table_rows = conn.execute("SHOW TABLES FROM #{schema} LIKE 't_300_vmwarecluster_1'").num_rows
-      if table_rows > 0
-        puts "#{schema} has vmware data."
-        res = conn.execute(query)
-        res.each_hash{ |row| data[schema] << row["config_value"] }
-      else
-        puts "There is no vmware data for #{schema}."
-      end
-    rescue
-      data[schema] << "ERROR getting data!"
+    # Get all Customers
+    Customer.all.each do |customer|
+      conn = get_customer_base(customer).connection
+      result = conn.execute(QUERY)
+      @customers << [ customer, result ]
     end
+  end
 
-    data[schema].uniq!
+
+  end
 
 end
+  
+ap data = VmwareInstallations.new(:production)
+  
+   
+        #begin
+        #  table_rows = conn.execute("SHOW TABLES FROM #{schema} LIKE 't_300_vmwarecluster_1'").num_rows
+        #  if table_rows > 0
+        #    puts "#{schema} has vmware data."
+        #    res = conn.execute(query)
+        #    res.each_hash{ |row| data[schema] << row["config_value"] }
+        #  else
+        #    puts "There is no vmware data for #{schema}."
+        #  end
+        #rescue
+        #  data[schema] << "ERROR getting data!"
+        #end
+    
+        #data[schema].uniq!
 
-ap data

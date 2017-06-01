@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+source ~/oracle_helpers
+
+PS3="Select a command (Q/q) >"
+
+select i in `set | awk '/^orc.*()/{print $1}'`
+do
+  [[ $REPLY = [Qq] ]] && exit
+  printf "Parameters > "
+  read parms
+  cmd="$i $parms"
+  printf "Execute (y/n/q): $cmd ? "
+  read reply
+  if [[ $reply = [Yy] ]]
+  then
+    $cmd
+  else
+    echo No
+  fi
+done

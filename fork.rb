@@ -59,7 +59,7 @@ class TestClass
 end
 
 opts = Trollop::options do
-  opt :start,  "Start Procs", :type => :integer, :required => true
+  opt :start,  "Start Procs count", :type => :integer, :required => true
   opt :config, "Config Data", :type => :integer, :required => true
 end
 

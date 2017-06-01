@@ -1,7 +1,9 @@
 #!/bin/env ruby
-# Merge me in.
-#
+
 ENV['BUNDLE_GEMFILE'] ||= "#{ENV['HOME']}/src/gpe-agent-vmware/SOURCES/Gemfile"
+
+# require 'digest/sha1'
+# Digest::SHA1.hexdigest 'value-to-convert'
 
 # gems
 require 'rubygems'
@@ -9,6 +11,10 @@ require 'bundler/setup'
 require 'awesome_print'
 require 'rbvmomi'
 require 'trollop'
+require 'yaml'
+
+# Load this config file from yaml
+production = YAML::load(File.open("/opt/galileo/etc/gpe-agent-vmware.yml"))
 
 # Show the duplicate counters on this system
 def duplicate_counters
@@ -85,26 +91,44 @@ def slice_query_specs(specs, by=1)
 end
 
 # run a query
-def query_perf( specs, thread=0, retry_recovery=true, results=[] )
+def query_perf( specs, thread=0, retry_recovery=true )
+  results = []
   perfman = @connect[thread].serviceInstance.content.perfManager
   begin
+    status = retry_recovery ? "Starting" : "Retried"
+    puts "#{status} Query: Length: #{spec_length(specs)}, #{specs}" 
     results += perfman.QueryPerf( querySpec: specs )
   rescue Exception => e
+    puts "Rescue Query: #{e}"
+    @fails[thread] ||=[] 
+    @fails[thread]  << [ e, specs ]
     if retry_recovery
-      puts "retrying"
       slice_query_specs(specs,1).each do |spec|
-        ap spec
-        query_perf( spec, thread, false, results )
+        results += query_perf( spec, thread, false )
       end
     else
-      return e
+      ap e
+      @fails[thread] ||=[] 
+      @fails[thread]  << [ e, specs ]
     end
   end
-  return results.map{ |x| [ x.entity.name, x.value ] }
+  return results
+end
+
+def specs_for(type=:hostsystems,*values_at)
+  if values_at.empty?
+    specs = @map[type][:query_specs]
+  else
+    specs = @map[type][:query_specs].values_at(*values_at)
+  end
+  return specs
+end
+
+def rquery(type=:hostsystems,*values_at)
+  specs = specs_for(type,*values_at)
+  query_perf( specs )
 end
   
-# Get vmware logs
-# This is not getting everything
 def get_logs(start=0,lines=0)
   parms = Hash.new
   parms.store( :start, start ) if start > 0
@@ -118,7 +142,6 @@ def get_logs(start=0,lines=0)
   return logs
 end
 
-# Return the non info lines
 def get_vpxd_log
   lines = []
   eof = false
@@ -177,8 +200,41 @@ def convert_metrics_list( metrics )
   instances = metrics.split(",").each_with_index.map{ |str,i| str.match(/\!$/) ? "" : "*" }
   metrics.split(',').each_with_index.map do |str,i| 
     str.gsub!('!',"")
-    #[ Regexp.new(str.gsub('/','')), instances[i] ]
     [ Regexp.new(str), instances[i] ]
+  end
+end
+
+def make_counter_list( entities, *counters )
+  counters = counters.join(",")
+  regexp = convert_metrics_list(counters)
+  counters = get_counters(regexp)
+  return make_query_specs(entities, counters)
+end
+
+def close
+  @connect.each do |x| 
+    puts "Closing #{x.object_id}"
+    begin
+      x.close
+    rescue
+      puts "Failed close"
+    end
+  end
+end
+
+
+def run_collect_test(threads,specs,name:"default")  
+  threads.times do |tid|
+    Thread.new(tid) do |id|
+      puts "Starting #{name} thread ##{tid}"
+      begin
+        @output[tid] << query_perf(specs,tid)
+      rescue Exception => e
+        failed = true
+        puts "Failed #{name} thread ##{tid}: #{e}"
+      end
+      puts "Finished #{name} thread ##{id}" unless failed
+    end
   end
 end
 
@@ -190,28 +246,29 @@ end
 options = Trollop::options do
   version( "0.1" )
   opt( :host,     "vCenter IP or Hostname", :type => :string, :required => true )
-  opt( :user,     "vCenter User ID",        :type => :string, :required => true )
-  opt( :password, "vCenter Password",       :type => :string, :required => true )
-  opt( :metrics,  "Metrics to Collect",     :type => :string, :required => true )
-  opt( :entities, "Entities to Collect",    :type => :string, :required => true )
+  opt( :credfile, "Credentials file",       :type => :string, :required => true )
+  opt( :metrics,  "Metrics to Collect",     :type => :string, :required => false )
+  opt( :entities, "Entities to Collect",    :type => :string, :required => false )
   opt( :code    , "Run me some Code",       :type => :string, :required => false )
   opt( :insecure, "vSphere API insesure",   :type => :flag,   :required => false, :default => true )
   opt( :debug,    "Script debug",           :type => :flag,   :required => false, :default => false )
   opt( :vcdebug,  "vSphere API debug",      :type => :flag,   :required => false, :default => false )
 end
 
+user, password = File.readlines(options[:credfile])
 
 # Create the connect string
 connect_string = { 
   host: options[:host],
-  user: options[:user],
-  password: options[:password],
+  user: user.chomp!,
+  password: password.chomp!,
   insecure: true,
   debug: options[:vcdebug]
 }
 
 # Connect and get various managers and objects
 @threads = 5
+@fails   = Hash.new
 @output  = Array.new(@threads,Array.new)
 @connect = @threads.times.map{ RbVmomi::VIM.connect( connect_string ) }
 si       = @connect.first.serviceInstance
@@ -246,35 +303,16 @@ end
 # Make some shortcuts @ho
 @inv.each_pair do |key,val| 
   expression = "@#{key.to_s.downcase}s=@inv[key]"
-  puts "Creating: #{expression.split("=",2)[0]}"
   eval expression
 end
 
+def spec_length(spec_list)
+  spec_list.map{ |x| x[:metricId].length }.inject{ |x,y| x += y }
+end
+
 # Get a list of metric id's to collect
-search_rx = convert_metrics_list( options[:metrics] )
-@metrics = get_counters( search_rx )
-
-def make_counter_list( entities, *counters )
-  counters = counters.join(",")
-  regexp = convert_metrics_list(counters)
-  counters = get_counters(regexp)
-  return make_query_specs(entities, counters)
-end
-
-def run_collect_test(threads,specs,name:"default")  
-  threads.times do |tid|
-    Thread.new(tid) do |id|
-      puts "Starting #{name} thread ##{tid}"
-      begin
-        @output[tid] << query_perf(specs,tid)
-      rescue Exception => e
-        failed = true
-        puts "Failed #{name} thread ##{tid}: #{e}"
-      end
-      puts "Finished #{name} thread ##{id}" unless failed
-    end
-  end
-end
+#search_rx = convert_metrics_list( options[:metrics] )
+#@metrics = get_counters( search_rx )
 
 # Create a map of metrics to collect
 @map = { 
@@ -282,20 +320,20 @@ end
     query_specs: make_counter_list(@hostsystems,
       "clusterservices.cpufairness.latest",
       "clusterservices.memfairness.latest",
-      "cpu.coreutilization.average",
-      "cpu.costop.summation",
-      "cpu.demand.average",
-      "cpu.idle.summation",
-      "cpu.latency.average",
-      "cpu.ready.summation",
-      "cpu.reservedcapacity.average",
-      "cpu.swapwait.summation",
-      "cpu.totalcapacity.average",
-      "cpu.usage.average",
-      "cpu.usagemhz.average",
-      "cpu.used.summation",
-      "cpu.utilization.average",
-      "cpu.wait.summation",
+      "cpu.coreutilization.average!",
+      "cpu.costop.summation!",
+      "cpu.demand.average!",
+      "cpu.idle.summation!",
+      "cpu.latency.average!",
+      "cpu.ready.summation!",
+      "cpu.reservedcapacity.average!",
+      "cpu.swapwait.summation!",
+      "cpu.totalcapacity.average!",
+      "cpu.usage.average!",
+      "cpu.usagemhz.average!",
+      "cpu.used.summation!",
+      "cpu.utilization.average!",
+      "cpu.wait.summation!",
       "datastore.datastoreiops.average",
       "datastore.datastoremaxqueuedepth.latest",
       "datastore.numberreadaveraged.average",
@@ -388,8 +426,103 @@ end
   },
   virtualmachines: {
     query_specs: make_counter_list(@virtualmachines,
-      "cpu.usage.average",
-      "mem.usage.average!",
+      "cpu.costop.summation!",
+      "cpu.demand.average!",
+      "cpu.entitlement.latest!",
+      "cpu.idle.summation!",
+      "cpu.latency.average!",
+      "cpu.maxlimited.summation!",
+      "cpu.overlap.summation!",
+      "cpu.ready.summation!",
+      "cpu.run.summation!",
+      "cpu.swapwait.summation!",
+      "cpu.system.summation!",
+      "cpu.usage.average!",
+      "cpu.usagemhz.average!",
+      "cpu.used.summation!",
+      "cpu.wait.summation!",
+      "datastore.numberreadaveraged.average",
+      "datastore.numberwriteaveraged.average",
+      "datastore.read.average",
+      "datastore.totalreadlatency.average",
+      "datastore.totalwritelatency.average",
+      "datastore.write.average",
+      "disk.busresets.summation",
+      "disk.commands.summation",
+      "disk.commandsaborted.summation",
+      "disk.commandsaveraged.average",
+      "disk.numberread.summation",
+      "disk.numberreadaveraged.average",
+      "disk.numberwrite.summation",
+      "disk.numberwriteaveraged.average",
+      "disk.read.average",
+      "disk.scsireservationconflicts.summation",
+      "disk.usage.average",
+      "disk.write.average",
+      "mem.active.average",
+      "mem.activewrite.average",
+      "mem.compressed.average",
+      "mem.compressionrate.average",
+      "mem.consumed.average",
+      "mem.decompressionrate.average",
+      "mem.entitlement.average",
+      "mem.granted.average",
+      "mem.latency.average",
+      "mem.llswapinrate.average",
+      "mem.llswapoutrate.average",
+      "mem.overhead.average",
+      "mem.overheadmax.average",
+      "mem.shared.average",
+      "mem.swapin.average",
+      "mem.swapinrate.average",
+      "mem.swapout.average",
+      "mem.swapoutrate.average",
+      "mem.swapped.average",
+      "mem.swaptarget.average",
+      "mem.usage.average",
+      "mem.vmmemctl.average",
+      "mem.vmmemctltarget.average",
+      "mem.zero.average",
+      "net.broadcastrx.summation",
+      "net.broadcasttx.summation",
+      "net.bytesrx.average",
+      "net.bytestx.average",
+      "net.droppedrx.summation",
+      "net.droppedtx.summation",
+      "net.multicastrx.summation",
+      "net.multicasttx.summation",
+      "net.packetsrx.summation",
+      "net.packetstx.summation",
+      "net.received.average",
+      "net.transmitted.average",
+      "net.usage.average",
+      "power.energy.summation",
+      "power.power.average",
+      "virtualdisk.numberreadaveraged.average",
+      "virtualdisk.numberwriteaveraged.average",
+      "virtualdisk.read.average",
+      "virtualdisk.totalreadlatency.average",
+      "virtualdisk.totalwritelatency.average",
+      "virtualdisk.write.average",
+      "virtualdisk.readoio.latest",
+      "virtualdisk.writeoio.latest",
+    )
+  },
+  datastores: {
+    query_specs: make_counter_list(@datastores,
+      "datastore.busresets.summation",
+      "datastore.commandsaborted.summation",
+      "datastore.numberreadaveraged.average",
+      "datastore.numberwriteaveraged.average",
+      "datastore.read.average",
+      "datastore.write.average",
+      "disk.busresets.summation",
+      "disk.commandsaborted.summation",
+      "disk.numberreadaveraged.average",
+      "disk.numberwriteaveraged.average",
+      "disk.read.average",
+      "disk.write.average",
+      "cpu."
     )
   },
   datacenters: {
@@ -412,40 +545,32 @@ end
       "vmop.numsuspend.latest",
       "vmop.numsvmotion.latest",
       "vmop.numunregister.latest",
-      "vmop.numvmotion.latest"
+      "vmop.numvmotion.latest",
     )
   },
 }
-
-eval options[:code] if options[:code]
-
-if options[:debug]
-  puts :DEBUG_MODE
-  require 'debug'
-end
 
 ### 
 ### Main
 ###
 
-set_option("config.vpxd.stats.maxQueryMetrics",64)
-puts get_option("config.vpxd.stats.maxQueryMetrics").first.value
+begin
 
-ap query_perf make_counter_list( @hostsystems, 'cpu.(usage|usagemhz)!' )
-#ap query_perf make_counter_list( @hostsystems, 'cpu.usage.average!' )
-
-#run_collect_test(@threads, @map[:datacenters][:query_specs], name: "datacenters")
-#run_collect_test(@threads, @map[:hostsystems][:query_specs], name: "hosts")
-
-Thread.list[1..-1].each{ |x| x.join } unless Thread.list.length == 1
-
-#ap @output
-
-# Close out each connection
-@connect.each do |x| 
-  begin
-    x.close
-  rescue
-    puts "Failed close"
+  set_option("config.vpxd.stats.maxQueryMetrics",64)
+  max_query_metrics = get_option("config.vpxd.stats.maxQueryMetrics").first.value
+  puts "Current Sysetm config.vpxd.stats.maxQueryMetrics: #{max_query_metrics}"
+  
+  Thread.list[1..-1].each{ |x| x.join } unless Thread.list.length == 1
+  
+  eval options[:code] if options[:code]
+  
+  if options[:debug]
+    puts :DEBUG_MODE
+    require 'debug'
   end
+  
+ensure
+
+  close
+
 end

@@ -5,52 +5,74 @@ require 'bundler/setup'
 require 'galileo_api'
 require 'galileo_api_client'
 require 'rest-client'
+require 'ap'
+require 'galileo_testing'
 
-api   = Galileo::API.new('development')
+api = Galileo::API.new('development')
+
 login = api.user_login( username: "galileo", password: "galileo", customer: "TEST" )
 
-ret = api.item_last_data_children( "374", {:range_type=>"last_5", :timezone=>"EST5EDT", :start_local_ts=>nil, :end_local_ts=>nil, :utc_ts=>"2016-09-12T16:47:00"}, "dsdisk", "DISKPOOL@LAYER", ["config_CfgName", "config_CfgDSDiskpoolStatus", "config_CfgDSDiskpoolRAIDLevel", "config_CfgDSDiskpoolMediaType", "config_CfgDSDiskpoolInterfaceType", "config_CfgDSDiskpoolCurrentOwner", "config_CfgDSArrayOrDiskpoolCurrentOwner", "config_CfgDSDiskpoolTotalCapacity", "config_CfgDSDiskpoolUsedCapacity", "config_CfgDSDiskpoolFreeCapacity"] )
-#ret = api.item_last_data_children( "374", {:range_type=>"last_5", :timezone=>"EST5EDT", :start_local_ts=>nil, :end_local_ts=>nil, :utc_ts=>"2016-09-12T16:47:00"}, "dsdisk", "ARRAY@LAYER", ["config_CfgName", "config_CfgDSDiskpoolStatus", "config_CfgDSDiskpoolRAIDLevel", "config_CfgDSDiskpoolMediaType", "config_CfgDSDiskpoolInterfaceType", "config_CfgDSDiskpoolCurrentOwner", "config_CfgDSArrayOrDiskpoolCurrentOwner", "config_CfgDSDiskpoolTotalCapacity", "config_CfgDSDiskpoolUsedCapacity", "config_CfgDSDiskpoolFreeCapacity"] )
+#ap ret = api.analytics_pie_report( "oracle_by_os_chart", [{:name=>"oracle_by_os_chart", :type=>["oracledatabase"], :selector=>{:class=>"tag", :value=>["ORACLE@LAYER"]}, :slice_by=>{:configs=>[{:name=>"os", :config_names=>["CfgOracleDatabasePlatformName"]}], :matchers=>[{:for=>"os", :patterns=>[{:regex=>"aix.*", :ignore_case=>true, :category=>"AIX"}, {:regex=>".*windows.*", :ignore_case=>true, :category=>"Windows"}, {:regex=>"^$", :ignore_case=>true, :category=>"_unknown"}, {:regex=>"^-$", :ignore_case=>true, :category=>"_unknown"}, {:regex=>".*", :ignore_case=>true, :category=>"_other"}]}]}}], {:range_type=>nil, :timezone=>"EST5EDT", :start_local_ts=>nil, :end_local_ts=>nil, :utc_ts=>nil}, {:timezone=>"EST5EDT", :range_type=>"last_1440", :set_range_type_to_default=>true, :mode=>"avg", :max=>100, :other=>true, :splat=>[], :captures=>["TEST", "oracle_by_os_chart"], :customer=>"TEST", :id=>"oracle_by_os_chart"} )
+ret = api.analytics_execute_report( "Storwize", {:range_type=>"last_1440", :timezone=>"EST5EDT", :start_local_ts=>"2017-05-01T14:08:41", :end_local_ts=>"", :set_range_type_to_default=>false, :mode=>"avg", :max=>100, :other=>true, :splat=>[], :captures=>["TEST", "Storwize"], :customer=>"TEST"} )
 
-ap ret
+ap ret[:data][:status]
+exit
+
+ap ret = api.item_last_data_children(
+  "1",
+  {:range_type=>"last_50", :timezone=>"EST5EDT", :start_local_ts=>"", :end_local_ts=>"", :utc_ts=>"2017-02-15T16:08:00"},
+  "oracleinstance", nil,
+  ["config_CfgName", "config_CfgOracleInstanceVersion", "config_CfgOracleInstanceHostName", "config_CfgOracleInstanceParallel", "config_CfgOracleInstanceStartupTime"]
+)
 
 exit
 
-#ret   = api.analytics_execute_report(
-#  "DS8000",
+ret = api.chart_info_and_series(
+  "52000",
+  "1",
+  { :range_type=>"last_1440",
+    :timezone=>"EST5EDT",
+    :start_local_ts=>nil,
+    :end_local_ts=>nil,
+    :utc_ts=>"2017-02-09T22 :37:00"
+  },
+  {
+    :fcols=>"2",
+    :cols=>"3",
+    :set_range_type_to_default=>false,
+    :utc_ts=>"2017-02-09T22:37:00",
+    :mode=>"avg",
+    :max=>100,
+    :other=>true,
+    :customer=>"TEST",
+    :type=>"json",
+    :item_id=>"1",
+    :series_info=>"match",
+    :filters=>["abort [100]"]
+  } )
+
+ap ret
+
+#ret2 = api.chart_info_and_series(
+#  "51041",
+#  "3",
+#  { :range_type=>"last_1440",
+#    :timezone=>"EST5EDT",
+#    :start_local_ts=>nil,
+#    :end_local_ts=>nil,
+#    :utc_ts=>"2017-02-09T22 :37:00"
+#  },
 #  {
-#    :range_type=>"last_1440",
-#    :timezone=>"US/Eastern",
-#    :start_local_ts=>"2016-04-12T12:45:16",
+#    :fcols=>"2",
+#    :cols=>"3",
+#    :set_range_type_to_default=>false,
+#    :utc_ts=>"2017-02-09T22:37:00",
 #    :mode=>"avg",
 #    :max=>100,
 #    :other=>true,
-#    :splat=>[],
-#    :captures=>["LIVE_kings", "DS8000"],
-#    :customer=>"LIVE_kings"
-#  }
-#)
-
-
-#ret   = api.search( [ "1" ],
-#  {
-#    :type=>["uuid"],
-#    :related=>"true",
-#    :cache=>"false",
-#    :_=>"1460126978242",
-#    :range_type=>"last_1440",
-#    :timezone=>nil,
-#    :mode=>"avg",
-#    :max=>100,
-#    :other=>true,
-#    :splat=>[],
-#    :captures=>["vmware_test"],
-#    :customer=>"vmware_test"
+#    :customer=>"TEST",
+#    :type=>"json",
+#    :item_id=>"1",
+#    :series_info=>"match",
+#    :filters=>["abort [100]"]
 #  } )
-#
-#puts :BACK_IN
-#require 'debug'
-#puts :BACK_IN
-#
-#
-#ap ret
