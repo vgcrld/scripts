@@ -1,0 +1,153 @@
+4227    ,    Analytics VM/Softlayer Sydney    ,    1498134900
+8718    ,    Analytics VM/ViaWest    ,    1478264220
+50972    ,    Analytics VM/ViaWest    ,    1507164000
+1890    ,    base RHEL 5 64-bit FDA Golden Image QAD 2007.1SE w%2fQXtend 1.8.3 - qqadldb07/Softlayer Paris    ,    1507165200
+9063    ,    base RHEL 5 64-bit FDA Golden Image QAD 2007.1SE w%2fQXtend 1.8.3 - qqadldb07/ViaWest    ,    1478264220
+50998    ,    base RHEL 5 64-bit FDA Golden Image QAD 2007.1SE w%2fQXtend 1.8.3 - qqadldb07/ViaWest    ,    1507164000
+56858    ,    base RHEL 5 64-bit FDA Golden Image QAD 2012SE w%2fQXtend 1.8 - qqadldb1/Delong DataCenter    ,    1507165200
+9214    ,    base RHEL 5 64-bit FDA Golden Image QAD 2012SE w%2fQXtend 1.8 - qqadldb1/ViaWest    ,    1478264220
+51018    ,    base RHEL 5 64-bit FDA Golden Image QAD 2012SE w%2fQXtend 1.8 - qqadldb1/ViaWest    ,    1507164000
+157380    ,    base RHEL 5 64-bit Golden Image QAD 2010.1EE w%2fQXtend 1.6.3 - qqadldb1/Delong DataCenter    ,    1507165200
+9048    ,    base RHEL 5 64-bit Golden Image QAD 2010.1EE w%2fQXtend 1.6.3 - qqadldb1/ViaWest    ,    1478264220
+50997    ,    base RHEL 5 64-bit Golden Image QAD 2010.1EE w%2fQXtend 1.6.3 - qqadldb1/ViaWest    ,    1507164000
+33164    ,    base RHEL 6 64-bit FDA Golden Image - qqadldb1/Delong DataCenter    ,    1507165200
+8790    ,    base RHEL 6 64-bit FDA Golden Image - qqadldb1/ViaWest    ,    1478264220
+50976    ,    base RHEL 6 64-bit FDA Golden Image - qqadldb1/ViaWest    ,    1507164000
+33171    ,    base RHEL 6 64-bit FDA Golden Image QAD 2013EE w%2fQXtend 1.8.3 OE10 - qqadldb02/Delong DataCenter    ,    1507165200
+9024    ,    base RHEL 6 64-bit FDA Golden Image QAD 2013EE w%2fQXtend 1.8.3 OE10 - qqadldb02/ViaWest    ,    1478264220
+50993    ,    base RHEL 6 64-bit FDA Golden Image QAD 2013EE w%2fQXtend 1.8.3 OE10 - qqadldb02/ViaWest    ,    1507164000
+4258    ,    base RHEL 6 64-bit FDA Golden Image QAD 2014EE w%2fQXtend 1.8.3 - qqadldb10/Softlayer Sydney    ,    1507165200
+8539    ,    base RHEL 6 64-bit FDA Golden Image QAD 2014EE w%2fQXtend 1.8.3 - qqadldb10/ViaWest    ,    1478264220
+32715    ,    base RHEL 6 64-bit FDA Golden Image QAD 2015EE w%2fQXtend 1.8.6 - qqadldb18/Delong DataCenter    ,    1507165200
+5637    ,    base RHEL 6 64-bit FDA Golden Image QAD 2015EE w%2fQXtend 1.8.6 - qqadldb18/Softlayer AMS3 Datacenter    ,    1507165200
+8390    ,    base RHEL 6 64-bit FDA Golden Image QAD 2015EE w%2fQXtend 1.8.6 - qqadldb18/ViaWest    ,    1478264220
+50937    ,    base RHEL 6 64-bit FDA Golden Image QAD 2015EE w%2fQXtend 1.8.6 - qqadldb18/ViaWest    ,    1507164000
+32722    ,    base RHEL 6 64-bit FDA Golden Image QAD eB SP4 w%2fQXtend 1.8.3 - qqadldb14/Delong DataCenter    ,    1507165200
+8719    ,    base RHEL 6 64-bit FDA Golden Image QAD eB SP4 w%2fQXtend 1.8.3 - qqadldb14/ViaWest    ,    1477334220
+41735    ,    base RHEL 6 64-bit FDA Golden Image QAD eB SP4 w%2fQXtend 1.8.3 - qqadldb14/ViaWest    ,    1507164000
+94233    ,    base RHEL 6 64-bit FDA Qualified Master Image - qvarqadldb20/Delong DataCenter    ,    1507165200
+88797    ,    base RHEL 6 64-bit FDA Qualified Master Image - qvarqadldb20/Singapore DataCenter    ,    1507165200
+2025    ,    base RHEL 6 64-bit FDA Qualified Master Image - qvarqadldb20/Softlayer Paris    ,    1507165200
+8302    ,    base RHEL 6 64-bit FDA Qualified Master Image - qvarqadldb20/ViaWest    ,    1478264220
+50931    ,    base RHEL 6 64-bit FDA Qualified Master Image - qvarqadldb20/ViaWest    ,    1507164000
+171789    ,    base RHEL 6 64-bit FDA Qualified Master Image QAD base 2008SE - qvarqadldb22/Softlayer Paris    ,    1507165200
+92121    ,    base RHEL 6 64-bit FDA Qualified Master Image QAD base 2008SE - qvarqadldb22/ViaWest    ,    1507164000
+6219    ,    base RHEL 6 64-bit Non-FDA Golden Image QAD 2014SE w%2f QXtend 1.8.3 - qqadldb13/Singapore DataCenter    ,    1507165200
+2002    ,    base RHEL 6 64-bit Non-FDA Golden Image QAD 2014SE w%2f QXtend 1.8.3 - qqadldb13/Softlayer Paris    ,    1507165200
+4214    ,    base RHEL 6 64-bit Non-FDA Golden Image QAD 2014SE w%2f QXtend 1.8.3 - qqadldb13/Softlayer Sydney    ,    1507165200
+8407    ,    base RHEL 6 64-bit Non-FDA Golden Image QAD 2014SE w%2f QXtend 1.8.3 - qqadldb13/ViaWest    ,    1478264220
+372001    ,    qsfribildb02/Softlayer Paris    ,    1507108800
+371685    ,    qsfribildb02/Softlayer Paris    ,    1507165200
+40499    ,    qvarboaldb21/Delong DataCenter    ,    1476819420
+40746    ,    qvarboaldb21/ViaWest    ,    1500208500
+9236    ,    qvarboaldb21/ViaWest    ,    1476799020
+194748    ,    qvarboaldb21/ViaWest    ,    1507164000
+40496    ,    qvarboalwb01/Delong DataCenter    ,    1476819420
+40754    ,    qvarboalwb01/ViaWest    ,    1500208500
+9233    ,    qvarboalwb01/ViaWest    ,    1476799020
+194756    ,    qvarboalwb01/ViaWest    ,    1507164000
+40506    ,    qvarboants30/Delong DataCenter    ,    1476819420
+40753    ,    qvarboants30/ViaWest    ,    1500208500
+9247    ,    qvarboants30/ViaWest    ,    1476799020
+194755    ,    qvarboants30/ViaWest    ,    1507164000
+40502    ,    qvarboants31/Delong DataCenter    ,    1476819420
+40748    ,    qvarboants31/ViaWest    ,    1500208500
+9238    ,    qvarboants31/ViaWest    ,    1476799020
+194750    ,    qvarboants31/ViaWest    ,    1507164000
+40495    ,    qvarboants32/Delong DataCenter    ,    1476819420
+40750    ,    qvarboants32/ViaWest    ,    1500208500
+9248    ,    qvarboants32/ViaWest    ,    1476799020
+194752    ,    qvarboants32/ViaWest    ,    1507164000
+40494    ,    qvarboants33/Delong DataCenter    ,    1476819420
+40747    ,    qvarboants33/ViaWest    ,    1500208500
+9245    ,    qvarboants33/ViaWest    ,    1476799020
+194749    ,    qvarboants33/ViaWest    ,    1507164000
+40492    ,    qvarboants38/Delong DataCenter    ,    1476819420
+40752    ,    qvarboants38/ViaWest    ,    1500208500
+9232    ,    qvarboants38/ViaWest    ,    1476799020
+194754    ,    qvarboants38/ViaWest    ,    1507164000
+40497    ,    qvarboants39/Delong DataCenter    ,    1476819420
+40741    ,    qvarboants39/ViaWest    ,    1500208500
+9242    ,    qvarboants39/ViaWest    ,    1476799020
+194743    ,    qvarboants39/ViaWest    ,    1507164000
+40493    ,    qvarboants40/Delong DataCenter    ,    1476819420
+40744    ,    qvarboants40/ViaWest    ,    1500208500
+9237    ,    qvarboants40/ViaWest    ,    1476799020
+194746    ,    qvarboants40/ViaWest    ,    1507164000
+40503    ,    qvarboants41/Delong DataCenter    ,    1476819420
+40742    ,    qvarboants41/ViaWest    ,    1500208500
+9243    ,    qvarboants41/ViaWest    ,    1476799020
+194744    ,    qvarboants41/ViaWest    ,    1507164000
+40504    ,    qvarboants42/Delong DataCenter    ,    1476819420
+40755    ,    qvarboants42/ViaWest    ,    1500208500
+9244    ,    qvarboants42/ViaWest    ,    1476799020
+194757    ,    qvarboants42/ViaWest    ,    1507164000
+40501    ,    qvarboants43/Delong DataCenter    ,    1476819420
+40740    ,    qvarboants43/ViaWest    ,    1500208500
+9246    ,    qvarboants43/ViaWest    ,    1476799020
+194742    ,    qvarboants43/ViaWest    ,    1507164000
+40491    ,    qvarboants44/Delong DataCenter    ,    1476819420
+40743    ,    qvarboants44/ViaWest    ,    1500208500
+9240    ,    qvarboants44/ViaWest    ,    1476799020
+194745    ,    qvarboants44/ViaWest    ,    1507164000
+40498    ,    qvarboants45/Delong DataCenter    ,    1476819420
+40745    ,    qvarboants45/ViaWest    ,    1500208500
+9231    ,    qvarboants45/ViaWest    ,    1476799020
+194747    ,    qvarboants45/ViaWest    ,    1507164000
+40500    ,    qvarboants54/Delong DataCenter    ,    1476819420
+40749    ,    qvarboants54/ViaWest    ,    1500208500
+9234    ,    qvarboants54/ViaWest    ,    1476799020
+194751    ,    qvarboants54/ViaWest    ,    1507164000
+40505    ,    qvarboants55/Delong DataCenter    ,    1476819420
+121249    ,    qvarboants55/ViaWest    ,    1495444500
+40751    ,    qvarboants55/ViaWest    ,    1500208500
+9239    ,    qvarboants55/ViaWest    ,    1476799020
+194753    ,    qvarboants55/ViaWest    ,    1507164000
+371136    ,    qvarm8tdmztst01/ViaWest    ,    1507164000
+370296    ,    qvarm8tdmztst01/ViaWest    ,    1507054800
+364915    ,    qvarm8tdmztst01/ViaWest    ,    1507040400
+364802    ,    qvarm8tdmztst01/ViaWest    ,    1506974400
+362509    ,    qvarm8tdmztst01/ViaWest    ,    1506955200
+372936    ,    qvarm8ttst01/ViaWest    ,    1507164000
+371367    ,    qvarm8ttst01/ViaWest    ,    1507142400
+362460    ,    qvarm8ttst01/ViaWest    ,    1507060800
+7859    ,    qvarqadldb19/Hong Kong DataCenter    ,    1507165200
+8398    ,    qvarqadldb19/ViaWest    ,    1478097420
+371614    ,    qvaryabldb01-v5/ViaWest    ,    1507164000
+369937    ,    qvaryabldb01-v5/ViaWest    ,    1507108800
+370036    ,    qvaryabldb01-v6/ViaWest    ,    1507164000
+361990    ,    qvaryabldb01-v6/ViaWest    ,    1507038000
+372056    ,    qvaryabldb01-v7/ViaWest    ,    1507164000
+372034    ,    qvaryabldb01-v7/ViaWest    ,    1507102800
+192628    ,    RHEL 6 64-bit FDA Golden Image for Precision TMS v17.0 DB QVARQADLDB23/Softlayer Paris    ,    1507165200
+126537    ,    RHEL 6 64-bit FDA Golden Image for Precision TMS v17.0 DB QVARQADLDB23/ViaWest    ,    1507164000
+92743    ,    RHEL 6 64-bit FDA Golden Image TMS QVARQADLDB01/Softlayer Paris    ,    1507165200
+55667    ,    RHEL 6 64-bit FDA Golden Image TMS QVARQADLDB01/ViaWest    ,    1507164000
+4251    ,    UI VM/Softlayer Sydney    ,    1498134900
+8335    ,    UI VM/ViaWest    ,    1478186220
+48867    ,    UI VM/ViaWest    ,    1507164000
+4209    ,    Windows 2012 FDA Qualified Master Image - qvarqadnts20/Softlayer Sydney    ,    1507165200
+74423    ,    Windows 2012 FDA Qualified Master Image - qvarqadnts20/ViaWest    ,    1507164000
+32719    ,    Windows Server 2008 64-bit Golden Image - qvarqadnts21/Delong DataCenter    ,    1507165200
+6150    ,    Windows Server 2008 64-bit Golden Image - qvarqadnts21/Softlayer Paris    ,    1507165200
+8863    ,    Windows Server 2008 64-bit Golden Image - qvarqadnts21/ViaWest    ,    1481297820
+81312    ,    Windows Server 2008 64-bit Golden Image - qvarqadnts21/ViaWest    ,    1507164000
+67470    ,    Windows Server 2008 R2 Golden Image for QAD 2013EE - qqadnts01/Singapore DataCenter    ,    1507165200
+9182    ,    Windows Server 2008 R2 Golden Image for QAD 2013EE - qqadnts01/ViaWest    ,    1481297820
+58953    ,    Windows Server 2008 R2 Golden Image for QAD 2013EE - qqadnts01/ViaWest    ,    1507164000
+2018    ,    Windows Server 2008 R2 Golden Image for QAD 2014EE - qqadnts10/Softlayer Paris    ,    1507165200
+4217    ,    Windows Server 2008 R2 Golden Image for QAD 2014EE - qqadnts10/Softlayer Sydney    ,    1507165200
+8272    ,    Windows Server 2008 R2 Golden Image for QAD 2014EE - qqadnts10/ViaWest    ,    1481297820
+1956    ,    Windows Server 2008 R2 Golden Image for QAD 2014SE - qqadnts13/Softlayer Paris    ,    1507165200
+4256    ,    Windows Server 2008 R2 Golden Image for QAD 2014SE - qqadnts13/Softlayer Sydney    ,    1507165200
+8553    ,    Windows Server 2008 R2 Golden Image for QAD 2014SE - qqadnts13/ViaWest    ,    1481297820
+58895    ,    Windows Server 2008 R2 Golden Image for QAD 2014SE - qqadnts13/ViaWest    ,    1507164000
+32721    ,    Windows Server 2008 R2 Golden Image for QAD 2015EE - qqadnts18/Delong DataCenter    ,    1507165200
+8737    ,    Windows Server 2008 R2 Golden Image for QAD 2015EE - qqadnts18/ViaWest    ,    1481297820
+58913    ,    Windows Server 2008 R2 Golden Image for QAD 2015EE - qqadnts18/ViaWest    ,    1507164000
+192576    ,    Windows Server 2012 FDA Golden Image for Precision TMS v17 QVARQADNTS24/Softlayer Paris    ,    1507165200
+116914    ,    Windows Server 2012 FDA Golden Image for Precision TMS v17 QVARQADNTS24/ViaWest    ,    1507164000
+92740    ,    Windows Server 2012 FDA Golden Image for TMS APP QVARQADNTS21/Softlayer Paris    ,    1507165200
+58904    ,    Windows Server 2012 FDA Golden Image for TMS APP QVARQADNTS21/ViaWest    ,    1507164000
+94163    ,    Windows Server 2012 FDA Golden Image for TMS FEDEX QVARQADNTS22/Softlayer Paris    ,    1507165200
+58942    ,    Windows Server 2012 FDA Golden Image for TMS FEDEX QVARQADNTS22/ViaWest    ,    1507164000
