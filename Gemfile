@@ -8,4 +8,3 @@ gem 'awesome_print'
 gem 'rbvmomi'
 gem 'trollop'
 
-gem 'rdavis', path: '/home/ATS/rdavis/scripts'
