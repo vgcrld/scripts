@@ -18,31 +18,25 @@ require 'mail'
 log = Logger.new(STDOUT)
 err = Logger.new(STDERR)
 
-startDir  = "/home/ATS/rdavis/src/gpe-server/ui/views/help/en_US/charts/**/*.haml"
+startDir  = "/home/ATS/rdavis/src/gpe-server/ui/views/help/en_US/charts/oracle/*.haml"
 help      = Hash.new
 
 # input of chart numbers allows for ruby code which evals to array
 args = ARGV.map{ |x| eval x }.flatten.uniq.sort
 
 Dir.glob(startDir).each do |file|
-  if chart_id = file.match(/_(\d*)\.haml/)
-    begin
-      help[ chart_id[1].to_i ] = Haml::Engine.new(File.read(file)).render
-    rescue
-      err.info "Failed to convert file #{file}"
-    end
+  filename = file.split("/").last
+  begin
+    help[filename] = Haml::Engine.new(File.read(file)).render
+  rescue Exception => e
+    err.info "Failed to convert file #{file}: #{e.message}"
   end
 end
 
-# Sort by Chart Id
-html = help.sort.each_with_object(Hash.new){ |val,h| h[val[0]] = val[1] }
-
 help_text = ""
-html.each do |chart_id,chart_help|
-  if args.include?(chart_id) or args.empty? or args.nil?
-    help_text += "<h1>Chart - #{chart_id}</h1>"
-    help_text += "#{chart_help}"
-  end
+help.each do |chart_name,chart_help|
+  #help_text += "<h1>Chart - #{chart_name}</h1>"
+  help_text += "#{chart_help}"
 end
 
 outfile = File.new("/tmp/chart_help.html","w")

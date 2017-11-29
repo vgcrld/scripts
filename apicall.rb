@@ -9,13 +9,15 @@ require 'ap'
 require 'galileo_testing'
 
 api = Galileo::API.new('development')
-
 login = api.user_login( username: "galileo", password: "galileo", customer: "TEST" )
 
-#ap ret = api.analytics_pie_report( "oracle_by_os_chart", [{:name=>"oracle_by_os_chart", :type=>["oracledatabase"], :selector=>{:class=>"tag", :value=>["ORACLE@LAYER"]}, :slice_by=>{:configs=>[{:name=>"os", :config_names=>["CfgOracleDatabasePlatformName"]}], :matchers=>[{:for=>"os", :patterns=>[{:regex=>"aix.*", :ignore_case=>true, :category=>"AIX"}, {:regex=>".*windows.*", :ignore_case=>true, :category=>"Windows"}, {:regex=>"^$", :ignore_case=>true, :category=>"_unknown"}, {:regex=>"^-$", :ignore_case=>true, :category=>"_unknown"}, {:regex=>".*", :ignore_case=>true, :category=>"_other"}]}]}}], {:range_type=>nil, :timezone=>"EST5EDT", :start_local_ts=>nil, :end_local_ts=>nil, :utc_ts=>nil}, {:timezone=>"EST5EDT", :range_type=>"last_1440", :set_range_type_to_default=>true, :mode=>"avg", :max=>100, :other=>true, :splat=>[], :captures=>["TEST", "oracle_by_os_chart"], :customer=>"TEST", :id=>"oracle_by_os_chart"} )
-ret = api.analytics_execute_report( "Storwize", {:range_type=>"last_1440", :timezone=>"EST5EDT", :start_local_ts=>"2017-05-01T14:08:41", :end_local_ts=>"", :set_range_type_to_default=>false, :mode=>"avg", :max=>100, :other=>true, :splat=>[], :captures=>["TEST", "Storwize"], :customer=>"TEST"} )
+ap ret
+exit
 
-ap ret[:data][:status]
+#ret = api.analytics_execute_report( "Oracle", {:range_type=>"last_1440", :timezone=>"EST5EDT", :start_local_ts=>"2017-07-20T13:01:40", :end_local_ts=>"", :set_range_type_to_default=>false, :mode=>"avg", :max=>100, :other=>true, :splat=>[], :captures=>["TEST", "Oracle"], :customer=>"TEST"} )
+ret = api.analytics_report_definitions(  )
+
+ap ret
 exit
 
 ap ret = api.item_last_data_children(

@@ -12,6 +12,8 @@ require 'net/smtp'
 require 'trollop'
 
 SCAN_AGE = 30
+
+
 UUIDS_TO_CHECK = [
   'valley_health:205a0126-5e05-4337-b0ac-096b358e3277',
   'valley_health_meditech:c5abe757-9697-4d6a-a36b-f78f72efb5bb',
@@ -38,7 +40,7 @@ def format_output(errors,output=[])
   end
 
   unless output.empty?
-    report += "\nCheck for Items not Received in 30 Minutes or More\n\n"
+    report += "\nCheck for Items not Received in #{SCAN_AGE} Minutes or More\n\n"
     output.each do |key,val|
       report += "\t#{key}\n\n"
       val.each do |uuid,age|
@@ -71,6 +73,7 @@ UUIDS_TO_CHECK.map do |info|
   site, uuid = info.split(":",2)
   output[site] ||= {}
   folder = "/share/prd01/process/*/archive/by_uuid/#{uuid}/*.gpe.gz"
+  ap folder
   output[site][uuid] = Dir.glob(folder).map{ |file| Time.now.to_i - File.ctime(file).to_i }.sort.first / 60
 end
 

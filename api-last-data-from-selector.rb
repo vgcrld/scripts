@@ -12,7 +12,7 @@ require 'ap'
 require 'galileo_testing'
 
 def usage
-  puts 'Needs: ./qad.rb user password customer'
+  puts 'Needs: ./api-last-data-from-selector.rb user password customer'
   exit 1
 end
 
@@ -97,30 +97,30 @@ class Host < Item
 end
 
 # Get vmware guests
-data = api.items_last_data_from_selector( 
+data = api.items_last_data_from_selector(
   {
     :class=>"and",
     :value=>[
       { :class=>"tag",
-        :value=>%w[ VMWAREHOST@LAYER VMWAREGUEST@LAYER LINUX@OS ],
+        :value=>%w[ VMWAREHOST@LAYER VMWAREGUEST@LAYER LINUX@OS WINDOWS@OS ],
         :time_range_limit=>false
-      }, 
+      },
       { :class=>"and", :value=>[ { :class=>"nameRegexp", :value=>[".*"] } ] }
-    ], 
+    ],
    :time_range_limit=>false},
-   nil, 
-   %w[ config_CfgName 
-       config_CfgVmGuestVcenterCfgName 
+   nil,
+   %w[ config_CfgName
+       config_CfgVmGuestVcenterCfgName
        config_CfgVmGuestDatacenterCfgName
        config_CfgVmGuestClusterCfgName
        config_CfgVmGuestHostCfgName
-       config_CfgVmHostVcenterCfgName 
+       config_CfgVmHostVcenterCfgName
        config_CfgVmHostDatacenterCfgName
        config_CfgVmHostClusterCfgName
        config_CfgVmHostHostCfgName
        customtag_all
        itemdata_last_epoch
-       itemdata_item_status 
+       itemdata_item_status
        itemdata_item_type_id
        itemdata_item_id
    ], {} )[:data]
@@ -131,6 +131,9 @@ data.keys.each do |i|
   item = data[i]
   objects <<  Item.make(item)
 end
+
+ap objects
+exit
 
 # Parse out by type for easy access (testing)
 os      = objects.select{ |x| x.type_id == "1" }
