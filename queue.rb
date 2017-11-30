@@ -10,10 +10,20 @@
 require 'thread'
 require 'awesome_print'
 require 'logger'
+require 'trollop'
 
 # A simple log
 log = Logger.new(STDOUT)
 log.level = Logger::INFO
+
+# Arguments
+opts = Trollop::options do
+  opt :connect_string, "Connection String: user/pw@//host:port/name", :type => :string, :required => true
+  opt :threads, "Number of Threads", :type => :integer, :default => 4
+end
+
+# How many Threads
+THREADS = opts[:threads]
 
 # OCI8 Issues a warning without this set before require
 ENV['NLS_LANG'] = 'AMERICAN_AMERICA.UTF8'
@@ -43,15 +53,28 @@ class OracleDB
       curs = @conn.exec(sql)
       res  = []
       curs.fetch{ |row| res << row }
-      ret  = { sql => { cols: curs.get_col_names, result: res, success: true } }
+      ret  = { 
+        sql => { 
+          cols: curs.get_col_names,
+          result: res, success: true 
+        } 
+      }
     rescue OCIException => e
-      ret  = { sql => { cols: nil, result: [], success: false, error: e.message } }
+      ret  = { 
+        sql => { 
+          cols: nil, 
+          result: [], 
+          success: false, 
+          error: e.message 
+        } 
+      }
     end
     return ret
   end
 
 end
 
+# Turn an array into a queue 
 def make_queue(*statements)
   queue = Queue.new
   statements.each{ |x| queue << x }
@@ -114,8 +137,8 @@ out = make_queue
 sql = make_queue *queries
 
 # Start four threads to run these queries
-4.times do |x|
-  oracle = OracleDB.new("gpe/gpe123@//192.168.240.195/gvoent1")
+THREADS.times do |x|
+  oracle = OracleDB.new(opts[:connect_string])
   workers << Thread.new(x) do |id|
     while sql.length > 0
        statement = sql.pop
