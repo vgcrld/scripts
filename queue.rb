@@ -12,18 +12,20 @@ require 'awesome_print'
 require 'logger'
 require 'trollop'
 
-# A simple log
-log = Logger.new(STDOUT)
-log.level = Logger::INFO
-
 # Arguments
 opts = Trollop::options do
   opt :connect_string, "Connection String: user/pw@//host:port/name", :type => :string, :required => true
   opt :threads, "Number of Threads", :type => :integer, :default => 4
+  opt :debug, "Debug Mode", :default => false
 end
 
 # How many Threads
 THREADS = opts[:threads]
+
+# A simple log
+log = Logger.new(STDOUT)
+log.level = Logger::INFO
+log.level = Logger::DEBUG if opts[:debug]
 
 # OCI8 Issues a warning without this set before require
 ENV['NLS_LANG'] = 'AMERICAN_AMERICA.UTF8'
