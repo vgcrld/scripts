@@ -10,6 +10,7 @@
 require 'thread'
 require 'awesome_print'
 require 'logger'
+require 'benchmark'
 require 'trollop'
 
 # Options
@@ -36,8 +37,7 @@ log.level = Logger::INFO
 log.level = Logger::DEBUG if opts[:debug]
 
 # OCI8 Issues a warning without this set before require
-ENV['NLS_LANG'] = 'AMERICAN_AMERICA.UTF8'
-require 'oci8'
+ENV['NLS_LANG'] = 'AMERICAN_AMERICA.UTF8'; require 'oci8'
 
 # A class to connect to oracle
 class OracleDB
@@ -82,13 +82,6 @@ class OracleDB
     return ret
   end
 
-end
-
-# Turn an array into a queue 
-def make_queue(*statements)
-  queue = Queue.new
-  statements.each{ |x| queue << x }
-  return queue
 end
 
 # Make sure if a Thread aborts that we abort the entire script.  
@@ -144,35 +137,35 @@ queries = [
 ]
 
 # Create the output queue
-out = make_queue  # SQL output
-sql = make_queue  # SQL Statements to run
-sub = make_queue  # List of all submitted stmts
-run = make_queue  # List of all run statements
+out = Queue.new  # SQL output
+sql = Queue.new  # SQL Statements to run
+sub = Queue.new  # List of all submitted stmts
+run = Queue.new  # List of all run statements
 
+b_threads = Benchmark.measure {
 # Start threads to run these queries
 THREADS.times do |x|
   oracle = OracleDB.new(opts[:connect_string])
   workers << Thread.new(x) do |id|
     while true
-      if sql.empty?
-        sleep 1
-      else
-        # Pop in the thread holds the thread from running
-        statement = sql.pop
-        res = oracle.connect.query(statement)
-        out.push(res)
-        status = res[statement][:success] ? 'OK' : 'FAILED'
-        log.debug "#{id}, #{status}: Query: #{statement}"
-        run.push(statement)
-      end
+      # Pop in the thread holds the thread from running
+      statement = sql.pop
+      res = oracle.connect.query(statement)
+      out.push(res)
+      status = res[statement][:success] ? 'OK' : 'FAILED'
+      log.debug "#{id}, #{status}: Query: #{statement}"
+      run.push(statement)
     end
   end
 end
+}
+
+b_run = Benchmark.measure {
 
 # Run the list of commands each interval 
 (x=INTERVALS).times do |y|
   queries.each{ |x| sub << x }
-  sql = make_queue *queries
+  queries.each{ |x| sql << x }
   sleep SLEEP unless (x-1) == y
 end
 
@@ -182,8 +175,14 @@ until (s=sub.length) == (r=run.length)
   sleep 1
 end
 
+}
+
 # Show the queue lengths now that we are done
 log.info "Submitted Statements...: #{sub.length}"
 log.info "Remaining Statements...: #{sql.length}"
 log.info "Output Statements......: #{out.length}"
 log.info "Done!"
+
+# Bencharks
+puts b_threads
+puts b_run
