@@ -12,15 +12,23 @@ require 'awesome_print'
 require 'logger'
 require 'trollop'
 
-# Arguments
+# Options
 opts = Trollop::options do
   opt :connect_string, "Connection String: user/pw@//host:port/name", :type => :string, :required => true
   opt :threads, "Number of Threads", :type => :integer, :default => 4
+  opt :intervals, "Number of intervals", :type => :integer, :default => 2
+  opt :sleep, "Sleep Between Intervals", :type => :integer, :default => 10
   opt :debug, "Debug Mode", :default => false
 end
 
 # How many Threads
 THREADS = opts[:threads]
+
+# How many times to run each set of commands
+INTERVALS = opts[:intervals]
+
+# How many times to run each set of commands
+SLEEP = opts[:sleep]
 
 # A simple log
 log = Logger.new(STDOUT)
@@ -83,11 +91,11 @@ def make_queue(*statements)
   return queue
 end
 
-# Make sure if the Thread aborts that we abort the entire script.  
+# Make sure if a Thread aborts that we abort the entire script.  
 # Otherwise you can get an error and not know it.
 Thread::abort_on_exception=true
 
-# Thread to run queries - will put from the sql queue
+# Thread to run queries - will pull from the sql queue
 # and push the the out queue. 
 workers = []
 
@@ -135,41 +143,47 @@ queries = [
  %Q[select inst_id, max(sequence#) from GV$LOG_HISTORY group by systimestamp, inst_id]
 ]
 
-out = make_queue
-sql = make_queue *queries
+# Create the output queue
+out = make_queue  # SQL output
+sql = make_queue  # SQL Statements to run
+sub = make_queue  # List of all submitted stmts
+run = make_queue  # List of all run statements
 
-# Start four threads to run these queries
+# Start threads to run these queries
 THREADS.times do |x|
   oracle = OracleDB.new(opts[:connect_string])
   workers << Thread.new(x) do |id|
-    while sql.length > 0
-       statement = sql.pop
-       res = oracle.connect.query(statement)
-       out << res 
-       log.debug "#{id}: Query: #{statement}, status: #{res[statement][:success] ? 'OK' : 'FAILED'}, conn_id: #{oracle.conn.object_id}"
+    while true
+      if sql.empty?
+        sleep 1
+      else
+        # Pop in the thread holds the thread from running
+        statement = sql.pop
+        res = oracle.connect.query(statement)
+        out.push(res)
+        status = res[statement][:success] ? 'OK' : 'FAILED'
+        log.debug "#{id}, #{status}: Query: #{statement}"
+        run.push(statement)
+      end
     end
   end
 end
 
-# Push them on to the queue
-queries.each{ |query| sql << query }
+# Run the list of commands each interval 
+(x=INTERVALS).times do |y|
+  queries.each{ |x| sub << x }
+  sql = make_queue *queries
+  sleep SLEEP unless (x-1) == y
+end
 
-# Here we join the queues and the we get an error trying to join if we don't use the 
-# the timeout of 1.  I'm not sure why this is yet.
-workers.each{ |t| t.join }
-
-# Get results into an array
-results = {}
-out.length.times.map{ |x| results.merge!(out.pop) }
-
-# What has failed
-fails = results.values.select{ |x| x[:success] == false }
+# Now wait until the list of submitted is = to number of run
+until (s=sub.length) == (r=run.length)
+  log.info "Waiting for commands to complete: #{r}/#{s}"
+  sleep 1
+end
 
 # Show the queue lengths now that we are done
+log.info "Submitted Statements...: #{sub.length}"
 log.info "Remaining Statements...: #{sql.length}"
-log.info "Total Output...........: #{results.length}"
-log.info "Total Failures.........: #{fails.length}"
-
-# Over and out
+log.info "Output Statements......: #{out.length}"
 log.info "Done!"
-
