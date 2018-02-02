@@ -22,12 +22,14 @@ end
 def simple_test(*args)
   num = args.length
   puts "You passed me #{num} words."
-  args.each do |word|
-    yield word
-  end
+  args.each{ |x| yield(x) } if block_given?
 end
 
-puts
+simple_test 2,2 do |xx,yy|
+  puts "data: #{xx**2}"
+end
+
+simple_test 2,2
 
 exit
 

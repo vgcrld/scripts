@@ -1,0 +1,65 @@
+*   Trying 192.168.241.240...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to 192.168.241.240 (192.168.241.240) port 443 (#0)
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* error setting certificate verify locations, continuing anyway:
+*   CAfile: /usr/share/ssl/certs/ca-bundle.crt
+  CApath: none
+* TLSv1.2 (OUT), TLS header, Certificate Status (22):
+} [5 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Client hello (1):
+} [512 bytes data]
+* TLSv1.2 (IN), TLS handshake, Server hello (2):
+{ [107 bytes data]
+* NPN, negotiated HTTP1.1
+{ [5 bytes data]
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+{ [766 bytes data]
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+{ [333 bytes data]
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+{ [4 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+} [70 bytes data]
+* TLSv1.2 (OUT), TLS change cipher, Client hello (1):
+} [1 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Unknown (67):
+} [36 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+} [16 bytes data]
+* TLSv1.2 (IN), TLS change cipher, Client hello (1):
+{ [1 bytes data]
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+{ [16 bytes data]
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+* ALPN, server did not agree to a protocol
+* Server certificate:
+* 	 subject: OU=Pure Storage, Inc.; O=Pure Storage, Inc.
+* 	 start date: 2017-12-05 19:57:10 GMT
+* 	 expire date: 2027-12-03 19:57:10 GMT
+* 	 issuer: OU=Pure Storage, Inc.; O=Pure Storage, Inc.
+* 	 SSL certificate verify result: self signed certificate (18), continuing anyway.
+} [5 bytes data]
+> POST /api/1.12/auth/apitoken HTTP/1.1
+> Host: 192.168.241.240
+> User-Agent: curl/7.44.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 50
+> 
+} [50 bytes data]
+* upload completely sent off: 50 out of 50 bytes
+100    50    0     0  100    50      0    249 --:--:-- --:--:-- --:--:--   248{ [5 bytes data]
+< HTTP/1.1 200 OK
+< Server: nginx/1.4.6 (Ubuntu)
+< Date: Tue, 05 Dec 2017 21:34:30 GMT
+< Content-Type: application/json
+< Content-Length: 53
+< Connection: keep-alive
+< X-Frame-Options: DENY
+< 
+{ [53 bytes data]
+100   103  100    53  100    50     79     75 --:--:-- --:--:-- --:--:--    79
+* Connection #0 to host 192.168.241.240 left intact

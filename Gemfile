@@ -7,5 +7,5 @@ source 'https://rubygems.org'
 gem 'awesome_print'
 gem 'rbvmomi'
 gem 'trollop'
-gem 'ruby-oci8'
+#gem 'ruby-oci8'
 

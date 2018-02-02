@@ -2,8 +2,8 @@
 
 # ================================================================================
 # This is an example of using queues in threading.
-# A queue is a way to push values onto a stack and pull them 
-# in a threadsafe way 
+# A queue is a way to push values onto a stack and pull them
+# in a threadsafe way
 # ================================================================================
 
 # Require thread is technically not needed
@@ -63,20 +63,20 @@ class OracleDB
       curs = @conn.exec(sql)
       res  = []
       curs.fetch{ |row| res << row }
-      ret  = { 
-        sql => { 
+      ret  = {
+        sql => {
           cols: curs.get_col_names,
-          result: res, success: true 
-        } 
+          result: res, success: true
+        }
       }
     rescue OCIException => e
-      ret  = { 
-        sql => { 
-          cols: nil, 
-          result: [], 
-          success: false, 
-          error: e.message 
-        } 
+      ret  = {
+        sql => {
+          cols: nil,
+          result: [],
+          success: false,
+          error: e.message
+        }
       }
     end
     return ret
@@ -84,12 +84,12 @@ class OracleDB
 
 end
 
-# Make sure if a Thread aborts that we abort the entire script.  
+# Make sure if a Thread aborts that we abort the entire script.
 # Otherwise you can get an error and not know it.
 Thread::abort_on_exception=true
 
 # Thread to run queries - will pull from the sql queue
-# and push the the out queue. 
+# and push the the out queue.
 workers = []
 
 # Enumerate the queries
@@ -162,10 +162,10 @@ end
 
 b_run = Benchmark.measure {
 
-# Run the list of commands each interval 
+# Run the list of commands each interval
 (x=INTERVALS).times do |y|
-  queries.each{ |x| sub << x }
-  queries.each{ |x| sql << x }
+  queries.each{ |q| sub << q }
+  queries.each{ |q| sql << q }
   sleep SLEEP unless (x-1) == y
 end
 

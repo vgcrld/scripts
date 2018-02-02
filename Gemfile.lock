@@ -12,7 +12,6 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
-    ruby-oci8 (2.2.5)
     trollop (2.1.2)
 
 PLATFORMS
@@ -21,7 +20,6 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   rbvmomi
-  ruby-oci8
   trollop
 
 BUNDLED WITH

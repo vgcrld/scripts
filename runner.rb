@@ -1,42 +1,40 @@
+#!/bin/env ruby
 
+# This is not working.  It just hangs.
 
 require 'ap'
 
+msg = [
+  'Hello',
+  'Goodbye',
+  'Are you single?',
+  'Are you a nice person?',
+  'Yes, I am a good person',
+  'I need to go to the store.',
+  'I am really tired.'
+]
+
+class Thing
+  def initialize(io)
+    @io=io
+  end
+  def write(msg)
+    @io.write(msg)
+    @io.close
+  end
+  def read
+    @io.read
+    @io.close
+  end
+end
 
 read, write = IO.pipe
 
-pids = []
-states = []
+writer = Thing.new(write)
+writer.write("hello")
 
-5.times do |p|
-  pids << fork do
-    2.times do |x|
-      sleeper = rand(1)+1
-      write.puts "#{$$} value: #{rand(22)}. (sleep=#{sleeper})"
-      sleep sleeper
-    end
-  end
-  states << Process.getpgid(pids.last)
-end
-
-loop do
-  ap states
-  sleep 2
-end
+reader = Thing.new(read)
+puts reader.read
 
 
-status = Process.waitall
 
-ap status
-write.close
-data = read.read
-read.close
-
-puts data
-
-exit
-
-files = Dir.glob "/home/ATS/rdavis/mapfre/*.flash.gz"
-
-files.each do |file|
-end
