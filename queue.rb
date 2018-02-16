@@ -15,6 +15,8 @@ require 'trollop'
 
 # Options
 opts = Trollop::options do
+  version "1.0"
+  banner "Simple Queue example with Oracle commands..."
   opt :connect_string, "Connection String: user/pw@//host:port/name", :type => :string, :required => true
   opt :threads, "Number of Threads", :type => :integer, :default => 4
   opt :intervals, "Number of intervals", :type => :integer, :default => 2
