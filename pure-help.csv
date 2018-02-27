@@ -1,0 +1,86 @@
+chart_id,chart_name,chart_desc,help text
+54002,PureArray_Throughput,Array Throughput,This chart shows the read and write throughput rates for the array.
+54003,PureArray_IOPS,Array IOPS,This chart shows the read and write IOPS rates for the array.
+54004,PureArray_TotalLatency,Total Latency (Array + SAN),"This chart shows the read and write total latency for the array. Total latency includes the internal latency the array took to respond (array latency) plus latency external to the array, introduced by the SAN or the host (SAN latency)."
+54005,PureArray_Latency,Array Latency,"This chart shows the read and write array latency for the array. Array latency includes the internal latency the array took to respond, but excludes latency external to the array, introduced by the SAN or the host. Array latency is one component of total latency."
+54006,PureArray_SanLatency,SAN Latency,"This chart shows the read and write SAN latency for the array. SAN latency includes latency external to the array, introduced by the SAN or the host, but excludes the internal latency the array took to respond. SAN latency is one component of total latency."
+54007,PureArray_TransferSize,Average Transfer Size,This chart shows the average read and write transfer size for the array.
+54008,PureArray_QueueDepth,Array Average Queue Depth,This chart shows the average queue depth for the array.
+54009,Capacity_PctUsed,Array Usage (%),"This chart shows the capacity used for the array, in percentage."
+54010,Capacity_Space,Array Capacity,"This chart shows various capacity measurements for the array, including:
+System: Capacity consumed by internal metadata. Snapshots: Capacity consumed by snapshots. Volumes: Unique capacity consumed by volumes. Total: Total consumed capacity on the array. Shared: Shared capacity consumed by deduplicated volumes. Capacity: Capacity installed in the array."
+54011,Capacity_ThinProvisioning,Array Thin Provisioning,"This chart shows thin provisioning savings for the array, in percentage."
+54012,Capacity_StorageEfficiency,Array Storage Efficiency,"This chart shows Data Reduction and Total Reduction ratios for the array. Data Reduction includes savings from compression and deduplication. Total reduction includes savings from compression, deduplication, and thin provisioning."
+54013,PureVolume_TotalThroughputPerSec,Volume Total Throughput,This chart shows the combined read and write throughput rate per volume.
+54014,PureVolume_OutputPerSec,Volume Read Throughput,This chart shows the read throughput rate per volume.
+54015,PureVolume_InputPerSec,Volume Write Throughput,This chart shows the write throughput rate per volume.
+54016,PureVolume_TotalIopsPerSec,Volume Total IOPS,This chart shows the combined read and write IOPS rate per volume.
+54017,PureVolume_ReadsPerSec,Volume Read IOPS,This chart shows the read IOPS rate per volume.
+54018,PureVolume_WritesPerSec,Volume Write IOPS,This chart shows the write IOPS rate per volume.
+54019,PureVolume_TotalUsecPerReadOp,Volume Total Read Latency (Array + SAN),"This chart shows the total read latency per volume. Total latency includes the internal latency the array took to respond (array latency) plus latency external to the array, introduced by the SAN or the host (SAN latency)."
+54020,PureVolume_SanUsecPerReadOp,Volume SAN Read Latency,"This chart shows the SAN read latency per volume. SAN latency includes latency external to the array, introduced by the SAN or the host, but excludes the internal latency the array took to respond. SAN latency is one component of total latency."
+54021,PureVolume_UsecPerReadOp,Volume Array Read Latency,"This chart shows the array read latency per volume. Array latency includes the internal latency the array took to respond, but excludes latency external to the array, introduced by the SAN or the host. Array latency is one component of total latency."
+54022,PureVolume_TotalUsecPerWriteOp,Volume Total Write Latency (Array + SAN),"This chart shows the total write latency per volume. Total latency includes the internal latency the array took to respond (array latency) plus latency external to the array, introduced by the SAN or the host (SAN latency)."
+54023,PureVolume_SanUsecPerWriteOp,Volume SAN Write Latency,"This chart shows the SAN write latency per volume. SAN latency includes latency external to the array, introduced by the SAN or the host, but excludes the internal latency the array took to respond. SAN latency is one component of total latency."
+54024,PureVolume_UsecPerWriteOp,Volume Array Write Latency,"This chart shows the array write latency per volume. Array latency includes the internal latency the array took to respond, but excludes latency external to the array, introduced by the SAN or the host. Array latency is one component of total latency."
+54025,PureVolume_AverageReadSize,Volume Read Transfer Size,This chart shows the average read transfer size per volume.
+54026,PureVolume_AverageWriteSize,Volume Write Transfer Size,This chart shows the average write transfer size per volume.
+54027,PureVolumeCapacity_TotalMb,Volume Total Capacity,"This chart shows total capacity per volume. Total capacity includes capacity consumed by system metadata, snapshots, unique volume data, and shared deduplicated data."
+54028,PureVolumeCapacity_SystemMb,Volume System Capacity,This chart shows internal metadata capacity consumed per volume.
+54029,PureVolumeCapacity_SnapshotMb,Volume Snapshot Capacity,This chart shows snapshot capacity consumed per volume.
+54030,PureVolumeCapacity_VolumeMb,Volume Capacity,This chart shows unique capacity consumed per volume.
+54031,PureVolumeCapacity_SizeMb,Volume Size Capacity,This chart shows provisioned capacity per volume.
+54032,PureVolumeCapacity_SharedMb,Volume Shared Capacity,This chart shows shared (deduplicated) capacity per volume.
+54033,PureVolumeCapacity_ThinProvisioning,Volume Thin Provisioning,"This chart shows thin provisioning savings, in percentage, per volume."
+54034,PureVolumeCapacity_DataReduction,Volume Data Reduction,This chart shows Data Reduction ratio per volume. Data Reduction includes savings from compression and deduplication but excludes savings from thin provisioning.
+54035,PureVolumeCapacity_TotalReduction,Volume Total Reduction,"This chart shows Total Reduction ratio per volume. Total reduction includes savings from compression, deduplication, and thin provisioning."
+54036,PureHost_TotalThroughputPerSec,Host Total Throughput,This chart shows the combined read and write throughput rate per host.
+54037,PureHost_OutputPerSec,Host Read Throughput,This chart shows the read throughput rate per host.
+54038,PureHost_InputPerSec,Host Write Throughput,This chart shows the write throughput rate per host.
+54039,PureHost_TotalIopsPerSecond,Host Total IOPS,This chart shows the combined read and write IOPS rate per host.
+54040,PureHost_ReadsPerSec,Host Read IOPS,This chart shows the read IOPS rate per host.
+54041,PureHost_WritesPerSec,Host Write IOPS,This chart shows the write IOPS rate per host.
+54042,PureHost_TotalUsecPerReadOp,Host Total Read Latency (Array + SAN),"This chart shows the total read latency per host. Total latency includes the internal latency the array took to respond (array latency) plus latency external to the array, introduced by the SAN or the host (SAN latency)."
+54043,PureHost_SanUsecPerReadOp,Host SAN Read Latency,"This chart shows the SAN read latency per host. SAN latency includes latency external to the array, introduced by the SAN or the host, but excludes the internal latency the array took to respond. SAN latency is one component of total latency."
+54044,PureHost_UsecPerReadOp,Host Array Read Latency,"This chart shows the array read latency per host. Array latency includes the internal latency the array took to respond, but excludes latency external to the array, introduced by the SAN or the host. Array latency is one component of total latency."
+54045,PureHost_TotalUsecPerWriteOp,Host Total Write Latency (Array + SAN),"This chart shows the total write latency per host. Total latency includes the internal latency the array took to respond (array latency) plus latency external to the array, introduced by the SAN or the host (SAN latency)."
+54046,PureHost_SanUsecPerWriteOp,Host SAN Write Latency,"This chart shows the SAN write latency per host. SAN latency includes latency external to the array, introduced by the SAN or the host, but excludes the internal latency the array took to respond. SAN latency is one component of total latency."
+54047,PureHost_UsecPerWriteOp,Host Array Write Latency,"This chart shows the array write latency per host. Array latency includes the internal latency the array took to respond, but excludes latency external to the array, introduced by the SAN or the host. Array latency is one component of total latency."
+54048,PureHost_AverageReadSize,Host Read Transfer Size,This chart shows the average read transfer size per host.
+54049,PureHost_AverageWriteSize,Host Write Transfer Size,This chart shows the average write transfer size per host.
+54050,PureHostCapacity_TotalMb,Host Total Capacity,"This chart shows total capacity per host. Total capacity includes capacity consumed by system metadata, snapshots, unique volume data, and shared deduplicated data.
+NOTE: For a volume mapped to multiple hosts, that volume's capacity will be included with each of the mapped hosts. For this reason, stacked charts are not recommended, as the capacity of such volumes is exaggerated proportionally to the number of hosts mapped."
+54051,PureHostCapacity_SnapshotMb,Host Snapshot Capacity,"This chart shows snapshot capacity consumed per host.
+NOTE: For a volume mapped to multiple hosts, that volume's capacity will be included with each of the mapped hosts. For this reason, stacked charts are not recommended, as the capacity of such volumes is exaggerated proportionally to the number of hosts mapped."
+54052,PureHostCapacity_VolumeMb,Host Volume Capacity,"This chart shows unique capacity consumed per host.
+NOTE: For a volume mapped to multiple hosts, that volume's capacity will be included with each of the mapped hosts. For this reason, stacked charts are not recommended, as the capacity of such volumes is exaggerated proportionally to the number of hosts mapped."
+54053,PureHostCapacity_SizeMb,Host Size Capacity,"This chart shows provisioned capacity per host.
+NOTE: For a volume mapped to multiple hosts, that volume's capacity will be included with each of the mapped hosts. For this reason, stacked charts are not recommended, as the capacity of such volumes is exaggerated proportionally to the number of hosts mapped."
+54054,PureHostCapacity_ThinProvisioning,Host Thin Provisioning,"This chart shows thin provisioning savings, in percentage, per host."
+54055,PureHostCapacity_DataReduction,Host Data Reduction,This chart shows Data Reduction ratio per host. Data Reduction includes savings from compression and deduplication but excludes savings from thin provisioning.
+54056,PureHostCapacity_TotalReduction,Host Total Reduction,"This chart shows Total Reduction ratio per host. Total reduction includes savings from compression, deduplication, and thin provisioning."
+54057,PureHostgroup_TotalThroughputPerSec,Host Group Total Throughput,This chart shows the combined read and write throughput rate per host group.
+54058,PureHostgroup_OutputPerSec,Host Group Read Throughput,This chart shows the read throughput rate per host group.
+54059,PureHostgroup_InputPerSec,Host Group Write Throughput,This chart shows the write throughput rate per host group.
+54060,PureHostgroup_TotalIopsPerSec,Host Group Total IOPS,This chart shows the combined read and write IOPS rate per host group.
+54061,PureHostgroup_ReadsPerSec,Host Group Read IOPS,This chart shows the read IOPS rate per host group.
+54062,PureHostgroup_WritesPerSec,Host Group Write IOPS,This chart shows the write IOPS rate per host group.
+54063,PureHostgroup_TotalUsecPerReadOp,Host Group Total Read Latency (Array + SAN),"This chart shows the total read latency per host group. Total latency includes the internal latency the array took to respond (array latency) plus latency external to the array, introduced by the SAN or the host (SAN latency)."
+54064,PureHostgroup_SanUsecPerReadOp,Host Group SAN Read Latency,"This chart shows the SAN read latency per host group. SAN latency includes latency external to the array, introduced by the SAN or the host, but excludes the internal latency the array took to respond. SAN latency is one component of total latency."
+54065,PureHostgroup_UsecPerReadOp,Host Group Array Read Latency,"This chart shows the array read latency per host group. Array latency includes the internal latency the array took to respond, but excludes latency external to the array, introduced by the SAN or the host. Array latency is one component of total latency."
+54066,PureHostgroup_TotalUsecPerWriteOp,Host Group Total Write Latency (Array + SAN),"This chart shows the total write latency per host group. Total latency includes the internal latency the array took to respond (array latency) plus latency external to the array, introduced by the SAN or the host (SAN latency)."
+54067,PureHostgroup_SanUsecPerWriteOp,Host Group SAN Write Latency,"This chart shows the SAN write latency per host group. SAN latency includes latency external to the array, introduced by the SAN or the host, but excludes the internal latency the array took to respond. SAN latency is one component of total latency."
+54068,PureHostgroup_UsecPerWriteOp,Host Group Array Write Latency,"This chart shows the array write latency per host group. Array latency includes the internal latency the array took to respond, but excludes latency external to the array, introduced by the SAN or the host. Array latency is one component of total latency."
+54069,PureHostgroup_AverageReadSize,Host Group Read Transfer Size,This chart shows the average read transfer size per host group.
+54070,PureHostgroup_AverageWriteSize,Host Group Write Transfer Size,This chart shows the average write transfer size per host group.
+54071,PureHostGroupCapacity_TotalMb,Host Group Total Capacity,"This chart shows total capacity per host group. Total capacity includes capacity consumed by system metadata, snapshots, unique volume data, and shared deduplicated data.
+NOTE: For a volume mapped to multiple hosts, that volume's capacity will be included with each of the mapped hosts. For this reason, stacked charts are not recommended, as the capacity of such volumes is exaggerated proportionally to the number of hosts mapped."
+54072,PureHostGroupCapacity_SnapshotMb,Host Group Snapshot Capacity,"This chart shows snapshot capacity consumed per host group.
+NOTE: For a volume mapped to multiple hosts, that volume's capacity will be included with each of the mapped hosts. For this reason, stacked charts are not recommended, as the capacity of such volumes is exaggerated proportionally to the number of hosts mapped."
+54073,PureHostGroupCapacity_VolumeMb,Host Group Volume Capacity,"This chart shows unique capacity consumed per host group.
+NOTE: For a volume mapped to multiple hosts, that volume's capacity will be included with each of the mapped hosts. For this reason, stacked charts are not recommended, as the capacity of such volumes is exaggerated proportionally to the number of hosts mapped."
+54074,PureHostGroupCapacity_SizeMb,Host Group Size Capacity,"This chart shows provisioned capacity per host group.
+NOTE: For a volume mapped to multiple hosts, that volume's capacity will be included with each of the mapped hosts. For this reason, stacked charts are not recommended, as the capacity of such volumes is exaggerated proportionally to the number of hosts mapped."
+54075,PureHostGroupCapacity_ThinProvisioning,Host Group Thin Provisioning,"This chart shows thin provisioning savings, in percentage, per host group."
+54076,PureHostGroupCapacity_DataReduction,Host Group Data Reduction,This chart shows Data Reduction ratio per host group. Data Reduction includes savings from compression and deduplication but excludes savings from thin provisioning.
+54077,PureHostGroupCapacity_TotalReduction,Host Group Total Reduction,"This chart shows Total Reduction ratio per host group. Total reduction includes savings from compression, deduplication, and thin provisioning."
