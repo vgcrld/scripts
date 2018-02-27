@@ -1,17 +1,12 @@
+PATH
+  remote: ../tsm
+  specs:
+    tsm (0.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
     awesome_print (1.8.0)
-    builder (3.2.3)
-    json (2.1.0)
-    mini_portile2 (2.3.0)
-    nokogiri (1.8.1)
-      mini_portile2 (~> 2.3.0)
-    rbvmomi (1.11.3)
-      builder (~> 3.0)
-      json (>= 1.8)
-      nokogiri (~> 1.5)
-      trollop (~> 2.1)
     trollop (2.1.2)
 
 PLATFORMS
@@ -19,8 +14,5 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  rbvmomi
   trollop
-
-BUNDLED WITH
-   1.16.0
+  tsm!

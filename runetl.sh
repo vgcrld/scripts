@@ -4,7 +4,7 @@
 parms=$@
 
 # Number of pids/forks
-procs=6
+procs=10
 
 # Counter
 c=0

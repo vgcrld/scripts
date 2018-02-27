@@ -5,7 +5,9 @@ source 'https://rubygems.org'
 #gemspec
 
 gem 'awesome_print'
-gem 'rbvmomi'
 gem 'trollop'
+gem 'tsm', path: '../tsm'
+#
+#gem 'rbvmomi'
 #gem 'ruby-oci8'
 
