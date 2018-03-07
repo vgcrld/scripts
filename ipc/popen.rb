@@ -40,7 +40,6 @@ end
 
 def exec(cmd)
   ret = Hash.new
-  ret[cmd] = Hash.new
   begin
     @stdin.puts(cmd)
   rescue
@@ -48,8 +47,8 @@ def exec(cmd)
     retry
   end
   data = get_buffered
-  ret[cmd][:format] = format(data)
-  ret[cmd][:raw] = data
+  ret[:format] = format(data)
+  ret[:raw] = data
   return ret
 end
 
@@ -82,24 +81,25 @@ def reopen
 end
 
 def dsmadmc?
-  rc = `#{DSMADMC}`
-  return [ $?.exitstatus, rc ]
+  puts "Try: #{DSMADMC}"
+  rc = `#{DSMADMC} quit`
+  raise "Can't connect to dsmadmc: #{rc}" if $?.exitstatus > 0
 end
 
-check = dsmadmc?
-if check.first != 0
-  raise "Can't connect to dsmadmc: #{check.last}"
-end
+# Are you active
+dsmadmc?
 
-
+# If so connect
 connect
-ap @stderr
 
+# Get the Prompt as the delimiter
 @delim = get_delim
 
-puts @output.path
+# Let's save the output
+@data = Hash.new(false)
 
-x = exec('q db')
+# Collect 
+@data.store(:databas,exec('q db'))
 
 require 'debug'
 
