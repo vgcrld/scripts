@@ -1,0 +1,20 @@
+IBM Spectrum Protect
+Command Line Administrative Interface - Version 8, Release 1, Level 4.0
+(c) Copyright by IBM Corporation and other(s) 1990, 2017. All Rights Reserved.
+
+Session established with server TSM1500: Linux/x86_64
+  Server Version 7, Release 1, Level 8.000
+  Server date/time: 03/06/2018 15:18:06  Last access: 03/06/2018 15:17:41
+
+
+Database Name: TSMDB1
+  Total Pages: 71,041,531
+ Usable Pages: 71,038,427
+   Used Pages: 65,393,851
+   Free Pages: 5,644,576
+
+
+Total Space(MB): 131,072
+ Used Space(MB): 986
+ Free Space(MB): 130,086
+
