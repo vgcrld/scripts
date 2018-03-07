@@ -4,12 +4,24 @@ require 'tempfile'
 
 include Open3
 
-def connect 
+DSMADMC = %w[
+  dsmadmc
+  -se=gem
+  -id=admin
+  -pa=admin
+  -display=list
+  -dataonly=yes
+  -alwaysprompt
+  -NEWLINEAFTERPrompt
+].join(" ")
+
+
+def connect
   @output = Tempfile.new(['tsmoutput-','.tmp'])
   @output.sync = true
   @outs ||= []
   @outs << @output
-  @stdin, @stdout, @stderr, @pid = popen3("dsmadmc -id=admin -pa=admin -display=list -dataonly=yes -alwaysprompt -NEWLINEAFTERPrompt > #{@output.path}")
+  @stdin, @stdout, @stderr, @pid = popen3("#{DSMADMC} > #{@output.path}")
 end
 
 def get_delim
@@ -43,8 +55,16 @@ end
 
 def get_buffered(delim=@delim)
   data = ""
+  cycles = 0
+  count = 0
   until data.match /#{delim}$/
     data += @output.read_nonblock(@output.size-@output.pos)
+    cycles += 1
+    if (cycles%10000) == 0
+      count += 1
+      print "."
+      raise "Can't seem to connect." if count == 10
+    end
   end
   return data
 end
@@ -61,7 +81,19 @@ def reopen
   connect
 end
 
-connect 
+def dsmadmc?
+  rc = `#{DSMADMC}`
+  return [ $?.exitstatus, rc ]
+end
+
+check = dsmadmc?
+if check.first != 0
+  raise "Can't connect to dsmadmc: #{check.last}"
+end
+
+
+connect
+ap @stderr
 
 @delim = get_delim
 
