@@ -1,0 +1,36 @@
+
+dscli> Command:lsrank
+Date/Time: March 13, 2018 5:37:45 PM EDT IBM DSCLI Version: 5.4.21.180 DS: IBM.2107-75MM161
+ID|Group|State|datastate|Array|RAIDtype|extpoolID|stgtype
+=========================================================
+IBM.2107-75MM161/R0|0|Normal|Normal|IBM.2107-75MM161/A0|5|IBM.2107-75MM161/P0|fb
+IBM.2107-75MM161/R1|1|Normal|Normal|IBM.2107-75MM161/A1|5|IBM.2107-75MM161/P1|fb
+IBM.2107-75MM161/R2|0|Normal|Normal|IBM.2107-75MM161/A2|5|IBM.2107-75MM161/P2|fb
+IBM.2107-75MM161/R3|1|Normal|Normal|IBM.2107-75MM161/A3|5|IBM.2107-75MM161/P3|fb
+IBM.2107-75MM161/R4|0|Normal|Normal|IBM.2107-75MM161/A4|5|IBM.2107-75MM161/P4|fb
+IBM.2107-75MM161/R5|1|Normal|Normal|IBM.2107-75MM161/A5|5|IBM.2107-75MM161/P5|fb
+IBM.2107-75MM161/R6|0|Normal|Normal|IBM.2107-75MM161/A6|5|IBM.2107-75MM161/P6|fb
+IBM.2107-75MM161/R7|1|Normal|Normal|IBM.2107-75MM161/A7|5|IBM.2107-75MM161/P7|fb
+dscli> Command:showrank -metrics r0
+Date/Time: March 13, 2018 5:38:18 PM EDT IBM DSCLI Version: 5.4.21.180 DS: IBM.2107-75MM161
+ID            IBM.2107-75MM161/R0
+Date          03/12/2018 21:14:28 EDT
+byteread      730863629
+bytewrit      1860864784
+Reads         3264518291
+Writes        2653917017
+timeread      1206933863
+timewrite     3057065980
+dataencrypted yes
+dscli> Command:showrank -metrics r0
+Date/Time: March 13, 2018 5:38:21 PM EDT IBM DSCLI Version: 5.4.21.180 DS: IBM.2107-75MM161
+ID            IBM.2107-75MM161/R0
+Date          03/12/2018 21:14:31 EDT
+byteread      730863631
+bytewrit      1860864785
+Reads         3264518297
+Writes        2653917036
+timeread      1206933864
+timewrite     3057065997
+dataencrypted yes
+
