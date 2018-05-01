@@ -11,14 +11,18 @@ class Environment
   def initialize(argv: ARGV)
     @home  = set_home
     @argv  = argv
-    @paths = make_structure
+    @paths = make_structure(@home,HOME_DIRS)
+  end
+
+  def dirs
+    return @paths.to_h.keys
   end
 
   private
 
-  def make_structure
+  def make_structure(home,dir_list)
     ret = OpenStruct.new
-    HOME_DIRS.each do |dir|
+    dir_list.each do |dir|
       name = dir.gsub("/","_")
       path = [home, dir].join('/')
       FileUtils.mkdir_p(path)

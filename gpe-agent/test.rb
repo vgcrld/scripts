@@ -4,7 +4,7 @@ require_relative 'environment'
 
 env = Environment.new
 
-ap env.paths.to_h
+ap env.dirs
 
 exit
 agent = Command.create do |o|
