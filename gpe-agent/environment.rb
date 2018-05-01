@@ -1,16 +1,15 @@
 require 'fileutils'
 
-
 class Environment
 
   # Create these directory locations
   HOME_DIRS = %w(bin etc lib log service tmp var var/files var/cache var/archive)
 
-  attr_reader :home, :argv, :paths
+  attr_reader :home, :args, :paths
 
-  def initialize(argv: ARGV)
+  def initialize(args: ARGV)
     @home  = set_home
-    @argv  = argv
+    @args  = args
     @paths = make_structure(@home,HOME_DIRS)
   end
 
@@ -19,6 +18,10 @@ class Environment
   end
 
   private
+
+  def method_missing(m, *args)
+    return @paths[m].path
+  end
 
   def make_structure(home,dir_list)
     ret = OpenStruct.new
@@ -32,8 +35,8 @@ class Environment
   end
 
   def set_home
+    raise "GPE_HOME is not set." unless ENV['GPE_HOME']
     return is_directory?(is_writable?(ENV['GPE_HOME']))
-    raise "GPE_HOME is not set."
   end
 
   def env_set?(key)

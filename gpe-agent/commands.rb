@@ -1,19 +1,14 @@
-require_relative 'features'
-
 require 'ostruct'
 require 'trollop'
 
-class Command
-
-  # Not Sure this is needed
-  include Features
+class Commands
 
   attr_accessor :command, :parsers
 
   def self.create
-    being = self.new
-    yield(being) if block_given?
-    return being
+    cmd = self.new
+    yield(cmd) if block_given?
+    return cmd
   end
 
   def initialize
@@ -27,7 +22,5 @@ class Command
   def run(cmd)
     parser = parsers.to_h[cmd]
   end
-
-  private
 
 end
