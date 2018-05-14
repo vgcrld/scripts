@@ -3,7 +3,7 @@ require 'trollop'
 
 class Commands
 
-  attr_accessor :command, :parsers
+  attr_accessor :command, :parsers, :collectors
 
   def self.create
     cmd = self.new
@@ -13,14 +13,11 @@ class Commands
 
   def initialize
     @parsers = OpenStruct.new
+    @collectors = OpenStruct.new
   end
 
   def subcommands
     return parsers.to_h.keys
-  end
-
-  def run(cmd)
-    parser = parsers.to_h[cmd]
   end
 
 end
