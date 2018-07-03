@@ -12,5 +12,5 @@ gem 'commander'
 gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'
 
 #gem 'rbvmomi'
-#gem 'ruby-oci8'
+gem 'ruby-oci8'
 

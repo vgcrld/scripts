@@ -12,6 +12,7 @@ GEM
     commander (4.4.4)
       highline (~> 1.7.2)
     highline (1.7.10)
+    ruby-oci8 (2.2.5.1)
     trollop (2.1.2)
 
 PLATFORMS
@@ -21,4 +22,8 @@ DEPENDENCIES
   awesome_print
   commander
   rld!
+  ruby-oci8
   trollop
+
+BUNDLED WITH
+   1.16.1
