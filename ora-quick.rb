@@ -39,13 +39,14 @@ end
 
 res = query(
   #conn: OCI8.new('gpe/gpe123@//192.168.240.195/gvoent1'),
-  conn: OCI8.new('GPE/GPE123@//gvicoracluster1.ats.local/gvorac'),
+  #conn: OCI8.new('GPE/GPE123@//gvicoracluster1.ats.local/gvorac'),
+  conn: OCI8.new('GPE/GPE123@ora_cluster.world'),
   stmt: 'select * from v$sqlarea'
 )
 
-#to_mem(res)
-to_file(res)
+to_mem(res)
+#to_file(res)
 
-report_memory
+ap report_memory
 
 
