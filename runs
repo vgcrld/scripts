@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'commander'
+require 'awesome_print'
+
+class MyApplication
+  include Commander::Methods
+  # include whatever modules you need
+
+  def run
+    program :name, 'runs'
+    program :version, '0.0.1'
+    program :description, 'Run Something'
+
+    command :create do |c|
+      c.syntax = 'runs create [options]'
+      c.summary = 'Create some Stuff'
+      c.description = 'This does some stuff you will like.'
+      c.example 'Build this:', 'runs create opt1 opt2'
+      c.option '--force-switch', 'force it'
+      c.action do |args, options|
+        #x = ask_for_array("Enter some data.")
+        ap self.methods - Object.methods
+        #puts "HELLO #{force}" * 10
+        # Do something or c.when_called Runs::Commands::Create
+      end
+    end
+
+    command :replace do |c|
+      c.syntax = 'runs replace [options]'
+      c.summary = ''
+      c.description = ''
+      c.example 'description', 'command example'
+      c.option '--some-switch', 'Some switch that does something'
+      c.action do |args, options|
+        # Do something or c.when_called Runs::Commands::Replace
+      end
+    end
+
+    command :update do |c|
+      c.syntax = 'runs update [options]'
+      c.summary = ''
+      c.description = ''
+      c.example 'description', 'command example'
+      c.option '--some-switch', 'Some switch that does something'
+      c.action do |args, options|
+        # Do something or c.when_called Runs::Commands::Update
+      end
+    end
+
+    command :delete do |c|
+      c.syntax = 'runs delete [options]'
+      c.summary = ''
+      c.description = ''
+      c.example 'description', 'command example'
+      c.option '--some-switch', 'Some switch that does something'
+      c.action do |args, options|
+        # Do something or c.when_called Runs::Commands::Delete
+      end
+    end
+
+    run!
+  end
+end
+
+MyApplication.new.run if $0 == __FILE__

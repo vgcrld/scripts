@@ -1,0 +1,69 @@
+#!/bin/sh
+
+mkpipe () {
+  type="$1"
+  pipe="${type}.pipe"
+  out="${type}.output"
+  mkfifo "${pipe}"
+  echo "Create process for type ${type}: '${EXEC_CMD}'"
+  $EXEC_CMD <> "${pipe}" >> "$out" &
+  pid=$!
+  export_pid="${type}_pid=${pid}"
+  eval "export ${export_pid}"
+  echo "Started PID for: ${export_pid}"
+}
+
+execute () {
+  type="$1"
+  shift
+  cmd="$*"
+  pipe="${type}.pipe"
+  out="${type}.output"
+  echo "Execute command to ${type}: ${cmd}"
+  echo "${DELIM_CMD}" >>"${pipe}"
+  echo "${cmd}" >>"${pipe}"
+}
+
+delete_pipe () {
+  execute "${type}" "quit"
+  eval "export wait_pid=\$${type}_pid"
+  wait "${wait_pid}"
+  rm "${type}.pipe"
+}
+
+#--------------------------------------------------
+# Start Here
+#--------------------------------------------------
+
+# Sub process to create and delim command
+EXEC_CMD="dsmadmc -se=gem -id=admin -pa=admin -display=list -dataonly=yes -alwaysprompt -newlineafterprompt"
+DELIM_CMD="show time"
+
+if ${EXEC_CMD} ${DELIM_CMD} ; then
+  echo Able to connect.  Continuing...
+else
+  echo Failed to connect please investigate and retry.
+  exit 1
+fi
+
+for type in db log vol libr; do
+  echo "Starting sub processes for collection."
+  mkpipe "${type}"
+done
+
+for int in 1 2; do
+  echo "Run interval $int:"
+  execute "db"   "q db f=d" 
+  execute "log"  "q log f=d" 
+  execute "vol"  "q vol f=d" 
+  execute "libr" "q libr f=d" 
+  sleep 2
+done
+
+for type in db log vol libr; do
+  echo "End all subprocesses and cleanup."
+  delete_pipe "${type}"
+done
+
+# Cleanup and exit
+echo "Done!"
