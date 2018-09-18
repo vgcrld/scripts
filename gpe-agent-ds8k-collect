@@ -1,0 +1,94 @@
+#!/bin/sh
+
+mkpipe () {
+  type="$1"
+  pipe="${type}.pipe"
+  out="${type}.output"
+  rm "${out}" > /dev/null 2>&1
+  rm "${pipe}" > /dev/null 2>&1
+  mkfifo "${pipe}"
+  echo "Create process for type ${type}: '${EXEC_CMD}'"
+  $EXEC_CMD <> "${pipe}" >> "$out" &
+  pid=$!
+  export_pid="${type}_pid=${pid}"
+  eval "export ${export_pid}"
+  echo "Started PID for: ${export_pid}"
+}
+
+execute () {
+  type="$1"
+  shift
+  cmd="$*"
+  pipe="${type}.pipe"
+  out="${type}.output"
+  echo "Execute command to ${type}: ${cmd}"
+  echo "${DELIM_CMD}" >>"${pipe}"
+  echo "${cmd}" >>"${pipe}"
+}
+
+rmpipe () {
+  execute "${type}" "${EXEC_QUIT}"
+  eval "export wait_pid=\$${type}_pid"
+  wait "${wait_pid}"
+  rm "${type}.pipe"
+}
+
+check_connect () {
+  if ${EXEC_CMD} ${DELIM_CMD} ; then
+    echo "Connection SUCCESSFUL.  Continuing..."
+  else
+    echo "Failed to connect please investigate and retry."
+    exit 1
+  fi
+}
+
+#--------------------------------------------------
+# Start Here
+#--------------------------------------------------
+
+# Sub process to create and delim command
+SLEEP=60
+EXEC_CMD="/opt/ibm/dscli/dscli -cfg /opt/galileo/etc/gpe-agent-ds8k.d/ds8000_1.profile -user admin -pwfile /opt/ibm/dscli/ds8000_pw"
+DELIM_CMD="ver"
+EXEC_QUIT="quit"
+SUB_LIST="rank extpool fbvol logmir"
+
+check_connect 
+
+# Make file listout.output where we will get the ranks,extpools,fbvols
+mkpipe "listout"
+execute "listout" "lsrank"
+execute "listout" "lsextpool"
+execute "listout" "lsfbvol"
+execute "listout" "lslss"
+#execute "listout" "lsckdvol"
+rmpipe "listout"
+
+# Get lists to iterate through
+ranks=`awk '/^dscli> Command:lsrank/,/dscli> Command:ver/' "listout.output" | awk -F'|' '/fb$/{print "showrank -metrics "$1}'`
+extpools=`awk '/^dscli> Command:lsextpool/,/dscli> Command:ver/' "listout.output" | awk -F'|' '/|IBM/{print "showextpool -metrics "$2}'`
+fbvols=`awk '/^dscli> Command:lsfbvol/,/dscli> Command:ver/' "listout.output" | awk -F'|' '/|IBM/{print "showfbvol -metrics "$2}'`
+logmirs=`awk '/^dscli> Command:lslss/,/dscli> Command:ver/' "listout.output" | awk -F'|' '/^IBM/{print "showgmir -metrics "$1}'`
+
+for type in ${SUB_LIST}; do
+  echo "Starting sub processes for collection."
+  mkpipe "${type}"
+done
+
+for int in 1 2; do
+  echo "Run interval $int:"
+  execute "rank"    "$ranks"
+  execute "extpool" "$extpools"
+  execute "fbvol"   "$fbvols"
+  execute "logmir"  "$logmirs"
+  echo "Sleep for $SLEEP second(s)"
+  sleep "${SLEEP}"
+done
+
+for type in ${SUB_LIST}; do
+  echo "End all subprocesses and cleanup."
+  rmpipe "${type}"
+done
+
+# Cleanup and exit
+echo "Done!"

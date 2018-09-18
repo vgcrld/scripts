@@ -41,9 +41,8 @@ class Mailer
 
 end
 
-def sue(a,&block)
-  puts a
-  block.call if block
+def sue(a)
+  yield
 end
 
 sue(15) do |x|

@@ -1,0 +1,36 @@
+#!/bin/env ruby
+
+require 'awesome_print'
+
+trap("SIGINT") {
+  clean_stop
+}
+
+@que = Queue.new
+
+def clean_stop
+  exit if @runner.nil?
+  @que.push(:stop)
+  puts "ending..."
+  @runner.join
+  exit
+end
+
+def mkrunner
+  @runner = Thread.new {
+    while true
+      cmd = @que.pop
+      Thread.exit if cmd == :stop
+      $stdout.puts "Data: #{cmd}"
+    end
+  }
+end
+
+# Loop for all input
+ARGF.each do |o|
+  #@que.push(o)
+  puts o
+  #$stdout.flush
+end
+
+#clean_stop

@@ -18,9 +18,9 @@ opts = Trollop::options do
   version "1.0"
   banner "Simple Queue example with Oracle commands..."
   opt :connect_string, "Connection String: user/pw@//host:port/name", :type => :string, :required => true
-  opt :threads, "Number of Threads", :type => :integer, :default => 4
-  opt :intervals, "Number of intervals", :type => :integer, :default => 2
-  opt :sleep, "Sleep Between Intervals", :type => :integer, :default => 10
+  opt :threads, "Number of Threads", :type => :integer, :default => 2
+  opt :intervals, "Number of intervals", :type => :integer, :default => 21
+  opt :sleep, "Sleep Between Intervals", :type => :integer, :default => 60
   opt :debug, "Debug Mode", :default => false
 end
 
@@ -30,7 +30,7 @@ THREADS = opts[:threads]
 # How many times to run each set of commands
 INTERVALS = opts[:intervals]
 
-# How many times to run each set of commands
+# How long to sleep
 SLEEP = opts[:sleep]
 
 # A simple log
@@ -68,8 +68,15 @@ class OracleDB
       ret  = {
         sql => {
           cols: curs.get_col_names,
+<<<<<<< Updated upstream
           result: res, success: true
         }
+=======
+          result: res,
+          success: true ,
+          error: nil
+        } 
+>>>>>>> Stashed changes
       }
     rescue OCIException => e
       ret  = {
@@ -90,10 +97,13 @@ end
 # Otherwise you can get an error and not know it.
 Thread::abort_on_exception=true
 
+<<<<<<< Updated upstream
 # Thread to run queries - will pull from the sql queue
 # and push the the out queue.
 workers = []
 
+=======
+>>>>>>> Stashed changes
 # Enumerate the queries
 queries = [
  'select * from v$license',
@@ -142,49 +152,53 @@ queries = [
 out = Queue.new  # SQL output
 sql = Queue.new  # SQL Statements to run
 sub = Queue.new  # List of all submitted stmts
-run = Queue.new  # List of all run statements
+fin = Queue.new  # List of all completed statements
 
-b_threads = Benchmark.measure {
+# Thread to run queries - will pull from the sql queue
+# and push the the out queue.  Not really used.
+workers = []
+
 # Start threads to run these queries
 THREADS.times do |x|
   oracle = OracleDB.new(opts[:connect_string])
   workers << Thread.new(x) do |id|
     while true
-      # Pop in the thread holds the thread from running
-      statement = sql.pop
-      res = oracle.connect.query(statement)
-      out.push(res)
-      status = res[statement][:success] ? 'OK' : 'FAILED'
-      log.debug "#{id}, #{status}: Query: #{statement}"
-      run.push(statement)
+      statement = sql.pop                                     # Pull an query from the queue
+      res = oracle.connect.query(statement)                   # Execute the query
+      out.push(res)                                           # Write result to the out queue
+      fin.push(statement)                                     # Put in finished on the fin(ished) queue
+      status = res[statement][:success] ? 'OK' : 'FAILED'     
+      log.debug "#{id}, #{status}: Query: #{statement}"      
     end
   end
 end
-}
 
-b_run = Benchmark.measure {
-
+<<<<<<< Updated upstream
 # Run the list of commands each interval
 (x=INTERVALS).times do |y|
   queries.each{ |q| sub << q }
   queries.each{ |q| sql << q }
+=======
+# Run the list of commands each interval 
+log.info "Starting collection."
+(x=INTERVALS).times do |y|
+  log.info "Interval #{y}"
+  queries.each do |x| 
+    sub << x 
+    sql << x
+  end
+>>>>>>> Stashed changes
   sleep SLEEP unless (x-1) == y
 end
 
 # Now wait until the list of submitted is = to number of run
-until (s=sub.length) == (r=run.length)
+until (s=sub.length) == (r=fin.length)
   log.info "Waiting for commands to complete: #{r}/#{s}"
   sleep 1
 end
-
-}
 
 # Show the queue lengths now that we are done
 log.info "Submitted Statements...: #{sub.length}"
 log.info "Remaining Statements...: #{sql.length}"
 log.info "Output Statements......: #{out.length}"
 log.info "Done!"
-
-# Bencharks
-puts b_threads
-puts b_run

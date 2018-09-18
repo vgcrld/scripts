@@ -1,0 +1,9 @@
+IBM Tivoli Storage Manager
+Command Line Administrative Interface - Version 6, Release 4, Level 1.7
+(c) Copyright by IBM Corporation and other(s) 1990, 2014. All Rights Reserved.
+
+ANS1357S Session rejected: Downlevel client code version
+ANS8023E Unable to establish session with server.
+
+ANS8002I Highest return code was 57.
+
