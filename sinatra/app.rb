@@ -6,12 +6,15 @@ get "/" do
   "Hello World"
 end
 
+# Call a HAML template
 get "/tsm/query/:object" do
   haml :tsm
 end
 
-get "/:customer/data" do |o|
-  "Hello, #{o}! How are you today?"
+# Here is an example of a request sending back json. 
+get "/:customer/data" do 
+  content_type :json
+  { name: "rich", age: 48, data: [1,2,3] }.to_json
 end
 
 get "/:username" do
