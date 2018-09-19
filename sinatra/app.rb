@@ -17,17 +17,15 @@ get "/:customer/data" do
   { name: "rich", age: 48, data: [1,2,3] }.to_json
 end
 
-get "/:username" do
-  ap params
-  return "#{params}"
-end
-
 get "/user/:username" do
   haml :index
 end
 
-post "/user/:username" do
+post "/user/query/:username" do
   payload = JSON.parse(request.body.read)
   return "We got your data #{payload["name"]}"
 end
 
+get '*' do
+  haml :invalid
+end
