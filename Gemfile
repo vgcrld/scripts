@@ -7,6 +7,7 @@ source 'https://rubygems.org'
 gem 'awesome_print'
 gem 'trollop'
 gem 'commander'
+gem 'configs'
 
 # From Git
 gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'
