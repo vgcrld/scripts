@@ -6,7 +6,7 @@ require 'json'
 
 class Props < OpenStruct
 
-  CRED_BINARY = "gpecredentials"
+  CREDENTIALS_BINARY = "gpecredentials"
 
   def initialize(nodename:,storename:,credfile:,keyfile:)
     super()
