@@ -6,12 +6,15 @@ require 'json'
 
 class Props < OpenStruct
 
+  CRED_BINARY = "gpecredentials"
+
   def initialize(nodename:,storename:,credfile:,keyfile:)
     super()
     self.prop_nodename  = nodename
     self.prop_filename  = storename
     self.prop_credfile  = credfile 
     self.prop_keyfile   = keyfile
+    yield(self) if block_given?
     load_props
   end
 
@@ -24,23 +27,32 @@ class Props < OpenStruct
   end
   
   def credentials_available?
-    cc = `gpecredentials get -k #{self.prop_keyfile} -c #{self.prop_credfile} > /dev/null 2>&1`
+    cc = `#{CRED_BINARY} get -k #{self.prop_keyfile} -c #{self.prop_credfile} > /dev/null 2>&1`
+    rc = $?
+    if rc.exitstatus == 127
+      raise "#{CRED_BINARY} executable was not found."
+    end
     return $?.success?
   end
 
-  def get_credentials(get_if_not_found=true)
+  def get_credentials(call_put_if_not_found=true)
     if credentials_available?
-      creds = `gpecredentials get -k #{self.prop_keyfile} -c #{self.prop_credfile}`
+      creds = `#{CRED_BINARY} get -k #{self.prop_keyfile} -c #{self.prop_credfile}`
       self.username, self.password = creds.lines.map(&:chomp)
     else
-      put_credentials if get_if_not_found
+      put_credentials if call_put_if_not_found
     end
     return self
   end
 
   def put_credentials
-    system("gpecredentials put -k #{self.prop_keyfile} -c #{self.prop_credfile}")
+    system("#{CRED_BINARY} put -k #{self.prop_keyfile} -c #{self.prop_credfile}")
     get_credentials
+  end
+
+  def drop(field)
+    self.delete_field(field) if self.to_h[field]
+    self.write
   end
 
   def write
@@ -53,12 +65,3 @@ class Props < OpenStruct
   end
 
 end
-
-pp = Props.new(
-   nodename: :gvoent1, 
-  storename: '/tmp/gvoent1.service',
-   credfile: '/tmp/gvoent1.cred',
-    keyfile: '/tmp/password.key',
-)
-
-ap pp.get_credentials
