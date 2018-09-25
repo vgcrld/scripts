@@ -18,3 +18,7 @@ end
 
 testme( "super", name: "Rich Davis", age: 44 )
 testme( "baby",  name: "Sue Davis", age: 46 )
+
+ENV['GPE_HOME'] || raise('gpe home is not set')
+
+ap ENV.select{ |o| o =~ /GPE/ }

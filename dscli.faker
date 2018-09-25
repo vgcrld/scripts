@@ -89,7 +89,8 @@ return_cmd() {
        ;;
 
     *)
-      echo "Invalid command issued: $cmd"
+      echo "Invalid command issued: '$@'"
+      echo "Invalid: '$@'" >> /tmp/dscli.faker
       ;;
 
   esac
