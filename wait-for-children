@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 
 set_queue_size (){
   export GPE_QUEUE_SIZE=$1
