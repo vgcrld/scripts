@@ -1,0 +1,26 @@
+#!/usr/bin/sh
+#  The best way to code up sh is to use small functions that work
+#  in a particular defined way.
+#
+#  1. return a 0 or 1 for OK or FAIL to be tested
+#  2. echo a predictable message.
+#
+#  Then you can test the result with test and capture the return,
+#  Like this:
+thefunction() {
+  if [ -n "$1" ]
+  then
+    echo "You said hello, $1"
+    return 0
+  fi
+  echo "No status!"
+  return 1
+}
+
+if [ $(msg=$(thefunction 'rich')) ]
+then
+  echo "This worked: '$msg'"
+else
+  echo "FAIL!"
+fi
+
