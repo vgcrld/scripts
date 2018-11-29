@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
 require 'awesome_print'
-require 'trollop'
+require 'optimist'
 
-opts = Trollop::options do
+opts = Optimist::options do
   banner 'Get some files from the input archive (and input -i queue)'
   banner "Usage: getfiles.rb mins site matcher (site matcher ...)"
   opt :input, 'Include ./input dir, not just archive', short: 'i', type: :boolean
@@ -16,7 +16,7 @@ include_input = opts[:input]
 # Shift off the first parm for total minutes
 FILTER_MINS = (ARGV.shift).to_i * 60
 
-# The rest of ARGV will be anything not processed by Trollop
+# The rest of ARGV will be anything not processed by Optimist / aka Trollop
 # and is processed in pairs site dir_match
 NAMES = ARGV
 
