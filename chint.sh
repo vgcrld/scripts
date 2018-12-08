@@ -1,16 +1,18 @@
 
-files=`zgrep CfgCollection *.oracle.gpe.gz | grep -v '"60"' | awk -F: '{print $1}'`
+# files=`zgrep 'interval.*null' *.ds8k.gpe.gz | awk -F: '{print $1}'`
+#
+# echo FILES: ${files}
+#
+# echo "Enter to cont.  cnt-c to quit"
+# read y
+#
+# gunzip $files
 
-echo FILES: ${files}
-
-echo "Enter to cont.  cnt-c to quit"
-read y
-
-gunzip $files
-
-for i in `ls *.oracle.gpe`
+for i in $(ls *.ds8k.gpe.gz)
 do
-  sed -i 's/"interval": .*/"interval": 60,/; s/"CfgCollectionInterval": .*/"CfgCollectionInterval": 60/' $i
-  echo  DONE: $i
-  gzip $i
+  gunzip "$i"
+  unzipfile=$(echo $i | sed 's/.gz//')
+  sed -i 's/"interval": .*/"interval": 300,/' "$unzipfile"
+  echo "DONE: $unzipfile"
+  gzip "$unzipfile"
 done

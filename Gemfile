@@ -6,10 +6,12 @@ source 'https://rubygems.org'
 
 gem 'awesome_print'
 gem 'trollop'
-gem 'commander'
+#gem 'commander'
+#gem 'configs'
+gem 'ruby-oci8'
 
 # From Git
-gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'
+#gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'
 
 #gem 'rbvmomi'
 gem 'ruby-oci8'

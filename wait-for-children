@@ -1,0 +1,53 @@
+#!/bin/sh
+
+set_queue_size (){
+  export GPE_QUEUE_SIZE=$1
+}
+
+add_to_queue () {
+  eval "export GPE_RUNNING_PID_${1}='${1}'"
+}
+
+queue_pid_list(){
+  env | grep GPE_RUNNING_PID_ | cut -d= -f1
+}
+
+run_on_queue () {
+  eval "$1" &
+  add_to_queue $!
+  wait_for_queue ${GPE_QUEUE_SIZE}
+}
+
+finish_queue () {
+  wait
+}
+
+wait_for_queue () {
+  count="$1"
+  sleep 1
+  while [[ $(queue_pid_list | wc -l) -ge "${count}" ]]; do
+    for pid in $(queue_pid_list); do
+      eval "runpid=$(echo \"\$$pid\")"
+      if ! ps -p $runpid | grep -v TTY  > /dev/null 2>&1; then
+        eval "unset $pid"
+      fi
+    done
+    sleep 1
+  done
+}
+
+#------------ Run some stuff on a queue
+
+set_queue_size 5
+
+for i in 'sleep 10' \
+         'sleep 60' \
+         'ls -ltr > ./output.tmp' 'tar -cvzf $HOME/somedata.tar.gz -C $HOME/code/scripts . > ./tarlog.tmp 2>&1' \
+         'sleep 15' \
+         'echo "hello" > ./say-hi.tmp' \
+         'ps -ef | grep rdavis > ./my-ps.tmp'
+do
+  run_on_queue "$i"
+done
+
+finish_queue

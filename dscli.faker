@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# This is fake and is only for testing
+
+end_me() {
+  exit $1
+}
+
+looper() {
+  while read cmd
+  do
+    return_cmd "$cmd"
+    echo ""
+  done
+}
+
+return_cmd() {
+
+  case $@ in
+
+    "ver")
+      echo "dscli> Command:ver"
+      echo "Date/Time: July 11, 2018 8:14:30 PM GMT IBM DSCLI Version: 7.8.24.11 DS: -"
+      echo "DSCLI 7.8.24.11"
+      ;;
+
+    "lssi")
+      echo "Command:lssi -l"
+      echo "Date/Time: July 11, 2018 8:16:11 PM GMT IBM DSCLI Version: 7.8.24.11 DS: -"
+      echo "Name|ID|Storage Unit|Model|WWNN|State|ESSNet|Volume Group|desc"
+      echo "=============================================================="
+      echo "DS8870-1_BCC_PROD|IBM.2107-75DWA61|IBM.2107-75DWA60|961|5005076306FFD5C1|Online|Enabled|IBM.2107-75DWA61/V0|-"
+      ;;
+
+    *config_commands*)
+      tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-3.20180417.184951.GMT.IBM-2107-75FRB81.ds8k.gz 'config_commands.txt'
+      ;;
+
+    "quit")
+      end_me 0
+      ;;
+
+    "listout")
+      tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-3.20180417.184951.GMT.IBM-2107-75FRB81.ds8k.gz 'listout.txt'
+      ;;
+
+    lsioport)
+       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lsioport/,/Command:ver/'
+       ;;
+
+    lsrank)
+       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lsrank/,/Command:ver/'
+       ;;
+
+    lsextpool)
+       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lsextpool/,/Command:ver/'
+       ;;
+
+    lsfbvol)
+       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lsfbvol/,/Command:ver/'
+       ;;
+
+    lsckdvol)
+      echo "dscli> Command:lsckdvol"
+      echo "Date/Time: August 21, 2018 8:00:19 PM GMT IBM DSCLI Version: 7.7.21.39 DS: IBM.2107-75DAM11"
+      echo "Name|ID|accstate|datastate|configstate|deviceMTM|voltype|orgbvols|extpool|cap (cyl)"
+      echo "==================================================================================="
+      echo "ckd0900|IBM.2107-75DAM11/0900|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0901|IBM.2107-75DAM11/0901|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0902|IBM.2107-75DAM11/0902|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0903|IBM.2107-75DAM11/0903|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0904|IBM.2107-75DAM11/0904|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0905|IBM.2107-75DAM11/0905|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0980|IBM.2107-75DAM11/0980|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0981|IBM.2107-75DAM11/0981|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0982|IBM.2107-75DAM11/0982|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0983|IBM.2107-75DAM11/0983|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0984|IBM.2107-75DAM11/0984|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0985|IBM.2107-75DAM11/0985|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd2100|IBM.2107-75DAM11/2100|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      ;;
+
+    lslss)
+       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lslss/,/Command:ver/'
+       ;;
+
+    ver)
+       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:ver/,/Command:ver/'
+       ;;
+
+    *)
+      echo "Invalid command issued: '$@'"
+      echo "Invalid: '$@'" >> /tmp/dscli.faker
+      ;;
+
+  esac
+
+}
+
+startup() {
+  echo "Date/Time: July 11, 2018 8:14:29 PM GMT IBM DSCLI Version: 7.8.24.11  DS:"
+  echo "IBM.2107-75DWA61"
+}
+
+startup
+
+if [[ "$@" = "" ]]; then
+  looper
+elif [[ "$@" = "-cfg /opt/galileo/etc/gpe-agent-ds8k.d/fakeds8k.profile -user galileo -pwfile /tmp/ds8k.pw" ]]; then
+  looper
+else
+  return_cmd "$@"
+fi
+

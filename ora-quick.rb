@@ -30,6 +30,7 @@ def to_file(res)
   file = File.new("./file-#{Process.pid}", "w+")
   file << res.get_col_names.to_csv
   res.fetch{ |o| file << o.to_csv }
+  #res.fetch{ |o| file }
   return file
 end
 
@@ -37,6 +38,7 @@ def query(conn: nil, stmt: 'select * from v$sqlarea')
   res = conn.exec(stmt)
 end
 
+<<<<<<< HEAD
 res = query(
   #conn: OCI8.new('gpe/gpe123@//192.168.240.195/gvoent1'),
   #conn: OCI8.new('GPE/GPE123@//gvicoracluster1.ats.local/gvorac'),
@@ -50,5 +52,22 @@ rep = to_mem(res)
 
 ap rep
 report_memory
+=======
+condb = OCI8.new('c##gpe/gpe123@//192.168.240.195:1521/gvocon1')
+trump = OCI8.new('gpe/gpe123@//192.168.240.195:1521/trumppdb')
+pdb1  = OCI8.new('gpe/gpe123@//192.168.240.195:1521/gvopdb1')
+
+statement = 'select * from v$containers'
+statement = 'select * from dba_tablespaces'
+statement = 'select * from cdb_tablespaces'
+
+ap to_mem(query( conn: condb, stmt: statement))
+#ap to_mem(query( conn: trump, stmt: statement))
+#ap to_mem(query( conn: pdb1,  stmt: statement))
+
+#to_file(res)
+
+#ap report_memory
+>>>>>>> 95b35e0b94ed903a906c7413c6b11625f35a2bae
 
 

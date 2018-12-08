@@ -68,15 +68,10 @@ class OracleDB
       ret  = {
         sql => {
           cols: curs.get_col_names,
-<<<<<<< Updated upstream
-          result: res, success: true
-        }
-=======
           result: res,
           success: true ,
           error: nil
-        } 
->>>>>>> Stashed changes
+        }
       }
     rescue OCIException => e
       ret  = {
@@ -97,13 +92,6 @@ end
 # Otherwise you can get an error and not know it.
 Thread::abort_on_exception=true
 
-<<<<<<< Updated upstream
-# Thread to run queries - will pull from the sql queue
-# and push the the out queue.
-workers = []
-
-=======
->>>>>>> Stashed changes
 # Enumerate the queries
 queries = [
  'select * from v$license',
@@ -167,27 +155,20 @@ THREADS.times do |x|
       res = oracle.connect.query(statement)                   # Execute the query
       out.push(res)                                           # Write result to the out queue
       fin.push(statement)                                     # Put in finished on the fin(ished) queue
-      status = res[statement][:success] ? 'OK' : 'FAILED'     
-      log.debug "#{id}, #{status}: Query: #{statement}"      
+      status = res[statement][:success] ? 'OK' : 'FAILED'
+      log.debug "#{id}, #{status}: Query: #{statement}"
     end
   end
 end
 
-<<<<<<< Updated upstream
 # Run the list of commands each interval
-(x=INTERVALS).times do |y|
-  queries.each{ |q| sub << q }
-  queries.each{ |q| sql << q }
-=======
-# Run the list of commands each interval 
 log.info "Starting collection."
 (x=INTERVALS).times do |y|
   log.info "Interval #{y}"
-  queries.each do |x| 
-    sub << x 
+  queries.each do |x|
+    sub << x
     sql << x
   end
->>>>>>> Stashed changes
   sleep SLEEP unless (x-1) == y
 end
 

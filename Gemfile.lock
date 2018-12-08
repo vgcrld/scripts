@@ -1,10 +1,3 @@
-GIT
-  remote: git@github.com:vgcrld/rld.git
-  revision: c69b41dbd21c66c4c957c62a28b2de2a235bc7f2
-  branch: master
-  specs:
-    rld (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -13,6 +6,7 @@ GEM
       highline (~> 1.7.2)
     highline (1.7.10)
     ruby-oci8 (2.2.5.1)
+    ruby-oci8 (2.2.6.1)
     trollop (2.1.2)
 
 PLATFORMS
