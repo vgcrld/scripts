@@ -8,7 +8,7 @@ gem 'awesome_print'
 gem 'trollop'
 #gem 'commander'
 #gem 'configs'
-gem 'ruby-oci8'
+#gem 'ruby-oci8'
 
 # From Git
 #gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'

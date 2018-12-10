@@ -1,0 +1,113 @@
+#!/usr/bin/sh
+
+#------------ Set base directory and config file
+
+         _gpe_agent_name=$(basename $0)
+
+                _gpe_dir=$(cd $(dirname $0)/..; pwd)
+                _etc_dir="${_gpe_dir}/etc"
+                _tmp_dir="${_gpe_dir}/tmp"
+                _log_dir="${_gpe_dir}/log"
+        _cluster_etc_dir="${_gpe_dir}/etc/${_gpe_agent_name}.d"
+              _cache_dir="${_gpe_dir}/var/${_gpe_agent_name}/cache"
+              _files_dir="${_gpe_dir}/var/${_gpe_agent_name}/files"
+            _archive_dir="${_gpe_dir}/var/${_gpe_agent_name}/archive"
+
+                 _config="${_gpe_dir}/etc/${_gpe_agent_name}.conf"
+                  _nodes="${_gpe_dir}/etc/${_gpe_agent_name}.nodes"
+              _lock_base="${_tmp_dir}/lock.${_gpe_agent_name}"
+               _ssh_opts="-o BatchMode=no"
+   _default_collect_mins="20"
+  _default_interval_mins="5"
+                    _err="error"
+       _post_fail_prefix="POST_FAIL"
+         _post_fail_file="${_tmp_dir}/post-processing-failure"
+                    _pid="$$"
+               _pid_list=""
+
+    mkdir -p $_gpe_dir $_etc_dir $_tmp_dir $_log_dir $_cluster_etc_dir $_cache_dir $_files_dir $_archive_dir
+
+#------------ Add env and paths
+
+node_part () {
+  echo "$1" | awk -F, '{print $1}'
+}
+
+dir_part () {
+  echo "$*" | awk -F, '{print $2}'
+}
+
+get_node () {
+  val=$(awk -v node=$1 -F, '$1 == node' "$_nodes")
+  echo "$val"
+  if [ -n "$val" ] ; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+make_node_entry () {
+  node=$1;shift
+  echo "$node:::$*"
+}
+
+confirm () {
+  printf "$* (y/n): " 1>&2
+  read val
+  if [[ "$val" = [Yy] ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+delete_node () {
+  cp "$_nodes" "$_nodes.tmp"
+  grep -v -w "$1" "$_nodes" > "$_nodes.tmp"
+  mv "$_nodes.tmp" "$_nodes"
+}
+
+write_node () {
+  node=$1;shift
+  if [ -n "$*" ]; then
+    echo "$(make_node_entry "$node" $*)" >> "$_nodes"
+  else
+    echo "No Directories specified, not saved!"
+  fi
+}
+
+get_data () {
+  printf "$*: " 1>&2
+  read val
+  echo "$val"
+}
+
+get_multiple () {
+  while [[ "$dir" != 'q' ]]
+  do
+    dir=$(get_data "$* (q to quit)")
+    [ "$dir" = 'q' ] && continue
+    if [ -d "$dir" -a -w "$dir" ]; then
+      echo -n "$dir "
+    else
+      echo "Not a directory or writable: $dir" 1>&2
+    fi
+  done
+}
+
+#----------- Start here
+
+environment=$(get_data 'Environment')
+
+if node_entry=$(get_node $environment); then
+  if $(confirm "Already Found! Delete node?"); then
+    delete_node $(node_part $node_entry)
+  else
+    echo "$environment is already configured as: $(dir_part $node_entry)"
+  fi
+else
+  directories=$(get_multiple "Directory")
+  write_node "$environment" "$directories"
+fi
+
