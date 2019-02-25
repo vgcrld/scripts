@@ -5,7 +5,8 @@ source 'https://rubygems.org'
 #gemspec
 
 gem 'awesome_print'
-gem 'trollop'
+gem 'optimist'
+#gem 'gpe-snmp', path: '/home/ATS/rdavis/.gem/ruby/2.4.0'
 #gem 'commander'
 #gem 'configs'
 #gem 'ruby-oci8'
@@ -14,5 +15,5 @@ gem 'trollop'
 #gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'
 
 #gem 'rbvmomi'
-gem 'ruby-oci8'
+#gem 'ruby-oci8'
 

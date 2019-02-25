@@ -1,0 +1,849 @@
+Script started on Thu 13 Dec 2018 07:09:42 PM GMT
+rdavis@g01dlapp01:~/scripts/cache/gems ([32mmaster[0m)
+> scripts
+bash: scripts: command not found
+rdavis@g01dlapp01:~/scripts/cache/gems ([32mmaster[0m)
+> ll
+total 44
+-rw-rw-r--. 1 rdavis rdavis  7680 Dec 13 19:04 gpe-snmp-0.0.1.gem
+-rw-rw-r--. 1 rdavis rdavis 29696 Dec 13 19:08 optimist-3.0.0.gem
+drwxrwxr-x. 6 rdavis rdavis  4096 Dec 13 04:50 [0m[01;34msnmp-1.3.1[0m
+-rw-rw-r--. 1 rdavis rdavis     0 Dec 13 19:09 typescript
+rdavis@g01dlapp01:~/scripts/cache/gems ([32mmaster[0m)
+> cd
+rdavis@g01dlapp01:~
+> cd scripts
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> bundle install 
+Fetching gem metadata from https://rubygems.org/.............
+[31mCould not find gem 'optimist' in source at `/home/ATS/rdavis/code/scripts`.
+The source does not contain any versions of 'optimist'[0m
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> bundle install[C[C[C[C[C[C[C[C[Chinstalleinstalllinstallpinstall install
+[?1049h[?1h=BUNDLE-INSTALL(1)                                                                                                                                              BUNDLE-INSTALL(1)[m
+[m
+[1mNAME[0m[m
+       [1mbundle-install[0m - Install the dependencies specified in your Gemfile[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mbundle[0m  [1minstall[0m  [--binstubs[=DIRECTORY]]  [--clean]  [--deployment]  [--force]  [--frozen]  [--full-index]  [--gemfile=GEMFILE]  [--jobs=NUMBER]  [--local] [--no-cache][m
+       [--no-prune] [--path PATH] [--quiet] [--retry=NUMBER] [--shebang] [--standalone[=GROUP[ GROUP...]]] [--system] [--trust-policy=POLICY] [--with=GROUP[ GROUP...]] [--with‐[m
+       out=GROUP[ GROUP...]][m
+[m
+[1mDESCRIPTION[0m[m
+       Install  the  gems  specified  in  your  Gemfile(5).  If this is the first time you run bundle install (and a [1mGemfile.lock[0m does not exist), Bundler will fetch all remote[m
+       sources, resolve dependencies and install all needed gems.[m
+[m
+       If a [1mGemfile.lock[0m does exist, and you have not updated your Gemfile(5), Bundler will fetch all remote sources, but use the dependencies  specified  in  the  [1mGemfile.lock[0m[m
+       instead of resolving dependencies.[m
+[m
+       If  a [1mGemfile.lock[0m does exist, and you have updated your Gemfile(5), Bundler will use the dependencies in the [1mGemfile.lock[0m for all gems that you did not update, but will[m
+       re-resolve the dependencies of gems that you did update. You can find more information about this update process below under [4mCONSERVATIVE[24m [4mUPDATING[24m.[m
+[m
+[1mOPTIONS[0m[m
+       To apply any of [1m--binstubs[0m, [1m--deployment[0m, [1m--path[0m, or [1m--without[0m every time [1mbundle[0m [1minstall[0m is run, use [1mbundle[0m [1mconfig[0m (see bundle-config(1)).[m
+[m
+       [1m--binstubs[=<directory>][0m[m
+              Creates a directory (defaults to [1m~/bin[0m) and place any executables from the gem there. These executables run in Bundler´s context. If  used,  you  might  add  this[m
+              directory  to  your  environment´s  [1mPATH[0m variable. For instance, if the [1mrails[0m gem comes with a [1mrails[0m executable, this flag will create a [1mbin/rails[0m executable that[m
+              ensures that all referred dependencies will be resolved using the bundled gems.[m
+[m
+       [1m--clean[0m[m
+              On finishing the installation Bundler is going to remove any gems not present in the current Gemfile(5). Don´t worry, gems currently in use will not be removed.[m
+[m
+       [1m--deployment[0m[m
+              In [4mdeployment[24m [4mmode[24m, Bundler will ´roll-out´ the bundle for production or CI use. Please check carefully if you want to have this option enabled in  your  develop‐[m
+              ment environment.[m
+[m
+       [1m--force[0m[m
+              Force download every gem, even if the required versions are already available locally.[m
+[m
+       [1m--frozen[0m[m
+              Do not allow the Gemfile.lock to be updated after this install. Exits non-zero if there are going to be changes to the Gemfile.lock.[m
+[m
+       [1m--full-index[0m[m
+              Bundler will not call Rubygems´ API endpoint (default) but download and cache a (currently big) index file of all gems. Performance can be improved for large bun‐[m
+              dles that seldom change by enabling this option.[m
+[m
+       [1m--gemfile=<gemfile>[0m[m
+              The location of the Gemfile(5) which Bundler should use. This defaults to a Gemfile(5) in the current working directory. In general, Bundler will assume that  the[m
+              location of the Gemfile(5) is also the project´s root and will try to find [1mGemfile.lock[0m and [1mvendor/cache[0m relative to this location.[m
+[m
+       [1m--jobs=[<number>][0m, [1m-j[<number>][0m[m
+              The maximum number of parallel download and install jobs. The default is [1m1[0m.[m
+[m
+       [1m--local[0m[m
+              Do  not  attempt  to connect to [1mrubygems.org[0m. Instead, Bundler will use the gems already present in Rubygems´ cache or in [1mvendor/cache[0m. Note that if a appropriate[m
+              platform-specific gem exists on [1mrubygems.org[0m it will not be found.[m
+[m
+       [1m--no-cache[0m[m
+              Do not update the cache in [1mvendor/cache[0m with the newly bundled gems. This does not remove any gems in the cache but keeps the newly bundled gems from being cached[m
+              during the install.[m
+[m
+       [1m--no-prune[0m[m
+              Don´t remove stale gems from the cache when the installation finishes.[m
+[m
+       [1m--path=<path>[0m[m
+              The  location  to  install  the  specified  gems to. This defaults to Rubygems´ setting. Bundler shares this location with Rubygems, [1mgem[0m [1minstall[0m [1m...[0m will have gem[m
+              installed there, too. Therefore, gems installed without a [1m--path[0m [1m...[0m setting will show up by calling [1mgem[0m [1mlist[0m. Accordingly, gems installed to other locations will[m
+              not get listed.[m
+[m
+       [1m--quiet[0m[m
+              Do not print progress information to the standard output. Instead, Bundler will exit using a status code ([1m$?[0m).[m
+[m
+       [1m--retry=[<number>][0m[m
+              Retry failed network or git requests for [4mnumber[24m times.[m
+[m
+       [1m--shebang=<ruby-executable>[0m[m
+              Uses the specified ruby executable (usually [1mruby[0m) to execute the scripts created with [1m--binstubs[0m. In addition, if you use [1m--binstubs[0m together with [1m--shebang[0m [1mjruby[0m[m
+              these executables will be changed to execute [1mjruby[0m instead.[m
+[m
+       [1m--standalone[=<list>][0m[m
+[3m Manual page bundle-install.1 line 1 (press h for help or q to quit)[23m[K[K[?1l>[?1049lrdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> bundle install --clearn[K[Kn 
+Fetching gem metadata from https://rubygems.org/.............
+[31mCould not find gem 'optimist' in source at `/home/ATS/rdavis/code/scripts`.
+The source does not contain any versions of 'optimist'[0m
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> gpe
+rdavis@g01dlapp01:~/code/gpe-server ([32mdevelop[0m)
+> vi Gemfile
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;80r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[80;1H"Gemfile" 88L, 7343C[>c[1;1H[96m#source "https://enterprise.contribsys.com" do[m
+  gem [38;5;224m"[msidekiq-ent[38;5;224m"[m,[25C[95m:group[m => [[95m:sidekiq[m]
+[96m#end
+
+#source "https://rubygems.org" do[m
+  gem [38;5;224m"[msidekiq[38;5;224m"[m,[29C[95m:group[m => [[95m:sidekiq[m]
+  gem [38;5;224m"[mredlock[38;5;224m"[m,[29C[95m:group[m => [[95m:sidekiq[m, [95m:api[m]
+  gem [38;5;224m"[malgorithms[38;5;224m"[m,[26C[95m:group[m => [[95m:sidekiq[m]
+  gem [38;5;224m"[msqlite3[38;5;224m"[m,[29C[95m:group[m => [[95m:sidekiq[m]
+  gem [38;5;224m"[mactiverecord[38;5;224m"[m,[24C[95m:group[m => [[95m:api[m, [95m:comm[m]
+  gem [38;5;224m"[mbcrypt-ruby[38;5;224m"[m,[25C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:ui[m]
+  gem [38;5;224m"[mbuilder[38;5;224m"[m,[29C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mbundler[38;5;224m"[m,[29C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:etl[m, [95m:ui[m]
+  gem [38;5;224m"[mcoffee-script[38;5;224m"[m,[23C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mcolorize[38;5;224m"[m,[28C[95m:group[m => [[95m:api[m]
+  gem [38;5;224m"[mcompass[38;5;224m"[m,[29C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[msusy[38;5;224m"[m,[32C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mjson[38;5;224m"[m,[32C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mds2gpe[38;5;224m"[m,[30C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/ds2gpe[38;5;224m"[m
+  gem [38;5;224m"[mds8k2gpe[38;5;224m"[m,[28C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/ds8k2gpe[38;5;224m"[m
+  gem [38;5;224m"[mxiv2gpe[38;5;224m"[m,[29C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/xiv2gpe[38;5;224m"[m
+  gem [38;5;224m"[minfinibox2gpe[38;5;224m"[m,[23C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/infinibox2gpe[38;5;224m"[m
+  gem [38;5;224m"[mxtremio2gpe[38;5;224m"[m,[25C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/xtremio2gpe[38;5;224m"[m
+  gem [38;5;224m"[misilon2gpe[38;5;224m"[m,[26C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/isilon2gpe[38;5;224m"[m
+  gem [38;5;224m"[mpure2gpe[38;5;224m"[m,[28C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/pure2gpe[38;5;224m"[m
+  gem [38;5;224m"[memcunity2gpe[38;5;224m"[m,[24C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/emcunity2gpe[38;5;224m"[m
+  gem [38;5;224m"[mgpfscluster2gpe[38;5;224m"[m,[21C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/gpfscluster2gpe[38;5;224m"[m
+  gem [38;5;224m"[mflash2gpe[38;5;224m"[m,[27C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/flash2gpe[38;5;224m"[m
+  gem [38;5;224m"[moracle2gpe[38;5;224m"[m,[26C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/oracle2gpe[38;5;224m"[m
+  gem [38;5;224m"[mvmax2gpe[38;5;224m"[m,[28C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/vmax2gpe[38;5;224m"[m
+  gem [38;5;224m"[mnetapp2gpe[38;5;224m"[m,[26C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/netapp2gpe[38;5;224m"[m
+  gem [38;5;224m"[mnetapp_cdot2gpe[38;5;224m"[m,[21C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/netapp_cdot2gpe[38;5;224m"[m
+  gem [38;5;224m"[mhitachi2gpe[38;5;224m"[m,[25C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/hitachi2gpe[38;5;224m"[m
+  gem [38;5;224m"[mvnx2gpe[38;5;224m"[m,[29C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/vnx2gpe[38;5;224m"[m
+  gem [38;5;224m"[mbrocade2gpe[38;5;224m"[m,[25C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/brocade2gpe[38;5;224m"[m
+  gem [38;5;224m"[mcisco_mds2gpe[38;5;224m"[m,[23C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/cisco_mds2gpe[38;5;224m"[m
+  gem [38;5;224m"[mfactory_girl[38;5;224m"[m,[24C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mgalileo[38;5;224m"[m,[29C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:etl[m, [95m:ui[m, [95m:db[m], [95m:path[m => [38;5;224m"[msources/galileo[38;5;224m"[m
+  gem [38;5;224m"[mgalileo_admin[38;5;224m"[m,[23C[95m:group[m => [[95m:api[m],[24C[95m:path[m => [38;5;224m"[msources/galileo_admin[38;5;224m"[m
+  gem [38;5;224m"[mgalileo_api[38;5;224m"[m,[25C[95m:group[m => [[95m:api[m],[24C[95m:path[m => [38;5;224m"[msources/galileo_api[38;5;224m"[m
+  gem [38;5;224m"[mgalileo_api_client[38;5;224m"[m,[18C[95m:group[m => [[95m:api[m, [95m:ui[m],[19C[95m:path[m => [38;5;224m"[msources/galileo_api_client[38;5;224m"[m
+  gem [38;5;224m"[mgalileo_db[38;5;224m"[m,[26C[95m:group[m => [[95m:api[m,[95m:etl[m],[19C[95m:path[m => [38;5;224m"[msources/galileo_db[38;5;224m"[m
+  gem [38;5;224m"[mgpe2load[38;5;224m"[m,[28C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/gpe2load[38;5;224m"[m
+  gem [38;5;224m"[mgpe_etl[38;5;224m"[m,[29C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/gpe_etl[38;5;224m"[m
+  gem [38;5;224m"[mgpecontrol[38;5;224m"[m,[26C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/gpecontrol[38;5;224m"[m
+  gem [38;5;224m"[mhaml[38;5;224m"[m,[32C[95m:group[m => [[95m:api[m, [95m:ui[m]
+  gem [38;5;224m"[mhandlebars_assets[38;5;224m"[m,[19C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mibmi2gpe[38;5;224m"[m,[28C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/ibmi2gpe[38;5;224m"[m
+  gem [38;5;224m"[miconv[38;5;224m"[m,[31C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:ui[m, [95m:etl[m]
+  gem [38;5;224m"[mi18n[38;5;224m"[m,[32C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mmemcached[38;5;224m"[m,[27C[95m:group[m => [[95m:ui[m, [95m:api[m]
+  gem [38;5;224m"[mmultilogger[38;5;224m"[m,[25C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/multilogger[38;5;224m"[m
+  gem [38;5;224m"[mmysql[38;5;224m"[m,[31C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:etl[m]
+  gem [38;5;224m"[mnmon2gpe[38;5;224m"[m,[28C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/nmon2gpe[38;5;224m"[m
+  gem [38;5;224m"[moj[38;5;224m"[m,[34C[95m:group[m => [[95m:api[m, [95m:ui[m, [95m:etl[m]
+  gem [38;5;224m"[mpassenger[38;5;224m"[m,[27C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:ui[m]
+  gem [38;5;224m"[mpdfkit[38;5;224m"[m,[30C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mpony[38;5;224m"[m,[32C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:ui[m]
+  gem [38;5;224m"[mrack[38;5;224m"[m,[32C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:ui[m]
+  gem [38;5;224m"[mrake[38;5;224m"[m,[32C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:etl[m, [95m:ui[m]
+  gem [38;5;224m"[mrb-inotify[38;5;224m"[m,[26C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mrdiscount[38;5;224m"[m,[27C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[mredgreen[38;5;224m"[m,[28C[95m:group[m => [[95m:api[m]
+  gem [38;5;224m"[mruby-prof[38;5;224m"[m,[27C[95m:group[m => [[95m:testing[m]
+  gem [38;5;224m"[msanitize[38;5;224m"[m,[28C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[msass[38;5;224m"[m,[32C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[msinatra[38;5;224m"[m,[29C[95m:group[m => [[95m:api[m, [95m:comm[m, [95m:ui[m, [95m:etl[m]
+  gem [38;5;224m"[msinatra-contrib[38;5;224m"[m,[21C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[msinatra-flash[38;5;224m"[m,[23C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[msprockets[38;5;224m"[m,[27C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[msprockets-helpers[38;5;224m"[m,[19C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[msprockets-sass[38;5;224m"[m,[22C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[msvc2gpe[38;5;224m"[m,[29C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/svc2gpe[38;5;224m"[m
+  gem [38;5;224m"[msonas2gpe[38;5;224m"[m,[27C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/sonas2gpe[38;5;224m"[m
+  gem [38;5;224m"[mvmware2gpe[38;5;224m"[m,[26C[95m:group[m => [[95m:etl[m],[24C[95m:path[m => [38;5;224m"[msources/vmware2gpe[38;5;224m"[m
+  gem [38;5;224m"[mturn[38;5;224m"[m,[32C[95m:group[m => [[95m:api[m, [95m:ui[m]
+  gem [38;5;224m"[mtzinfo[38;5;224m"[m,[30C[95m:group[m => [[95m:comm[m, [95m:ui[m]
+  gem [38;5;224m"[muglifier[38;5;224m"[m,[28C[95m:group[m => [[95m:ui[m]
+  gem [38;5;224m"[musername_suggester[38;5;224m"[m,[18C[95m:group[m => [[95m:api[m][80;164H1,1[11CTop[1;1H[?12l[?25h[?25l[80;1H[K[80;1H:[?12l[?25hq[?25l[?12l[?25h[?25l[80;1H[K[80;1H[?1l>[?12l[?25h[?1049lrdavis@g01dlapp01:~/code/gpe-server ([32mdevelop[0m)
+> cd sources/vmw[Kware2gpe/
+rdavis@g01dlapp01:~/code/gpe-server/sources/vmware2gpe ([32mdevelop[0m)
+> ll
+total 12
+drwxrwxr-x. 3 rdavis rdavis 4096 Dec  3 21:40 [0m[01;34mlib[0m
+-rw-rw-r--. 1 rdavis rdavis   48 Jun 27  2016 README
+-rw-rw-r--. 1 rdavis rdavis  516 Jul  3 20:17 vmware2gpe.gemspec
+rdavis@g01dlapp01:~/code/gpe-server/sources/vmware2gpe ([32mdevelop[0m)
+> gem list
+
+*** LOCAL GEMS ***
+
+awesome_print (1.8.0)
+bigdecimal (1.2.4)
+bundler (1.14.3)
+io-console (0.4.3)
+json (1.8.1)
+minitest (4.7.5)
+optimist (3.0.0)
+psych (2.0.5)
+rake (10.1.0)
+rdoc (4.1.0)
+test-unit (2.1.7.0)
+trollop (2.9.9)
+rdavis@g01dlapp01:~/code/gpe-server/sources/vmware2gpe ([32mdevelop[0m)
+> gem list
+
+*** LOCAL GEMS ***
+
+awesome_print (1.8.0)
+bigdecimal (1.2.4)
+bundler (1.14.3)
+io-console (0.4.3)
+json (1.8.1)
+minitest (4.7.5)
+optimist (3.0.0)
+psych (2.0.5)
+rake (10.1.0)
+rdoc (4.1.0)
+test-unit (2.1.7.0)
+trollop (2.9.9)
+rdavis@g01dlapp01:~/code/gpe-server/sources/vmware2gpe ([32mdevelop[0m)
+> cd
+rdavis@g01dlapp01:~
+> cd scripts
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> gem list
+
+*** LOCAL GEMS ***
+
+awesome_print (1.8.0)
+bigdecimal (default: 1.3.2)
+bundler (1.16.0)
+did_you_mean (1.1.0)
+ffi (1.9.25)
+ffi-inliner (0.2.4)
+gpe-snmp (0.0.1)
+io-console (default: 0.4.6)
+json (default: 2.0.4)
+minitest (5.10.1)
+net-snmp (0.2.5)
+net-telnet (0.1.1)
+nice-ffi (0.4)
+openssl (default: 2.0.9)
+power_assert (0.4.1)
+psych (default: 2.2.2)
+rake (12.0.0)
+rdoc (default: 5.0.0)
+snmp (1.3.1)
+test-unit (3.2.3)
+xmlrpc (0.2.1)
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> gem contents gpe-snmp
+/home/ATS/rdavis/.gem/ruby/2.4.0/gems/gpe-snmp-0.0.1/lib/collect/collector.rb
+/home/ATS/rdavis/.gem/ruby/2.4.0/gems/gpe-snmp-0.0.1/lib/gpe-snmp.rb
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> gem help
+RubyGems is a sophisticated package manager for Ruby.  This is a
+basic help message containing pointers to more information.
+
+  Usage:
+    gem -h/--help
+    gem -v/--version
+    gem command [arguments...] [options...]
+
+  Examples:
+    gem install rake
+    gem list --local
+    gem build package.gemspec
+    gem help install
+
+  Further help:
+    gem help commands            list all 'gem' commands
+    gem help examples            show some examples of usage
+    gem help gem_dependencies    gem dependencies file guide
+    gem help platforms           gem platforms guide
+    gem help <COMMAND>           show help on COMMAND
+                                   (e.g. 'gem help install')
+    gem server                   present a web page at
+                                 http://localhost:8808/
+                                 with info about installed gems
+  Further information:
+    http://guides.rubygems.org
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> gem help[C[C[C[C[C[C[C[C[C[C commands
+GEM commands are:
+
+    build             Build a gem from a gemspec
+    cert              Manage RubyGems certificates and signing settings
+    check             Check a gem repository for added or missing files
+    cleanup           Clean up old versions of installed gems
+    contents          Display the contents of the installed gems
+    dependency        Show the dependencies of an installed gem
+    environment       Display information about the RubyGems environment
+    fetch             Download a gem and place it in the current directory
+    generate_index    Generates the index files for a gem server directory
+    help              Provide help on the 'gem' command
+    install           Install a gem into the local repository
+    list              Display local gems whose name matches REGEXP
+    lock              Generate a lockdown list of gems
+    mirror            Mirror all gem files (requires rubygems-mirror)
+    open              Open gem sources in editor
+    outdated          Display all gems that need updates
+    owner             Manage gem owners of a gem on the push server
+    pristine          Restores installed gems to pristine condition from files
+                      located in the gem cache
+    push              Push a gem up to the gem server
+    query             Query gem information in local or remote repositories
+    rdoc              Generates RDoc for pre-installed gems
+    search            Display remote gems whose name matches REGEXP
+    server            Documentation and gem repository HTTP server
+    sources           Manage the sources and cache file RubyGems uses to search
+                      for gems
+    specification     Display gem specification (in yaml)
+    stale             List gems along with access times
+    uninstall         Uninstall gems from the local repository
+    unpack            Unpack an installed gem to the current directory
+    update            Update installed gems to the latest version
+    which             Find the location of a library file you can require
+    yank              Remove a pushed gem from the index
+
+For help on a particular command, use 'gem help COMMAND'.
+
+Commands may be abbreviated, so long as they are unambiguous.
+e.g. 'gem i rake' is short for 'gem install rake'.
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> gem env
+RubyGems Environment:
+  - RUBYGEMS VERSION: 2.6.14.3
+  - RUBY VERSION: 2.4.5 (2018-10-18 patchlevel 335) [x86_64-linux]
+  - INSTALLATION DIRECTORY: /home/galileo/.rbenv/versions/2.4.5/lib/ruby/gems/2.4.0
+  - USER INSTALLATION DIRECTORY: /home/ATS/rdavis/.gem/ruby/2.4.0
+  - RUBY EXECUTABLE: /home/galileo/.rbenv/versions/2.4.5/bin/ruby
+  - EXECUTABLE DIRECTORY: /home/galileo/.rbenv/versions/2.4.5/bin
+  - SPEC CACHE DIRECTORY: /home/ATS/rdavis/.gem/specs
+  - SYSTEM CONFIGURATION DIRECTORY: /home/galileo/.rbenv/versions/2.4.5/etc
+  - RUBYGEMS PLATFORMS:
+    - ruby
+    - x86_64-linux
+  - GEM PATHS:
+     - /home/galileo/.rbenv/versions/2.4.5/lib/ruby/gems/2.4.0
+     - /home/ATS/rdavis/.gem/ruby/2.4.0
+  - GEM CONFIGURATION:
+     - :update_sources => true
+     - :verbose => true
+     - :backtrace => false
+     - :bulk_threshold => 1000
+  - REMOTE SOURCES:
+     - https://rubygems.org/
+  - SHELL PATH:
+     - /home/ATS/rdavis/.rbenv/versions/2.4.5/bin
+     - /home/ATS/rdavis/.rbenv/libexec
+     - /home/ATS/rdavis/code/gpe-server/bin
+     - /home/ATS/rdavis/code/gpe-server/node_modules/.bin
+     - /home/ATS/rdavis/.rbenv/shims
+     - /home/ATS/rdavis/.rbenv/bin
+     - /home/ATS/rdavis/scripts
+     - /usr/local/bin
+     - /usr/share/centrifydc/bin
+     - /usr/local/bin
+     - /bin
+     - /usr/bin
+     - /usr/local/sbin
+     - /usr/sbin
+     - /usr/local/gpe_utils
+     - /usr/lpp/mmfs/bin
+     - /usr/local/bin
+     - /home/ATS/rdavis/code/fzf/bin
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> ll /home/ATS/rdavis/.gem/ruby/2.4.0
+total 28
+drwxrwxr-x. 2 rdavis rdavis 4096 Dec 13 18:49 [0m[01;34mbin[0m
+drwxrwxr-x. 2 rdavis rdavis 4096 Dec 13 04:51 [01;34mbuild_info[0m
+drwxrwxr-x. 2 rdavis rdavis 4096 Dec 13 18:49 [01;34mcache[0m
+drwxrwxr-x. 2 rdavis rdavis 4096 Dec 13 04:51 [01;34mdoc[0m
+drwxrwxr-x. 3 rdavis rdavis 4096 Dec 13 18:49 [01;34mextensions[0m
+drwxrwxr-x. 8 rdavis rdavis 4096 Dec 13 18:49 [01;34mgems[0m
+drwxrwxr-x. 2 rdavis rdavis 4096 Dec 13 18:49 [01;34mspecifications[0m
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> 
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> 
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> 
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> vi Gemfile 
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;80r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[80;1H"Gemfile" 20L, 398C[>c[2;1Hsource [38;5;224m'[mhttps://rubygems.org[38;5;224m'[m
+
+[96m# Specify your gem's dependencies in vmpull.gemspec
+#gemspec[m
+
+gem [38;5;224m'[mawesome_print[38;5;224m'[m
+gem [38;5;224m'[mtrollop[38;5;224m'[m
+[96m#gem 'gpe-snmp', path: '/home/ATS/rdavis/code/scripts'[m
+gem [38;5;224m'[moptimist[38;5;224m'[m, [95mpath[m: [38;5;224m'[m/home/ATS/rdavis/code/scripts[38;5;224m'[m
+[96m#gem 'commander'
+#gem 'configs'
+#gem 'ruby-oci8'
+
+# From Git
+#gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'
+
+#gem 'rbvmomi'[m
+gem [38;5;224m'[mruby-oci8[38;5;224m'[m
+
+[94m~                                                                                                                                                                                    [22;1H~                                                                                                                                                                                    [23;1H~                                                                                                                                                                                    [24;1H~                                                                                                                                                                                    [25;1H~                                                                                                                                                                                    [26;1H~                                                                                                                                                                                    [27;1H~                                                                                                                                                                                    [28;1H~                                                                                                                                                                                    [29;1H~                                                                                                                                                                                    [30;1H~                                                                                                                                                                                    [31;1H~                                                                                                                                                                                    [32;1H~                                                                                                                                                                                    [33;1H~                                                                                                                                                                                    [34;1H~                                                                                                                                                                                    [35;1H~                                                                                                                                                                                    [36;1H~                                                                                                                                                                                    [37;1H~                                                                                                                                                                                    [38;1H~                                                                                                                                                                                    [39;1H~                                                                                                                                                                                    [40;1H~                                                                                                                                                                                    [41;1H~                                                                                                                                                                                    [42;1H~                                                                                                                                                                                    [43;1H~                                                                                                                                                                                    [44;1H~                                                                                                                                                                                    [45;1H~                                                                                                                                                                                    [46;1H~                                                                                                                                                                                    [47;1H~                                                                                                                                                                                    [48;1H~                                                                                                                                                                                    [49;1H~                                                                                                                                                                                    [50;1H~                                                                                                                                                                                    [51;1H~                                                                                                                                                                                    [52;1H~                                                                                                                                                                                    [53;1H~                                                                                                                                                                                    [54;1H~                                                                                                                                                                                    [55;1H~                                                                                                                                                                                    [56;1H~                                                                                                                                                                                    [57;1H~                                                                                                                                                                                    [58;1H~                                                                                                                                                                                    [59;1H~                                                                                                                                                                                    [60;1H~                                                                                                                                                                                    [61;1H~                                                                                                                                                                                    [62;1H~                                                                                                                                                                                    [63;1H~                                                                                                                                                                                    [64;1H~                                                                                                                                                                                    [65;1H~                                                                                                                                                                                    [66;1H~                                                                                                                                                                                    [67;1H~                                                                                                                                                                                    [68;1H~                                                                                                                                                                                    [69;1H~                                                                                                                                                                                    [70;1H~                                                                                                                                                                                    [71;1H~                                                                                                                                                                                    [72;1H~                                                                                                                                                                                    [73;1H~                                                                                                                                                                                    [74;1H~                                                                                                                                                                                    [75;1H~                                                                                                                                                                                    [76;1H~                                                                                                                                                                                    [77;1H~                                                                                                                                                                                    [78;1H~                                                                                                                                                                                    [79;1H~                                                                                                                                                                                    [m[80;164H9,1[11CAll[9;1H[?12l[?25h[?25l[80;164H10,1[10;1H[?12l[?25h[?25l[80;167H5[10;5H[?12l[?25h[?25l[80;167H6[10;6H[?12l[?25h[?25l[80;167H14[10;14H[?12l[?25h[?25l[80;168H7[10;17H[?12l[?25h[?25l[10;79r[79;1H
+[1;80r[79;1H[94m~                                                                                                                                                                                    [m[80;1H[K[80;164H10,1[10CAll[10;1H[?12l[?25h[?25l[80;164H9,1 [9;1H[?12l[?25h[?25lgem [38;5;224m'[mgpe-snmp[38;5;224m'[m, [95mpath[m: [38;5;224m'[m/home/ATS/rdavis/code/scripts[38;5;224m'[m[9;54H[K[9;1H[?12l[?25h[?25l[80;166H5[9;5H[?12l[?25h[?25l[80;166H6[9;6H[?12l[?25h[?25l[80;166H9[9;9H[?12l[?25h[?25l[80;166H10[9;10H[?12l[?25h[?25l[80;167H4[9;14H[?12l[?25h[?25l[80;167H7[9;17H[?12l[?25h[?25l[80;166H21[9;21H[?12l[?25h[?25l[80;167H3[9;23H[?12l[?25h[?25l[80;167H4[9;24H[?12l[?25h[?25l[9;24H[K[10;1H#gem [38;5;224m'[mcommander[38;5;224m'[m
+#gem [38;5;224m'[mconfigs[38;5;224m'[m
+#gem [38;5;224m'[mruby-oci8[38;5;224m'[m
+
+# From Git
+#gem [38;5;224m'[mrld[38;5;224m'[m, git: [38;5;224m'[mgit[1m[96m@github[m.com[95m:vgcrld[m/rld.git[38;5;224m'[m, branch: [38;5;224m'[mmaster[38;5;224m'[m
+
+#gem [38;5;224m'[mrbvmomi[38;5;224m'[m[80;167H3[9;23H[?12l[?25h[?25l[80;1H[1m-- INSERT --[m[80;164H[K[80;164H9,24[10CAll[9;24H[?12l[?25h[?25l/home/ATS/rdavis/.gem/ruby/2.4.0[80;166H56[9;56H[?12l[?25h[?25l[38;5;224m'[m
+[96m#gem 'commander'
+#gem 'configs'
+#gem 'ruby-oci8'
+
+# From Git
+#gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'
+
+#gem 'rbvmomi'[m[80;167H7[9;57H[?12l[?25h[80;1H[K[9;56H[?25l[80;164H9,56[10CAll[9;56H[?12l[?25h[?25l[80;1H"Gemfile"[80;164H[K[80;11H19L, 346C written
+[?1l>[?12l[?25h[?1049lrdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> bundle install 
+Fetching gem metadata from https://rubygems.org/.............
+Fetching gem metadata from https://rubygems.org/.........
+Fetching gem metadata from https://rubygems.org/.........
+Resolving dependencies...
+Using awesome_print 1.8.0
+Using bundler 1.16.0
+Using ffi 1.9.25 from source at `/home/ATS/rdavis/.gem/ruby/2.4.0`
+Using ffi-inliner 0.2.4 from source at `/home/ATS/rdavis/.gem/ruby/2.4.0`
+Using nice-ffi 0.4 from source at `/home/ATS/rdavis/.gem/ruby/2.4.0`
+Using net-snmp 0.2.5 from source at `/home/ATS/rdavis/.gem/ruby/2.4.0`
+/home/ATS/rdavis/.gem/ruby/2.4.0/specifications/bin/snmpget.rb maybe `gem pristine net-snmp` will fix it?
+/home/ATS/rdavis/.gem/ruby/2.4.0/specifications/bin/stress_test.rb maybe `gem pristine net-snmp` will fix it?
+Using gpe-snmp 0.0.1 from source at `/home/ATS/rdavis/.gem/ruby/2.4.0`
+[32mFetching ruby-oci8 2.2.6.1[0m
+[32mInstalling ruby-oci8 2.2.6.1 with native extensions[0m
+[31mGem::Ext::BuildError: ERROR: Failed to build gem native extension.
+[0m
+    current directory: /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1/ext/oci8
+/home/galileo/.rbenv/versions/2.4.5/bin/ruby -r ./siteconf20181213-87127-zzzgit.rb extconf.rb
+checking for load library path... 
+  LD_LIBRARY_PATH is not set.
+  checking ld.so.conf... no
+checking for cc... ok
+checking for gcc... yes
+checking for LP64... yes
+checking for sys/types.h... yes
+checking for ruby header... ok
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/home/galileo/.rbenv/versions/2.4.5/bin/$(RUBY_BASE_NAME)
+	--with-instant-client
+	--without-instant-client
+/home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1/ext/oci8/oraconf.rb:909:in `get_home': RuntimeError (RuntimeError)
+	from /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1/ext/oci8/oraconf.rb:728:in `initialize'
+	from /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1/ext/oci8/oraconf.rb:269:in `new'
+	from /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1/ext/oci8/oraconf.rb:269:in `get'
+	from extconf.rb:22:in `<main>'
+---------------------------------------------------
+Error Message:
+  Set the environment variable ORACLE_HOME if Oracle Full Client.
+  Append the path of Oracle client libraries to LD_LIBRARY_PATH if Oracle Instant Client.
+  
+Backtrace:
+  /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1/ext/oci8/oraconf.rb:909:in `get_home'
+  /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1/ext/oci8/oraconf.rb:728:in `initialize'
+  /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1/ext/oci8/oraconf.rb:269:in `new'
+  /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1/ext/oci8/oraconf.rb:269:in `get'
+  extconf.rb:22:in `<main>'
+---------------------------------------------------
+See:
+ * http://www.rubydoc.info/github/kubo/ruby-oci8/file/docs/install-full-client.md for Oracle full client
+ * http://www.rubydoc.info/github/kubo/ruby-oci8/file/docs/install-instant-client.md for Oracle instant client
+ * http://www.rubydoc.info/github/kubo/ruby-oci8/file/docs/install-on-osx.md for OS X
+ * http://www.rubydoc.info/github/kubo/ruby-oci8/file/docs/report-installation-issue.md to report an issue.
+
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/extensions/x86_64-linux/2.4.0-static/ruby-oci8-2.2.6.1/mkmf.log
+
+extconf failed, exit code 1
+
+Gem files will remain installed in /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/gems/ruby-oci8-2.2.6.1 for inspection.
+Results logged to /home/ATS/rdavis/code/scripts/vendor/bundle/ruby/2.4.0/extensions/x86_64-linux/2.4.0-static/ruby-oci8-2.2.6.1/gem_make.out
+
+[0m[31mAn error occurred while installing ruby-oci8 (2.2.6.1), and Bundler cannot continue.
+Make sure that `gem install ruby-oci8 -v '2.2.6.1'` succeeds before bundling.[0m
+
+In Gemfile:
+  ruby-oci8[0m
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> 
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> 
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> 
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> ll
+total 3452
+-rw-rw-r--. 1 rdavis rdavis   3482 Dec 10 22:09 add_hidden_tags.rb
+-rw-rw-r--. 1 rdavis rdavis   2202 Dec 10 22:09 andy.rb
+-rwxrwxr-x. 1 rdavis rdavis    795 Dec 10 22:09 [0m[01;32mapicall-core.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    579 Dec 10 22:09 [01;32mapicall.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   4154 Dec 10 22:09 [01;32mapi-last-data-from-selector.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   5395 Dec 10 22:09 [01;32mapi-vmguest-space.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    603 Jul 14  2016 [01;32marray_of_hashes.rb[0m
+-rw-rw-r--. 1 rdavis rdavis     89 Dec 10 22:09 array_zip.rb
+-rwxrwxr-x. 1 rdavis rdavis   1405 Jul 14  2016 [01;32mbackup_script.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1975 Jul 14  2016 [01;32mbasea.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    202 Dec 10 22:09 blocks.rb
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 13 04:50 [01;34mbuild_info[0m
+-rwxrwxr-x. 1 rdavis rdavis   3047 Jul 14  2016 [01;32mbuild_pru.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    969 Dec 10 22:09 [01;32mbuild-tar-sources.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    329 Dec 10 22:09 [01;32mbuilt-ins[0m
+drwxrwxr-x. 8 rdavis rdavis   4096 Dec 13 04:51 [01;34mcache[0m
+-rwxrwxr-x. 1 rdavis rdavis    245 Jul 14  2016 [01;32mca.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    490 Dec 10 22:09 [01;32mcc.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1107 Jul 14  2016 [01;32mcfe[0m
+-rw-rw-r--. 1 rdavis rdavis    564 Dec 10 22:09 chart-copy.rb
+-rwxrwxr-x. 1 rdavis rdavis    797 Dec 10 22:09 [01;32mchart_help_build.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    348 Dec 10 22:09 c-hash.rb
+-rwxrwxr-x. 1 rdavis rdavis    196 Dec 10 22:09 [01;32mcheck-for-datastore.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    476 Dec 10 22:09 [01;32mcheck-ora-gaps.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    631 Dec 10 22:09 [01;32mcheck-valley-health.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    360 Dec 10 22:09 [01;32mchint.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    268 Jul 14  2016 [01;32mckjson[0m
+-rwxrwxr-x. 1 rdavis rdavis   1302 Jul 14  2016 [01;32mcksql.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    408 Jul 14  2016 [01;32mclean-missing.sh[0m
+-rw-rw-r--. 1 rdavis rdavis    512 Dec 10 22:09 comparable.rb
+-rwxrwxr-x. 1 rdavis rdavis    875 Jul 14  2016 [01;32mcompjson.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1117 Dec 10 22:09 [01;32mconvert_help2html.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1360 Jul 14  2016 [01;32mcreate_charts.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    552 Jul 14  2016 [01;32mcsv.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    151 Dec 10 22:09 curlit.sh
+-rwxrwxr-x. 1 rdavis rdavis    542 Dec 10 22:09 [01;32mdao-call.rb[0m
+-rw-rw-r--. 1 rdavis rdavis   3216 Dec 10 22:09 data
+-rw-rw-r--. 1 rdavis rdavis   1013 Dec 10 22:09 deltemp.rb
+-rwxrwxr-x. 1 rdavis rdavis     42 Dec 10 22:09 [01;32mdevadmin[0m
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 13 04:50 [01;34mdoc[0m
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 10 22:09 [01;34mdscli[0m
+-rwxrwxr-x. 1 rdavis rdavis   4442 Dec 10 22:09 [01;32mdscli.faker[0m
+-rwxrwxr-x. 1 rdavis rdavis   4459 Dec 10 22:09 [01;32mdscli.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    899 Jul 14  2016 dsmerror.log
+drwxrwxr-x. 7 rdavis rdavis   4096 Dec 10 22:10 [01;34mepic[0m
+-rw-rw-r--. 1 rdavis rdavis    106 Dec 10 22:09 erb.rb
+-rwxrwxr-x. 1 rdavis rdavis   1048 Dec 10 22:09 [01;32merrq.rb[0m
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 13 04:50 [01;34mextensions[0m
+-rwxrwxr-x. 1 rdavis rdavis     26 Jul 14  2016 [01;32mext.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1660 Dec 10 22:09 [01;32mfastrun.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis   1621 Dec 10 22:09 [01;32mff.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    426 Dec 10 22:09 [01;32mfib.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    441 Jul 14  2016 [01;32mfile_has_data[0m
+-rwxrwxr-x. 1 rdavis rdavis    391 Jul 14  2016 [01;32mfindint.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    622 Jul 14  2016 [01;32mfixflash.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    105 Dec 10 22:09 fix-header.sh
+-rw-rw-r--. 1 rdavis rdavis    303 Dec 10 22:09 fix.rb
+-rwxrwxr-x. 1 rdavis rdavis    768 Jul 14  2016 [01;32mfixsvc.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    729 Dec 10 22:09 [01;32mfix-vm-config.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1195 Jul 14  2016 [01;32mflash2.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    266 Aug 15  2016 [01;32mflashfix.sh[0m
+-rw-rw-r--. 1 rdavis rdavis    811 Dec 10 22:09 flashids.rb
+-rwxrwxr-x. 1 rdavis rdavis    303 Dec 10 22:10 [01;32mflashpp.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1105 Jul 14  2016 [01;32mflash.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    437 Jul 14  2016 [01;32mflash_write.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis   1559 Dec 10 22:09 [01;32mfork.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis     69 Dec 10 22:09 [01;32mfun1.sh[0m
+-rw-rw-r--. 1 rdavis rdavis    346 Dec 13 19:13 Gemfile
+drwxrwxr-x. 3 rdavis rdavis   4096 Dec 13 04:50 [01;34mgems[0m
+-rwxrwxr-x. 1 rdavis rdavis   1096 Dec 10 22:09 [01;32mgetfiles.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    131 Jul 14  2016 [01;32mgetnewdata[0m
+-rw-rw-r--. 1 rdavis rdavis   2122 Dec 10 22:09 get-pure-data.sh
+-rwxrwxr-x. 1 rdavis rdavis  15014 Dec 10 22:09 [01;32mget-table.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   2475 Dec 10 22:09 [01;32mget-vmware-logs.rb[0m
+-rw-rw-r--. 1 rdavis rdavis  15922 Dec 10 22:09 git-prompt.sh
+drwxrwxr-x. 3 rdavis rdavis   4096 Dec 10 22:09 [01;34mgpe-agent[0m
+-rw-rw-r--. 1 rdavis rdavis   2634 Dec 10 22:09 gpe-agent-ds8k-collect
+-rw-rw-r--. 1 rdavis rdavis   3479 Jul 14  2016 gpe-agent-vmware.yml.old
+-rw-rw-r--. 1 rdavis rdavis  13853 Jul 14  2016 gpe-agent-vmware.yml.save
+-rwxrwxr-x. 1 rdavis rdavis   1643 Dec 10 22:09 [01;32mgpedb.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1299 Dec 10 22:09 [01;32mgpe_object_merge.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    283 Dec 10 22:09 gpetest.rb
+-rwxrwxr-x. 1 rdavis rdavis    998 Jul 14  2016 [01;32mgroupme.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    292 Dec 10 22:09 [01;32mgsub.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis     23 Dec 10 22:09 [01;32mgut[0m
+-rwxrwxr-x. 1 rdavis rdavis   3330 Jul 14  2016 [01;32mh2match.rb[0m
+-rw-rw-r--. 1 rdavis rdavis 398435 Jul 14  2016 help.html
+-rwxrwxr-x. 1 rdavis rdavis    714 Dec 10 22:09 [01;32minsp.rb[0m
+-rw-rw-r--. 1 rdavis rdavis     74 Jul 14  2016 in.yml
+-rw-rw-r--. 1 rdavis rdavis    302 Dec 10 22:09 io.rb
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 10 22:09 [01;34mipc[0m
+-rwxrwxr-x. 1 rdavis rdavis    934 Jul 14  2016 [01;32mjhash.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    265 Dec 10 22:09 [01;32mkiller.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    198 Dec 10 22:09 [01;32mkiller-sub.sh[0m
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 10 22:09 [01;34mlearn[0m
+-rwxrwxr-x. 1 rdavis rdavis    652 Jul 14  2016 [01;32mloadview.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    554 Jul 14  2016 [01;32mlogger.rb[0m
+-rw-rw-r--. 1 rdavis rdavis 472667 Dec 10 22:09 log.qad-copy
+-rw-rw-r--. 1 rdavis rdavis 630500 Dec 10 22:09 log.qad-reduce
+-rwxrwxr-x. 1 rdavis rdavis    127 Dec 10 22:09 [01;32mlooper.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis   1211 Dec 10 22:09 [01;32mmatch-to-hash.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    197 Dec 10 22:09 medhost.sh
+-rw-rw-r--. 1 rdavis rdavis    154 Dec 10 22:09 mem.rb
+-rw-rw-r--. 1 rdavis rdavis   1890 Dec 10 22:09 merge_hosts.sh
+-rw-rw-r--. 1 rdavis rdavis    440 Dec 10 22:09 merge-test.csv
+-rw-rw-r--. 1 rdavis rdavis   8866 Dec 10 22:09 mergethem.sh
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 10 22:09 [01;34mmeta[0m
+-rwxrwxr-x. 1 rdavis rdavis   1228 Jul 14  2016 [01;32mmig_test.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    506 Dec 10 22:09 mktns
+-rw-rw-r--. 1 rdavis rdavis  14850 Dec 10 22:09 module_spec.rb
+-rwxrwxr-x. 1 rdavis rdavis    252 Jul 14  2016 [01;32mmoveflash.rb[0m
+-rw-rw-r--. 1 rdavis rdavis     41 Jul 14  2016 moveit.sh
+-rw-rw-r--. 1 rdavis rdavis    138 Dec 10 22:09 move-vm-missing-trend.sh
+-rwxrwxr-x. 1 rdavis rdavis     50 Dec 10 22:09 [01;32mmyadmin[0m
+-rw-rw-r--. 1 rdavis rdavis    376 Dec 10 22:09 mystuff.rb
+-rwxrwxr-x. 1 rdavis rdavis   2453 Dec 10 22:09 [01;32mmytest2.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1097 Dec 10 22:09 [01;32mmytest.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1048 Jul 14  2016 [01;32mmythread.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    167 Dec 10 22:09 node-web-server.js
+-rwxrwxr-x. 1 rdavis rdavis    772 Dec 10 22:09 [01;32mobspace_dumpall.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   9804 Jul 14  2016 [01;32mold_create_charts.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    487 Dec 10 22:09 [01;32mop.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   3630 Jul 14  2016 [01;32mopts.rb[0m
+-rw-rw-r--. 1 rdavis rdavis  32539 Dec 10 22:09 oracle-a.rb
+-rwxrwxr-x. 1 rdavis rdavis   3746 Dec 10 22:09 [01;32moracle_charts.rb[0m
+-rw-rw-r--. 1 rdavis rdavis   8380 Dec 10 22:09 oracle.rb
+-rwxrwxr-x. 1 rdavis rdavis   1785 Dec 10 22:09 [01;32mora-quick.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    366 Dec 10 22:09 [01;32morc-vframe.rb[0m
+-rw-rw-r--. 1 rdavis rdavis   2027 Dec 10 22:09 orig_tsm.rb
+-rwxrwxr-x. 1 rdavis rdavis     40 Dec 10 22:09 [01;32moscreens[0m
+-rwxrwxr-x. 1 rdavis rdavis    631 Jul 14  2016 [01;32mostruct.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1034 Jul 14  2016 [01;32mparse_vmware_log.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    227 Dec 10 22:09 [01;32mpatchit.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    295 Dec 10 22:09 [01;32mphc-move-zero-epic.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    303 Dec 10 22:09 [01;32mphc.sh[0m
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 10 22:09 [01;34mpjm-stats[0m
+-rwxrwxr-x. 1 rdavis rdavis     42 Dec 10 22:09 [01;32mprdadmin[0m
+-rwxrwxr-x. 1 rdavis rdavis   2514 Dec 10 22:09 [01;32mpricing_vmware.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    893 Dec 10 22:09 [01;32mprocess-1-hour.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    426 Dec 10 22:09 [01;32mprocess-dev-code.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1789 Dec 10 22:09 [01;32mprocess-etl.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1548 Jul 14  2016 [01;32mprocess_time.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    253 Dec 10 22:09 proc.rb
+-rwxrwxr-x. 1 rdavis rdavis    329 Dec 10 22:09 [01;32mproctest.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    227 Dec 10 22:09 [01;32mprofile.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1578 Dec 10 22:09 [01;32mprops.rb[0m
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 10 22:09 [01;34mpure[0m
+-rw-rw-r--. 1 rdavis rdavis  16343 Dec 10 22:09 pure-help.csv
+-rwxrwxr-x. 1 rdavis rdavis   5128 Dec 10 22:09 [01;32mpure-help.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    126 Dec 10 22:09 [01;32mpurepath.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    279 Dec 10 22:09 [01;32mpvm.sh[0m
+-rw-rw-r--. 1 rdavis rdavis    352 Dec 10 22:09 pw-encript.rb
+-rwxrwxr-x. 1 rdavis rdavis   1151 Dec 10 22:09 [01;32mqad-copy.rb[0m
+-rw-rw-r--. 1 rdavis rdavis  71877 Dec 10 22:09 qad.csv
+-rwxrwxr-x. 1 rdavis rdavis    199 Dec 10 22:09 [01;32mqad-find-to_restore.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    214 Dec 10 22:09 [01;32mqad-linux-gpe.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    813 Dec 10 22:09 [01;32mqad-long.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    147 Dec 10 22:09 [01;32mqad-reduce.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    218 Dec 10 22:09 [01;32mqad-vmware.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis   1576 Dec 10 22:09 [01;32mq_charts.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1016 Jul 14  2016 [01;32mqcount.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   2150 Jul 14  2016 [01;32mqcust.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   3183 Dec 10 22:09 [01;32mqdb.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1401 Jul 14  2016 [01;32mqerrors.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1190 Jul 14  2016 [01;32mqinput.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    967 Jul 14  2016 [01;32mqschema.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   5458 Dec 10 22:09 [01;32mqueue.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    297 Dec 10 22:09 quote_test.rb
+-rwxrwxr-x. 1 rdavis rdavis    657 Jul 14  2016 [01;32mreadlog.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    309 Jul 14  2016 [01;32mread.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    118 Jul 14  2016 [01;32mrebuilddoc[0m
+-rwxrwxr-x. 1 rdavis rdavis   1500 Jul 14  2016 [01;32mrekey_vmware.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   3062 Jul 14  2016 [01;32mrestore_for.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    429 Dec 10 22:09 [01;32mrunetl.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    332 Dec 10 22:09 [01;32mrun-gpe.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis   1046 Dec 10 22:09 [01;32mrunit.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    511 Dec 10 22:09 [01;32mrunner.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1885 Dec 10 22:09 [01;32mruns[0m
+-rw-rw-r--. 1 rdavis rdavis    430 Dec 10 22:09 runsvcetl.sh
+drwxrwxr-x. 6 rdavis rdavis   4096 Jul 14  2016 [01;34msaas[0m
+-rwxrwxr-x. 1 rdavis rdavis    210 Jul 14  2016 [01;32msamples_creator.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    236 Jul 14  2016 [01;32msamp.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   4703 Dec 10 22:09 [01;32msave_inventory_code.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    435 Dec 10 22:09 sched.rb
+-rw-rw-r--. 1 rdavis rdavis    108 Dec 10 22:09 scope.rb
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 10 22:09 [01;34msh-how-to[0m
+-rwxrwxr-x. 1 rdavis rdavis    466 Dec 10 22:09 [01;32mshtest.sh[0m
+drwxrwxr-x. 3 rdavis rdavis   4096 Dec 10 22:09 [01;34msinatra[0m
+-rw-rw-r--. 1 rdavis rdavis    847 Dec 13 19:00 snmp.rb
+-rwxrwxr-x. 1 rdavis rdavis    244 Dec 10 22:09 [01;32msocket_client.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    267 Dec 10 22:09 [01;32msocket_server.rb[0m
+-rw-rw-r--. 1 rdavis rdavis     45 Dec 10 22:09 [01;31msomedata.tar.gz[0m
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 13 04:50 [01;34mspecifications[0m
+-rwxrwxr-x. 1 rdavis rdavis    381 Jul 14  2016 [01;32mstartdoc[0m
+-rw-rw-r--. 1 rdavis rdavis    928 Dec 10 22:09 struct.rb
+-rw-rw-r--. 1 rdavis rdavis    600 Dec 10 22:09 struct-v-openstruct.rb
+-rwxrwxr-x. 1 rdavis rdavis    979 Dec 10 22:09 [01;32msvcrun.sh[0m
+-rw-rw-r--. 1 rdavis rdavis   7976 Dec 10 22:09 tables.rb
+-rw-rw-r--. 1 rdavis rdavis  69541 Dec 10 22:09 [01;31mtagging-export-0.1.tar.gz[0m
+-rw-rw-r--. 1 rdavis rdavis 695829 Dec 10 22:09 tagging-export-1523299091.csv
+-rwxrwxr-x. 1 rdavis rdavis    501 Jul 14  2016 [01;32mtempf.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    716 Dec 10 22:09 [01;32mtermtab.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    816 Jul 14  2016 [01;32mtest_alert.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1148 Dec 13 16:36 [01;32mtest-cisco.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    276 Dec 10 22:09 [01;32mtestconnect.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    353 Dec 10 22:09 [01;32mtestcsv.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    299 Dec 10 22:09 [01;32mtest-diag.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    815 Dec 10 22:09 [01;32mtestkill.sh[0m
+-rw-rw-r--. 1 rdavis rdavis    213 Dec 10 22:09 test_props.rb
+-rwxrwxr-x. 1 rdavis rdavis    358 Dec 10 22:09 [01;32mtest-super.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    787 Jul 14  2016 [01;32mth.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    670 Dec 10 22:09 [01;32mthr.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    346 Dec 10 22:09 [01;32mtoj.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    174 Dec 10 22:09 [01;32mtoodeep.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    407 Dec 10 22:09 [01;32mt.rb[0m
+-rw-rw-r--. 1 rdavis rdavis   1709 Dec 10 22:09 trie.rb
+drwxrwxr-x. 2 rdavis rdavis   4096 Dec 10 22:09 [01;34mtsm[0m
+-rwxrwxr-x. 1 rdavis rdavis   1464 Dec 10 22:09 [01;32mtsm-commander.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1657 Jul 14  2016 [01;32mtsmget.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1294 Jul 14  2016 [01;32mtsmgpe.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1635 Jul 14  2016 [01;32mtsm.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    221 Dec 10 22:09 tsmy.rb
+-rwxrwxr-x. 1 rdavis rdavis     59 Dec 10 22:09 [01;32mtt.rb[0m
+-rw-rw-r--. 1 rdavis rdavis      0 Dec 10 22:09 twang.csv
+-rw-rw-r--. 1 rdavis rdavis   5218 Dec 10 22:09 unmerge_items.sh
+-rw-rw-r--. 1 rdavis rdavis   1220 Dec 10 22:09 unmerge.sh
+drwxrwxr-x. 3 rdavis rdavis   4096 Nov 14 12:42 [01;34mvendor[0m
+-rwxrwxr-x. 1 rdavis rdavis   6556 Jul 14  2016 [01;32mviewman.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    105 Dec 10 22:09 [01;32mvm_cert_test.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    172 Dec 10 22:09 [01;32mvm-check-file-content.sh[0m
+-rw-rw-r--. 1 rdavis rdavis   1888 Dec 10 22:09 vmdatacenter_assets_table_dao.rb
+-rw-rw-r--. 1 rdavis rdavis    338 Dec 10 22:09 vmdatacenter_assets_table.rb
+-rwxrwxr-x. 1 rdavis rdavis   2136 Jul 14  2016 [01;32mvmfind.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis  16525 Dec 10 22:09 [01;32mvmget.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   2353 Jul 14  2016 [01;32mvminv.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   3088 Dec 10 22:09 [01;32mvm_map_setup.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   3524 Dec 10 22:09 [01;32mvm_map_test.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    204 Jul 14  2016 [01;32mvmp.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   8646 Dec 10 22:09 [01;32mvmpull.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    986 Dec 10 22:09 [01;32mvmrun.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis    358 Jul 14  2016 [01;32mvmwarefix.sh[0m
+-rwxrwxr-x. 1 rdavis rdavis   2369 Dec 10 22:09 [01;32mvmware-in-error.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis   1562 Jul 14  2016 [01;32mvmware_unit_testing[0m
+-rwxrwxr-x. 1 rdavis rdavis  18640 Dec 10 22:09 [01;32mvmware-what-was-this.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    809 Dec 10 22:10 [01;32mwait-for-children[0m
+-rwxrwxr-x. 1 rdavis rdavis    624 Dec 10 22:09 [01;32mwtf.rb[0m
+-rwxrwxr-x. 1 rdavis rdavis    295 Dec 10 22:09 [01;32myajl_samp.rb[0m
+-rw-rw-r--. 1 rdavis rdavis    234 Dec 10 22:09 ym.rb
+-rwxrwxr-x. 1 rdavis rdavis    356 Dec 10 22:09 [01;32mzapgpe.sh[0m
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> mkdit [K[Kr tt
+rdavis@g01dlapp01:~/scripts ([32mmaster[0m)
+> cd tt
+rdavis@g01dlapp01:~/scripts/tt ([32mmaster[0m)
+> ll
+total 0
+rdavis@g01dlapp01:~/scripts/tt ([32mmaster[0m)
+> mkdir gems
+rdavis@g01dlapp01:~/scripts/tt ([32mmaster[0m)
+> cd gems
+rdavis@g01dlapp01:~/scripts/tt/gems ([32mmaster[0m)
+> gem fetch optimist
+Fetching: optimist-3.0.0.gemFetching: optimist-3.0.0.gem ( 53%)Fetching: optimist-3.0.0.gem (100%)Fetching: optimist-3.0.0.gem (100%)
+Downloaded optimist-3.0.0
+rdavis@g01dlapp01:~/scripts/tt/gems ([32mmaster[0m)
+> find ~/gpe-agent-sn[K[Ksnm[K[K[K[K[K[K[K[K[K[K[K[K[Kcode/gpe-agn[Ke[K[K[K[K[K[K[Kgpe-agent-sn[Knmp -name '*.gem'
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-snmp/lib/gpe-agent-snmp/vendor/ruby/2.1.0/cache/gpe-snmp-0.0.1.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-snmp/lib/gpe-agent-snmp/vendor/ruby/2.1.0/cache/ffi-inliner-0.2.4.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-snmp/lib/gpe-agent-snmp/vendor/ruby/2.1.0/cache/nice-ffi-0.4.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-snmp/lib/gpe-agent-snmp/vendor/ruby/2.1.0/cache/ffi-1.9.10.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-snmp/lib/gpe-agent-snmp/vendor/ruby/2.1.0/cache/net-snmp-0.2.5.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_mds/lib/gpe-agent-cisco_mds/vendor/ruby/2.1.0/cache/gpe-snmp-0.0.1.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_mds/lib/gpe-agent-cisco_mds/vendor/ruby/2.1.0/cache/ffi-inliner-0.2.4.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_mds/lib/gpe-agent-cisco_mds/vendor/ruby/2.1.0/cache/nice-ffi-0.4.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_mds/lib/gpe-agent-cisco_mds/vendor/ruby/2.1.0/cache/ffi-1.9.10.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_mds/lib/gpe-agent-cisco_mds/vendor/ruby/2.1.0/cache/net-snmp-0.2.5.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_network/lib/gpe-agent-cisco_network/vendor/ruby/2.1.0/cache/gpe-snmp-0.0.1.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_network/lib/gpe-agent-cisco_network/vendor/ruby/2.1.0/cache/ffi-inliner-0.2.4.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_network/lib/gpe-agent-cisco_network/vendor/ruby/2.1.0/cache/nice-ffi-0.4.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_network/lib/gpe-agent-cisco_network/vendor/ruby/2.1.0/cache/ffi-1.9.10.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/BUILD/fake-gpe-agent-cisco_network/lib/gpe-agent-cisco_network/vendor/ruby/2.1.0/cache/net-snmp-0.2.5.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/SOURCES/gpe-snmp-0.0.1.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/SOURCES/ffi-inliner-0.2.4.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/SOURCES/nice-ffi-0.4.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/SOURCES/ffi-1.9.10.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/SOURCES/net-snmp-0.2.5.gem
+/home/ATS/rdavis/code/gpe-agent-snmp/SOURCES/sources/gpe-snmp/gpe-snmp-0.0.1.gem
+rdavis@g01dlapp01:~/scripts/tt/gems ([32mmaster[0m)
+> cp /home/ATS/rdavis/code/gpe-agent-snmp/SOURCES/gpe-snmp-0.0.1.gem .
+rdavis@g01dlapp01:~/scripts/tt/gems ([32mmaster[0m)
+> ll
+total 40
+-rw-r--r--. 1 rdavis rdavis  7680 Dec 13 19:14 gpe-snmp-0.0.1.gem
+-rw-rw-r--. 1 rdavis rdavis 29696 Dec 13 19:14 optimist-3.0.0.gem
+rdavis@g01dlapp01:~/scripts/tt/gems ([32mmaster[0m)
+> gme [K[K[K[Kgem fetch snmp 
+Fetching: snmp-1.3.1.gemFetching: snmp-1.3.1.gem (  8%)Fetching: snmp-1.3.1.gem ( 16%)Fetching: snmp-1.3.1.gem ( 24%)Fetching: snmp-1.3.1.gem ( 32%)Fetching: snmp-1.3.1.gem ( 40%)Fetching: snmp-1.3.1.gem ( 48%)Fetching: snmp-1.3.1.gem ( 56%)Fetching: snmp-1.3.1.gem ( 64%)Fetching: snmp-1.3.1.gem ( 72%)Fetching: snmp-1.3.1.gem ( 80%)Fetching: snmp-1.3.1.gem ( 88%)Fetching: snmp-1.3.1.gem ( 96%)Fetching: snmp-1.3.1.gem (100%)Fetching: snmp-1.3.1.gem (100%)
+Downloaded snmp-1.3.1
+rdavis@g01dlapp01:~/scripts/tt/gems ([32mmaster[0m)
+> ll
+total 244
+-rw-r--r--. 1 rdavis rdavis   7680 Dec 13 19:14 gpe-snmp-0.0.1.gem
+-rw-rw-r--. 1 rdavis rdavis  29696 Dec 13 19:14 optimist-3.0.0.gem
+-rw-rw-r--. 1 rdavis rdavis 205824 Dec 13 19:15 snmp-1.3.1.gem
+rdavis@g01dlapp01:~/scripts/tt/gems ([32mmaster[0m)
+> vi ../Gem[Kmfile^C
+rdavis@g01dlapp01:~/scripts/tt/gems ([32mmaster[0m)
+> ll
+total 244
+-rw-r--r--. 1 rdavis rdavis   7680 Dec 13 19:14 gpe-snmp-0.0.1.gem
+-rw-rw-r--. 1 rdavis rdavis  29696 Dec 13 19:14 optimist-3.0.0.gem
+-rw-rw-r--. 1 rdavis rdavis 205824 Dec 13 19:15 snmp-1.3.1.gem
+rdavis@g01dlapp01:~/scripts/tt/gems ([32mmaster[0m)
+> cd ..
+rdavis@g01dlapp01:~/scripts/tt ([32mmaster[0m)
+> vi Gemfile[K> vi Gemfile[K> vi Gemfile[K> vi Gemfile[K> vi Gemfile[K> vi Gemfile[K> vi Gemfile[K> vi Gemfile[K> vi Gemfile^C
+rdavis@g01dlapp01:~/scripts/tt ([32mmaster[0m)
+> ^C
+rdavis@g01dlapp01:~/scripts/tt ([32mmaster[0m)
+> exit
+exit
+
+Script done on Fri 14 Dec 2018 01:29:35 PM GMT

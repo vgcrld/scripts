@@ -1,0 +1,16 @@
+#!/usr/bin/sh
+
+loc="$HOME/etlrepo"
+mkdir -p "$loc"
+cd "${loc}"
+git init
+echo 'tmp/' > .gitignore
+git add . && git commit -m 'Add .gitignore'
+
+for i in $(gf 60 atsgroup '*.vmware.gz')
+do
+  echo "cd $HOME/etlrepo && \
+    tar -xvf $i && \
+    git add . && \
+    git commit -m 'Added Time: $(date)'"
+done

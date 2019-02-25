@@ -2,22 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     awesome_print (1.8.0)
-    commander (4.4.4)
-      highline (~> 1.7.2)
-    highline (1.7.10)
-    ruby-oci8 (2.2.5.1)
-    ruby-oci8 (2.2.6.1)
-    trollop (2.1.2)
+    optimist (3.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   awesome_print
-  commander
-  rld!
-  ruby-oci8
-  trollop
+  optimist
 
 BUNDLED WITH
-   1.16.1
+   1.16.0
