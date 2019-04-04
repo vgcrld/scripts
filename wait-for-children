@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 
 set_queue_size (){
   export GPE_QUEUE_SIZE=$1
@@ -38,16 +38,13 @@ wait_for_queue () {
 
 #------------ Run some stuff on a queue
 
-set_queue_size 5
+set_queue_size 10
 
-for i in 'sleep 10' \
-         'sleep 60' \
-         'ls -ltr > ./output.tmp' 'tar -cvzf $HOME/somedata.tar.gz -C $HOME/code/scripts . > ./tarlog.tmp 2>&1' \
-         'sleep 15' \
-         'echo "hello" > ./say-hi.tmp' \
-         'ps -ef | grep rdavis > ./my-ps.tmp'
+for i in `ls $*`
 do
-  run_on_queue "$i"
+  cmd="test-single-file vmware $i > /dev/null 2>&1"
+  echo "Run ts for $i"
+  run_on_queue "$cmd"
 done
 
 finish_queue

@@ -1,0 +1,17 @@
+#!/usr/bin/sh
+
+CUSTDIR="/share/prd01/process"
+
+_customer_dirs ()  {
+  for dir in $(find $CUSTDIR -maxdepth 1 -type d)
+  do
+    basename $dir
+  done
+}
+
+_build_list () {
+  local dirs=$(_customer_dirs)
+  COMPREPLY=($(compgen -W "$dirs" "${COMP_WORDS[1]}"))
+}
+
+complete -F _build_list getfiles.rb
