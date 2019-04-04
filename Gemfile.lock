@@ -1,30 +1,30 @@
 GIT
-  remote: git@github.com:vgcrld/rld.git
-  revision: c69b41dbd21c66c4c957c62a28b2de2a235bc7f2
+  remote: git@codebox.galileosuite.com:rich.davis/agem.git
+  revision: 644aee3ffe96a9a1589755c89cc6d5701c73e489
   branch: master
   specs:
-    rld (0.1.0)
+    agem (0.1.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (5.2.1)
+    activesupport (5.2.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     awesome_print (1.8.0)
-    commander (4.4.4)
-      highline (~> 1.7.2)
-    concurrent-ruby (1.0.5)
+    commander (4.4.7)
+      highline (~> 2.0.0)
+    concurrent-ruby (1.1.4)
     configs (1.4.0)
       activesupport (> 3.0)
-    highline (1.7.10)
-    i18n (1.1.0)
+    highline (2.0.0)
+    i18n (1.5.1)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
+    optimist (3.0.0)
     thread_safe (0.3.6)
-    trollop (2.1.2)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
 
@@ -32,11 +32,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  agem!
   awesome_print
   commander
   configs
-  rld!
-  trollop
+  optimist
 
 BUNDLED WITH
-   1.16.0
+   2.0.1

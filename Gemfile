@@ -5,12 +5,14 @@ source 'https://rubygems.org'
 #gemspec
 
 gem 'awesome_print'
-gem 'trollop'
+gem 'optimist'
 gem 'commander'
 gem 'configs'
 
+gem 'agem', git: 'git@codebox.galileosuite.com:rich.davis/agem.git', branch: :master
+
 # From Git
-gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'
+#gem 'rld', git: 'git@github.com:vgcrld/rld.git', branch: 'master'
 
 #gem 'rbvmomi'
 #gem 'ruby-oci8'

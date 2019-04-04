@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+
+require 'awesome_print' 
+require 'csv'
+require 'json'
+require 'optimist'
+
+opts = Optimist::options do
+  opt :head, "Show Headers"
+  opt :file, "CSV File to Process", required: true, type: :string
+  opt :cols, "Colums to Selec", type: :strings
+  opt :csv, "Output to CSV (Default: JSON)"
+end
+
+begin
+  csv = CSV.read opts[:file]
+rescue Exception => e
+  puts "Cannot read CSV or access file '#{opts[:file]}': #{e.message}"
+  exit 1
+end
+
+result  = []
+header  = csv.shift
+
+if opts[:head]
+  ap header
+  exit 1
+end
+
+begin
+  getcols = opts[:cols].map{ |o| header.index(o) }
+  result << header.values_at(*getcols)
+rescue Exception => e
+  puts "Column error: #{e.message}"
+  exit 1
+end
+
+data = csv.each do |o|
+  next if header == o
+  line = o.values_at(*getcols)
+  result << line
+end
+
+if opts[:csv]
+  result.each do |o|
+    puts o.to_csv
+  end
+else
+  puts result.to_json
+end
+
+
+
