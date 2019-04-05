@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+[ -z "$1" ] && set 60
+
+~/code/scripts/getfiles.rb $1 atsgroup '*.ibmi.Z'
+~/code/scripts/getfiles.rb $1 TCP '*.ibmi.Z'
+
