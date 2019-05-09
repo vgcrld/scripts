@@ -81,7 +81,11 @@ until cmd == 'quit' do
   puts "Enter a command: "
   begin
     cmd = gets.chomp
-    eval cmd unless cmd == 'quit'
+    begin
+      eval cmd unless cmd == 'quit'
+    rescue
+      puts "Bad command."
+    end
   rescue
     cmd=""
   end
