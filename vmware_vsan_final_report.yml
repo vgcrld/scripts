@@ -1,0 +1,18 @@
+---
+OTA:
+- "/share/prd01/process/OTA/archive/by_uuid/3083dd7c-aa17-40b3-acd3-6e05724ff3e1/vcenter.20190721.142003.GMT__366429__.3083dd7c-aa17-40b3-acd3-6e05724ff3e1.vmware.gz"
+Dept_LI:
+- "/share/prd01/process/Dept_LI/archive/by_uuid/b7bd570c-8f8b-47d2-8cc6-1771dd49230b/lihbg000vm43.20190723.174002.GMT__466469__.b7bd570c-8f8b-47d2-8cc6-1771dd49230b.vmware.gz"
+DSS_BPIC:
+- "/share/prd01/process/DSS_BPIC/archive/by_uuid/d2ae646d-9999-4694-907f-81e7d2ed8766/vcenter65.20190723.184008.GMT__521129__.d2ae646d-9999-4694-907f-81e7d2ed8766.vmware.gz"
+MLH:
+- "/share/prd01/process/MLH/archive/by_uuid/2020532f-977c-4605-b98c-6ff42dd52896/southdc.20190723.061958.GMT__078928__.2020532f-977c-4605-b98c-6ff42dd52896.vmware.gz"
+atsgroup:
+- "/share/prd01/process/atsgroup/archive/by_uuid/221b42a6-34a3-4a4f-b190-65054f41bd4f/gvicvc6app01.20190721.224013.GMT__978154__.221b42a6-34a3-4a4f-b190-65054f41bd4f.vmware.gz"
+Presence:
+- "/share/prd01/process/Presence/archive/by_uuid/af6f8957-07f2-4342-a62f-4e1c3f061ec7/A1NMVCSA002V.20190721.203752.GMT__464346__.af6f8957-07f2-4342-a62f-4e1c3f061ec7.vmware.gz"
+- "/share/prd01/process/Presence/archive/by_uuid/f6d35b70-49dd-444e-b792-7edd61e64f3c/Z1NMVCSA002V.20190721.053758.GMT__324300__.f6d35b70-49dd-444e-b792-7edd61e64f3c.vmware.gz"
+QAD:
+- "/share/prd01/process/QAD/archive/by_uuid/93749187-956e-45fc-9b1e-99730e21bf26/HongKong-POD2.20190722.212002.GMT__559154__.93749187-956e-45fc-9b1e-99730e21bf26.vmware.gz"
+Mutual_of_Omaha:
+- "/share/prd01/process/Mutual_of_Omaha/archive/by_uuid/6179d81a-7885-45fc-afab-c0643284c6b2/omahcsm43.20190721.232002.GMT__053071__.6179d81a-7885-45fc-afab-c0643284c6b2.vmware.gz"

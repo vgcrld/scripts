@@ -1,0 +1,2 @@
+host1.disk1,type=disk,host=host1,namespace=rdavis,mount=/var  tx=10,rx=22 1559658779888127
+host1.disk2,type=disk,host=host1,namespace=rdavis,mount=/data tx=10,rx=22 1559658779888127
