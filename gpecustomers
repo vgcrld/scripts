@@ -11,7 +11,7 @@ _customer_dirs ()  {
 
 _build_list () {
   local dirs=$(_customer_dirs)
-  COMPREPLY=($(compgen -W "$dirs" "${COMP_WORDS[1]}"))
+  COMPREPLY=($(compgen -W "$dirs" "${COMP_WORDS[2]}"))
 }
 
 complete -F _build_list getfiles.rb

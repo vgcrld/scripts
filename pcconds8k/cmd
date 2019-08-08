@@ -1,0 +1,5 @@
+Via Script
+/opt/ibm/dscli/dscli -cfg <ds8k-cfg-file> -user <user> -pwfile <path-to-pw-file> -script get-vols-all
+
+Via pipe - one at a time
+cat get-vols-all | /opt/ibm/dscli/dscli -cfg <ds8k-cfg-file> -user <user> -pwfile <path-to-pw-file>

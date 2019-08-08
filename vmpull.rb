@@ -133,11 +133,9 @@ module GpeVmware
 
     def calculate_time_range(seconds=1200)
       vcenter_time = @si.CurrentTime
-      min_diff = (vcenter_time.strftime("%M").to_i % 5)
-      sec_diff = (vcenter_time.strftime("%S").to_i % 60)
-      query_end_ts = vcenter_time - (min_diff * 60) - sec_diff
-      end_ts = (query_end_ts).strftime("%Y-%m-%dT%H:%M:%SZ")
-      start_ts = (query_end_ts - seconds).strftime("%Y-%m-%dT%H:%M:%SZ")
+      tz = vcenter_time.zone
+      start_ts = (vcenter_time - seconds).strftime("%Y-%m-%dT%H:%M:%SZ")
+      end_ts = vcenter_time.strftime("%Y-%m-%dT%H:%M:%SZ")
       return start_ts, end_ts
     end
 
@@ -188,8 +186,7 @@ module GpeVmware
     # Get all the inventory from vcenter
     def get_vcenter_inventory_references
       vals = @si.content.viewManager.CreateContainerView( container: @root, type: @requested_types, recursive: true ).view.flatten
-      vals.group_by{ |x| rand(999999) }
-      return vals.sort_by{ rand(999999) }
+      return vals
     end
 
     def build_inventory( inventory_refs )
@@ -228,8 +225,6 @@ end # end Module
 # START Here
 # ============================================
 
-require 'debug'
-
 c1 = {
   host: "nosprdvcapp01.ats.local",
   user: 'rdavis@ats.local',
@@ -259,7 +254,6 @@ metric_map = {
 
 ap c1
 startts = Time.now.to_f
-require 'debug'; puts :DEBUG
 vc1 = GpeVmware::Inventory.new( c1, metric_map, 4 )
 endts = Time.now.to_f
 puts "total time is #{endts-startts}ms"
