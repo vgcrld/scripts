@@ -30,6 +30,7 @@ end
 ## type = 'vmware'
 ## type = 'epic'
 
+# Create a get_type(cust) for each type
 types.each do |type|
   define_method :"get_#{type}" do |cust|
     sys = Hash.new
@@ -37,6 +38,10 @@ types.each do |type|
   end
 end
 
+#ap get_vmware 'atsgroup'
+ap get_svc    'atsgroup'
+
+exit
 sys = Hash.new
 customers.each do |cust|
   systems = get_vmware(cust)
