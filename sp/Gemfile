@@ -1,0 +1,2 @@
+gem 'protect_connect', git: 'git@github.com:vgcrld/protect_connect.git'
+gem 'awesome_print'
