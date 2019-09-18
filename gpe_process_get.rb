@@ -2,8 +2,17 @@
 
 require 'yaml'
 require 'awesome_print'
+require 'optimist'
 
-@db = YAML.load(File.new('data.yaml','r'))
+opts = Optimist::options do
+  opt :customer, "Customer", type: :string, required: true
+  opt :type,     "Type",     type: :string, required: true
+end
+
+customer = opts[:customer]
+type = opts[:type]
+
+@db = YAML.load(File.new('gpe_process.yaml','r'))
 
 def types
   return @db.values.map{ |o| o['type'].values }.flatten.uniq
@@ -23,13 +32,6 @@ def customers
   return @db.keys
 end
 
-## type = 'ds8k'
-## type = 'oracle'
-## type = 'pure'
-## type = 'flash'
-## type = 'vmware'
-## type = 'epic'
-
 # Create a get_type(cust) for each type
 types.each do |type|
   define_method :"get_#{type}" do |cust|
@@ -38,14 +40,7 @@ types.each do |type|
   end
 end
 
-#ap get_vmware 'atsgroup'
-ap get_svc    'atsgroup'
+# ap get_vmware 'atsgroup'
+# ap get_svc    'atsgroup'
 
-exit
-sys = Hash.new
-customers.each do |cust|
-  systems = get_vmware(cust)
-  sys.store(cust,systems) unless systems.empty?
-end
-
-ap sys
+ap get(customer,type)

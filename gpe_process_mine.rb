@@ -3,6 +3,7 @@
 require 'awesome_print'
 require 'yaml'
 
+DBNME   = 'gpe_process.yaml'
 THREADS = 15
 
 @work_queue    = Queue.new
@@ -80,4 +81,4 @@ end
 print "\nDone!\n"
 
 
-File.new('data.yaml','w').write(@results.to_yaml)
+File.new(DBNAME,'w').write(@results.to_yaml)
