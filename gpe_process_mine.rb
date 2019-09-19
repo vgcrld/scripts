@@ -3,8 +3,9 @@
 require 'awesome_print'
 require 'yaml'
 
-DBNME   = 'gpe_process.yaml'
-THREADS = 15
+DBNAME   = 'gpe_process.yaml'
+THREADS = 25
+LOG = File.new('gpe_process.log','w')
 
 @work_queue    = Queue.new
 @workers       = []
@@ -18,7 +19,6 @@ def start_workers(queue, i=10)
           Thread.terminate
         end
         path = queue.pop
-        ## puts "Process: #{path}"
         process_path(path,@results)
       end
     end
@@ -32,8 +32,8 @@ end
 def get_path_content_type(paths)
   ret = {}
   paths.each do |path|
-    ## puts "Path: #{path}"
     uuid = File.basename(path)
+    LOG.puts "Process #{path}"
     lspath = File.join(path,'/')
     contents = `ls #{lspath}`
     type = contents.lines.grep_v(/gpe\.gz$/).last
@@ -75,10 +75,10 @@ start_workers(@work_queue,THREADS)
 while true
   len = @work_queue.length
   break if @workers.map{ |o| o.status }.compact.empty?
-  print "\rRemaining: #{len}"
+  print "\rRemaining: #{len}          "
   sleep 1
 end
 print "\nDone!\n"
 
-
+# Write the Contents
 File.new(DBNAME,'w').write(@results.to_yaml)
