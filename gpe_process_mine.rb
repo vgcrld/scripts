@@ -3,6 +3,8 @@
 require 'awesome_print'
 require 'yaml'
 
+Thread.abort_on_exception=true
+
 DBNAME   = 'gpe_process.yaml'
 THREADS = 25
 LOG = File.new('gpe_process.log','w')
@@ -16,7 +18,7 @@ def start_workers(queue, i=10)
     @workers[id] = Thread.new(id) do |tid|
       while true
         if queue.length == 0
-          Thread.terminate
+          Thread.exit
         end
         path = queue.pop
         process_path(path,@results)
@@ -30,16 +32,18 @@ def dir_contents(path)
 end
 
 def get_path_content_type(paths)
-  ret = {}
+  ret = { uuid: [], name: [], type: [] }
   paths.each do |path|
     uuid = File.basename(path)
     LOG.puts "Process #{path}"
     lspath = File.join(path,'/')
     contents = `ls #{lspath}`
-    type = contents.lines.grep_v(/gpe\.gz$/).last
-    next if type.nil?
-    type = type.split('.')[-2]
-    ret[uuid.to_s] = type
+    file = contents.lines.grep_v(/gpe\.gz$/).last
+    next if file.nil?
+    dets = file.split(".")
+    ret[:uuid] << uuid
+    ret[:name] << dets.first
+    ret[:type] << dets[-2]
   end
   return ret
 end
@@ -49,8 +53,8 @@ def process_path(path,results)
   custpath = File.join(path,'/archive/by_uuid')
   uuidpath = dir_contents(custpath)
   results[customer] = {
-    'path' =>  custpath,
-    'type' =>  get_path_content_type(uuidpath)
+       'path' =>  custpath,
+    'details' =>  get_path_content_type(uuidpath)
   }
 end
 
@@ -60,7 +64,6 @@ CUSTOMERS.delete('COPY')
 CUSTOMERS.delete('etl-rules.json')
 CUSTOMERS.delete('httpd.tar')
 CUSTOMERS.delete('lost+found')
-## CUSTOMERS[0..6].each do |path|
 CUSTOMERS.each do |path|
   @work_queue << path
   puts "Queue Customer: #{path}"
@@ -74,7 +77,7 @@ start_workers(@work_queue,THREADS)
 
 while true
   len = @work_queue.length
-  break if @workers.map{ |o| o.status }.compact.empty?
+  break if @workers.select{ |o| o.status }.empty?
   print "\rRemaining: #{len}          "
   sleep 1
 end
