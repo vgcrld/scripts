@@ -10,7 +10,7 @@ THREADS = 25
 LOG = File.new('gpe_process.log','w')
 
 @work_queue    = Queue.new
-@workers       = []
+@workers       = Array.new
 @results       = Hash.new
 
 def start_workers(queue, i=10)

@@ -4,6 +4,7 @@ require 'yaml'
 require 'awesome_print'
 require 'optimist'
 require 'csv'
+require 'json'
 
 @db = YAML.load(File.new('gpe_process.yaml','r'))
 
@@ -13,60 +14,65 @@ def not_in(array, *vals)
   end
 end
 
-def types
-  return @db.values.map{ |o| o['type'].values }.flatten.uniq
+def customer_value(customer,type,*idx)
+  types = @db[customer]['details'][type.to_sym]
+  idx = (0..types.length-1).to_a if idx.empty?
+  return types.values_at(*idx)
 end
 
-def type(customer,type)
-  types = @db[customer]['type'].values
-  return types.map.each_with_index{ |o,i| i if o == type }.compact
+def all_types
+  return @db.values.map{ |o| o['details'][:type] }.flatten.uniq
 end
 
-def get(customer,type)
-  idx = type(customer,type)
-  return @db[customer]['type'].keys.values_at(*idx)
+def get(customer,search,filter)
+  data = @db[customer]['details'][search]
+  idx = data.map.each_with_index{ |o,i| i if o.match(filter)}.compact
+  return [] if idx.empty?
+  return [
+    customer_value(customer,:name,*idx),
+    customer_value(customer,:type,*idx),
+    customer_value(customer,:uuid,*idx)
+  ]
 end
 
-def customers
+def all_customers
   return @db.keys
 end
 
-# Create get_[type] for each: e.g. get_vmware(cust)
-types.each do |type|
-  define_method :"get_#{type}" do |cust|
-    sys = Hash.new
-    { cust => { type.to_sym => sys.store(cust,get(cust, type)) } }
+def types
+  @db.values.map{ |o| o['details'][:type] }.flatten.uniq.sort
+end
+
+def to_csv(data)
+  return nil if data.empty?
+  rows = []
+  data.first.each_index do |i|
+    row = []
+    data.length.times do |c|
+      row << data[c][i]
+    end
+    rows << row.to_csv
   end
+  return rows
 end
 
 opts = Optimist::options do
-  opt :customer, "Customer", type: :strings
-  opt :type,     "Type",     type: :strings
+  opt :customers, "Customers", type: :strings
+  opt :search,    "Search",    type: :string
+  opt :filter,    "Filter",    type: :string
 end
 
-customer = opts[:customer]
-customer = customers if customer.nil?
-unless (invalid = not_in(customers,*customer)).empty?
+customers = opts[:customers]
+customers = all_customers if customers.nil?
+unless (invalid=not_in(all_customers,*customers)).empty?
   Optimist.die "'#{invalid.join(', ')}' not valid customer(s)."
   exit 1
 end
 
-type = opts[:type]
-type = types if type.nil?
-unless (invalid = not_in(types,*type)).empty?
-  Optimist.die "'#{invalid.join(', ')}' not valid type(s)."
-  exit 1
+search=opts[:search].to_sym
+filter=Regexp.new(opts[:filter])
+
+customers.each do |customer|
+  val = get(customer,search,filter)
+  puts to_csv(val) unless val.empty?
 end
-
-data = [ %w( customer type uuid ).to_csv ]
-customer.each do |c|
-  type.each do |t|
-    get(c,t).each do |u|
-      data << [c,t,u].to_csv
-    end
-  end
-end
-
-puts data
-
-
