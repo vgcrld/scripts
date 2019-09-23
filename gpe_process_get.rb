@@ -29,6 +29,7 @@ def get(customer,search,filter)
   idx = data.map.each_with_index{ |o,i| i if o.match(filter)}.compact
   return [] if idx.empty?
   return [
+    [ customer ],
     customer_value(customer,:name,*idx),
     customer_value(customer,:type,*idx),
     customer_value(customer,:uuid,*idx)
@@ -56,10 +57,11 @@ def to_csv(data)
   return rows
 end
 
+# Options
 opts = Optimist::options do
   opt :customers, "Customers", type: :strings
-  opt :search,    "Search",    type: :string
-  opt :filter,    "Filter",    type: :string
+  opt :search,    "Search",    type: :string,  required: true
+  opt :filter,    "Filter",    type: :string,  required: true
 end
 
 customers = opts[:customers]
@@ -72,7 +74,10 @@ end
 search=opts[:search].to_sym
 filter=Regexp.new(opts[:filter])
 
+# Collect
 customers.each do |customer|
   val = get(customer,search,filter)
   puts to_csv(val) unless val.empty?
 end
+
+exit
