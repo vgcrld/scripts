@@ -6,6 +6,5 @@
 # The remaining is trend if numeric or Config if other
 
 ./makepayload LIVE_atsgroup \
-  system \
-  "type=host,name=$(hostname -s),host=$(hostname -s)" \
-  "cpu=10,mem=100,custom=\"Rich Davis Data2\"" $*
+  "$(hostname).disk1,type=host,name=$(hostname -s),host=$(hostname)" \
+  " cpu=10,mem=100,custom=\"Rich Davis Data2\"" $*

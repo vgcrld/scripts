@@ -4,6 +4,7 @@
              nanos=$(gdate +"%s%N")
 
           customer="${1}"  ;shift
+
               item="${1}"  ;shift
          othertags="${1}"  ;shift
             fields="${1}"  ;shift
