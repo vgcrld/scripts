@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# This script will put .credentials in place 
+# Change the values here for PRD, DEV, user, etc
+
+            user="rdavis"
+        password="Passw0rd1@"
+        customer="LIVE_atsgroup"
+        credfile=".credentials"
+             url="xfer1-dev.galileosuite.com:1447"    #DEV
+            #url="xfer1.galileosuite.com:443"        #PRD
+
+
+# Other Values
+
+            temp="creds.$RANDOM"
+            host="$(hostname -s).api"
+
+# Is there already a .credentials file?
+if [ -f ${credfile} ] ; then
+  echo "File .credentials already exists. Delete and retry."
+  exit 1
+fi
+
+# Try to get the credentials
+eval "curl -kX POST -F 'username=${user}' \
+  -F 'password=${password}' \
+  -F 'hostname=${host}' \
+  https://${url}/register/${customer}" > "${temp}"
+
+# If _rc=0 is found in the response then parse and create the .credentials
+if grep -w '_rc=0' "${temp}" > /dev/null 2>&1 ; then
+  apiuser=$(awk -F"_msg='|'|:" '/_msg=/ {print $2}' "${temp}")
+  apipw=$(awk -F"_msg='|'|:" '/_msg=/ {print $3}' "${temp}")
+  echo "${apiuser}" >  "${credfile}"
+  echo "${apipw}"   >> "${credfile}"
+else
+  echo "Authentication failure."
+  exit 1
+fi
+
+rm "${temp}"
+
+exit
+
