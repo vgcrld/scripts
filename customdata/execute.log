@@ -3,7 +3,7 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 192.168.100.75...
 * TCP_NODELAY set
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to xfer1-dev.galileosuite.com (192.168.100.75) port 1447 (#0)
+* Connected to xfer1-dev.galileosuite.com (192.168.100.75) port 1447 (#0)
 * ALPN, offering h2
 * ALPN, offering http/1.1
 * Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
@@ -38,23 +38,23 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 *  expire date: May 24 04:21:27 2021 GMT
 *  issuer: C=US; ST=Pennsylvania; L=Malvern; O=Advanced Technology Services Group, LLC; OU=Galileo; CN=Galileo CA; emailAddress=support@galileosuite.com
 *  SSL certificate verify result: unable to get local issuer certificate (20), continuing anyway.
-* Server auth using Basic with user 'richs-mbp.ats.local.api.4b3a99d0-cc04-0137-90a0-39258f526d84'
+* Server auth using Basic with user 'richs-mbp.api.569a4050-cc20-0137-90a8-39258f526d84'
 > POST /ingest/influx/LIVE_atsgroup/write?db=richs-mbp HTTP/1.1
 > Host: xfer1-dev.galileosuite.com:1447
-> Authorization: Basic cmljaHMtbWJwLmF0cy5sb2NhbC5hcGkuNGIzYTk5ZDAtY2MwNC0wMTM3LTkwYTAtMzkyNThmNTI2ZDg0OjRiM2JjOWMwLWNjMDQtMDEzNy05MGExLTM5MjU4ZjUyNmQ4NA==
+> Authorization: Basic cmljaHMtbWJwLmFwaS41NjlhNDA1MC1jYzIwLTAxMzctOTBhOC0zOTI1OGY1MjZkODQ6NTY5Y2M4NjAtY2MyMC0wMTM3LTkwYTktMzkyNThmNTI2ZDg0
 > User-Agent: curl/7.54.0
 > Accept: */*
 > Content-Type: text/plain
-> Content-Length: 138
+> Content-Length: 116
 > 
-} [138 bytes data]
-* upload completely sent off: 138 out of 138 bytes
+} [116 bytes data]
+* upload completely sent off: 116 out of 116 bytes
 < HTTP/1.1 204 No Content
-< Date: Tue, 08 Oct 2019 16:49:46 GMT
+< Date: Tue, 08 Oct 2019 18:33:53 GMT
 < Server: Apache/2.4.6 (CentOS)
 < Cache-Control: no-cache
 < Strict-Transport-Security: max-age=31536000
 < Public-Key-Pins: pin-sha256="28xOUAZt671k9iaa9EZF95KtJXFt+StFHpsBYtNl92M="; max-age=5184000; includeSubDomains
 < 
-100   138    0     0  100   138      0   1249 --:--:-- --:--:-- --:--:--  1243
+100   116    0     0  100   116      0   1085 --:--:-- --:--:-- --:--:--  1094
 * Connection #0 to host xfer1-dev.galileosuite.com left intact

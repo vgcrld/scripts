@@ -1,3 +1,11 @@
-#!/usr/bin
+#!/bin/sh
 
-./makepayload LIVE_atsgroup cpu "name=CPU,type=host,host=$(hostname -s)" "cpu=${RANDOM},temp=${RANDOM},model=\"intel\"" -x
+# Write to LIVE_atsgroup
+# Item will be hostname.system (makepayload adds the hostname to the system item added
+# Type and Name reserve words for the DB type and the CfgName
+# The remaining is trend if numeric or Config if other
+
+./makepayload LIVE_atsgroup \
+  system \
+  "type=host,name=$(hostname -s),host=$(hostname -s)" \
+  "cpu=10,mem=100,custom=\"Rich Davis Data2\"" $*

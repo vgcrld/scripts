@@ -1,33 +1,32 @@
 #!/bin/sh
 
-
-#url="xfer1.galileosuite.com:443"
-url="xfer1-dev.galileosuite.com:1447"
-
-          hostname=$(hostname -s)
+         shorthost=$(hostname -s)
              nanos=$(gdate +"%s%N")
 
           customer="${1}"  ;shift
-           measure="${1}"  ;shift
-              tags="${1}"  ;shift
+              item="${1}"  ;shift
+         othertags="${1}"  ;shift
             fields="${1}"  ;shift
 
-payload="payload.$measure.$RANDOM.influx"
+            #  url="xfer1.galileosuite.com:443"          # Production
+               url="xfer1-dev.galileosuite.com:1447"     # Development
 
+           payload="payload.$item.$RANDOM.influx"
+
+# Are there credentials already? If so warn and exit
 if [ -f .credentials ]; then
-  user="$(cat .credentials | head -1)"
-  password="$(cat .credentials | tail -1)"
+  apiuser="$(cat .credentials | head -1)"
 else
   echo ".credentials file was not found."
   exit 1
 fi
 
-echo "${hostname}.${measure},${tags} ${fields} ${nanos}" > "${payload}"
+echo "${item},${othertags} ${fields} ${nanos}" > "${payload}"
 
 cmd="curl -vkX POST -H 'Content-Type: text/plain' \
   --data-binary @'${payload}' \
-  -u '${user}:${password}' \
-  'https://${url}/ingest/influx/LIVE_atsgroup/write?db=${hostname}'"
+  -u '${apiuser}' \
+  'https://${url}/ingest/influx/${customer}/write?db=${shorthost}'"
 
 if [ "$*" = "-x" ] ; then
   eval "${cmd}" > execute.log 2>&1
