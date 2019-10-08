@@ -1,0 +1,3 @@
+#!/usr/bin
+
+./makepayload LIVE_atsgroup cpu "name=CPU,type=host,host=$(hostname -s)" "cpu=${RANDOM},temp=${RANDOM},model=\"intel\"" -x

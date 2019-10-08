@@ -1,0 +1,46 @@
+#!/bin/sh
+
+
+#url="xfer1.galileosuite.com:443"
+url="xfer1-dev.galileosuite.com:1447"
+
+          hostname=$(hostname -s)
+             nanos=$(gdate +"%s%N")
+
+          customer="${1}"  ;shift
+           measure="${1}"  ;shift
+              tags="${1}"  ;shift
+            fields="${1}"  ;shift
+
+payload="payload.$measure.$RANDOM.influx"
+
+if [ -f .credentials ]; then
+  user="$(cat .credentials | head -1)"
+  password="$(cat .credentials | tail -1)"
+else
+  echo ".credentials file was not found."
+  exit 1
+fi
+
+echo "${hostname}.${measure},${tags} ${fields} ${nanos}" > "${payload}"
+
+cmd="curl -vkX POST -H 'Content-Type: text/plain' \
+  --data-binary @'${payload}' \
+  -u '${user}:${password}' \
+  'https://${url}/ingest/influx/LIVE_atsgroup/write?db=${hostname}'"
+
+if [ "$*" = "-x" ] ; then
+  eval "${cmd}" > execute.log 2>&1
+else
+  echo "${cmd}"
+  cat "${payload}"
+  echo "Nothing done: Include the -x flag at the end to execute."
+fi
+
+rm -if "${payload}"
+
+
+
+
+
+
