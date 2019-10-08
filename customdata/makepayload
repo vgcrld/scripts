@@ -5,14 +5,13 @@
 
           customer="${1}"  ;shift
 
-              item="${1}"  ;shift
          othertags="${1}"  ;shift
             fields="${1}"  ;shift
 
             #  url="xfer1.galileosuite.com:443"          # Production
                url="xfer1-dev.galileosuite.com:1447"     # Development
 
-           payload="payload.$item.$RANDOM.influx"
+           payload="payload.$RANDOM.influx"
 
 # Are there credentials already? If so warn and exit
 if [ -f .credentials ]; then
@@ -22,7 +21,7 @@ else
   exit 1
 fi
 
-echo "${item},${othertags} ${fields} ${nanos}" > "${payload}"
+echo "${othertags} ${fields} ${nanos}" > "${payload}"
 
 cmd="curl -vkX POST -H 'Content-Type: text/plain' \
   --data-binary @'${payload}' \

@@ -7,4 +7,4 @@
 
 ./makepayload LIVE_atsgroup \
   "$(hostname).disk1,type=host,name=$(hostname -s),host=$(hostname)" \
-  " cpu=10,mem=100,custom=\"Rich Davis Data2\"" $*
+  " cpu=10,mem=100,custom_name=\"Rich Davis mac book Pro\"" "$*"

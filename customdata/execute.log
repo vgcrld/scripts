@@ -45,16 +45,16 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 > User-Agent: curl/7.54.0
 > Accept: */*
 > Content-Type: text/plain
-> Content-Length: 118
+> Content-Length: 150
 > 
-} [118 bytes data]
-* upload completely sent off: 118 out of 118 bytes
+} [150 bytes data]
+* upload completely sent off: 150 out of 150 bytes
 < HTTP/1.1 204 No Content
-< Date: Tue, 08 Oct 2019 18:46:51 GMT
+< Date: Tue, 08 Oct 2019 18:57:24 GMT
 < Server: Apache/2.4.6 (CentOS)
 < Cache-Control: no-cache
 < Strict-Transport-Security: max-age=31536000
 < Public-Key-Pins: pin-sha256="28xOUAZt671k9iaa9EZF95KtJXFt+StFHpsBYtNl92M="; max-age=5184000; includeSubDomains
 < 
-100   118    0     0  100   118      0   1628 --:--:-- --:--:-- --:--:--  1638
+100   150    0     0  100   150      0   1286 --:--:-- --:--:-- --:--:--  1293
 * Connection #0 to host xfer1-dev.galileosuite.com left intact
