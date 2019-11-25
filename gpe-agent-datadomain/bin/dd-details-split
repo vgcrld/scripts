@@ -1,0 +1,26 @@
+#!/usr/bin/sh
+
+# Bring in all the setup
+source "$(dirname $0)/dd-base"
+
+# This awk runs the "parsers" dynamically from get_details_cmd
+# so they must be in the path.  
+awk -F '[<>]' -v sep="'" '
+  { 
+    s = split($2,A,":")
+    cmd = A[1]
+    col = A[2]
+    part1 = $1
+    part2 = $3
+ 
+    get_details_cmd = cmd" | awk -F, "sep"NR > 1 { print $1,$"col" }"sep
+
+    while( get_details_cmd | getline details) {
+      split(details,D," ")
+      print D[1]","part1" "D[2]" "part2
+    }
+    close(get_details_cmd)
+
+  } 
+ 
+' $etc/dd-detail-commands.in

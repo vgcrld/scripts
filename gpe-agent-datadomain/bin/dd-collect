@@ -1,0 +1,129 @@
+#!/usr/bin/sh
+
+# Bring in all the setup
+source "$(dirname $0)/dd-base"
+
+# Make sure we do cleanup if INT
+trap int_exit INT
+
+int_exit() {
+  stop_all_ssh_masters
+  exit 0
+}
+
+logit() {
+  printf "$(date '+%F %T %Z') : $$ : $1\n"
+}
+
+wait_for_children() {
+  count="$1"
+  while [[ c=$(compgen -v RUNNING_PID | wc -l) -ge "${count}" ]]; do
+    for pid in $(compgen -v RUNNING_PID); do
+      eval "runpid=$(echo \"\$$pid\")"
+      if ! ps -p $runpid --noheader > /dev/null 2>&1; then
+        eval "unset $pid"
+      fi
+    done
+    sleep 1
+  done
+}
+
+setup_all_ssh_masters() {
+  # Setup the ssh Masters
+  for dd in $dds; do
+    master="ssh -o ControlPersist=5m -o ControlMaster=auto -o ControlPath=/tmp/${dd}-socket.master sa-atsssh@${dd} -f -N"
+    logit "Start Master SSH for ${dd}"
+    eval "$master"
+  done
+}
+
+collect_summary_data() {
+  # Run commands for each data domain in dd-commands.in
+  for dd in $dds; do
+    mkdir -p "${out}/${dd}"
+    while read cmd; do
+      ssh_socket="/tmp/${dd}-socket.master"
+      outfile="${out}/${dd}/$(echo ${cmd} | sed 's/[ \/]/_/g').txt"
+      logit "Run on ${dd}: ${cmd} to ${outfile}"
+      ssh -o BatchMode=yes -o ControlPath=${ssh_socket} -f sa-atsssh@${dd} ${cmd} > ${outfile} 2>&1 &
+      eval "export RUNNING_PID_$!='$!'"
+      wait_for_children 8
+    done < "${etc}/dd-commands.in"
+  done
+  logit "Waiting for final children: $(compgen -v RUNNING_PID|wc -l)"
+  wait
+}
+
+collect_detail_data() {
+  # Now do the same for the detail commands
+  IFS=$'\n'
+  for detail_cmd in $(dd-details-split)
+  do
+    dd=$(echo "$detail_cmd" | awk -F, '{print $1}')
+    cmd=$(echo "$detail_cmd" | awk -F, '{print $2}')
+    ssh_socket="/tmp/${dd}-socket.master"
+    outfile="${out}/${dd}/$(echo ${cmd} | sed 's/[ \/]/_/g').txt"
+    logit "Run on ${dd}: ${cmd}"
+    ssh -o BatchMode=yes -o ControlPath=${ssh_socket} -f sa-atsssh@${dd} ${cmd} > ${outfile} 2>&1 &
+    eval "export RUNNING_PID_$!='$!'"
+    wait_for_children 8
+  done
+  unset IFS
+  logit "Waiting for final children: $(compgen -v RUNNING_PID|wc -l)"
+  wait
+}
+
+stop_all_ssh_masters() {
+  for dd in $dds; do
+    logit "Stop Master ssh for ${dd}"
+    master="ssh -o ControlPersist=5m -o ControlMaster=auto -o ControlPath=/tmp/${dd}-socket.master -O exit sa-atsssh@${dd}"
+    eval "$master"
+  done
+}
+
+run_all_parsers() {
+  # Run parsers - not for now.
+  mkdir -p "${csv}"
+  compression_physical-capacity-measurement_sample_show_history > ${csv}/compression_physical-capacity-measurement_sample_show_history.csv
+  ddboost_storage-unit_show > ${csv}/ddboost_storage-unit_show.csv
+  ddboost_storage-unit_show_compression_details > ${csv}/ddboost_storage-unit_show_compression_details.csv
+  ddboost_storage-unit_show_details > ${csv}/ddboost_storage-unit_show_details.csv
+  dd_df > ${csv}/dd_df.csv
+  vtl_tape_show_all > ${csv}/vtl_tape_show_all.csv
+}
+
+tar_up_all_files() {
+  output_loc="$(ls -d ${files}/1????????? | tail -1)"
+  report_ts="$(basename ${output_loc})"
+  tarfile="${bkp}/reports.${report_ts}.tar.gz"
+  cd "${output_loc}"
+  if tar -cvzf "${tarfile}" .
+  then
+    logit "Successfully saved tar file: ${tarfile}"
+  else
+    logit "Failed to save tar file: ${tarfile}"
+    exit 1
+  fi
+}
+
+rotate_log() {
+  logname="/tmp/dd-collect.log"
+  ! [ -f "${logname}" ] && return
+  if [ $(stat --printf '%s' "$logname") -ge 1000000 ]; then
+    mv "${logname}.1" "${logname}.2" 
+    mv "${logname}"   "${logname}.1"
+    touch "${logname}"
+  fi
+}
+
+# Main starts here
+
+rotate_log
+setup_all_ssh_masters
+collect_summary_data
+collect_detail_data
+stop_all_ssh_masters
+## run_all_parsers
+tar_up_all_files
+
+logit "Collection Complete"

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Here is home
+home=$(cd $(dirname $0)/../..; pwd)
+
+# Other locations
+bin=$home/bin
+etc=$home/etc
+var=$home/var
+files=$var/files
+
+# Where are the parsers
+parsers=$(cd $(dirname $0); pwd)
+
+# What filename should we look for
+parsefile=$(basename $0)
+
+# Get the list
+last="${files}/$(ls ${files} | tail -1)"
+files_to_parse=$(find ${last} -name "${parsefile}.txt")
+[ -z "$files_to_parse" ] && exit 1
+
+awk '
+
+  BEGIN { start = "0"; OFS="," }
+
+  { n = split(FILENAME,F,"/"); ddname = F[n-1] }
+
+  start == "0" && /Status/ { gsub(/ {3,}/,",",$0); print "ddname",$0; start = "1" }
+
+  $3 ~ /R[DWO]/ { gsub(/ {3,}/,",",$0); print ddname,$0 }
+
+' $files_to_parse

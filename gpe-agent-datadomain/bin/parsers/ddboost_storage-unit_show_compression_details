@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# Here is home
+home=$(cd $(dirname $0)/../..; pwd)
+
+# Other locations
+bin=$home/bin
+etc=$home/etc
+var=$home/var
+files=$var/files
+
+# Where are the parsers
+parsers=$(cd $(dirname $0); pwd)
+
+# What filename should we look for
+parsefile=$(basename $0)
+
+# Get the list
+last="${files}/$(ls ${files} | tail -1)"
+files_to_parse=$(find ${last} -name "ddboost_storage-unit_show_*compression.txt")
+
+[ -z "$files_to_parse" ] && exit 1
+
+awk '
+
+  BEGIN { 
+   FS = ":|;|"; start = 0; OFS=","
+  }
+  { n = split(FILENAME,F,"/"); ddname = F[n-1] }
+  /List of files/ { next }
+  /\w+:$/ { ddfile=$1 }
+  { gsub(/,/,"") }
+  /Total files:/ { total = $2/1; storage_used = $4/1 }
+  /Logical Bytes/ { logical = $2/1 }
+  /Original Bytes/ { orig = $2/1 }
+  /Globally Compressed/ { global = $2/1 }
+  /Locally Compressed/ { local = $2/1 }
+  start == 0 { 
+    print "ddname,ddfile,total_bytes,logical_bytes,orig_bytes,global_bytes,local_bytes,meta_bytes"
+    start = 1 
+  }
+  /Meta-data/ { 
+    meta = $2/1 
+    print ddname,ddfile,total,logical,orig,global,local,meta
+  }
+ 
+' $files_to_parse
+
+# Example Data:
+#
+# BACKUP_COPY_U-Z:
+# Total files: 15;  bytes/storage_used: 4.7
+#        Logical Bytes:    8,947,931,290,581
+#       Original Bytes:    8,976,958,907,141
+#  Globally Compressed:    4,602,437,841,410
+#   Locally Compressed:    1,892,213,131,168
+#            Meta-data:       19,382,911,356
+

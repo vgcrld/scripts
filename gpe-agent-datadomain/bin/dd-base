@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# What DDs to collect from
+export dds="beseh063 beseh064 beseh147 bxteh063 bxteh064 bxteh147"
+#export dds="beseh063"
+
+# Here is home
+export home=$(cd $(dirname $0)/..; pwd)
+
+# Other locations
+export bin="$home/bin"
+export etc="$home/etc"
+export var="$home/var"
+export lib="$home/lib"
+export bkp="$home/bkp"
+
+export timestamp="$(date +"%s")"
+export files="${var}/files"
+export out="${files}/${timestamp}"
+export csv="${files}/${timestamp}/csv"
+
+# Where are the parsers
+export parsers="$bin/parsers"
+
+# Setup paths
+export PATH=$bin:$parsers:$PATH
+
+# What filename should we look for
+export parsefile=$(basename $0)
+
+# Make the dirs
+mkdir -p "$bin" "$etc" "$lib" "$var" "$bkp" "$files"
+

@@ -1,0 +1,65 @@
+#!/bin/sh
+
+# Here is home
+home=$(cd $(dirname $0)/../..; pwd)
+
+# Other locations
+bin=$home/bin
+etc=$home/etc
+var=$home/var
+files=$var/files
+
+# Where are the parsers
+parsers=$(cd $(dirname $0); pwd)
+
+# What filename should we look for
+parsefile=$(basename $0)
+
+# Get the list
+last="${files}/$(ls ${files} | tail -1)"
+files_to_parse=$(find ${last} -name "${parsefile}.txt")
+[ -z "$files_to_parse" ] && exit 1
+
+awk '
+
+  BEGIN{ 
+    start = 0
+    OFS=","
+  }
+
+  { 
+    n = split(FILENAME,F,"/")
+    ddname = F[n-1]
+  }
+
+  /^MTree:/ { mtree=$2 }
+
+  // { 
+    gsub(/ {3,}/,",")
+  }
+
+  /Measurement Time/ && start == 0 { 
+    print "ddname","MTree Name",$0
+    start=1
+  }
+
+  /[[:digit:]]{2}:[[:digit:]]{2}/ { 
+    print ddname,mtree,$0
+  }
+
+' $files_to_parse
+
+# Example Input:
+#
+# MTree: /data/col1/backup
+# Measurement Time      Logical Used   Physical Used   Global-Comp   Local-Comp      Total-Comp
+#                         (Pre-Comp)     (Post-Comp)        Factor       Factor          Factor
+#                              (GiB)           (GiB)                              (Reduction %)
+# -------------------   ------------   -------------   -----------   ----------   -------------
+# 2018/03/14 12:04:07            0.0             0.0         0.00x        0.00x   0.00x (0.00%)
+# 2018/03/15 12:04:22            0.0             0.0         0.00x        0.00x   0.00x (0.00%)
+# 2018/03/16 12:04:33            0.0             0.0         0.00x        0.00x   0.00x (0.00%)
+# 2018/03/17 12:04:46            0.0             0.0         0.00x        0.00x   0.00x (0.00%)
+# 2018/03/18 11:20:39            0.0             0.0         0.00x        0.00x   0.00x (0.00%)
+# 
+

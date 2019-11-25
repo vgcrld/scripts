@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Here is home
+home=$(cd $(dirname $0)/../..; pwd)
+
+# Other locations
+bin=$home/bin
+etc=$home/etc
+var=$home/var
+files=$var/files
+
+# Where are the parsers
+parsers=$(cd $(dirname $0); pwd)
+
+# What filename should we look for
+parsefile=$(basename $0)
+
+# Get the list
+last="${files}/$(ls ${files} | tail -1)"
+files_to_parse=$(find ${last} -name "${parsefile}.txt")
+[ -z "$files_to_parse" ] && exit 1
+
+awk '
+
+  BEGIN { start = 0; OFS="," }
+
+  { n = split(FILENAME,F,"/"); ddname = F[n-1] }
+
+  // { gsub(/ {3,}/,",") }
+
+  /Modification Time/ && start == 0 { print "ddname",$0; start = 1 }
+
+  /[[:digit:]]{2}:[[:digit:]]{2}$/ { print ddname,$0 }
+
+' $files_to_parse
+
+# Example Input:
+#
+# Barcode    Pool                Location   State       Size             Used (%)   Comp   Modification Time
+# --------   -----------------   --------   ------   -------   ------------------   ----   -------------------
+# D00002L3   tsm4000backupsets   vault      RW       100 GiB   100.0 GiB (99.95%)    17x   2014/09/30 19:07:41
+# D00003L3   tsm4000backupsets   vault      RW       100 GiB    70.4 GiB (70.37%)    14x   2011/05/31 20:51:43
+# D00004L3   tsm4000backupsets   vault      RW       100 GiB    28.2 GiB (28.24%)    20x   2014/09/30 19:32:12
+
