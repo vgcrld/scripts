@@ -9,9 +9,9 @@ customer=atsgroup
 
 echo "For Prefix: '${S3Uri}/'"
 
-for uuid in 608410-3144135241 334651-2253528509 926824-834564918 158234-3318698229
+for uuid in 608410-3144135241 334651-2253528509 926824-834564918 158234-3318698229 563125-1235914285 788522-2039173335
 do
-  echo "aws s3 ls --recursive ${S3Uri}/${customer}/${uuid}/${year}/${mon}/${day}/"
+  echo "aws s3 cp --recursive ${S3Uri}/${customer}/${uuid}/${year}/${mon}/${day}/ ~/gpe/restore/"
 done
 
 exit
