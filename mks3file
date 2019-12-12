@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Sample File - must be full oldtimer path
+#
+#  /share/process/Sirius_UUI/input/DS-8870.20191211.113000.GMT__654704__.IBM-2107-75DAM11.ds8k.gz
+# 
+
+      ff="$1"
+
+     uri="s3://etl-x2gpe.galileosuite.com"
+
+customer=$(echo $ff | cut -d/ -f4)
+    uuid=$(echo $ff | cut -d. -f5)
+    year=$(echo $ff | cut -d. -f2 | cut -c1-4)
+   month=$(echo $ff | cut -d. -f2 | cut -c5-6)
+     day=$(echo $ff | cut -d. -f2 | cut -c7-8)
+    file=$(echo $ff | cut -d/ -f6)
+
+echo "$uri/$customer/$uuid/$year/$month/$day/$file"
