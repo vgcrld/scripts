@@ -1,0 +1,108 @@
+#!/bin/bash
+
+mygpeexapnd () {
+  match=${1:-summary_extended}
+  for i in *.tsm.gz; do 
+    echo $i
+    eval "tar -xOf $i '${match}*'"
+  done | less
+}
+
+
+mygpetsmlastrun () {
+  c=${1:-1}
+  for i in $(mygpetsmlast $c); do
+    eval "ts $i &"
+  done
+}
+
+mygpetsmfirstrun () {
+  c=${1:-1}
+  for i in $(mygpetsmlast $c); do
+    eval "ts $i &"
+  done
+}
+
+
+mygpetsmlast () {
+  c=${1:-1}
+  for i in $(ls -d ~/gpe/*); do 
+    for i in $(ls $i/*.tsm.gz | cut -d. -f1 | uniq); do 
+      ls $i.*.tsm.gz | tail -"${c}"
+    done
+  done
+}
+
+mygpetsmfirst () {
+  c=${1:-1}
+  for i in $(ls -d ~/gpe/*); do 
+    for i in $(ls $i/*.tsm.gz | cut -d. -f1 | uniq); do 
+      ls $i.*.tsm.gz | head -"${c}"
+    done
+  done
+}
+
+mygpecleardirs () {
+  rm -rf ~/gpe ~/p2files && mkdir ~/gpe ~/p2files/
+}
+
+ffile () {
+  find ~/gpe -type f -name '*.gz' | sort  | grep -E "$1" | grep -v 'gpe.gz'
+}
+
+myetl () {
+  if [ "$1" = '-x' ] ; then
+    shift
+    for i in $(ffile "$1");do eval "ts $i &"; done
+  else
+    for i in $(ffile "$1");do echo "ts $i &"; done
+  fi
+}
+
+dirlist () {
+  for i in *.gz
+  do 
+    eval "tar -xOf $i '$1*'"
+  done
+}
+
+function mygpefiledelete () {
+  find ~/p2files/ -name '*.tsm.gpe.gz' -type f -exec rm {} \;
+}
+
+function mygpecreateviews () {
+  BUNDLE_GEMFILE=$HOME/code/gpe-server/Gemfile
+  bundle exec create-views  --site rdavis --execute
+}
+
+function mygpeedithelpers () {
+  vi ~/code/my-bash-helpers
+}
+
+mygpeyarn () {
+  cd ~/code/gpe-server/ui/app
+  yarn clean && yarn install && yarn release
+  cd ~/code/gpe-server/
+  ./setup.sh testing
+}
+
+
+mygpes3get () {
+  year=$(date +"%Y")
+  month=$(date +"%m")
+  day=$(date +"%d")
+  echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Analysis_Group/cc83aceacf83e6119c673cfdfe02e7c2/${year}/${month}/${day}/  ~/gpe/ag/"
+  echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/DandH/5ab25322eb0ce811a58e7cd30aea05f0/${year}/${month}/${day}/ ~/gpe/DandH/"
+  echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/VWR/a64fbe739e9de511a5f80025b50a006d/${year}/${month}/${day}/ ~/gpe/vwr/"
+  echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/VWR/b64c1f141101e811959b0025b5a4005d/${year}/${month}/${day}/ ~/gpe/vwr/"
+  echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/VWR/60e527c0992de611bc580025b50401ff/${year}/${month}/${day}/ ~/gpe/vwr/"
+  echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/atsgroup/d60b21da185e11e682260894ef035c20/${year}/${month}/${day}/ ~/gpe/atsgroup/"
+  echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Dept_REV/f2d2bef01af811df8bd9009a01040000/${year}/${month}/${day}/ ~/gpe/rev/"
+  echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Dept_LI/a46df78a0f3eea11acb33868dd1ca649/${year}/${month}/${day}/ ~/gpe/li/"
+}
+
+mygperestartwatch () {
+  kubectl rollout restart deployment ch-ui-blue ch-etl-x2gpe
+  kubectl rollout status -w  deployment ch-etl-x2gpe
+  kubectl rollout status -w  deployment ch-ui-blue
+}
