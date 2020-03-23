@@ -1,0 +1,66 @@
+Directories:
+  WorkDir: .
+  BinDir: configs/bin
+  TmpDir: configs/tmp
+  LogDir: configs/log
+  EtcDir: configs/etc
+
+Logging:
+  LogFile: configs/log/gpe-agent-sp.log
+
+Collection:
+  Minute:
+    status: select * from status
+    db: select * from db
+    log: select * from log
+    summary: select * from summary where schedule_name is not null and end_time>(current_timestamp-5 minutes)
+    summary_extended: select * from summary_extended where schedule_name is not null and end_time>(current_timestamp-5 minutes)
+    libvolumes: select * from libvolumes
+    occupancy: select * from occupancy
+    events: select * from events where SCHEDULED_START>(current_timestamp-5 minutes)
+    replicationview: select * from replicationview where date(start_time)>(current_timestamp-5 minutes)
+    volhistory: select * from volhistory WHERE date_time>(current_timestamp - 5 minutes)
+    dbspace: select * from dbspace
+    volumeusage: select * from volumeusage
+    nodes: select * from nodes
+    actlog: select * from actlog where DATE_TIME>=(current_timestamp-5 minutes)
+    devclass: select * from devclasses
+    library: select * from libraries
+    drives: select * from drives
+    libvolumes: select * from libvolumes
+    shred: q shred f=d
+    san: select * from san
+    license: select * from licenses
+    opt: select * from options
+    volume: select * from volumes
+    path: select * from paths
+    admin: select * from admins
+    stgpool: select * from stgpools
+    policyset: select * from policysets
+    mgmtclas: select * from mgmtclasses
+    ar_copygroups: select * from ar_copygroups
+    bu_copygroups: select * from bu_copygroups
+    filespaces: select * from filespaces
+    dbspace: select * from dbspace
+    devclassesdirs: select * from devclasses_dir
+    stgpooldirs: select * from stgpool_dirs
+    mount: q mount
+    session: select * from sessions
+    process: select * from processes
+  Hour:
+    status: select * from status
+    db: select * from db
+    log: select * from log
+
+Service:
+  gem:
+    Address: g01pltsm01
+    AppCredentials:
+      Username: admin
+      Password: /6Dd3WPAOA49TVrAa+iqVtbj90aiM4D1kQg/Oc1AOUwS
+    Connection:
+      Method: LocalClient
+    LocalClient:
+      File: /bin/dsmadmc
+
+

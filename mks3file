@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# Sample File - must be full oldtimer path
+# Sample File - must be full oldtimer path - actually not really an older timer!  Just /shared/process/<customer>/input/<file>
 #
 #  /share/process/Sirius_UUI/input/DS-8870.20191211.113000.GMT__654704__.IBM-2107-75DAM11.ds8k.gz
-# 
+#
 
       ff="$1"
 
