@@ -1,0 +1,2 @@
+ANR8329I LTO volume 001131L6 is mounted R/W in drive DRIVE06 (/dev/IBMtape0), status: IDLE.
+ANR8334I         1 matches found.

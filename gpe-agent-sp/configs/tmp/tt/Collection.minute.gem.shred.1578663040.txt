@@ -1,0 +1,5 @@
+       Shredding Active: No
+ Objects Awaiting Shred: 0
+    Occupied Space (MB): 0
+Data Left To Shred (MB): 0
+

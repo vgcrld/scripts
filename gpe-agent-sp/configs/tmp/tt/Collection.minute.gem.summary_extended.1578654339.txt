@@ -1,0 +1,32 @@
+      START_TIME: 2020-01-10 01:05:59.000000
+        END_TIME: 2020-01-10 06:04:27.000000
+        ACTIVITY: BACKUP
+ACTIVITY_DETAILS: 
+   ACTIVITY_TYPE: 
+          NUMBER: 237574
+          ENTITY: 
+       AS_ENTITY: 
+      SUB_ENTITY: 
+        COMMMETH: Tcp/Ip
+         ADDRESS: nosprdnetmon01.theatsgroup.com:52324
+   SCHEDULE_NAME: DAILY_PROD
+        EXAMINED: 0
+        AFFECTED: 2695
+          FAILED: 0
+           BYTES: 0
+ BYTES_PROTECTED: 
+   BYTES_WRITTEN: 
+   DEDUP_SAVINGS: 
+    COMP_SAVINGS: 
+            IDLE: 0
+          MEDIAW: 0
+       PROCESSES: 0
+ COMPLETION_CODE: 0
+      SUCCESSFUL: YES
+     VOLUME_NAME: 
+      DRIVE_NAME: 
+    LIBRARY_NAME: 
+        LAST_USE: 
+       COMM_WAIT: 0
+NUM_OFFSITE_VOLS: 
+

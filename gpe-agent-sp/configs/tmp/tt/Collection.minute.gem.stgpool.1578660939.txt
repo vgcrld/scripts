@@ -1,0 +1,690 @@
+                 STGPOOL_NAME: GALILEO_DISK1
+                     POOLTYPE: PRIMARY
+                     DEVCLASS: DISK
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 2867200.0
+             TRIGGER_PCT_UTIL: 1.5
+                 PCT_UTILIZED: 1.5
+                     PCT_MIGR: 1.5
+                  PCT_LOGICAL: 100.0
+                      HIGHMIG: 90
+                       LOWMIG: 70
+                   MIGPROCESS: 1
+                  NEXTSTGPOOL: GALILEO_LTO6
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: 
+                  OVFLOCATION: 
+                        CACHE: NO
+                    COLLOCATE: 
+                      RECLAIM: 
+                   MAXSCRATCH: 
+               NUMSCRATCHUSED: 
+                   REUSEDELAY: 
+                 MIGR_RUNNING: NO
+                      MIGR_MB: 44136.0
+                 MIGR_SECONDS: 310
+                 RECL_RUNNING: 
+                     CHG_TIME: 2019-10-31 17:27:46.000000
+                    CHG_ADMIN: REPORTER
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 0
+                  MIGCONTINUE: YES
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: YES
+                      CRCDATA: NO
+               RECLAIMPROCESS: 
+             OFFSITERCLMLIMIT: 
+              RECLAMATIONTYPE: 
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: Client
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+
+                 STGPOOL_NAME: GALILEO_FLASH_DISK1
+                     POOLTYPE: PRIMARY
+                     DEVCLASS: DISK
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 2048000.0
+             TRIGGER_PCT_UTIL: 0.0
+                 PCT_UTILIZED: 0.0
+                     PCT_MIGR: 0.0
+                  PCT_LOGICAL: 100.0
+                      HIGHMIG: 90
+                       LOWMIG: 70
+                   MIGPROCESS: 1
+                  NEXTSTGPOOL: GALILEO_FLASH_TAPE1
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: 
+                  OVFLOCATION: 
+                        CACHE: NO
+                    COLLOCATE: 
+                      RECLAIM: 
+                   MAXSCRATCH: 
+               NUMSCRATCHUSED: 
+                   REUSEDELAY: 
+                 MIGR_RUNNING: NO
+                      MIGR_MB: 0.0
+                 MIGR_SECONDS: 0
+                 RECL_RUNNING: 
+                     CHG_TIME: 2019-10-31 16:46:12.000000
+                    CHG_ADMIN: REPORTER
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 0
+                  MIGCONTINUE: YES
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: YES
+                      CRCDATA: NO
+               RECLAIMPROCESS: 
+             OFFSITERCLMLIMIT: 
+              RECLAMATIONTYPE: 
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: Client
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+
+                 STGPOOL_NAME: GALILEO_FLASH_TAPE1
+                     POOLTYPE: PRIMARY
+                     DEVCLASS: LTO6CLASS
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 27317052026.8
+             TRIGGER_PCT_UTIL: 
+                 PCT_UTILIZED: 0.1
+                     PCT_MIGR: 0.1
+                  PCT_LOGICAL: 100.0
+                      HIGHMIG: 90
+                       LOWMIG: 70
+                   MIGPROCESS: 1
+                  NEXTSTGPOOL: 
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: 
+                  OVFLOCATION: 
+                        CACHE: 
+                    COLLOCATE: NO
+                      RECLAIM: 100
+                   MAXSCRATCH: 9999
+               NUMSCRATCHUSED: 10
+                   REUSEDELAY: 0
+                 MIGR_RUNNING: NO
+                      MIGR_MB: 0.0
+                 MIGR_SECONDS: 0
+                 RECL_RUNNING: NO
+                     CHG_TIME: 2017-12-04 15:51:18.000000
+                    CHG_ADMIN: ADMIN
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 0
+                  MIGCONTINUE: YES
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: YES
+                      CRCDATA: NO
+               RECLAIMPROCESS: 1
+             OFFSITERCLMLIMIT: 
+              RECLAMATIONTYPE: THRESHOLD
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: Client
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+
+                 STGPOOL_NAME: GALILEO_LTO6
+                     POOLTYPE: PRIMARY
+                     DEVCLASS: LTO6CLASS
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 38438557700.7
+             TRIGGER_PCT_UTIL: 
+                 PCT_UTILIZED: 0.1
+                     PCT_MIGR: 0.1
+                  PCT_LOGICAL: 99.6
+                      HIGHMIG: 90
+                       LOWMIG: 70
+                   MIGPROCESS: 1
+                  NEXTSTGPOOL: 
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: Primary Galileo LTO6 Pool
+                  OVFLOCATION: 
+                        CACHE: 
+                    COLLOCATE: NO
+                      RECLAIM: 100
+                   MAXSCRATCH: 9999
+               NUMSCRATCHUSED: 12
+                   REUSEDELAY: 0
+                 MIGR_RUNNING: NO
+                      MIGR_MB: 0.0
+                 MIGR_SECONDS: 0
+                 RECL_RUNNING: NO
+                     CHG_TIME: 2016-07-08 20:12:53.000000
+                    CHG_ADMIN: ADMIN
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 0
+                  MIGCONTINUE: YES
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: YES
+                      CRCDATA: NO
+               RECLAIMPROCESS: 1
+             OFFSITERCLMLIMIT: 
+              RECLAMATIONTYPE: THRESHOLD
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: Client
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+
+                 STGPOOL_NAME: GALILEO_TAR_DISK1
+                     POOLTYPE: PRIMARY
+                     DEVCLASS: DISK
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 2048000.0
+             TRIGGER_PCT_UTIL: 0.0
+                 PCT_UTILIZED: 0.0
+                     PCT_MIGR: 0.0
+                  PCT_LOGICAL: 100.0
+                      HIGHMIG: 90
+                       LOWMIG: 70
+                   MIGPROCESS: 1
+                  NEXTSTGPOOL: GALILEO_TAR_LTO6
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: 
+                  OVFLOCATION: 
+                        CACHE: NO
+                    COLLOCATE: 
+                      RECLAIM: 
+                   MAXSCRATCH: 
+               NUMSCRATCHUSED: 
+                   REUSEDELAY: 
+                 MIGR_RUNNING: NO
+                      MIGR_MB: 50197.0
+                 MIGR_SECONDS: 505
+                 RECL_RUNNING: 
+                     CHG_TIME: 2019-10-31 16:57:25.000000
+                    CHG_ADMIN: REPORTER
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 0
+                  MIGCONTINUE: YES
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: YES
+                      CRCDATA: NO
+               RECLAIMPROCESS: 
+             OFFSITERCLMLIMIT: 
+              RECLAMATIONTYPE: 
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: Client
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+
+                 STGPOOL_NAME: GALILEO_TAR_LTO6
+                     POOLTYPE: PRIMARY
+                     DEVCLASS: LTO6CLASS
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 22765868880.1
+             TRIGGER_PCT_UTIL: 
+                 PCT_UTILIZED: 1.0
+                     PCT_MIGR: 1.0
+                  PCT_LOGICAL: 100.0
+                      HIGHMIG: 90
+                       LOWMIG: 70
+                   MIGPROCESS: 1
+                  NEXTSTGPOOL: 
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: Primary GalileoLTO6 Tar File Pool
+                  OVFLOCATION: 
+                        CACHE: 
+                    COLLOCATE: NO
+                      RECLAIM: 100
+                   MAXSCRATCH: 9999
+               NUMSCRATCHUSED: 99
+                   REUSEDELAY: 0
+                 MIGR_RUNNING: NO
+                      MIGR_MB: 0.0
+                 MIGR_SECONDS: 0
+                 RECL_RUNNING: NO
+                     CHG_TIME: 2014-07-22 17:44:56.000000
+                    CHG_ADMIN: ADMIN
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 0
+                  MIGCONTINUE: YES
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: YES
+                      CRCDATA: NO
+               RECLAIMPROCESS: 1
+             OFFSITERCLMLIMIT: 
+              RECLAMATIONTYPE: THRESHOLD
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: Client
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+
+                 STGPOOL_NAME: GALILEO_TAR_LTO6_COPY
+                     POOLTYPE: COPY
+                     DEVCLASS: LTO6CLASS
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 24009359806.8
+             TRIGGER_PCT_UTIL: 
+                 PCT_UTILIZED: 0.9
+                     PCT_MIGR: 
+                  PCT_LOGICAL: 100.0
+                      HIGHMIG: 
+                       LOWMIG: 
+                   MIGPROCESS: 
+                  NEXTSTGPOOL: 
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: Primary LTO6 Pool for Galileo Tar Files
+                  OVFLOCATION: 
+                        CACHE: 
+                    COLLOCATE: NO
+                      RECLAIM: 100
+                   MAXSCRATCH: 9999
+               NUMSCRATCHUSED: 115
+                   REUSEDELAY: 0
+                 MIGR_RUNNING: 
+                      MIGR_MB: 
+                 MIGR_SECONDS: 
+                 RECL_RUNNING: NO
+                     CHG_TIME: 2014-07-22 17:48:17.000000
+                    CHG_ADMIN: ADMIN
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 
+                  MIGCONTINUE: 
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: 
+                      CRCDATA: NO
+               RECLAIMPROCESS: 1
+             OFFSITERCLMLIMIT: NOLIMIT
+              RECLAMATIONTYPE: THRESHOLD
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: 
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+
+                 STGPOOL_NAME: LTO6_COPY
+                     POOLTYPE: COPY
+                     DEVCLASS: LTO6CLASS
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 48084891572.0
+             TRIGGER_PCT_UTIL: 
+                 PCT_UTILIZED: 0.1
+                     PCT_MIGR: 
+                  PCT_LOGICAL: 97.7
+                      HIGHMIG: 
+                       LOWMIG: 
+                   MIGPROCESS: 
+                  NEXTSTGPOOL: 
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: Production and Galileo Server LTO6 Copy Pool
+                  OVFLOCATION: 
+                        CACHE: 
+                    COLLOCATE: NO
+                      RECLAIM: 100
+                   MAXSCRATCH: 9999
+               NUMSCRATCHUSED: 54
+                   REUSEDELAY: 0
+                 MIGR_RUNNING: 
+                      MIGR_MB: 
+                 MIGR_SECONDS: 
+                 RECL_RUNNING: NO
+                     CHG_TIME: 2014-07-22 17:44:17.000000
+                    CHG_ADMIN: ADMIN
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 
+                  MIGCONTINUE: 
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: 
+                      CRCDATA: NO
+               RECLAIMPROCESS: 1
+             OFFSITERCLMLIMIT: NOLIMIT
+              RECLAMATIONTYPE: THRESHOLD
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: 
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+
+                 STGPOOL_NAME: PROD_DISK1
+                     POOLTYPE: PRIMARY
+                     DEVCLASS: DISK
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 0.0
+             TRIGGER_PCT_UTIL: 0.0
+                 PCT_UTILIZED: 0.0
+                     PCT_MIGR: 0.0
+                  PCT_LOGICAL: 100.0
+                      HIGHMIG: 90
+                       LOWMIG: 70
+                   MIGPROCESS: 1
+                  NEXTSTGPOOL: PROD_LTO6
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: 
+                  OVFLOCATION: 
+                        CACHE: NO
+                    COLLOCATE: 
+                      RECLAIM: 
+                   MAXSCRATCH: 
+               NUMSCRATCHUSED: 
+                   REUSEDELAY: 
+                 MIGR_RUNNING: NO
+                      MIGR_MB: 0.0
+                 MIGR_SECONDS: 0
+                 RECL_RUNNING: 
+                     CHG_TIME: 2019-10-31 16:49:26.000000
+                    CHG_ADMIN: REPORTER
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 0
+                  MIGCONTINUE: YES
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: YES
+                      CRCDATA: NO
+               RECLAIMPROCESS: 
+             OFFSITERCLMLIMIT: 
+              RECLAMATIONTYPE: 
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: Client
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+
+                 STGPOOL_NAME: PROD_LTO6
+                     POOLTYPE: PRIMARY
+                     DEVCLASS: LTO6CLASS
+                     STG_TYPE: DEVCLASS
+                   CLOUD_TYPE: 
+                    CLOUD_URL: 
+                     CLOUD_ID: 
+               CLOUD_LOCATION: 
+              EST_CAPACITY_MB: 59598684310.9
+             TRIGGER_PCT_UTIL: 
+                 PCT_UTILIZED: 0.0
+                     PCT_MIGR: 0.0
+                  PCT_LOGICAL: 96.6
+                      HIGHMIG: 90
+                       LOWMIG: 70
+                   MIGPROCESS: 1
+                  NEXTSTGPOOL: 
+                      MAXSIZE: 
+                       ACCESS: READWRITE
+                  DESCRIPTION: Primary Production Server LTO6 Tape Pool
+                  OVFLOCATION: 
+                        CACHE: 
+                    COLLOCATE: NO
+                      RECLAIM: 100
+                   MAXSCRATCH: 9999
+               NUMSCRATCHUSED: 2
+                   REUSEDELAY: 0
+                 MIGR_RUNNING: NO
+                      MIGR_MB: 0.0
+                 MIGR_SECONDS: 0
+                 RECL_RUNNING: NO
+                     CHG_TIME: 2014-07-22 17:52:38.000000
+                    CHG_ADMIN: ADMIN
+               RECLAIMSTGPOOL: 
+                     MIGDELAY: 0
+                  MIGCONTINUE: YES
+                   DATAFORMAT: NATIVE
+                 COPYSTGPOOLS: 
+           ACTIVEDATASTGPOOLS: 
+                 COPYCONTINUE: YES
+                      CRCDATA: NO
+               RECLAIMPROCESS: 1
+             OFFSITERCLMLIMIT: 
+              RECLAMATIONTYPE: THRESHOLD
+                  SHRED_COUNT: 
+                  DEDUPLICATE: NO
+              IDENTIFYPROCESS: 
+                   COMPRESSED: 
+SPACE_USED_FOR_PROTECTED_DATA: 
+      TOTAL_UNUSED_PENDING_MB: 
+         DEDUP_SPACE_SAVED_MB: 
+          COMP_SPACE_SAVED_MB: 
+               SPACE_SAVED_MB: 
+                     AUTOCOPY: Client
+        HAS_CLIENT_DEDUP_DATA: No
+                  MAX_WRITERS: 
+               PROTECTPROCESS: 
+               PROTECTSTGPOOL: 
+         PROTECTLOCALSTGPOOLS: 
+             LASTPROTECT_DATE: 
+        LASTPROTECTLOCAL_DATE: 
+               DEDUP_REQ_BKUP: 
+                    ENCRYPTED: 
+               TOTAL_SPACE_MB: 
+                   BUCKETNAME: 
+        LOCAL_EST_CAPACITY_MB: 
+           LOCAL_PCT_UTILIZED: 
+            LOCAL_PCT_LOGICAL: 
+

@@ -1,0 +1,2 @@
+ANR8330I LTO volume 001048L6 is mounted R/W in drive DRIVE05 (/dev/IBMtape5), status: IN USE.
+ANR8334I         1 matches found.

@@ -1,0 +1,8 @@
+     PROCESS_NUM: 1391
+         PROCESS: Backup Storage Pool
+      START_TIME: 2020-01-10 07:00:13.000000
+ FILES_PROCESSED: 197037
+ BYTES_PROCESSED: 45191163904
+BYTES_TO_PROCESS: 
+          STATUS: Primary Pool GALILEO_DISK1, Copy Pool LTO6_COPY, Files Backed Up: 202,245, Bytes Backed Up: 43,504 MB, Deduplicated Bytes: 0 bytes, Unreadable Files: 0, Unreadable Bytes: 0 bytes. Current Physical File (bytes): 803 MB Current output volume(s): 001131L6. 
+
