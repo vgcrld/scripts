@@ -1,0 +1,3 @@
+SSL_VERIFY=0 GALILEO_USERNAME=rdavis GALILEO_PASSWORD=Passw0rd1@ GALILEO_URI=https://my.ch.galileosuite.com GALILEO_SITE=tsm_test gpeadmin.rb invite_user ryan.austin@theatsgroup.com user false false 'Ryan Austin' 'EDT' raustin
+SSL_VERIFY=0 GALILEO_USERNAME=rdavis GALILEO_PASSWORD=Passw0rd1@ GALILEO_URI=https://my.ch.galileosuite.com GALILEO_SITE=tsm_test gpeadmin.rb invite_user mark.davis@theatsgroup.com user false false 'Mark Davis' 'EDT' mdavis
+SSL_VERIFY=0 GALILEO_USERNAME=rdavis GALILEO_PASSWORD=Passw0rd1@ GALILEO_URI=https://my.ch.galileosuite.com GALILEO_SITE=tsm_test gpeadmin.rb invite_user ahurlock@theatsgroup.com user false false 'Allan Hurlock' 'EDT' ahurlock

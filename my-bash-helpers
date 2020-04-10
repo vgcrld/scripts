@@ -1,11 +1,19 @@
 #!/bin/bash
 
-mygpeexapnd () {
+mygperunetlbyname () {
+  for i in $(ls ~/gpe/*/*.tsm.gz | cut -d. -f1 | uniq); do 
+    d=~/gpe/etl/$(echo $i | cut -d/ -f5)/$(echo $i | cut -d/ -f6).log
+    mkdir -p "$(dirname $d)"
+    echo "set +o noclobber; ts --no-batch $i.*.tsm.gz > $d 2>&1 &"
+  done
+}
+
+mygpeexpand () {
   match=${1:-summary_extended}
   for i in *.tsm.gz; do 
     echo $i
     eval "tar -xOf $i '${match}*'"
-  done | less
+  done
 }
 
 
