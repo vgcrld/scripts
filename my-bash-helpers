@@ -1,5 +1,19 @@
 #!/bin/bash
 
+export PATH=$PATH:$HOME/code/admin-cli
+alias mygpeadmin='GALILEO_USERNAME=rdavis GALILEO_PASSWORD=Passw0rd1@ GALILEO_URI=http://localhost:11131 GALILEO_SITE=rdavis gpeadmin.rb'
+alias mygpefakefile='echo "gem.$(date +"%Y%m%d").$(date +"%H%M%S").$(date +"%Z").d60b21da185e11e682260894ef035c20.tsm.gz"'
+alias mygperedordavis='mygpeadmin unlock_site && mygpeadmin remove_site && mygpeadmin add_site paid'
+alias gpe='cd ~/code/gpe-server'
+alias mygpepassenger='cd ~/code/gpe-server && GALILEO_LOG_FRIENDLY=1 bundle exec passenger start --min-instances=3 --port=11131 ui'
+alias mygpeuibuid='cd ~/code/gpe-server/ui/app && yarn clean && yarn install && yarn release'
+
+export PATH=$PATH:$HOME/code/galileo-tools
+
+# Add my scripts to PATH
+export PATH=$HOME/code/scripts:$PATH
+
+export OUTPUT=$HOME/p2files
 mygperunetlbyname () {
   for i in $(ls ~/gpe/*/*.tsm.gz | cut -d. -f1 | uniq); do 
     d=~/gpe/etl/$(echo $i | cut -d/ -f5)/$(echo $i | cut -d/ -f6).log
