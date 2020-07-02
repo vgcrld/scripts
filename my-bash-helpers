@@ -1,24 +1,26 @@
 #!/bin/bash
 
-export PATH=$PATH:$HOME/code/admin-cli
-export GALILEO_PORT="11131"
-export GALILEO_LOG_FRIENDLY=1
-#export GALILEO_URI="http://localhost:${GALILEO_PORT}"
-export GALILEO_URI="http://karl.galileosuite.com:${GALILEO_PORT}"
-alias mygpeadmin='GALILEO_USERNAME=rdavis GALILEO_PASSWORD=Passw0rd1@ GALILEO_URI="${GALILEO_URI}" GALILEO_SITE=rdavis gpeadmin.rb'
+#export GALILEO_PORT="11131"
+export GALILEO_LOG_FRIENDLY="1"
+export GALILEO_URI="https://rdavis.core.galileosuite.com"
+export GALILEO_USERNAME="rdavis"
+export GALILEO_PASSWORD="Passw0rd1@"
+export GALILEO_SITE="rdavis"
+export SSL_VERIFY=0
+
+export OUTPUT=$HOME/p2files
+
+alias mygpeadmin="gpeadmin.rb"
 alias mygpefakefile='echo "gem.$(date +"%Y%m%d").$(date +"%H%M%S").$(date +"%Z").d60b21da185e11e682260894ef035c20.tsm.gz"'
 alias mygperedordavis='mygpeadmin unlock_site && mygpeadmin remove_site && mygpeadmin add_site paid'
 alias gpe='cd ~/code/gpe-server'
 alias mygpepassenger='cd ~/code/gpe-server && GALILEO_LOG_FRIENDLY=1 bundle exec passenger start --min-instances=3 --port="${GALILEO_PORT}" ui'
 alias mygpeuibuid='cd ~/code/gpe-server/ui/app && yarn clean && yarn install && yarn release'
 alias ts='BUNDLE_GEMFILE=~/code/gpe-server/Gemfile OUTPUT=$HOME/p2files GALILEO_LOG_FRIENDLY=1 CUSTOMER=rdavis bundle exec test-single-file'
+alias ll='ls -ltr'
 
-export PATH=$PATH:$HOME/code/galileo-tools
+export PATH=/users/rdavis/code/scripts:$PATH
 
-# Add my scripts to PATH
-export PATH=$HOME/code/scripts:$PATH
-
-export OUTPUT=$HOME/p2files
 mygperunetlbyname () {
   for i in $(ls ~/gpe/*/*.tsm.gz | cut -d. -f1 | uniq); do
     d=~/gpe/etl/$(echo $i | cut -d/ -f5)/$(echo $i | cut -d/ -f6).log
@@ -143,8 +145,25 @@ mygpes3get () {
   fi
 }
 
-mygperestartwatch () {
-  kubectl rollout restart deployment ch-ui-blue ch-etl-x2gpe
-  kubectl rollout status -w  deployment ch-etl-x2gpe
-  kubectl rollout status -w  deployment ch-ui-blue
+mygpetouch () {
+  kubectl rollout restart deployment rdavis-gpe-server --context rdavis
 }
+
+mygperestartwatch () {
+  kubectl rollout restart deployment core-ui-blue core-etl-x2gpe --context core
+  kubectl rollout status -w  deployment core-etl-x2gpe --context core
+  kubectl rollout status -w  deployment core-ui-blue --context core
+}
+
+mygpepod() {
+  kubectl get pod --context rdavis | awk '/rdavis-gpe-server/{print $1}'
+}
+
+mygpepodgo () {
+  kubectl exec --context rdavis -ti $(mygpepod) -- bash -i
+}
+
+mygpepodlog () {
+  kubectl logs -f $(mygpepod)
+}
+

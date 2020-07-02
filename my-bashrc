@@ -1,0 +1,15 @@
+#!/bin/bash
+# Default for GPE output
+export OUTPUT=~/gpe/p2files
+
+set -o vi
+export EDITOR=vim
+
+alias        gpe="cd ~/code/gpe-server"
+## alias prddetails='prdadmin report_etl customer,ext,uuid,error'
+## alias     agents='ssh gvicgpeagents01.ats.local'
+## alias mygpeadmin='GALILEO_USERNAME=rdavis GALILEO_PASSWORD=Passw0rd1@ GALILEO_URI=http://karl.galileosuite.com:11131 GALILEO_SITE=rdavis gpeadmin'
+## alias    mygpets='GALILEO_LOG_FRIENDLY=1 CUSTOMER=rdavis bundle exec test-single-file'
+
+# Connect to a tmux if it exists
+#tmux a -d > /dev/null 2>&1 || tmux > /dev/null 2>&1
