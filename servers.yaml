@@ -1,0 +1,9 @@
+---
+
+- name: tsm1500
+  port: 1500
+  ip: 192.168.1.1
+
+- name: tsmprod
+  port: 1600
+  ip: 192.168.1.11
