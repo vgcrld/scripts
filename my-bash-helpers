@@ -29,6 +29,11 @@ mygperunetlbyname () {
   done
 }
 
+mygpequeues () {
+  cd ~/code/search_etl_table
+  yarn start
+}
+
 mygpeexpand () {
   match=${1:-summary_extended}
   for i in *.tsm.gz; do
@@ -37,6 +42,16 @@ mygpeexpand () {
   done
 }
 
+
+mygpeportforward-ch () {
+  # CH and PXC forwarding 
+  kubectl port-forward --namespace default svc/core-clickhouse-default-1 8123 &
+}
+
+mygpeportforward-pxc () {
+  # CH and PXC forwarding 
+  kubectl port-forward --namespace default svc/core-pxc                  3306 &
+}
 
 mygpetsmlastrun () {
   c=${1:-1}
