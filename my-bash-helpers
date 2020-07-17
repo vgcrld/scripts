@@ -8,11 +8,11 @@ export GALILEO_PASSWORD="Passw0rd1@"
 export GALILEO_SITE="rdavis"
 export SSL_VERIFY=0
 
-export OUTPUT=$HOME/p2files
+export OUTPUT=$HOME/gpe/p2files
 
 alias mygpeadmin="gpeadmin.rb"
 alias mygpefakefile='echo "gem.$(date +"%Y%m%d").$(date +"%H%M%S").$(date +"%Z").d60b21da185e11e682260894ef035c20.tsm.gz"'
-alias mygperedordavis='mygpeadmin unlock_site && mygpeadmin remove_site && mygpeadmin add_site paid'
+alias mygperedordavis='cd ~/code/admin-cli && ./unlock_site && ./remove_site && ./add_site paid'
 alias gpe='cd ~/code/gpe-server'
 alias mygpepassenger='cd ~/code/gpe-server && GALILEO_LOG_FRIENDLY=1 bundle exec passenger start --min-instances=3 --port="${GALILEO_PORT}" ui'
 alias mygpeuibuid='cd ~/code/gpe-server/ui/app && yarn clean && yarn install && yarn release'
@@ -33,7 +33,7 @@ mygpeexpand () {
   match=${1:-summary_extended}
   for i in *.tsm.gz; do
     echo $i
-    eval "tar -xOf $i '${match}*'"
+    eval "tar --wildcards -xOf $i '${match}*'"
   done
 }
 
@@ -110,7 +110,7 @@ function mygpeedithelpers () {
 
 mygpeyarn () {
   cd ~/code/gpe-server/ui/app
-  yarn clean && yarn install && yarn release
+  yarn install && yarn clean && yarn release
   cd ~/code/gpe-server/
   ./setup.sh testing
 }
@@ -125,23 +125,23 @@ mygpes3get () {
   month=$(date +"%m")
   day=$(date +"%d")
   if [ "$1" = '-ls' ]; then
-    echo "aws s3 ls --recursive s3://etl-x2gpe.galileosuite.com/Analysis_Group/cc83aceacf83e6119c673cfdfe02e7c2/${year}/${month}/${day}/"
-    echo "aws s3 ls --recursive s3://etl-x2gpe.galileosuite.com/DandH/5ab25322eb0ce811a58e7cd30aea05f0/${year}/${month}/${day}/"
-    echo "aws s3 ls --recursive s3://etl-x2gpe.galileosuite.com/VWR/a64fbe739e9de511a5f80025b50a006d/${year}/${month}/${day}/"
-    echo "aws s3 ls --recursive s3://etl-x2gpe.galileosuite.com/VWR/b64c1f141101e811959b0025b5a4005d/${year}/${month}/${day}/"
-    echo "aws s3 ls --recursive s3://etl-x2gpe.galileosuite.com/VWR/60e527c0992de611bc580025b50401ff/${year}/${month}/${day}/"
-    echo "aws s3 ls --recursive s3://etl-x2gpe.galileosuite.com/atsgroup/d60b21da185e11e682260894ef035c20/${year}/${month}/${day}/"
-    echo "aws s3 ls --recursive s3://etl-x2gpe.galileosuite.com/Dept_REV/f2d2bef01af811df8bd9009a01040000/${year}/${month}/${day}/"
-    echo "aws s3 ls --recursive s3://etl-x2gpe.galileosuite.com/Dept_LI/a46df78a0f3eea11acb33868dd1ca649/${year}/${month}/${day}/"
+    echo "aws --profile prod s3 ls --recursive s3://etl-x2gpe.galileosuite.com/Analysis_Group/cc83aceacf83e6119c673cfdfe02e7c2/${year}/${month}/${day}/"
+    echo "aws --profile prod s3 ls --recursive s3://etl-x2gpe.galileosuite.com/DandH/5ab25322eb0ce811a58e7cd30aea05f0/${year}/${month}/${day}/"
+    echo "aws --profile prod s3 ls --recursive s3://etl-x2gpe.galileosuite.com/VWR/a64fbe739e9de511a5f80025b50a006d/${year}/${month}/${day}/"
+    echo "aws --profile prod s3 ls --recursive s3://etl-x2gpe.galileosuite.com/VWR/b64c1f141101e811959b0025b5a4005d/${year}/${month}/${day}/"
+    echo "aws --profile prod s3 ls --recursive s3://etl-x2gpe.galileosuite.com/VWR/60e527c0992de611bc580025b50401ff/${year}/${month}/${day}/"
+    echo "aws --profile prod s3 ls --recursive s3://etl-x2gpe.galileosuite.com/atsgroup/d60b21da185e11e682260894ef035c20/${year}/${month}/${day}/"
+    echo "aws --profile prod s3 ls --recursive s3://etl-x2gpe.galileosuite.com/Dept_REV/f2d2bef01af811df8bd9009a01040000/${year}/${month}/${day}/"
+    echo "aws --profile prod s3 ls --recursive s3://etl-x2gpe.galileosuite.com/Dept_LI/a46df78a0f3eea11acb33868dd1ca649/${year}/${month}/${day}/"
   else
-    echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Analysis_Group/cc83aceacf83e6119c673cfdfe02e7c2/${year}/${month}/${day}/  ~/gpe/ag/"
-    echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/DandH/5ab25322eb0ce811a58e7cd30aea05f0/${year}/${month}/${day}/ ~/gpe/DandH/"
-    echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/VWR/a64fbe739e9de511a5f80025b50a006d/${year}/${month}/${day}/ ~/gpe/vwr/"
-    echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/VWR/b64c1f141101e811959b0025b5a4005d/${year}/${month}/${day}/ ~/gpe/vwr/"
-    echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/VWR/60e527c0992de611bc580025b50401ff/${year}/${month}/${day}/ ~/gpe/vwr/"
-    echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/atsgroup/d60b21da185e11e682260894ef035c20/${year}/${month}/${day}/ ~/gpe/atsgroup/"
-    echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Dept_REV/f2d2bef01af811df8bd9009a01040000/${year}/${month}/${day}/ ~/gpe/rev/"
-    echo "aws s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Dept_LI/a46df78a0f3eea11acb33868dd1ca649/${year}/${month}/${day}/ ~/gpe/li/"
+    echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Analysis_Group/cc83aceacf83e6119c673cfdfe02e7c2/${year}/${month}/${day}/  ~/gpe/ag/"
+    echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/DandH/5ab25322eb0ce811a58e7cd30aea05f0/${year}/${month}/${day}/ ~/gpe/DandH/"
+    echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/VWR/a64fbe739e9de511a5f80025b50a006d/${year}/${month}/${day}/ ~/gpe/vwr/"
+    echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/VWR/b64c1f141101e811959b0025b5a4005d/${year}/${month}/${day}/ ~/gpe/vwr/"
+    echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/VWR/60e527c0992de611bc580025b50401ff/${year}/${month}/${day}/ ~/gpe/vwr/"
+    echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/atsgroup/d60b21da185e11e682260894ef035c20/${year}/${month}/${day}/ ~/gpe/atsgroup/"
+    echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Dept_REV/f2d2bef01af811df8bd9009a01040000/${year}/${month}/${day}/ ~/gpe/rev/"
+    echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Dept_LI/a46df78a0f3eea11acb33868dd1ca649/${year}/${month}/${day}/ ~/gpe/li/"
   fi
 }
 
