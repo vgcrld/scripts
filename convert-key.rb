@@ -11,8 +11,7 @@ TRANSLATION_MAP = {
     '5ab25322eb0ce811a58e7cd30aea05f0' => '870b246b-4a3d-2011-8454-df2cb2b1feec',
     'a46df78a0f3eea11acb33868dd1ca649' => '4b64733d-78e1-545a-f5aa-e119043bbf96',
     'f2d2bef01af811df8bd9009a01040000' => '63cf2b7d-bb41-40ca-f635-73d3c075c20e',
-    '3ea0fe138b9be6119d78e0071bf7e520' => '50479a5b-9b08-c45f-abd4-f4c709677ba5',  # Duplicated - Schonfeld tsm1500
-    '3ea0fe138b9be6119d78e0071bf7e520' => '9e0fe4a2-e025-c88c-fcdb-c19ce44cfb35',  # Duplicated - Schonfeld tsm2500
+    '3ea0fe138b9be6119d78e0071bf7e520' => :expired,
     '488ae82b8b9be611a1a4e0071bf70b64' => '387b7540-b819-542b-b19d-f9ab977fdee4',
     'a64fbe739e9de511a5f80025b50a006d' => '3d7ef905-061b-1af7-bf14-2d24d40e9883',
     '60e527c0992de611bc580025b50401ff' => 'c39710bb-c78e-1e78-7f81-61f22e32f19f',
@@ -21,31 +20,33 @@ TRANSLATION_MAP = {
     'd60b21da185e11e682260894ef035c20' => :expired
 }
 
-opts = Optimist::options do 
-    opt :execute
-end
-
 def clickhouse(translation)
-    translation.each do |customer,map|
-        map.each do |to_from|
-            curr, newn = to_from
-            if newn == :expired
-                puts %Q[alter table data__#{customer}.__items update visible=0, reporting=0, loading=0 where key = 'tsm_#{curr}';]
-            else
-                puts %Q[alter table data__#{customer}.__items update key=replaceOne(key,'tsm_#{curr}','tsm_#{newn}') where key like 'tsm_#{curr}%';]
+    File.open('clickhouse.sql', 'w') do |f|
+        translation.each do |customer,map|
+            f.puts %Q{select now(),'#{customer}';}
+            map.each do |to_from|
+                curr, newn = to_from
+                if newn == :expired
+                    f.puts %Q[alter table data__#{customer}.__items update visible=0, reporting=0, loading=0 where key = 'tsm_#{curr}';]
+                else
+                    f.puts %Q[alter table data__#{customer}.__items update key=replaceOne(key,'tsm_#{curr}','tsm_#{newn}') where key like 'tsm_#{curr}%';]
+                end
             end
-        end
-    end 
+        end 
+    end
 end
 
 def registry(translation)
-    translation.each do |customer,map|
-        map.each do |to_from|
-            curr, newn = to_from
-            if newn == :expired
-                puts %Q[update data__#{customer}.items set visible=0, reporting=0, loading=0 where string = 'tsm_#{curr}';]
-            else
-                puts %Q[update data__#{customer}.items set string=REPLACE(string,'tsm_#{curr}','tsm_#{newn}') where string like ('tsm_#{curr}%');]
+    File.open('pxc.sql', 'w') do |f|
+        translation.each do |customer,map|
+            f.puts %Q{select now(),'#{customer}';}
+            map.each do |to_from|
+                curr, newn = to_from
+                if newn == :expired
+                    f.puts %Q[update data__#{customer}.items set visible=0, reporting=0, loading=0 where string = 'tsm_#{curr}';]
+                else
+                    f.puts %Q[update data__#{customer}.items set string=REPLACE(string,'tsm_#{curr}','tsm_#{newn}') where string like ('tsm_#{curr}%');]
+                end
             end
         end
     end
@@ -59,7 +60,7 @@ translation = {}
 
 api.sites[:data].keys.each do |site|
     db = "data__#{site}"
-    get_keys_sql = %Q[select '#{site}' customer , key from #{db}.__items where type like 'tsminstance' group by customer, key;]
+    get_keys_sql = %Q[select distinct key from #{db}.__items where type = 'tsminstance';]
     api.user_login( customer: site )
     result = api.state.clickhouse.site.query(get_keys_sql)
     if result.any?
@@ -67,8 +68,10 @@ api.sites[:data].keys.each do |site|
             curr = o.last.split('tsm_').last
             newn = TRANSLATION_MAP[curr]
             if curr.include?('-')
-                puts "This looks to be a new key: #{site}/#{curr}"
+                STDERR.puts "This looks to be a new key: #{site}/#{curr}"
                 next
+            elsif newn.nil?
+                raise "found key #{curr} in db but not in map"
             else
                 [ curr, newn ]
             end
@@ -78,10 +81,7 @@ api.sites[:data].keys.each do |site|
     end
 end
 
-if opts[:execute]
-    clickhouse(translation)
-    registry(translation)
-else
-    ap translation
-end
+clickhouse(translation)
+registry(translation)
+ap translation
     
