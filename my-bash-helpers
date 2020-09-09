@@ -17,6 +17,7 @@ alias gpe='cd ~/code/gpe-server'
 alias mygpepassenger='cd ~/code/gpe-server && GALILEO_LOG_FRIENDLY=1 bundle exec passenger start --min-instances=3 --port="${GALILEO_PORT}" ui'
 alias mygpeuibuid='cd ~/code/gpe-server/ui/app && yarn clean && yarn install && yarn release'
 alias ts='BUNDLE_GEMFILE=~/code/gpe-server/Gemfile OUTPUT=$HOME/p2files GALILEO_LOG_FRIENDLY=1 CUSTOMER=rdavis bundle exec test-single-file'
+alias tso='BUNDLE_GEMFILE=~/code/gpe-server/Gemfile OUTPUT=$HOME/p2filesold GALILEO_LOG_FRIENDLY=1 CUSTOMER=rdavis bundle exec test-single-file'
 alias ll='ls -ltr'
 
 export PATH=/users/rdavis/code/scripts:$PATH
