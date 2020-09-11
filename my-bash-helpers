@@ -21,6 +21,8 @@ alias tso='BUNDLE_GEMFILE=~/code/gpe-server/Gemfile OUTPUT=$HOME/p2filesold GALI
 alias ll='ls -ltr'
 
 export PATH=/users/rdavis/code/scripts:$PATH
+export PATH=/users/rdavis/code/galileo-tools:$PATH
+export PATH=/users/rdavis/code/admin-cli:$PATH
 
 bexec () {
   bundle exec --gemfile ~/code/gpe-server/Gemfile $*
