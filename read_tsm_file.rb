@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# 
+#
 #  Process the TSM gz files by extracting a single file and compile a csv.
 #
 require 'awesome_print'
@@ -12,7 +12,7 @@ require 'csv'
 
 log = Logger.new(STDOUT)
 
-opts = Optimist::options do 
+opts = Optimist::options do
   opt :matcher, "File Matcher", type: :string, require: true
   opt :skip, "Skip the first"
 end
@@ -41,7 +41,7 @@ end
 
 # Check the file selection
 uniq_files = flist.keys.map{ |o| o.split('.')[0..-2] }.flatten.uniq
-if uniq_files.length > 1 
+if uniq_files.length > 1
   log.error "The files process are not all the same type. Ensure the matcher specified will only select a single type."
   log.error uniq_files.join(', ')
   exit 1
@@ -61,6 +61,8 @@ names.each do |filename|
   flist[filename].each do |line|
     if line.empty?
       unless rec["ANR2034E SELECT"] or rec.empty?
+        file_ts = Time.at(filename.split('.',2).last.to_i)
+        rec['GPE_FILE_TS'] = file_ts
         head = rec.keys
         row = CSV::Row.new(head,rec.values)
         rows << row
@@ -79,7 +81,7 @@ end
 if headers.empty?
   log.error "There does not appear to be any data in the set."
   exit 1
-elsif headers.length != 1 
+elsif headers.length != 1
   require 'debug'
   log.error "Headers where inconsistent acroess all the records."
   ap headers
