@@ -48,6 +48,10 @@ mygpeexpand () {
 }
 
 
+mygpeevictedkill () {
+  kubectl get pod -n rdavis | grep Evicted | awk '{print $1}' | xargs kubectl delete pod -n rdavis
+}
+
 mygpeportforward-ch () {
   # CH and PXC forwarding
   kubectl port-forward --namespace default svc/core-clickhouse-default-1 8123 &
@@ -92,7 +96,7 @@ mygpetsmfirst () {
 }
 
 mygpecleardirs () {
-  rm -rf ~/gpe ~/p2files && mkdir ~/gpe ~/p2files/
+  rm -rf ~/gpe ~/p2files ~/p2filesold/ && mkdir -p ~/gpe ~/p2files ~/p2filesold
 }
 
 ffile () {
@@ -171,7 +175,7 @@ mygperestartwatch () {
 }
 
 mygpepod() {
-  kubectl get pod --context rdavis | awk '/rdavis-gpe-server/{print $1}'
+  kubectl get pod --context rdavis | awk '/rdavis-gpe-server.*Running/{print $1}'
 }
 
 mygpepodgo () {
@@ -180,5 +184,16 @@ mygpepodgo () {
 
 mygpepodlog () {
   kubectl logs -f $(mygpepod) --context rdavis --tail=50
+}
+
+mygpes3nutanixget () {
+
+  year=$(date +"%Y")
+  month=$(date +"%m")
+  day=$(date +"%d")
+
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Fairfax_County/0005a137-b562-2fa0-52be-ac1f6bc13f99/${year}/${month}/${day}/" ~/gpe/nutanix/Fairfax/
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/000596b1-c708-61d2-7d60-ac1f6b5c4cb1/${year}/${month}/${day}/" ~/gpe/nutanix/Excellus/
+
 }
 
