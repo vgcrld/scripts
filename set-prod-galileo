@@ -1,0 +1,5 @@
+GALILEO_LOG_FRIENDLY=1
+GALILEO_URI=https://my.int.galileosuite.com
+GALILEO_USERNAME=rdavis
+GALILEO_PASSWORD=Passw0rd1@
+GALILEO_SITE=DandH
