@@ -1,6 +1,6 @@
 #!/bin/bash
 
-num=4
+num=6
 c=0
 cd ~/code/gpe-server
 for i in $*
