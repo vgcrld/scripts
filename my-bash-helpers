@@ -1,6 +1,9 @@
 #!/bin/bash
 
-#export GALILEO_PORT="11131"
+export GOBIN=$HOME/go/bin
+export PATH=$PATH:$GOBIN
+
+export GALILEO_PORT="11131"
 export GALILEO_LOG_FRIENDLY="1"
 export GALILEO_URI="https://rdavis.core.galileosuite.com"
 export GALILEO_USERNAME="rdavis"
@@ -21,9 +24,15 @@ alias tso='BUNDLE_GEMFILE=~/code/gpe-server/Gemfile OUTPUT=$HOME/p2filesold GALI
 alias ll='ls -ltr'
 
 export PATH=/users/rdavis/code/scripts:$PATH
+export PATH=/users/rdavis/code/galileo-tools:$PATH
+export PATH=/users/rdavis/code/admin-cli:$PATH
 
 bexec () {
   bundle exec --gemfile ~/code/gpe-server/Gemfile $*
+}
+
+mygpegetnutanix () {
+  aws s3 --profile prod --recursive ls s3://etl-x2gpe.galileosuite.com/Excellus/000596b1-c708-61d2-7d60-ac1f6b5c4cb1/$(date +'%Y/%m/%d')
 }
 
 mygperunetlbyname () {
