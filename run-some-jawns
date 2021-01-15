@@ -9,7 +9,7 @@ do
   c=$((c+1))
   moveto="$(dirname $i)/old"
   mkdir -p "${moveto}"
-  eval "(bundle exec bin/test-single-file --summary 1 --customer '${GALILEO_SITE}' '$i' && mv '$i' '$moveto') &"
+  eval "(bundle exec bin/test-single-file --customer '${GALILEO_SITE}' '$i' && mv '$i' '$moveto') &"
   if [ $c -eq "$num" ]; then
     wait
     c=0
