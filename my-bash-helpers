@@ -206,3 +206,23 @@ mygpes3nutanixget () {
 
 }
 
+mygpes3excellusnutanixget () {
+
+  year=$(date +"%Y")
+  month=$(date +"%m")
+  day=$(date +"%d")
+
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/00059520-040d-08f2-6174-ac1f6bcc6099/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixgcp/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/00059648-ad97-25b9-0b64-ac1f6bc18506/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixflr/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/0005924b-85c9-b0e4-0000-000000025723/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixedh/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/0005964a-a499-97f2-0395-ac1f6b5c42b1/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixvdi/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/000596b1-c708-61d2-7d60-ac1f6b5c4cb1/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixgct/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/00059638-1a0c-6f80-1dba-ac1f6b5c4d38/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixsql/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/00059634-f3fc-80f2-5c19-ac1f6b5c4dac/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixora/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/00059e65-982a-38ec-5b61-ac1f6bcc60e3/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixhar/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/00059520-040d-08f2-6174-ac1f6bcc6099/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixgcp/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/0005964a-a499-97f2-0395-ac1f6b5c42b1/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixvdi/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/00059648-ad97-25b9-0b64-ac1f6bc18506/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixflr/"
+  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/0005924b-85c9-b0e4-0000-000000025723/${year}/${month}/${day}/ ~/gpe/nutanix/excellus/nutanixedh/"
+}
+
