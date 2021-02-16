@@ -13,14 +13,23 @@ export SSL_VERIFY=0
 
 export OUTPUT=$HOME/gpe/p2files
 
+# Setup a quick path to get me to places. default name is qp
+qp () {
+  [ -z "$1" ] && echo 'need a name' && return 1
+  cmd="alias ${1}='cd $PWD'"
+  var="export ${1}='$PWD'"
+  eval "$var"
+  eval "$cmd"
+}
+
 alias mygpeadmin="gpeadmin.rb"
 alias mygpefakefile='echo "gem.$(date +"%Y%m%d").$(date +"%H%M%S").$(date +"%Z").d60b21da185e11e682260894ef035c20.tsm.gz"'
 alias mygperedordavis='cd ~/code/admin-cli && ./unlock_site && ./remove_site && ./add_site paid'
 alias gpe='cd ~/code/gpe-server'
 alias mygpepassenger='cd ~/code/gpe-server && GALILEO_LOG_FRIENDLY=1 bundle exec passenger start --min-instances=3 --port="${GALILEO_PORT}" ui'
 alias mygpeuibuid='cd ~/code/gpe-server/ui/app && yarn clean && yarn install && yarn release'
-alias ts='BUNDLE_GEMFILE=~/code/gpe-server/Gemfile OUTPUT=$HOME/p2files GALILEO_LOG_FRIENDLY=1 CUSTOMER=${GALILEO_SITE} bundle exec test-single-file'
-alias tso='BUNDLE_GEMFILE=~/code/gpe-server/Gemfile OUTPUT=$HOME/p2filesold GALILEO_LOG_FRIENDLY=1 CUSTOMER=${GALILEO_SITE}  bundle exec test-single-file'
+alias ts='mkdir -p  $HOME/gpe/p2files && BUNDLE_GEMFILE=~/code/gpe-server/Gemfile OUTPUT=$HOME/gpe/p2files GALILEO_LOG_FRIENDLY=1 CUSTOMER=${GALILEO_SITE} bundle exec test-single-file'
+alias tso='mkdir -p $HOME/gpe/p2filesold && BUNDLE_GEMFILE=~/code/gpe-server/Gemfile OUTPUT=$HOME/gpe/p2filesold GALILEO_LOG_FRIENDLY=1 CUSTOMER=${GALILEO_SITE}  bundle exec test-single-file'
 alias ll='ls -ltr'
 
 export PATH=/users/rdavis/code/scripts:$PATH
@@ -62,12 +71,13 @@ mygpeevictedkill () {
 }
 
 mygpeportforward-ch () {
-  # CH and PXC forwarding  kubectl port-forward --namespace default svc/core-clickhouse-default-0 8123 &
+  # CH and PXC forwarding
+  kubectl port-forward --namespace default svc/core-clickhouse-default-0 8123 &
 }
 
 mygpeportforward-pxc () {
   # CH and PXC forwarding
-  kubectl port-forward --namespace default svc/core-pxc                  3306 &
+  kubectl port-forward --namespace default svc/core-pxc 3306 &
 }
 
 mygpetsmlastrun () {
