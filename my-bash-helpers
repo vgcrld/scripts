@@ -5,7 +5,7 @@ export PATH=$PATH:$GOBIN
 
 export GALILEO_PORT="11131"
 export GALILEO_LOG_FRIENDLY="1"
-export GALILEO_URI="https://rdavis.core.galileosuite.com"
+#export GALILEO_URI="https://rdavis.core.galileosuite.com"
 export GALILEO_USERNAME="rdavis"
 export GALILEO_PASSWORD="Passw0rd1@"
 export GALILEO_SITE="rdavis2"
@@ -162,7 +162,7 @@ mygpes3mkpath () {
   echo "${prefix}/$1"
 }
 
-mygpes3get () {
+mygpes3spget () {
   year=$(date +"%Y")
   month=$(date +"%m")
   day=$(date +"%d")
@@ -180,6 +180,10 @@ mygpes3get () {
   echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Dept_LI/4b64733d-78e1-545a-f5aa-e119043bbf96/${year}/${month}/${day}/" ~/gpe/li/HBG-SP01/
   echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/CFG/87993a2e-5816-7f68-81d3-d5f1b0e652a9/${year}/${month}/${day}/" ~/gpe/cfg/atltsm/
   echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/CFG/dc26c19a-f1ea-eecf-8e13-1c2d79f2b43c/${year}/${month}/${day}/" ~/gpe/cfg/tsm/
+}
+
+mygpetypeget () {
+  find "$HOME/gpe" -maxdepth 4 -name "*.${1}.gz"
 }
 
 mygpetouch () {
@@ -202,17 +206,6 @@ mygpepodgo () {
 
 mygpepodlog () {
   kubectl logs -f $(mygpepod) --context rdavis --tail=50
-}
-
-mygpes3nutanixget () {
-
-  year=$(date +"%Y")
-  month=$(date +"%m")
-  day=$(date +"%d")
-
-  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Fairfax_County/0005a137-b562-2fa0-52be-ac1f6bc13f99/${year}/${month}/${day}/" ~/gpe/nutanix/Fairfax/
-  echo "aws --profile prod s3 cp --recursive s3://etl-x2gpe.galileosuite.com/Excellus/000596b1-c708-61d2-7d60-ac1f6b5c4cb1/${year}/${month}/${day}/" ~/gpe/nutanix/Excellus/
-
 }
 
 mygpes3excellusnutanixget () {
