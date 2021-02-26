@@ -62,7 +62,8 @@ mygpeevictedkill () {
 }
 
 mygpeportforward-ch () {
-  # CH and PXC forwarding  kubectl port-forward --namespace default svc/core-clickhouse-default-0 8123 &
+  # CH and PXC forwarding  
+  kubectl port-forward --namespace default svc/core-clickhouse-default-0 8123 &
 }
 
 mygpeportforward-pxc () {
