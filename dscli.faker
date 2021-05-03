@@ -33,7 +33,7 @@ return_cmd() {
       ;;
 
     *config_commands*)
-      tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-3.20180417.184951.GMT.IBM-2107-75FRB81.ds8k.gz 'config_commands.txt'
+      tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'config_commands.txt'
       ;;
 
     "quit")
@@ -41,23 +41,23 @@ return_cmd() {
       ;;
 
     "listout")
-      tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-3.20180417.184951.GMT.IBM-2107-75FRB81.ds8k.gz 'listout.txt'
+      tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt'
       ;;
 
     lsioport)
-       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lsioport/,/Command:ver/'
+       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsioport/,/Command:ver/'
        ;;
 
     lsrank)
-       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lsrank/,/Command:ver/'
+       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsrank/,/Command:ver/'
        ;;
 
     lsextpool)
-       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lsextpool/,/Command:ver/'
+       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsextpool/,/Command:ver/'
        ;;
 
     lsfbvol)
-       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lsfbvol/,/Command:ver/'
+       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsfbvol/,/Command:ver/'
        ;;
 
     lsckdvol)
@@ -81,11 +81,11 @@ return_cmd() {
       ;;
 
     lslss)
-       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:lslss/,/Command:ver/'
+       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lslss/,/Command:ver/'
        ;;
 
     ver)
-       tar -xvOf /home/ATS/rdavis/ds8k/files/BCC_DS8870-1.20180711.201411.GMT__822725__.IBM-2107-75DWA61.ds8k.gz 'listout.txt' | awk '/Command:ver/,/Command:ver/'
+       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:ver/,/Command:ver/'
        ;;
 
     *)

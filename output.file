@@ -1,0 +1,16 @@
+Date/Time: July 11, 2018 8:14:29 PM GMT IBM DSCLI Version: 7.8.24.11  DS:
+IBM.2107-75DWA61
+dscli> Command:ver
+Date/Time: July 11, 2018 8:14:30 PM GMT IBM DSCLI Version: 7.8.24.11 DS: -
+DSCLI 7.8.24.11
+
+dscli> Command:ver
+Date/Time: July 11, 2018 8:14:30 PM GMT IBM DSCLI Version: 7.8.24.11 DS: -
+DSCLI 7.8.24.11
+
+Command:lssi -l
+Date/Time: July 11, 2018 8:16:11 PM GMT IBM DSCLI Version: 7.8.24.11 DS: -
+Name|ID|Storage Unit|Model|WWNN|State|ESSNet|Volume Group|desc
+==============================================================
+DS8870-1_BCC_PROD|IBM.2107-75DWA61|IBM.2107-75DWA60|961|5005076306FFD5C1|Online|Enabled|IBM.2107-75DWA61/V0|-
+
