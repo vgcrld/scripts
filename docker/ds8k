@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+docker run -ti --rm -v $HOME/code:/root/code --name ds8k centos:centos7

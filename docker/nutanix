@@ -1,4 +1,4 @@
 #!/bin/sh
 
 
-docker run -ti --rm -v $HOME/code:/root/code agents:nutanix
+docker run -ti --rm -v $HOME/code:/root/code --name nutanix agents:nutanix

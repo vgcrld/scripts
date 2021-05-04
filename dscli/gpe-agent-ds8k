@@ -1,0 +1,24 @@
+#!/bin/sh
+
+
+mkpipe () {
+    filename="${1:-${RANDOM}}.pipe"
+    if mkfifo "${filename}" 2>&1 
+    then
+        echo "${filename}" 
+        return 0
+    else
+        return 1
+    fi
+}
+
+rmpipe () {
+    [ -z $1 ] && echo 1>&2 "need a file" && return 1
+}
+
+if filename=$(mkpipe "fbvols2")
+then
+    echo "$filename is created"
+else
+    echo "not recreated: ${filename}"
+fi

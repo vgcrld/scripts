@@ -24,7 +24,7 @@ return_cmd() {
       echo "DSCLI 7.8.24.11"
       ;;
 
-    "lssi")
+    *lssi*)
       echo "Command:lssi -l"
       echo "Date/Time: July 11, 2018 8:16:11 PM GMT IBM DSCLI Version: 7.8.24.11 DS: -"
       echo "Name|ID|Storage Unit|Model|WWNN|State|ESSNet|Volume Group|desc"
@@ -33,34 +33,34 @@ return_cmd() {
       ;;
 
     *config_commands*)
-      tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'config_commands.txt'
+      tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'config_commands.txt'
       ;;
 
     "quit")
       end_me 0
       ;;
 
-    "listout")
-      tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt'
+    *listout*)
+      tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt'
       ;;
 
-    lsioport)
-       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsioport/,/Command:ver/'
+    *lsioport*)
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsioport/,/Command:ver/'
        ;;
 
-    lsrank)
-       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsrank/,/Command:ver/'
+    *lsrank*)
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsrank/,/Command:ver/'
        ;;
 
-    lsextpool)
-       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsextpool/,/Command:ver/'
+    *lsextpool*)
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsextpool/,/Command:ver/'
        ;;
 
-    lsfbvol)
-       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsfbvol/,/Command:ver/'
+    **lsfbvol**)
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsfbvol/,/Command:ver/'
        ;;
 
-    lsckdvol)
+    *lsckdvol*)
       echo "dscli> Command:lsckdvol"
       echo "Date/Time: August 21, 2018 8:00:19 PM GMT IBM DSCLI Version: 7.7.21.39 DS: IBM.2107-75DAM11"
       echo "Name|ID|accstate|datastate|configstate|deviceMTM|voltype|orgbvols|extpool|cap (cyl)"
@@ -80,17 +80,17 @@ return_cmd() {
       echo "ckd2100|IBM.2107-75DAM11/2100|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
       ;;
 
-    lslss)
-       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lslss/,/Command:ver/'
+    *lslss*)
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lslss/,/Command:ver/'
        ;;
 
     ver)
-       tar -xvOf usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:ver/,/Command:ver/'
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:ver/,/Command:ver/'
        ;;
 
     *)
-      echo "Invalid command issued: '$@'"
-      echo "Invalid: '$@'" >> /tmp/dscli.faker
+      echo "Command with delay: '$@'"
+      sleep .3
       ;;
 
   esac
@@ -102,11 +102,11 @@ startup() {
   echo "IBM.2107-75DWA61"
 }
 
-startup
+# startup
 
 if [[ "$@" = "" ]]; then
   looper
-elif [[ "$@" = "-cfg /opt/galileo/etc/gpe-agent-ds8k.d/fakeds8k.profile -user galileo -pwfile /tmp/ds8k.pw" ]]; then
+elif [[ "$@" = *-cfg* ]]; then
   looper
 else
   return_cmd "$@"
