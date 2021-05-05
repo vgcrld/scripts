@@ -7,10 +7,11 @@ end_me() {
 }
 
 looper() {
+  printf "dscli> "
   while read cmd
   do
     return_cmd "$cmd"
-    echo ""
+    printf "dscli> "
   done
 }
 
@@ -84,17 +85,73 @@ return_cmd() {
        tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lslss/,/Command:ver/'
        ;;
 
+    *showfbvol*)
+       echo "dscli> Command:showfbvol -metrics IBM.2107-75KDR91/1A00"
+       echo "Date/Time: May 3, 2021 8:00:24 AM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KDR91"
+       echo "ID                        IBM.2107-75KDR91/1A00"
+       echo "Date                      05/03/2021 08:00:24 GMT"
+       echo "normrdrqts                7818509"
+       echo "normrdhits                6957558"
+       echo "normwritereq              16199136"
+       echo "normwritehits             16199136"
+       echo "seqreadreqs               2428173"
+       echo "seqreadhits               2417072"
+       echo "seqwritereq               1702998"
+       echo "seqwritehits              1702998"
+       echo "cachfwrreqs               0"
+       echo "cachfwrhits               0"
+       echo "cachefwreqs               0"
+       echo "cachfwhits                0"
+       echo "inbcachload               0"
+       echo "bypasscach                0"
+       echo "DASDtrans                 1557550"
+       echo "seqDASDtrans              438285"
+       echo "cachetrans                4955305"
+       echo "NVSspadel                 0"
+       echo "normwriteops              0"
+       echo "seqwriteops               0"
+       echo "reccachemis               264159"
+       echo "qwriteprots               0"
+       echo "CKDirtrkac                0"
+       echo "CKDirtrkhits              0"
+       echo "cachspdelay               0"
+       echo "timelowifact              0"
+       echo "phread                    1997108"
+       echo "phwrite                   3640006"
+       echo "phbyteread                870191"
+       echo "phbytewrite               1104021"
+       echo "recmoreads                518087"
+       echo "sfiletrkreads             0"
+       echo "contamwrts                0"
+       echo "PPRCtrks                  0"
+       echo "NVSspallo                 17902134"
+       echo "timephread                96301"
+       echo "timephwrite               377956"
+       echo "byteread                  1006705"
+       echo "bytewrit                  1470315"
+       echo "timeread                  95678"
+       echo "timewrite                 182376"
+       echo "zHPFRead                  -"
+       echo "zHPFWrite                 -"
+       echo "zHPFPrefetchReq           0"
+       echo "zHPFPrefetchHit           0"
+       echo "GMCollisionsSidefileCount 0"
+       echo "GMCollisionsSendSyncCount 0"
+      #  sleep .5
+       ;;
+
     ver)
        tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:ver/,/Command:ver/'
        ;;
 
     *)
       echo "Command with delay: '$@'"
-      sleep .3
       ;;
 
   esac
 
+  sleep .2
+  
 }
 
 startup() {
@@ -102,8 +159,25 @@ startup() {
   echo "IBM.2107-75DWA61"
 }
 
-# startup
+startup
 
+while [[ "$#" -ne 0 ]]
+do 
+  case "$1" in
+    ver* | ls* | show* | quit | exit | config_commands)
+      return_cmd "$1"
+      shift
+      ;;
+    *) 
+      echo "something else $1"
+      shift
+      ;;
+  esac
+done
+
+looper
+
+exit
 if [[ "$@" = "" ]]; then
   looper
 elif [[ "$@" = *-cfg* ]]; then
