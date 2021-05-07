@@ -150,7 +150,7 @@ return_cmd() {
 
   esac
 
-  sleep .1
+  sleep .2
 
 }
 
