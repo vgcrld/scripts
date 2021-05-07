@@ -1,0 +1,3 @@
+
+aws --profile prod s3 cp s3://etl-x2gpe.galileosuite.com/Presence/IBM-2107-75HBC91/2021/03/03/IBM.2107-75HBC91_EPIC.20210303.193001.GMT__524228__.IBM-2107-75HBC91.ds8k.gz ~/gpe/ds8k/
+aws --profile prod s3 cp s3://etl-x2gpe.galileosuite.com/Sutter_Health/IBM-2107-75BMD51/2021/03/03/DS8000_DEV.20210303.190000.GMT__423836__.IBM-2107-75BMD51.ds8k.gz       ~/gpe/ds8k/

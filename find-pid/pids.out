@@ -1,0 +1,826 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           2  0.0  0.0      0     0 ?        S    May04   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kworker/0:0H-kblockd]
+root           9  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [mm_percpu_wq]
+root          10  0.0  0.0      0     0 ?        S    May04   1:29  \_ [ksoftirqd/0]
+root          11  0.1  0.0      0     0 ?        I    May04   5:29  \_ [rcu_sched]
+root          12  0.0  0.0      0     0 ?        S    May04   0:11  \_ [migration/0]
+root          13  0.0  0.0      0     0 ?        S    May04   0:00  \_ [cpuhp/0]
+root          14  0.0  0.0      0     0 ?        S    May04   0:00  \_ [cpuhp/1]
+root          15  0.0  0.0      0     0 ?        S    May04   0:12  \_ [migration/1]
+root          16  0.0  0.0      0     0 ?        S    May04   1:28  \_ [ksoftirqd/1]
+root          18  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kworker/1:0H-kblockd]
+root          19  0.0  0.0      0     0 ?        S    May04   0:00  \_ [cpuhp/2]
+root          20  0.0  0.0      0     0 ?        S    May04   0:12  \_ [migration/2]
+root          21  0.0  0.0      0     0 ?        S    May04   1:26  \_ [ksoftirqd/2]
+root          23  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kworker/2:0H-kblockd]
+root          24  0.0  0.0      0     0 ?        S    May04   0:00  \_ [cpuhp/3]
+root          25  0.0  0.0      0     0 ?        S    May04   0:12  \_ [migration/3]
+root          26  0.0  0.0      0     0 ?        S    May04   1:25  \_ [ksoftirqd/3]
+root          28  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kworker/3:0H-kblockd]
+root          29  0.0  0.0      0     0 ?        S    May04   0:00  \_ [cpuhp/4]
+root          30  0.0  0.0      0     0 ?        S    May04   0:12  \_ [migration/4]
+root          31  0.0  0.0      0     0 ?        S    May04   1:25  \_ [ksoftirqd/4]
+root          33  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kworker/4:0H-kblockd]
+root          34  0.0  0.0      0     0 ?        S    May04   0:00  \_ [cpuhp/5]
+root          35  0.0  0.0      0     0 ?        S    May04   0:12  \_ [migration/5]
+root          36  0.0  0.0      0     0 ?        S    May04   1:25  \_ [ksoftirqd/5]
+root          38  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kworker/5:0H-kblockd]
+root          39  0.0  0.0      0     0 ?        S    May04   0:00  \_ [cpuhp/6]
+root          40  0.0  0.0      0     0 ?        S    May04   0:12  \_ [migration/6]
+root          41  0.0  0.0      0     0 ?        S    May04   1:23  \_ [ksoftirqd/6]
+root          43  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kworker/6:0H-kblockd]
+root          44  0.0  0.0      0     0 ?        S    May04   0:00  \_ [cpuhp/7]
+root          45  0.0  0.0      0     0 ?        S    May04   0:12  \_ [migration/7]
+root          46  0.0  0.0      0     0 ?        S    May04   1:25  \_ [ksoftirqd/7]
+root          48  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kworker/7:0H-kblockd]
+root          49  0.0  0.0      0     0 ?        S    May04   0:00  \_ [kdevtmpfs]
+root          50  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [netns]
+root          51  0.0  0.0      0     0 ?        S    May04   0:00  \_ [rcu_tasks_kthre]
+root          52  0.0  0.0      0     0 ?        S    May04   0:00  \_ [kauditd]
+root          55  0.0  0.0      0     0 ?        S    May04   0:00  \_ [khungtaskd]
+root          56  0.0  0.0      0     0 ?        S    May04   0:00  \_ [oom_reaper]
+root          57  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [writeback]
+root          58  0.0  0.0      0     0 ?        S    May04   0:00  \_ [kcompactd0]
+root          59  0.0  0.0      0     0 ?        SN   May04   0:00  \_ [ksmd]
+root          60  0.0  0.0      0     0 ?        SN   May04   0:01  \_ [khugepaged]
+root         106  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kintegrityd]
+root         107  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kblockd]
+root         108  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [blkcg_punt_bio]
+root         109  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [tpm_dev_wq]
+root         110  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [ata_sff]
+root         111  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [md]
+root         112  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [edac-poller]
+root         113  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [devfreq_wq]
+root         115  0.0  0.0      0     0 ?        S    May04   0:00  \_ [watchdogd]
+root         122  0.0  0.0      0     0 ?        S    May04   0:00  \_ [kswapd0]
+root         123  0.0  0.0      0     0 ?        S    May04   0:00  \_ [ecryptfs-kthrea]
+root         125  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kthrotld]
+root         126  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [nvme-wq]
+root         127  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [nvme-reset-wq]
+root         128  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [nvme-delete-wq]
+root         130  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [ipv6_addrconf]
+root         141  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kstrp]
+root         157  0.0  0.0      0     0 ?        S    May04   0:23  \_ [jbd2/nvme0n1p1-]
+root         158  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [ext4-rsv-conver]
+root         180  0.0  0.0      0     0 ?        I<   May04   0:05  \_ [kworker/4:1H-kblockd]
+root         220  0.0  0.0      0     0 ?        I<   May04   0:04  \_ [kworker/0:1H-kblockd]
+root         221  0.0  0.0      0     0 ?        I<   May04   0:04  \_ [kworker/2:1H-kblockd]
+root         225  0.0  0.0      0     0 ?        I<   May04   0:04  \_ [kworker/1:1H-kblockd]
+root         270  0.0  0.0      0     0 ?        I<   May04   0:04  \_ [kworker/3:1H-kblockd]
+root         280  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [cryptd]
+root         306  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [ena]
+root         331  0.0  0.0      0     0 ?        S<   May04   0:00  \_ [loop0]
+root         335  0.0  0.0      0     0 ?        S<   May04   0:00  \_ [loop1]
+root         336  0.0  0.0      0     0 ?        S<   May04   0:00  \_ [loop2]
+root         337  0.0  0.0      0     0 ?        I<   May04   0:04  \_ [kworker/7:1H-kblockd]
+root         338  0.0  0.0      0     0 ?        S<   May04   0:00  \_ [loop3]
+root         339  0.0  0.0      0     0 ?        S<   May04   0:00  \_ [loop4]
+root         341  0.0  0.0      0     0 ?        I<   May04   0:04  \_ [kworker/5:1H-kblockd]
+root         342  0.0  0.0      0     0 ?        I<   May04   0:04  \_ [kworker/6:1H-kblockd]
+root        2597  0.0  0.0   2488   584 ?        S    May04   0:01  \_ bpfilter_umh
+root        7243  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [xfsalloc]
+root        7244  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [xfs_mru_cache]
+root       14660  0.0  0.0      0     0 ?        S    May04   0:03  \_ [jbd2/nvme1n1-8]
+root       14661  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [ext4-rsv-conver]
+root       27771  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [rpciod]
+root       27772  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [xprtiod]
+root       27858  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [nfsiod]
+root       27974  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [kworker/u17:1-xprtiod]
+root       27984  0.0  0.0      0     0 ?        S    May04   0:00  \_ [NFSv4 callback]
+root      392774  0.0  0.0      0     0 ?        I<   May04   0:00  \_ [dio/nvme0n1p1]
+root      816148  0.0  0.0      0     0 ?        S    May05   0:00  \_ [jbd2/nvme2n1-8]
+root      816149  0.0  0.0      0     0 ?        I<   May05   0:00  \_ [ext4-rsv-conver]
+root      816299  0.0  0.0      0     0 ?        S    May05   0:00  \_ [jbd2/nvme3n1-8]
+root      816300  0.0  0.0      0     0 ?        I<   May05   0:00  \_ [ext4-rsv-conver]
+root     4055943  0.0  0.0      0     0 ?        S    May05   0:00  \_ [jbd2/nvme4n1-8]
+root     4055945  0.0  0.0      0     0 ?        I<   May05   0:00  \_ [ext4-rsv-conver]
+root     2290423  0.0  0.0      0     0 ?        I<   May06   0:00  \_ [kworker/u17:0-xprtiod]
+root     1745317  0.0  0.0      0     0 ?        I    09:00   0:00  \_ [kworker/3:1-events]
+root     1997326  0.0  0.0      0     0 ?        I    09:35   0:02  \_ [kworker/u16:0-events_unbound]
+root     2162607  0.0  0.0      0     0 ?        I    09:58   0:00  \_ [kworker/4:2-mm_percpu_wq]
+root     2180637  0.0  0.0      0     0 ?        I    10:00   0:00  \_ [kworker/2:0-mm_percpu_wq]
+root     2180922  0.0  0.0      0     0 ?        I    10:00   0:00  \_ [kworker/7:9-events]
+root     2180923  0.0  0.0      0     0 ?        I    10:00   0:00  \_ [kworker/7:10-events]
+root     2291230  0.0  0.0      0     0 ?        I    10:15   0:00  \_ [kworker/5:0-cgroup_pidlist_destroy]
+root     2291488  0.0  0.0      0     0 ?        I    10:15   0:00  \_ [kworker/1:1-cgroup_pidlist_destroy]
+root     2318238  0.0  0.0      0     0 ?        I    10:18   0:00  \_ [kworker/6:4-events]
+root     2356410  0.0  0.0      0     0 ?        I    10:23   0:01  \_ [kworker/u16:1-events_power_efficient]
+root     2368505  0.0  0.0      0     0 ?        I    10:25   0:00  \_ [kworker/0:1]
+root     2385561  0.0  0.0      0     0 ?        I    10:27   0:00  \_ [kworker/3:2-events]
+root     2442487  0.0  0.0      0     0 ?        I    10:34   0:00  \_ [kworker/u16:3-events_unbound]
+root     2521049  0.0  0.0      0     0 ?        I    10:43   0:00  \_ [kworker/4:0-events]
+root     2521987  0.0  0.0      0     0 ?        I    10:43   0:00  \_ [kworker/1:2-events]
+root     2525931  0.0  0.0      0     0 ?        I    10:44   0:00  \_ [kworker/5:2-cgroup_pidlist_destroy]
+root     2551438  0.0  0.0      0     0 ?        I    10:46   0:00  \_ [kworker/2:1-events]
+root     2557461  0.0  0.0      0     0 ?        I    10:47   0:00  \_ [kworker/6:0-events]
+root     2585482  0.0  0.0      0     0 ?        I    10:51   0:00  \_ [kworker/0:2-events]
+root     2618295  0.0  0.0      0     0 ?        I    10:55   0:00  \_ [kworker/6:1-cgroup_destroy]
+root     2623399  0.0  0.0      0     0 ?        I    10:55   0:00  \_ [kworker/4:1-events]
+root     2631049  0.0  0.0      0     0 ?        I    10:56   0:00  \_ [kworker/6:2-cgroup_destroy]
+root     2634363  0.1  0.0      0     0 ?        I    10:56   0:00  \_ [kworker/u16:2-events_unbound]
+root     2634823  0.0  0.0      0     0 ?        I    10:56   0:00  \_ [kworker/1:0-events]
+root           1  3.6  0.0 171936 14112 ?        Ss   May04 160:57 /sbin/init
+root         195  0.1  0.6 597944 398512 ?       S<s  May04   6:59 /lib/systemd/systemd-journald
+root         228  0.0  0.0  19304  5780 ?        Ss   May04   0:14 /lib/systemd/systemd-udevd
+systemd+     348  0.0  0.0  90228  6068 ?        Ssl  May04   0:00 /lib/systemd/systemd-timesyncd
+systemd+     428  0.0  0.0  26976  8124 ?        Ss   May04   0:02 /lib/systemd/systemd-networkd
+root         500  0.0  0.0   2540   716 ?        Ss   May04   0:00 /usr/sbin/acpid
+message+     504  0.3  0.0   7912  4884 ?        Ss   May04  13:35 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         510  0.0  0.0  26504 18152 ?        Ss   May04   0:01 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root         512  0.0  0.0 2116360 34648 ?       Ssl  May04   0:47 /usr/lib/snapd/snapd
+root         513  0.1  0.0  16912  7784 ?        Ss   May04   6:57 /lib/systemd/systemd-logind
+daemon       516  0.0  0.0   3792  2240 ?        Ss   May04   0:00 /usr/sbin/atd -f
+root         523  0.0  0.0   2860  1688 tty1     Ss+  May04   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+root         524  0.0  0.0   4384  2228 ttyS0    Ss+  May04   0:00 /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 ttyS0 vt220
+root         527  1.6  0.1 2225964 77892 ?       Ssl  May04  69:53 /usr/bin/containerd
+root         528  7.2  0.3 4118160 200708 ?      Ssl  May04 318:21 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+root         647  0.0  0.0 105124 20664 ?        Ssl  May04   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         887  0.0  0.0 1237220 24160 ?       Ssl  May04   0:18 /snap/amazon-ssm-agent/3552/amazon-ssm-agent
+root        2169  0.0  0.0 1842388 46724 ?       Sl   May04   2:11  \_ /snap/amazon-ssm-agent/3552/ssm-agent-worker
+_rpc        6353  0.0  0.0   7104  3840 ?        Ss   May04   0:00 /sbin/rpcbind -f -w
+root       24008  8.5  0.2 2439332 194952 ?      Ssl  May04 373:53 /snap/kubelet-eks/36/kubelet --node-labels=galileosuite.com/allow-developers=true --address=0.0.0.0 --anonymous-auth=false --authentication-token-webhook --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/etc/kubernetes/pki/ca.crt --cloud-provider=aws --cluster-dns=172.20.0.10 --cluster-domain=cluster.local --cni-bin-dir=/opt/cni/bin --cni-conf-dir=/etc/cni/net.d --config=/etc/kubernetes/kubelet/kubelet-config.json --container-runtime=docker --feature-gates=RotateKubeletServerCertificate=true --config=/etc/kubernetes/kubelet/kubelet-config.json --kubeconfig=/var/lib/kubelet/kubeconfig --max-pods=58 --network-plugin=cni --node-ip=10.21.37.99 --pod-infra-container-image=602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/pause:3.1-eksbuild.1 --register-node --resolv-conf=/run/systemd/resolve/resolv.conf --config=/etc/kubernetes/kubelet/kubelet-config.json
+agelwarg   24197  3.1  0.0  19808 10972 ?        Ss   May04 137:18 /lib/systemd/systemd --user
+agelwarg   24198  0.0  0.0 169688  4376 ?        S    May04   0:00  \_ (sd-pam)
+systemd+   25503  0.0  0.0  24044 13096 ?        Ss   May04   0:36 /lib/systemd/systemd-resolved
+root       25572  0.0  0.0 110808  7600 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 907ebbf53252bb1909dfdbe4460bc381e9a6896ddde112053718c24e650bd809 -address /run/containerd/containerd.sock
+root       25612  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       25573  0.0  0.0 112280  6612 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id a1d1523455ad7adc5b374c74368c3fb4fa2134695e92ab3bdd0e1e1c1f19dd70 -address /run/containerd/containerd.sock
+root       25613  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+agelwarg   25817  0.0  0.0  18444 17464 ?        Ss   May04   0:34 tmux
+agelwarg   25818  0.0  0.0  15200 13132 pts/1    Ss   May04   0:00  \_ -bash
+agelwarg  132894  0.0  0.0  23848 12888 pts/1    S+   May04   0:01  |   \_ vim
+agelwarg   26163  0.0  0.0  15332 13344 pts/3    Ss+  May04   0:00  \_ -bash
+agelwarg   26318  0.0  0.0  15476 13440 pts/4    Ss+  May04   0:00  \_ -bash
+agelwarg  108166  0.0  0.0  16412 14476 pts/18   Ss+  May04   0:01  \_ -bash
+agelwarg  132905  0.0  0.0  15332 13412 pts/19   Ss+  May04   0:00  \_ -bash
+agelwarg  134891  0.0  0.0  15480 13360 pts/21   Ss+  May04   0:00  \_ -bash
+agelwarg  135546  0.0  0.0  15332 13336 pts/22   Ss   May04   0:00  \_ -bash
+agelwarg  136476  0.0  0.0  24464 13540 pts/22   S+   May04   0:02  |   \_ vim
+agelwarg  136547  0.0  0.0  15468 13404 pts/23   Ss+  May04   0:00  \_ -bash
+agelwarg  136982  0.0  0.0  15332 13336 pts/24   Ss+  May04   0:00  \_ -bash
+agelwarg  137248  0.0  0.0  15332 13496 pts/25   Ss+  May04   0:00  \_ -bash
+agelwarg  138339  0.0  0.0  16256 14348 pts/26   Ss+  May04   0:00  \_ -bash
+agelwarg  139883  0.0  0.0  15332 13368 pts/27   Ss   May04   0:00  \_ -bash
+agelwarg  142989  0.0  0.0  22028 11108 pts/27   S+   May04   0:00  |   \_ vim
+agelwarg  140470  0.0  0.0  15332 13260 pts/28   Ss+  May04   0:00  \_ -bash
+agelwarg 2145804  0.0  0.0  15472 13380 pts/43   Ss+  May05   0:00  \_ -bash
+agelwarg 2692409  0.0  0.0  15332 13464 pts/2    Ss+  May05   0:00  \_ -bash
+root       26639  0.0  0.0 110808  7744 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 4bdf7d97698e85e31845ad2dbf0a51ac4d913281a267c2a4d826c7ec2a0cc290 -address /run/containerd/containerd.sock
+root       26688  0.0  0.0   2384   760 ?        Ss   May04   0:00  \_ /bin/sh -c kube-proxy --v=2 --config=/var/lib/kube-proxy-config/config
+root       26727  0.0  0.0 744380 45876 ?        Sl   May04   0:47      \_ kube-proxy --v=2 --config=/var/lib/kube-proxy-config/config
+root       26837  0.1  0.0 112216  9716 ?        Sl   May04   4:31 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 37acedd0cc9f4c239de041c32fb114f87e31c16dff971df5c74e555252135816 -address /run/containerd/containerd.sock
+root       26858  0.0  0.0  11540  2596 ?        Ss   May04   0:00  \_ bash /app/entrypoint.sh
+root       26885  0.0  0.0 163968 59780 ?        Sl   May04   3:39      \_ ./aws-k8s-agent
+root       26886  0.0  0.0   4232   756 ?        S    May04   0:00      \_ tee -i aws-k8s-agent.log
+root       27782  0.0  0.0 112216  7108 ?        Sl   May04   0:10 /usr/bin/containerd-shim-runc-v2 -namespace moby -id bb7f755ba306a420b8fe712733ff5b659ded4543b8841f5cdf72b6debf458075 -address /run/containerd/containerd.sock
+root       27861  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       27813  0.0  0.0 112216  6404 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 42abc01a207b51f43438309894e80369a2585cd65cb1b7671a92d5d0c645b1bf -address /run/containerd/containerd.sock
+jdavis     27871  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       27822  0.0  0.0 111960  6596 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id d8bb426a1480f3b19c93a888951fb0d0b4804469c9e4499f1f7f8de6195428ac -address /run/containerd/containerd.sock
+jtroy      27869  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       28064  0.0  0.0 111704  7328 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 77cbd4e370ac4607e655be2880c92b78faa7dfe2b60e8f9d07ceacfb4c3957ff -address /run/containerd/containerd.sock
+agelwarg   28118  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       28176  0.0  0.0 112216  6920 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 7210ab6e03acef76136da0afbe605abc3bb253162228487eea0e159184a4b792 -address /run/containerd/containerd.sock
+agelwarg   28304  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       28213  0.0  0.0 110808  6456 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id fe240495cd6f127c86d6345f6f02f5a91b5f5f28b96e19202e7f530fab393dcf -address /run/containerd/containerd.sock
+rhamburg   28282  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       28241  0.0  0.0 110808  6832 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id fb5132d2bbb590d9ad96058d4b17f90891ce81b046e540deb6f5b8fdf6b3e753 -address /run/containerd/containerd.sock
+abutt      28287  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       28700  0.0  0.0 112216  7156 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 06fc7cb4a797ef617e11609add1593cea1b721812108ae6c0d7a738cc877fdcf -address /run/containerd/containerd.sock
+santo      28721  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       28746  0.0  0.0 110872  6252 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 9f63e43a04e21fbbb4dcb54e019f127ce904ec5439f05001f62e235a5a6d7733 -address /run/containerd/containerd.sock
+root       28817  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       31225  0.0  0.0 112216  7224 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id c3b1a1132e2efc61d73ab58023a04865e65b8cae63659a0dd186dd5f14114e98 -address /run/containerd/containerd.sock
+ksoskin    31269  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       31369  0.0  0.0 112216  9296 ?        Sl   May04   1:59 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 9f645b47cffbed6d83c59bfc86eadd70d78a6033670105c38250a74f74f5141e -address /run/containerd/containerd.sock
+abutt      31411  0.0  0.0 170232 31568 ?        Ssl  May04   0:13  \_ /users/contractors/abutt/workspace/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+abutt      35328  0.0  0.0 284088  7668 ?        Ssl  May04   0:00      \_ Passenger watchdog
+abutt      35388  0.0  0.0 1955316 15324 ?       Sl   May04   0:15      |   \_ Passenger core
+abutt      35417  0.0  0.0   9900  1456 ?        Ss   May04   0:00      \_ nginx: master process /users/contractors/abutt/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.1jhx9d0/nginx.conf -p /tmp/passenger-standalone.1jhx9d0
+abutt      35420  0.0  0.0  11640  5784 ?        S    May04   0:00      |   \_ nginx: worker process
+abutt      35427  0.0  0.0  10952  2280 ?        Ss   May04   0:00      \_ /users/contractors/abutt/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.1jhx9d0 --cleanup --daemonize --pid-file /tmp/passenger-standalone.1jhx9d0/temp_dir_toucher.pid --log-file /users/contractors/abutt/workspace/gpe-server/ui/passenger.3000.log --nginx-pid 156
+abutt      35431  0.0  0.0   2608   608 ?        S    May04   0:00      \_ sh -c tail -f -n 0 "/users/contractors/abutt/workspace/gpe-server/ui/passenger.3000.log"
+abutt      35434  0.0  0.0   2544   596 ?        S    May04   0:00          \_ tail -f -n 0 /users/contractors/abutt/workspace/gpe-server/ui/passenger.3000.log
+root       31456  0.0  0.0 112216  9716 ?        Sl   May04   1:58 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 749a5d69ca6f788f0b16b42cb43f1b624d5e274d453ba065feb55b3b539b983e -address /run/containerd/containerd.sock
+santo      31577  0.0  0.0 169636 36772 ?        Ssl  May04   0:15  \_ /users/santo/src/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+santo      35176  0.0  0.0 284088  7540 ?        Ssl  May04   0:01      \_ Passenger watchdog
+santo      35235  0.6  0.0 2185748 16024 ?       Sl   May04  29:46      |   \_ Passenger core
+santo      35347  0.0  0.0   9900  1472 ?        Ss   May04   0:00      \_ nginx: master process /users/santo/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.1uv9mes/nginx.conf -p /tmp/passenger-standalone.1uv9mes
+santo      35348  0.0  0.0  11912  6740 ?        S    May04   0:59      |   \_ nginx: worker process
+santo      35379  0.0  0.0  10952  2296 ?        Ss   May04   0:00      \_ /users/santo/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.1uv9mes --cleanup --daemonize --pid-file /tmp/passenger-standalone.1uv9mes/temp_dir_toucher.pid --log-file /users/santo/src/gpe-server/ui/passenger.3000.log --nginx-pid 190
+santo      35382  0.0  0.0   2608   612 ?        S    May04   0:00      \_ sh -c tail -f -n 0 "/users/santo/src/gpe-server/ui/passenger.3000.log"
+santo      35383  0.0  0.0   2544   592 ?        S    May04   0:01      |   \_ tail -f -n 0 /users/santo/src/gpe-server/ui/passenger.3000.log
+santo      37010  0.0  0.7 703640 487468 ?       Sl   May04   0:34      \_ Passenger AppPreloader: /users/santo/src/gpe-server/ui (forking...)
+santo      37201  0.0  0.7 703652 483352 ?       Sl   May04   0:28      \_ Passenger AppPreloader: /users/santo/src/gpe-server/ui (forking...)
+santo      37259  0.0  0.6 640168 445640 ?       Sl   May04   0:03      \_ Passenger AppPreloader: /users/santo/src/gpe-server/ui (forking...)
+root       31490  0.0  0.0 112280  9824 ?        Sl   May04   1:51 /usr/bin/containerd-shim-runc-v2 -namespace moby -id df0438c6053c9cea33271d8c26d578b1ead61b86e061954cb5776bf2693ba3cd -address /run/containerd/containerd.sock
+rhamburg   31630  0.0  0.0 169480 34132 ?        Ssl  May04   0:16  \_ /users/rhamburg/galileo/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+rhamburg   35165  0.0  0.0 284080  7612 ?        Ssl  May04   0:01      \_ Passenger watchdog
+rhamburg   35179  0.7  0.0 2448152 16420 ?       Sl   May04  32:19      |   \_ Passenger core
+rhamburg   35203  0.0  0.0   9900  1464 ?        Ss   May04   0:00      \_ nginx: master process /users/rhamburg/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.e4wy14/nginx.conf -p /tmp/passenger-standalone.e4wy14
+rhamburg   35204  0.0  0.0  11892  6668 ?        S    May04   0:52      |   \_ nginx: worker process
+rhamburg   35222  0.0  0.0  10952  2284 ?        Ss   May04   0:00      \_ /users/rhamburg/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.e4wy14 --cleanup --daemonize --pid-file /tmp/passenger-standalone.e4wy14/temp_dir_toucher.pid --log-file /users/rhamburg/galileo/gpe-server/ui/passenger.3000.log --nginx-pid 153
+rhamburg   35225  0.0  0.0   2608   608 ?        S    May04   0:00      \_ sh -c tail -f -n 0 "/users/rhamburg/galileo/gpe-server/ui/passenger.3000.log"
+rhamburg   35230  0.0  0.0   2544   596 ?        S    May04   0:02      |   \_ tail -f -n 0 /users/rhamburg/galileo/gpe-server/ui/passenger.3000.log
+rhamburg   36986  0.0  0.0      0     0 ?        Z    May04   0:01      \_ [ruby] <defunct>
+rhamburg   37122  0.0  0.0      0     0 ?        Z    May04   0:00      \_ [ruby] <defunct>
+rhamburg   37240  0.0  0.0      0     0 ?        Z    May04   0:00      \_ [ruby] <defunct>
+rhamburg 2520846  0.0  0.0      0     0 ?        Z    May05   0:06      \_ [ruby] <defunct>
+rhamburg 2520870  0.0  0.0      0     0 ?        Z    May05   0:03      \_ [ruby] <defunct>
+rhamburg 2520889  0.0  0.0      0     0 ?        Z    May05   0:03      \_ [ruby] <defunct>
+rhamburg 1025838  0.0  0.7 701820 489388 ?       Sl   May06   1:13      \_ Passenger AppPreloader: /users/rhamburg/galileo/gpe-server/ui (forking...)
+rhamburg 1025872  0.0  0.7 637308 469892 ?       Sl   May06   0:18      \_ Passenger AppPreloader: /users/rhamburg/galileo/gpe-server/ui (forking...)
+rhamburg 1025894  0.0  0.6 637304 442496 ?       Sl   May06   0:03      \_ Passenger AppPreloader: /users/rhamburg/galileo/gpe-server/ui (forking...)
+root       31520  0.0  0.0 112280  8260 ?        Sl   May04   2:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id a6533979e94fe3bac08de9328bc13828e732d97fa53b520fff214069c49b220a -address /run/containerd/containerd.sock
+jtroy      31636  0.0  0.0 170192 31656 ?        Ssl  May04   0:13  \_ /users/jtroy/src/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+jtroy      35150  0.0  0.0 284092  7492 ?        Ssl  May04   0:01  |   \_ Passenger watchdog
+jtroy      35188  0.5  0.0 2021896 14140 ?       Sl   May04  24:15  |   |   \_ Passenger core
+jtroy      35255  0.0  0.0   9904  1480 ?        Ss   May04   0:00  |   \_ nginx: master process /users/jtroy/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.o0n9ek/nginx.conf -p /tmp/passenger-standalone.o0n9ek
+jtroy      35264  0.0  0.0  11644  5776 ?        S    May04   0:00  |   |   \_ nginx: worker process
+jtroy      35274  0.0  0.0  10956  2212 ?        Ss   May04   0:00  |   \_ /users/jtroy/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.o0n9ek --cleanup --daemonize --pid-file /tmp/passenger-standalone.o0n9ek/temp_dir_toucher.pid --log-file /users/jtroy/src/gpe-server/ui/passenger.3000.log --nginx-pid 188
+jtroy      35278  0.0  0.0   2612   612 ?        S    May04   0:00  |   \_ sh -c tail -f -n 0 "/users/jtroy/src/gpe-server/ui/passenger.3000.log"
+jtroy      35279  0.0  0.0   2548   528 ?        S    May04   0:00  |   |   \_ tail -f -n 0 /users/jtroy/src/gpe-server/ui/passenger.3000.log
+jtroy      36944  0.0  0.4 488688 261996 ?       Sl   May04   0:00  |   \_ Passenger AppPreloader: /users/jtroy/src/gpe-server/ui (forking...)
+jtroy      37028  0.0  0.3 422084 252780 ?       Sl   May04   0:00  |   \_ Passenger AppPreloader: /users/jtroy/src/gpe-server/ui (forking...)
+jtroy      37139  0.0  0.3 423108 252660 ?       Sl   May04   0:00  |   \_ Passenger AppPreloader: /users/jtroy/src/gpe-server/ui (forking...)
+jtroy    2899506  0.0  0.0  11972 11188 pts/0    Ss+  May06   0:00  \_ bash
+root       31568  0.0  0.0 110808  7224 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 77d60b47ddcfd2a283949fb7b07d6c2ff4661491a632318cca0dbe77c905c981 -address /run/containerd/containerd.sock
+agelwarg   31996  0.0  0.0  23376 21244 ?        Ss   May04   0:41  \_ /usr/bin/python3 /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+agelwarg   34325  0.0  0.0   5900  4408 ?        S    May04   0:00      \_ nginx: master process /usr/sbin/nginx -g daemon off;error_log /dev/stdout info; -c /etc/nginx/nginx.conf
+agelwarg   34332  0.0  0.0   8036  3476 ?        S    May04   0:00      |   \_ nginx: worker process
+agelwarg   34333  0.0  0.0   8036  3476 ?        S    May04   0:00      |   \_ nginx: worker process
+agelwarg   34334  0.0  0.0   8036  3476 ?        S    May04   0:00      |   \_ nginx: worker process
+agelwarg   34335  0.0  0.0   8036  3476 ?        S    May04   0:00      |   \_ nginx: worker process
+agelwarg   34336  0.0  0.0   8036  3476 ?        S    May04   0:00      |   \_ nginx: worker process
+agelwarg   34327  0.0  0.0  27728 13972 ?        S    May04   0:06      \_ php-fpm: master process (/etc/php7/php-fpm.conf)
+agelwarg   34338  0.0  0.0  27744  4524 ?        S    May04   0:00          \_ php-fpm: pool zabbix
+agelwarg   34339  0.0  0.0  27744  4524 ?        S    May04   0:00          \_ php-fpm: pool zabbix
+agelwarg   34340  0.0  0.0  27744  4524 ?        S    May04   0:00          \_ php-fpm: pool zabbix
+agelwarg   34341  0.0  0.0  27752  4528 ?        S    May04   0:00          \_ php-fpm: pool zabbix
+agelwarg   34343  0.0  0.0  27748  4536 ?        S    May04   0:00          \_ php-fpm: pool zabbix
+root       31569  0.0  0.0 112216  9040 ?        Sl   May04   1:59 /usr/bin/containerd-shim-runc-v2 -namespace moby -id b3c0c7036aa1fd90d275edcf6fd0e45607aa2126eef597d990bd29a3807040e2 -address /run/containerd/containerd.sock
+jdavis     32081  0.0  0.0 170220 31344 ?        Ssl  May04   0:13  \_ /users/jdavis/code/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+jdavis     35237  0.0  0.0      0     0 ?        Zs   May04   0:00      \_ [node] <defunct>
+jdavis     35682  0.0  0.0 284092  7584 ?        Ssl  May04   0:00      \_ Passenger watchdog
+jdavis     35715  0.0  0.0 1955316 15508 ?       Sl   May04   0:15      |   \_ Passenger core
+jdavis     35734  0.0  0.0   9904  1476 ?        Ss   May04   0:00      \_ nginx: master process /users/jdavis/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.1lx5e0/nginx.conf -p /tmp/passenger-standalone.1lx5e0
+jdavis     35742  0.0  0.0  11644  5840 ?        S    May04   0:00      |   \_ nginx: worker process
+jdavis     35756  0.0  0.0  10956  2260 ?        Ss   May04   0:00      \_ /users/jdavis/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.1lx5e0 --cleanup --daemonize --pid-file /tmp/passenger-standalone.1lx5e0/temp_dir_toucher.pid --log-file /users/jdavis/code/gpe-server/ui/passenger.3000.log --nginx-pid 386
+jdavis     35761  0.0  0.0   2612   616 ?        S    May04   0:00      \_ sh -c tail -f -n 0 "/users/jdavis/code/gpe-server/ui/passenger.3000.log"
+jdavis     35764  0.0  0.0   2548   532 ?        S    May04   0:00          \_ tail -f -n 0 /users/jdavis/code/gpe-server/ui/passenger.3000.log
+root       31575  0.0  0.0 112280  9764 ?        Sl   May04   2:59 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 8da2f8e46b8e0a8025da48d01b6588abaa1bcc5997c0adff5b1eef312b606b2e -address /run/containerd/containerd.sock
+agelwarg   31878  0.0  0.0 169060 31700 ?        Ssl  May04   0:22  \_ /users/agelwarg/src/galileo/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+agelwarg   35172  0.0  0.0 284096  7468 ?        Ssl  May04   0:01      \_ Passenger watchdog
+agelwarg   35211  0.8  0.0 2481956 16748 ?       Sl   May04  34:53      |   \_ Passenger core
+agelwarg   35316  0.0  0.0   9916  1472 ?        Ss   May04   0:00      \_ nginx: master process /users/agelwarg/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.q52s57/nginx.conf -p /tmp/passenger-standalone.q52s57
+agelwarg   35324  0.0  0.0  11920  6636 ?        S    May04   0:32      |   \_ nginx: worker process
+agelwarg   35329  0.0  0.0  10960  2320 ?        Ss   May04   0:00      \_ /users/agelwarg/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.q52s57 --cleanup --daemonize --pid-file /tmp/passenger-standalone.q52s57/temp_dir_toucher.pid --log-file /users/agelwarg/src/galileo/gpe-server/ui/passenger.3000.log --nginx-pid 185
+agelwarg   35334  0.0  0.0   2616   616 ?        S    May04   0:00      \_ sh -c tail -f -n 0 "/users/agelwarg/src/galileo/gpe-server/ui/passenger.3000.log"
+agelwarg   35342  0.0  0.0   2552   600 ?        S    May04   0:06      |   \_ tail -f -n 0 /users/agelwarg/src/galileo/gpe-server/ui/passenger.3000.log
+agelwarg   36976  0.0  0.0      0     0 ?        Z    May04   1:44      \_ [ruby] <defunct>
+agelwarg   37097  0.0  0.0      0     0 ?        Z    May04   0:04      \_ [ruby] <defunct>
+agelwarg   37264  0.0  0.0      0     0 ?        Z    May04   0:00      \_ [ruby] <defunct>
+agelwarg 1184130  0.0  0.0      0     0 ?        Z    May05   1:22      \_ [ruby] <defunct>
+agelwarg 1184174  0.0  0.0      0     0 ?        Z    May05   0:03      \_ [ruby] <defunct>
+agelwarg 1184217  0.0  0.0      0     0 ?        Z    May05   0:00      \_ [ruby] <defunct>
+agelwarg  443280  0.0  0.0      0     0 ?        Z    May06   0:03      \_ [ruby] <defunct>
+agelwarg  443310  0.0  0.0      0     0 ?        Z    May06   0:03      \_ [ruby] <defunct>
+agelwarg  443330  0.0  0.0      0     0 ?        Z    May06   0:03      \_ [ruby] <defunct>
+agelwarg  448521  0.0  0.0      0     0 ?        Z    May06   0:03      \_ [ruby] <defunct>
+agelwarg  448544  0.0  0.0      0     0 ?        Z    May06   0:03      \_ [ruby] <defunct>
+agelwarg  448570  0.0  0.0      0     0 ?        Z    May06   0:00      \_ [ruby] <defunct>
+agelwarg  456696  0.0  0.0      0     0 ?        Z    May06   0:03      \_ [ruby] <defunct>
+agelwarg  456722  0.0  0.0      0     0 ?        Z    May06   0:03      \_ [ruby] <defunct>
+agelwarg  456756  0.0  0.0      0     0 ?        Z    May06   0:00      \_ [ruby] <defunct>
+agelwarg  459780  0.0  0.0      0     0 ?        Z    May06   0:03      \_ [ruby] <defunct>
+agelwarg  459833  0.0  0.0      0     0 ?        Z    May06   0:03      \_ [ruby] <defunct>
+agelwarg  459890  0.0  0.0      0     0 ?        Z    May06   0:00      \_ [ruby] <defunct>
+agelwarg  464384  0.0  0.8 691672 526100 ?       Sl   May06   1:29      \_ Passenger AppPreloader: /users/agelwarg/src/galileo/gpe-server/ui (forking...)
+agelwarg  464429  0.0  0.7 692696 490388 ?       Sl   May06   0:05      \_ Passenger AppPreloader: /users/agelwarg/src/galileo/gpe-server/ui (forking...)
+agelwarg  464478  0.0  0.7 693720 499156 ?       Sl   May06   0:04      \_ Passenger AppPreloader: /users/agelwarg/src/galileo/gpe-server/ui (forking...)
+root       31610  0.0  0.0 112216  8932 ?        Sl   May04   0:33 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 70e4a62c3102bffa66965b3dfd557d2c6df1a431c60888b326b063c696d35249 -address /run/containerd/containerd.sock
+systemd+   32062  1.6  0.6 14742100 437300 ?     Ssl  May04  72:33  \_ /usr/bin/clickhouse-server --config-file=/etc/clickhouse-server/config.xml
+root       31734  0.0  0.0 110552  7904 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id eb99558bf7f97be25c670f90c551e098706660bfab6ae70bdee7da5d42f59487 -address /run/containerd/containerd.sock
+root       32230  0.0  0.0   1612  1152 ?        Ss   May04   0:02  \_ /bin/sh /slam.sh
+root     2642667  0.0  0.0   1580    16 ?        S    10:57   0:00      \_ sleep 30
+root       31755  0.0  0.0 110808  7004 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 8382964230fde93723626d2b0ca1f259bff27c2fa8c016762659c71ae701a33c -address /run/containerd/containerd.sock
+mshever+   32162  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       31898  0.0  0.0 112216  6720 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 6aa5e717a4c5547370191d45c90a78fa5f6042ba5602f9b40b5c628fc5857f17 -address /run/containerd/containerd.sock
+root       32145  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       31932  0.0  0.0 112216  6044 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 1a668f6a738ded1fa9d0d62931a0086998d2e7589b8dae8fadd81317d455b8ff -address /run/containerd/containerd.sock
+rdavis     32088  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       31997  0.0  0.0 110872  7336 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 57673bfcdbfea9de813d440a6a7b76db7a21533f0a045f5cc9948b18a440e7c5 -address /run/containerd/containerd.sock
+ksoskin    32552  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       31998  0.0  0.0 112280  6660 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id b5299b3673555a653f48144e683660f0ab8499f1af234f61a0db568182551d5e -address /run/containerd/containerd.sock
+psuramp+   32593  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       32122  0.0  0.0 112216  7532 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 520bb006892a7be904e6f40cb73e8474e7df10e94e4311321a7e106a111462b8 -address /run/containerd/containerd.sock
+nobody     32592  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       32173  0.0  0.0 111960  7500 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 42e9eb950bbbffabf412793a034af4120cc1dd01f2260a33157f86456a93f4b4 -address /run/containerd/containerd.sock
+root       32544  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       32298  0.0  0.0 110808  7540 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 1da407b81b9831938cbcb829ed8d7ddee1e58a934ce616dea8ce43b9128c8bbd -address /run/containerd/containerd.sock
+jsipling   32746  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       32315  0.0  0.0 110808  6732 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 60b4735bab24453bc6f7f4d863abcd4fe2ef21fc85d626045f35d63964746d55 -address /run/containerd/containerd.sock
+mshever+   32579  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       32321  0.0  0.0 111960  7244 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 093a3c82c56d37596eaf6b155d823d6f5bf02e4b60c16f7b73deedfde9b25f56 -address /run/containerd/containerd.sock
+root       32745  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       32342  0.0  0.0 112216  7340 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id bb012abe66cd4a0479bbf5dd8b62049b4c860995ce1288b9ca883c185d1c19b3 -address /run/containerd/containerd.sock
+root       32641  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root       33068  0.0  0.0 110872  7196 ?        Sl   May04   0:37 /usr/bin/containerd-shim-runc-v2 -namespace moby -id e1e43fe16029146ea2cae3e3b2d520fa50a583760bc6764302b83312d9f403f2 -address /run/containerd/containerd.sock
+root       33445  0.0  0.0   5516   600 ?        Ss   May04   0:15  \_ tail --follow=name /var/log/clickhouse-server/clickhouse-server.log
+root       33232  0.0  0.0 112280  9840 ?        Sl   May04   1:47 /usr/bin/containerd-shim-runc-v2 -namespace moby -id e86beac058a74455729b06d541bd5ae3ba6898d427158c9396d7320d8eee669e -address /run/containerd/containerd.sock
+ksoskin    33925  0.0  0.0 170160 31232 ?        Ssl  May04   0:13  \_ /users/ksoskin/src/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+ksoskin    35446  0.0  0.0 284088  7600 ?        Ssl  May04   0:00      \_ Passenger watchdog
+ksoskin    35460  0.0  0.0 1955312 15180 ?       Sl   May04   0:15      |   \_ Passenger core
+ksoskin    35490  0.0  0.0   9900  1472 ?        Ss   May04   0:00      \_ nginx: master process /users/ksoskin/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.k0xl23/nginx.conf -p /tmp/passenger-standalone.k0xl23
+ksoskin    35491  0.0  0.0  11640  5756 ?        S    May04   0:00      |   \_ nginx: worker process
+ksoskin    35495  0.0  0.0  10952  2368 ?        Ss   May04   0:00      \_ /users/ksoskin/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.k0xl23 --cleanup --daemonize --pid-file /tmp/passenger-standalone.k0xl23/temp_dir_toucher.pid --log-file /users/ksoskin/src/gpe-server/ui/passenger.3000.log --nginx-pid 203
+ksoskin    35499  0.0  0.0   2608   608 ?        S    May04   0:00      \_ sh -c tail -f -n 0 "/users/ksoskin/src/gpe-server/ui/passenger.3000.log"
+ksoskin    35502  0.0  0.0   2544   532 ?        S    May04   0:00          \_ tail -f -n 0 /users/ksoskin/src/gpe-server/ui/passenger.3000.log
+root       34142  0.0  0.0 111960  7644 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 4c4057d5348a08eb7970499aad6de384358949c5f2291be87588eb29768abdd7 -address /run/containerd/containerd.sock
+root       34245  0.0  0.0   5516   584 ?        Ss   May04   0:00  \_ tail --follow=name /var/log/clickhouse-server/clickhouse-server.err.log
+root       34190  0.0  0.0 112216  9196 ?        Sl   May04   2:02 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 6dc9ec1124cb7a498ac8af50b3809c75818dbce8552ba96e800efa149fd65fc6 -address /run/containerd/containerd.sock
+rdavis     34516  0.0  0.0 172232 31252 ?        Ssl  May04   0:13  \_ /users/rdavis/code/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+rdavis     35574  0.0  0.0 284088  7388 ?        Ssl  May04   0:01  |   \_ Passenger watchdog
+rdavis     35583  0.5  0.0 2021892 13876 ?       Sl   May04  24:18  |   |   \_ Passenger core
+rdavis     35635  0.0  0.0   9900  1456 ?        Ss   May04   0:00  |   \_ nginx: master process /users/rdavis/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.ql59fa/nginx.conf -p /tmp/passenger-standalone.ql59fa
+rdavis     35636  0.0  0.0  11640  5708 ?        S    May04   0:00  |   |   \_ nginx: worker process
+rdavis     35659  0.0  0.0  10952  2304 ?        Ss   May04   0:00  |   \_ /users/rdavis/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.ql59fa --cleanup --daemonize --pid-file /tmp/passenger-standalone.ql59fa/temp_dir_toucher.pid --log-file /users/rdavis/code/gpe-server/ui/passenger.3000.log --nginx-pid 183
+rdavis     35663  0.0  0.0   2608   604 ?        S    May04   0:00  |   \_ sh -c tail -f -n 0 "/users/rdavis/code/gpe-server/ui/passenger.3000.log"
+rdavis     35666  0.0  0.0   2544   596 ?        S    May04   0:00  |   |   \_ tail -f -n 0 /users/rdavis/code/gpe-server/ui/passenger.3000.log
+rdavis     37294  0.0  0.4 509012 281176 ?       Sl   May04   0:00  |   \_ Passenger AppPreloader: /users/rdavis/code/gpe-server/ui (forking...)
+rdavis     37381  0.0  0.4 442512 271980 ?       Sl   May04   0:00  |   \_ Passenger AppPreloader: /users/rdavis/code/gpe-server/ui (forking...)
+rdavis     37423  0.0  0.4 442612 271988 ?       Sl   May04   0:00  |   \_ Passenger AppPreloader: /users/rdavis/code/gpe-server/ui (forking...)
+rdavis   2490870  0.0  0.0  11944 11432 pts/0    Ss+  May06   0:00  \_ bash -i
+root       34213  0.0  0.0 112216  9872 ?        Sl   May04   2:15 /usr/bin/containerd-shim-runc-v2 -namespace moby -id bc55444d416e7da8ac94d8ae96bd46c4e6cf7c64b86e5a68c59712142bea7808 -address /run/containerd/containerd.sock
+mshever+   34533  0.0  0.0 169416 35028 ?        Ssl  May04   0:22  \_ /users/mshevertalov/src/gpe-server-git/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+mshever+   35570  0.0  0.0 284092  7632 ?        Ssl  May04   0:01  |   \_ Passenger watchdog
+mshever+   35577  0.8  0.0 2186012 15828 ?       Sl   May04  35:36  |   |   \_ Passenger core
+mshever+   35612  0.0  0.0   9908  1460 ?        Ss   May04   0:00  |   \_ nginx: master process /users/mshevertalov/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.2ocek6/nginx.conf -p /tmp/passenger-standalone.2ocek6
+mshever+   35613  0.0  0.0  11912  6600 ?        S    May04   0:01  |   |   \_ nginx: worker process
+mshever+   35615  0.0  0.0  10956  2316 ?        Ss   May04   0:00  |   \_ /users/mshevertalov/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.2ocek6 --cleanup --daemonize --pid-file /tmp/passenger-standalone.2ocek6/temp_dir_toucher.pid --log-file /users/mshevertalov/src/gpe-server-git/ui/passenger.3000.log --nginx-pid 206
+mshever+   35619  0.0  0.0   2608   548 ?        S    May04   0:00  |   \_ sh -c tail -f -n 0 "/users/mshevertalov/src/gpe-server-git/ui/passenger.3000.log"
+mshever+   35622  0.0  0.0   2544   596 ?        S    May04   0:09  |   |   \_ tail -f -n 0 /users/mshevertalov/src/gpe-server-git/ui/passenger.3000.log
+mshever+   37255  0.0  0.0      0     0 ?        Z    May04   1:06  |   \_ [ruby] <defunct>
+mshever+   37331  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+mshever+   37385  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+mshever+ 1719368  0.0  1.3 1081204 865464 ?      Sl   May06   0:29  |   \_ Passenger AppPreloader: /users/mshevertalov/src/gpe-server-git/ui (forking...)
+mshever+ 1719399  0.0  0.7 627568 457584 ?       Sl   May06   0:11  |   \_ Passenger AppPreloader: /users/mshevertalov/src/gpe-server-git/ui (forking...)
+mshever+ 1719422  0.0  0.6 629620 429984 ?       Sl   May06   0:04  |   \_ Passenger AppPreloader: /users/mshevertalov/src/gpe-server-git/ui (forking...)
+mshever+ 1744969  0.0  0.0  11724 11160 pts/2    Ss+  May06   0:00  \_ bash
+root       38894  0.0  0.0 112216  9456 ?        Sl   May04   1:55 /usr/bin/containerd-shim-runc-v2 -namespace moby -id be17c5bff95f7a711681369f38edb3d48c8b559186de95062ae0c52e13a8a39f -address /run/containerd/containerd.sock
+ksoskin    38994  0.0  0.0 170160 31328 ?        Ssl  May04   0:13  \_ /users/ksoskin/src2/gpe-server2/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+ksoskin    41299  0.0  0.0 284076  7472 ?        Ssl  May04   0:01      \_ Passenger watchdog
+ksoskin    41303  0.5  0.0 2021892 13900 ?       Sl   May04  23:58      |   \_ Passenger core
+ksoskin    41349  0.0  0.0   9900  1468 ?        Ss   May04   0:00      \_ nginx: master process /users/ksoskin/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.jbiy7o/nginx.conf -p /tmp/passenger-standalone.jbiy7o
+ksoskin    41350  0.0  0.0  11640  5776 ?        S    May04   0:00      |   \_ nginx: worker process
+ksoskin    41352  0.0  0.0  10952  2220 ?        Ss   May04   0:00      \_ /users/ksoskin/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.jbiy7o --cleanup --daemonize --pid-file /tmp/passenger-standalone.jbiy7o/temp_dir_toucher.pid --log-file /users/ksoskin/src2/gpe-server2/ui/passenger.3000.log --nginx-pid 204
+ksoskin    41356  0.0  0.0   2608   536 ?        S    May04   0:00      \_ sh -c tail -f -n 0 "/users/ksoskin/src2/gpe-server2/ui/passenger.3000.log"
+ksoskin    41359  0.0  0.0   2544   596 ?        S    May04   0:00      |   \_ tail -f -n 0 /users/ksoskin/src2/gpe-server2/ui/passenger.3000.log
+ksoskin    42595  0.0  0.4 489532 261364 ?       Sl   May04   0:00      \_ Passenger AppPreloader: /users/ksoskin/src2/gpe-server2/ui (forking...)
+ksoskin    42632  0.0  0.3 423956 252392 ?       Sl   May04   0:00      \_ Passenger AppPreloader: /users/ksoskin/src2/gpe-server2/ui (forking...)
+ksoskin    42720  0.0  0.3 424980 252412 ?       Sl   May04   0:00      \_ Passenger AppPreloader: /users/ksoskin/src2/gpe-server2/ui (forking...)
+root       39255  0.0  0.0 112216  7248 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 62a2f90f9a5d9aa24a89417efce7a9a188745698ee415c57590ab5af0a518393 -address /run/containerd/containerd.sock
+root       39370  0.0  0.0 716252 12284 ?        SLsl May04   0:00  \_ /radar --log-level=debug serve
+root       39282  0.0  0.0 112216  9780 ?        Sl   May04   1:51 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 90f31cf1b606da0e1d241ece73067e3c286ec8818ce607618d1ddafcaa2c7b40 -address /run/containerd/containerd.sock
+psuramp+   39405  0.0  0.0 170144 31208 ?        Ssl  May04   0:13  \_ /users/psurampudi/src/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+psuramp+   41396  0.0  0.0 284076  7336 ?        Ssl  May04   0:00      \_ Passenger watchdog
+psuramp+   41448  0.0  0.0 1955312 15164 ?       Sl   May04   0:15      |   \_ Passenger core
+psuramp+   41567  0.0  0.0   9900  1456 ?        Ss   May04   0:00      \_ nginx: master process /users/psurampudi/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.ggrluk/nginx.conf -p /tmp/passenger-standalone.ggrluk
+psuramp+   41575  0.0  0.0  11640  5672 ?        S    May04   0:00      |   \_ nginx: worker process
+psuramp+   41584  0.0  0.0  10952  2300 ?        Ss   May04   0:00      \_ /users/psurampudi/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.ggrluk --cleanup --daemonize --pid-file /tmp/passenger-standalone.ggrluk/temp_dir_toucher.pid --log-file /users/psurampudi/src/gpe-server/ui/passenger.3000.log --nginx-pid 198
+psuramp+   41588  0.0  0.0   2608   548 ?        S    May04   0:00      \_ sh -c tail -f -n 0 "/users/psurampudi/src/gpe-server/ui/passenger.3000.log"
+psuramp+   41591  0.0  0.0   2544   528 ?        S    May04   0:00          \_ tail -f -n 0 /users/psurampudi/src/gpe-server/ui/passenger.3000.log
+root       39334  0.0  0.0 112216 10356 ?        Sl   May04   2:21 /usr/bin/containerd-shim-runc-v2 -namespace moby -id c71b51a227709e73918a35e16e32baa8af94edc38c5a61778c36f82b0913c9a6 -address /run/containerd/containerd.sock
+mshever+   39601  0.0  0.0 169536 35084 ?        Ssl  May04   0:15  \_ /users/mshevertalov/src/gpe-server-ch/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+mshever+   41443  0.0  0.0 284092  7656 ?        Ssl  May04   0:01  |   \_ Passenger watchdog
+mshever+   41457  0.8  0.0 2579492 26532 ?       Sl   May04  36:09  |   |   \_ Passenger core
+mshever+ 2630265  8.8  0.4 506104 277032 ?       Sl   10:56   0:07  |   |       \_ Passenger AppPreloader: /users/mshevertalov/src/gpe-server-ch/ui
+mshever+ 2631197 13.2  0.7 702752 488972 ?       Sl   10:56   0:09  |   |           \_ Passenger AppPreloader: /users/mshevertalov/src/gpe-server-ch/ui (forking...)
+mshever+ 2631261  8.2  0.7 703776 477488 ?       Sl   10:56   0:06  |   |           \_ Passenger AppPreloader: /users/mshevertalov/src/gpe-server-ch/ui (forking...)
+mshever+ 2631313  5.0  0.7 639264 460164 ?       Sl   10:56   0:03  |   |           \_ Passenger AppPreloader: /users/mshevertalov/src/gpe-server-ch/ui (forking...)
+mshever+   41498  0.0  0.0   9908  1472 ?        Ss   May04   0:00  |   \_ nginx: master process /users/mshevertalov/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.1t0i1av/nginx.conf -p /tmp/passenger-standalone.1t0i1av
+mshever+   41505  0.0  0.0  11784  6460 ?        S    May04   0:04  |   |   \_ nginx: worker process
+mshever+   41511  0.0  0.0  10956  2360 ?        Ss   May04   0:00  |   \_ /users/mshevertalov/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.1t0i1av --cleanup --daemonize --pid-file /tmp/passenger-standalone.1t0i1av/temp_dir_toucher.pid --log-file /users/mshevertalov/src/gpe-server-ch/ui/passenger.3000.log --nginx-pid 196
+mshever+   41525  0.0  0.0   2608   548 ?        S    May04   0:00  |   \_ sh -c tail -f -n 0 "/users/mshevertalov/src/gpe-server-ch/ui/passenger.3000.log"
+mshever+   41545  0.0  0.0   2544   596 ?        R    May04   0:01  |   |   \_ tail -f -n 0 /users/mshevertalov/src/gpe-server-ch/ui/passenger.3000.log
+mshever+   42670  0.0  0.0      0     0 ?        Z    May04   0:16  |   \_ [ruby] <defunct>
+mshever+   42745  0.0  0.0      0     0 ?        Z    May04   0:10  |   \_ [ruby] <defunct>
+mshever+   42867  0.0  0.0      0     0 ?        Z    May04   0:07  |   \_ [ruby] <defunct>
+mshever+ 1188086  0.0  0.0      0     0 pts/2    Z    May04   0:00  |   \_ [ssh] <defunct>
+mshever+ 1190972  0.0  0.0      0     0 pts/2    Z    May04   0:00  |   \_ [ssh] <defunct>
+mshever+ 1386495  0.0  0.0      0     0 ?        Z    May04   0:03  |   \_ [ruby] <defunct>
+mshever+ 1386536  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+mshever+ 1386558  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+mshever+ 1415764  0.0  0.0      0     0 ?        Z    May04   0:06  |   \_ [ruby] <defunct>
+mshever+ 1415816  0.0  0.0      0     0 ?        Z    May04   0:03  |   \_ [ruby] <defunct>
+mshever+ 1415855  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+mshever+ 1780200  0.0  0.0      0     0 ?        Z    May04   0:11  |   \_ [ruby] <defunct>
+mshever+ 1780249  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+mshever+ 1780288  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+mshever+ 3871362  0.0  0.0      0     0 ?        Z    May05   0:05  |   \_ [ruby] <defunct>
+mshever+ 3871494  0.0  0.0      0     0 ?        Z    May05   0:04  |   \_ [ruby] <defunct>
+mshever+ 3871534  0.0  0.0      0     0 ?        Z    May05   0:00  |   \_ [ruby] <defunct>
+mshever+  818785  0.0  0.0      0     0 ?        Z    May06   0:06  |   \_ [ruby] <defunct>
+mshever+  818842  0.0  0.0      0     0 ?        Z    May06   0:04  |   \_ [ruby] <defunct>
+mshever+  818895  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+  883803  0.0  0.0      0     0 ?        Z    May06   0:07  |   \_ [ruby] <defunct>
+mshever+  883851  0.0  0.0      0     0 ?        Z    May06   0:07  |   \_ [ruby] <defunct>
+mshever+  883892  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+  924832  0.0  0.0      0     0 ?        Z    May06   0:09  |   \_ [ruby] <defunct>
+mshever+  924863  0.0  0.0      0     0 ?        Z    May06   0:07  |   \_ [ruby] <defunct>
+mshever+  925089  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+  973034  0.0  0.0      0     0 ?        Z    May06   0:04  |   \_ [ruby] <defunct>
+mshever+  973090  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+  973160  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+  977692  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+  977720  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+  977763  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+  986964  0.0  0.0      0     0 ?        Z    May06   0:04  |   \_ [ruby] <defunct>
+mshever+  987044  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+  987082  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1217461  0.0  0.0      0     0 ?        Z    May06   0:04  |   \_ [ruby] <defunct>
+mshever+ 1217521  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1217567  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1223067  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+ 1223118  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1223151  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1228933  0.0  0.0      0     0 ?        Z    May06   0:06  |   \_ [ruby] <defunct>
+mshever+ 1228970  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+ 1229004  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1240637  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+ 1240683  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1240706  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1266489  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+ 1266557  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1266584  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1269912  0.0  0.0      0     0 ?        Z    May06   0:04  |   \_ [ruby] <defunct>
+mshever+ 1269962  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1270005  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1275210  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+ 1275246  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1275274  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1280854  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+ 1280900  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1281135  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1290499  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+ 1290721  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1290762  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1294343  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+ 1294392  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1294439  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1297060  0.0  0.0      0     0 ?        Z    May06   0:03  |   \_ [ruby] <defunct>
+mshever+ 1297114  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1297179  0.0  0.0      0     0 ?        Z    May06   0:00  |   \_ [ruby] <defunct>
+mshever+ 1317365  0.0  0.0      0     0 ?        Z    May06   0:08  |   \_ [ruby] <defunct>
+mshever+ 1317421  0.0  0.0      0     0 ?        Z    May06   0:05  |   \_ [ruby] <defunct>
+mshever+ 1317455  0.0  0.0      0     0 ?        Z    May06   0:04  |   \_ [ruby] <defunct>
+mshever+ 2441429  2.0  0.0      0     0 ?        Z    10:34   0:28  |   \_ [ruby] <defunct>
+mshever+ 2441468  1.2  0.0      0     0 ?        Z    10:34   0:17  |   \_ [ruby] <defunct>
+mshever+ 2441730  0.5  0.0      0     0 ?        Z    10:34   0:08  |   \_ [ruby] <defunct>
+mshever+ 1139343  0.0  0.0  11740 11096 pts/2    Ss+  May04   0:00  \_ bash
+mshever+ 2624425  7.5  0.0 746112 63004 pts/0    Ssl+ 10:55   0:08  \_ kubectl port-forward --context=prd service/prod-clickhouse-default-1 8123
+mshever+ 2624895  0.3  0.0 746112 42292 pts/1    Ssl+ 10:55   0:00  \_ kubectl port-forward --context=prd service/prod-pxc 3306
+root       39360  0.0  0.0 110808  6644 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 71d5605ecf7941fb3633f0d6b3be2c67ce165797e8875653890e950f5259162a -address /run/containerd/containerd.sock
+nobody     39637  0.3  0.0 719880 28400 ?        Ssl  May04  13:25  \_ /bin/node_exporter --path.procfs=/host/proc --path.sysfs=/host/sys --path.rootfs=/host/root --web.listen-address=:9100
+root       39432  0.0  0.0 112216 10132 ?        Sl   May04   2:14 /usr/bin/containerd-shim-runc-v2 -namespace moby -id f13c5b85daf07b189fca59919e406dd489df35696190441a8b1fb443e7f53fed -address /run/containerd/containerd.sock
+jsipling   39566  0.0  0.0 170220 31632 ?        Ssl  May04   0:13  \_ /users/jsipling/src/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+jsipling   41480  0.0  0.0 284080  7468 ?        Ssl  May04   0:01  |   \_ Passenger watchdog
+jsipling   41614  0.6  0.0 2153228 15116 ?       Sl   May04  28:48  |   |   \_ Passenger core
+jsipling   41644  0.0  0.0   9908  1460 ?        Ss   May04   0:00  |   \_ nginx: master process /users/jsipling/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.ltsbml/nginx.conf -p /tmp/passenger-standalone.ltsbml
+jsipling   41646  0.0  0.0  11912  6392 ?        S    May04   0:00  |   |   \_ nginx: worker process
+jsipling   41650  0.0  0.0  10956  2144 ?        Ss   May04   0:00  |   \_ /users/jsipling/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.ltsbml --cleanup --daemonize --pid-file /tmp/passenger-standalone.ltsbml/temp_dir_toucher.pid --log-file /users/jsipling/src/gpe-server/ui/passenger.3000.log --nginx-pid 222
+jsipling   41654  0.0  0.0   2612   536 ?        S    May04   0:00  |   \_ sh -c tail -f -n 0 "/users/jsipling/src/gpe-server/ui/passenger.3000.log"
+jsipling   41657  0.0  0.0   2548   596 ?        S    May04   0:00  |   |   \_ tail -f -n 0 /users/jsipling/src/gpe-server/ui/passenger.3000.log
+jsipling   42724  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+jsipling   42828  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+jsipling   42892  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+jsipling  511245  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+jsipling  511315  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+jsipling  511334  0.0  0.0      0     0 ?        Z    May04   0:00  |   \_ [ruby] <defunct>
+jsipling 1854563  0.0  0.0      0     0 ?        Zs   09:15   0:00  |   \_ [node] <defunct>
+jsipling 1856482  0.0  0.0      0     0 ?        Zs   09:15   0:00  |   \_ [node] <defunct>
+jsipling 1866783  0.0  0.0      0     0 ?        Z    09:17   0:03  |   \_ [ruby] <defunct>
+jsipling 1866824  0.0  0.0      0     0 ?        Z    09:17   0:00  |   \_ [ruby] <defunct>
+jsipling 1866862  0.0  0.0      0     0 ?        Z    09:17   0:00  |   \_ [ruby] <defunct>
+jsipling 1875246  0.0  0.0      0     0 ?        Zs   09:18   0:01  |   \_ [node] <defunct>
+jsipling 1964854  0.1  0.6 631940 449220 ?       Sl   09:31   0:06  |   \_ Passenger AppPreloader: /users/jsipling/src/gpe-server/ui (forking...)
+jsipling 1964922  0.0  0.6 631936 444608 ?       Sl   09:31   0:04  |   \_ Passenger AppPreloader: /users/jsipling/src/gpe-server/ui (forking...)
+jsipling 1964986  0.0  0.6 632960 447164 ?       Sl   09:31   0:03  |   \_ Passenger AppPreloader: /users/jsipling/src/gpe-server/ui (forking...)
+jsipling 2204300  0.0  0.0      0     0 ?        Zs   10:03   0:00  |   \_ [node] <defunct>
+jsipling 2206284  0.0  0.0      0     0 ?        Zs   10:03   0:00  |   \_ [node] <defunct>
+jsipling 2276350  0.0  0.0  11872 11204 pts/0    Ss+  10:13   0:00  \_ bash
+root       39442  0.0  0.0 110872  6540 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 621c720db5b9e2a373ce29e75f043e64eae5dd34b88d03b49f5cf2f571dfbaf8 -address /run/containerd/containerd.sock
+systemd+   39575  0.0  0.0    208     8 ?        Ss   May04   0:00  \_ /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=agelwarg/test-ingress-controller --election-id=ingress-controller-leader --ingress-class=test --configmap=agelwarg/test-ingress-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
+systemd+   39831  0.3  0.0 742648 54740 ?        Ssl  May04  14:49      \_ /nginx-ingress-controller --publish-service=agelwarg/test-ingress-controller --election-id=ingress-controller-leader --ingress-class=test --configmap=agelwarg/test-ingress-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
+systemd+   41008  0.0  0.0 144984 36208 ?        S    May04   0:00          \_ nginx: master process /usr/local/nginx/sbin/nginx -c /etc/nginx/nginx.conf
+systemd+   41020  0.0  0.0 151324 35044 ?        Sl   May04   0:49              \_ nginx: worker process
+systemd+   41028  0.0  0.0 151324 34832 ?        Sl   May04   0:39              \_ nginx: worker process
+systemd+   41050  0.0  0.0 151324 34816 ?        Sl   May04   0:40              \_ nginx: worker process
+systemd+   41079  0.0  0.0 151324 34816 ?        Sl   May04   0:39              \_ nginx: worker process
+systemd+   41107  0.0  0.0 151324 34816 ?        Sl   May04   0:39              \_ nginx: worker process
+systemd+   41121  0.0  0.0 151324 34816 ?        Sl   May04   0:39              \_ nginx: worker process
+systemd+   41133  0.0  0.0 151324 34816 ?        Sl   May04   0:39              \_ nginx: worker process
+systemd+   41140  0.0  0.0 151324 34816 ?        Sl   May04   0:39              \_ nginx: worker process
+systemd+   41144  0.0  0.0 143052 29076 ?        S    May04   0:00              \_ nginx: cache manager process
+root       39541  0.0  0.0 112216  7820 ?        Sl   May04   2:21 /usr/bin/containerd-shim-runc-v2 -namespace moby -id d8a6c988cf9228f9a0633f79fdd4bc203a40e594f142d4ba37a83b92a3a21635 -address /run/containerd/containerd.sock
+root       39700  0.0  0.0   4292   716 ?        Ss   May04   0:00  \_ sh /var/tmp/cron-runner.sh
+root       40658  0.0  0.0  27996  2376 ?        S    May04   0:01  |   \_ cron -f
+root     2617936  0.0  0.0  42732  2380 ?        S    10:55   0:00  |       \_ CRON -f
+root     2617939  0.0  0.0   4288   744 ?        Ss   10:55   0:00  |           \_ /bin/sh -c /opt/galileo/bin/gpe-agent-linux collect 5
+root     2617941  0.0  0.0   4288  1588 ?        S    10:55   0:00  |               \_ /bin/sh /opt/galileo/bin/gpe-agent-linux collect 5
+root     2618017  0.0  0.0   4288  1140 ?        S    10:55   0:00  |                   \_ /bin/sh /opt/galileo/bin/gpe-agent-linux collect 5
+root     2641977  0.0  0.0   4196   684 ?        S    10:57   0:00  |                       \_ sleep 15
+root     2618029  0.0  0.0  16576  2048 ?        S    10:55   0:00  \_ /opt/galileo/bin/nmon_platform -p -l 1 -s 5 -c 61 -F gpe-agent-klj5b.20210507.145501.GMT.b19bA3Dd-b83A-45BC-9d52-397Ed2bBe8F0.linux
+root     2618391  0.0  0.0   4288   112 ?        S    10:55   0:00  \_ /bin/sh /opt/galileo/bin/external_snap T0001
+root     2618518  0.0  0.0   4288   792 ?        S    10:55   0:00      \_ /bin/sh /opt/galileo/bin/gpe-agent-nmon.d/linux-disk.external snap 5 61 T0001
+root     2618537  0.0  0.0   4220   724 ?        S    10:55   0:00          \_ /usr/bin/iostat -dtxk -p 5 61
+root       40063  0.0  0.0 112216  6312 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 101bf068365fc2bd16d1df90b3af6a7dd9d9a1ba9a211fd419cf8ec682fc7ebd -address /run/containerd/containerd.sock
+root       40199  0.0  0.0 724092 15956 ?        SLsl May04   0:04  \_ /syncthing/syncthing -home /var/syncthing/config -gui-apikey ksync -verbose
+root       40421  0.0  0.0 725884 58736 ?        SNLl May04   1:52      \_ /syncthing/syncthing -home /var/syncthing/config -gui-apikey ksync -verbose
+root       44046  0.0  0.0 112216  7212 ?        Sl   May04   0:27 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 5cee22ba63a0991ecac19596e470384c124077abbed79cd3040a955f2b3ac62d -address /run/containerd/containerd.sock
+ubuntu     44085  0.0  0.0  14952  3496 ?        Ss   May04   0:00  \_ /bin/sh /opt/jboss/keycloak/bin/standalone.sh -Djboss.bind.address=10.21.49.114 -Djboss.bind.address.private=10.21.49.114 -Djboss.bind.address.management=0.0.0.0 -c=standalone-ha.xml -b 0.0.0.0
+ubuntu     46360  0.3  0.8 1721632 570708 ?      Sl   May04  14:18      \_ java -D[Standalone] -server -Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true --add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED --add-exports=jdk.unsupported/sun.reflect=ALL-UNNAMED -Dorg.jboss.boot.log.file=/opt/jboss/keycloak/standalone/log/server.log -Dlogging.configuration=file:/opt/jboss/keycloak/standalone/configuration/logging.properties -jar /opt/jboss/keycloak/jboss-modules.jar -mp /opt/jboss/keycloak/modules org.jboss.as.standalone -Djboss.home.dir=/opt/jboss/keycloak -Djboss.server.base.dir=/opt/jboss/keycloak/standalone -Djboss.bind.address=10.21.49.114 -Djboss.bind.address.private=10.21.49.114 -Djboss.bind.address.management=0.0.0.0 -c=standalone-ha.xml -b 0.0.0.0
+mshever+   87683  3.2  0.0  19764 11036 ?        Ss   May04 140:47 /lib/systemd/systemd --user
+mshever+   87689  0.0  0.0 170396  5100 ?        S    May04   0:00  \_ (sd-pam)
+mshever+   90868  0.0  0.0  63788 62824 ?        Ss   May04   2:44 tmux new-session -d -s corr -n vim
+mshever+   90872  0.0  0.0  15348 13216 pts/10   Ss   May04   0:00  \_ -bash
+mshever+ 2641619  1.6  0.0 751892 42688 pts/10   Sl+  10:57   0:00  |   \_ kubectl logs -f --tail 50 mshevertalov-gpe-server-ch-5b97bc7c9d-pkhx9
+mshever+   90875  0.0  0.0  15216 13184 pts/11   Ss   May04   0:00  \_ -bash
+mshever+ 2467589  0.0  0.0   5648  3256 pts/11   S+   10:36   0:00  |   \_ /bin/bash /otto/tools/galileo-tools/kubectl-ch-open --context=core --readonly 0
+mshever+ 2467647  0.0  0.0 752148 43544 pts/11   Sl+  10:36   0:00  |       \_ kubectl --context=core exec --tty --stdin core-clickhouse-default-0-0 -- clickhouse-client --host 127.0.0.1 --database system --distributed_ddl_task_timeout 30 --readonly 0
+mshever+   90881  0.0  0.0  15216 13108 pts/12   Ss+  May04   0:00  \_ -bash
+mshever+   90887  0.0  0.0  15348 13444 pts/13   Ss   May04   0:00  \_ -bash
+mshever+ 1139291  0.0  0.0 752404 43752 pts/13   Sl+  May04   0:50  |   \_ kubectl exec -ti mshevertalov-gpe-server-ch-5b97bc7c9d-pkhx9 bash
+mshever+   90894  0.0  0.0  16404 14488 pts/14   Ss+  May04   0:00  \_ -bash
+mshever+   91874  0.0  0.0  15216 13200 pts/15   Ss   May04   0:00  \_ -bash
+mshever+ 2624367  0.7  0.0 751892 43704 pts/15   Sl+  10:55   0:00  |   \_ kubectl exec -ti mshevertalov-gpe-server-ch-5b97bc7c9d-pkhx9 -- bash -ic kubectl port-forward --context=prd service/prod-clickhouse-default-1 8123
+mshever+   92266  0.0  0.0  15216 13172 pts/16   Ss   May04   0:00  \_ -bash
+mshever+ 2624825  0.1  0.0 752404 45484 pts/16   Sl+  10:55   0:00  |   \_ kubectl exec -ti mshevertalov-gpe-server-ch-5b97bc7c9d-pkhx9 -- bash -ic kubectl port-forward --context=prd service/prod-pxc 3306
+mshever+  129992  0.0  0.0  15348 13520 pts/9    Ss   May06   0:00  \_ -bash
+mshever+ 2432885  0.3  0.0  25748 15076 pts/9    S+   10:33   0:04  |   \_ vim config/development.yml
+mshever+ 1683083  0.0  0.0  15216 13196 pts/17   Ss   May06   0:00  \_ -bash
+mshever+ 2464331  0.1  0.0   7600  5564 pts/17   S+   May06   1:23  |   \_ watch sh watch.sh
+mshever+ 2644424  0.0  0.0   7600  3564 pts/17   S+   10:57   0:00  |       \_ watch sh watch.sh
+mshever+ 2644425  0.0  0.0   2608   612 pts/17   S+   10:57   0:00  |           \_ sh -c sh watch.sh
+mshever+ 2644426  0.0  0.0   2608   608 pts/17   S+   10:57   0:00  |               \_ sh watch.sh
+mshever+ 2644488  0.0  0.0 751380 41660 pts/17   Sl+  10:57   0:00  |                   \_ kubectl --context=core get pods
+mshever+ 2644489  0.0  0.0   5188   736 pts/17   S+   10:57   0:00  |                   \_ grep map
+mshever+ 1700877  0.0  0.0  15348 13488 pts/40   Ss   May06   0:00  \_ -bash
+mshever+ 1715418  0.1  0.0  29016 17988 pts/40   S+   May06   1:38  |   \_ vim config/development.yml
+mshever+ 1700879  0.0  0.0  15216 13152 pts/47   Ss+  May06   0:00  \_ -bash
+mshever+ 1700883  0.0  0.0  15216 13228 pts/49   Ss   May06   0:00  \_ -bash
+mshever+ 1868075  0.0  0.0   5648  3388 pts/49   S+   May06   0:00  |   \_ /bin/bash /otto/tools/galileo-tools/kubectl-ch-open --context=core --readonly 0
+mshever+ 1868173  0.0  0.0 752148 43440 pts/49   Sl+  May06   0:13  |       \_ kubectl --context=core exec --tty --stdin core-clickhouse-default-0-0 -- clickhouse-client --host 127.0.0.1 --database system --distributed_ddl_task_timeout 30 --readonly 0
+mshever+ 1700891  0.0  0.0  15216 13264 pts/50   Ss+  May06   0:00  \_ -bash
+mshever+ 1700895  0.0  0.0  15348 13420 pts/51   Ss   May06   0:00  \_ -bash
+mshever+ 1744941  0.0  0.0 752148 42816 pts/51   Sl+  May06   0:15  |   \_ kubectl exec -ti mshevertalov-gpe-server-git-7855f5f7bb-zwrwz bash
+mshever+ 1700902  0.0  0.0  16268 14372 pts/52   Ss+  May06   0:00  \_ -bash
+mshever+ 1703932  0.0  0.0  15348 13472 pts/53   Ss+  May06   0:00  \_ -bash
+mshever+ 1704405  0.0  0.0  15216 13180 pts/54   Ss+  May06   0:00  \_ -bash
+jsipling  273399  3.4  0.0  19808 10784 ?        Ss   May04 149:02 /lib/systemd/systemd --user
+jsipling  273400  0.0  0.0 170396  5100 ?        S    May04   0:00  \_ (sd-pam)
+jsipling  277611  0.0  0.0   6160  5252 ?        Ss   May04   0:06 tmux a
+jsipling  277612  0.0  0.0  15212 13276 pts/29   Ss   May04   0:00  \_ -bash
+jsipling  278427  0.0  0.0  23468 12492 pts/29   S+   May04   0:00  |   \_ vi
+jsipling  278428  0.0  0.0 671240 46896 ?        Ssl  May04   1:58  |       \_ node --no-warnings -r /users/jsipling/.vim/plugged/coc.nvim/bin/check.js /users/jsipling/.vim/plugged/coc.nvim/build/index.js
+jsipling  277613  0.0  0.0  15348 13532 pts/30   Ss   May04   0:00  \_ -bash
+jsipling 2276294  0.0  0.0 752404 43380 pts/30   Sl+  10:13   0:00  |   \_ kubectl exec -ti jsipling-gpe-server-967f5c749-95tv5 -- bash
+jsipling  277614  0.0  0.0  15348 13572 pts/31   Ss+  May04   0:00  \_ -bash
+gnaimoli  294467  3.6  0.0  19836 11064 ?        Ss   May04 158:20 /lib/systemd/systemd --user
+gnaimoli  294470  0.0  0.0 170596  5160 ?        S    May04   0:00  \_ (sd-pam)
+root      390540  0.0  0.0 110808  7404 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 2f591376510e9c657db9c23f298b9d44d3816f4a32d7e25b3a8e7c0feb8b5fa5 -address /run/containerd/containerd.sock
+root      390615  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root      390569  0.0  0.0 112216  7700 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id fc8a8c936db802f925d04dc15ce11dd2de485872694995a51912695926b1df62 -address /run/containerd/containerd.sock
+root      390616  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root      390581  0.0  0.0 112280  6716 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 429b258ca4968dbaa80a9bd78c569a3e934e4122df2b2cd044660912a3f05f65 -address /run/containerd/containerd.sock
+root      390635  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root      390833  0.1  0.0 112216 10116 ?        Sl   May04   7:07 /usr/bin/containerd-shim-runc-v2 -namespace moby -id d87644dade9f1a8a2de8c451ede10307853ca8e452dba70ba2ad34ff6346ac96 -address /run/containerd/containerd.sock
+1001      390895  0.1  1.5 13679640 994764 ?     Ssl  May04   6:18  \_ mysqld --user=mysql
+root      390854  0.0  0.0 112216  8868 ?        Sl   May04   0:35 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 6a62680ff88937acbd926a5c32fb1915c9385bda65b32f265fac1c88dd05fbd7 -address /run/containerd/containerd.sock
+systemd+  390885  1.6  0.8 14727740 569772 ?     Ssl  May04  71:53  \_ /usr/bin/clickhouse-server --config-file=/etc/clickhouse-server/config.xml
+root      390949  0.0  0.0 110872  7140 ?        Sl   May04   0:36 /usr/bin/containerd-shim-runc-v2 -namespace moby -id cd79710021594ca8fce255f84ad38653b5b3dda98b5a042506d5c707657412ae -address /run/containerd/containerd.sock
+root      390991  0.0  0.0   5512   592 ?        Ss   May04   0:15  \_ tail --follow=name /var/log/clickhouse-server/clickhouse-server.log
+root      391194  0.0  0.0 110808  7120 ?        Sl   May04   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 8dc5ab76050c789a2da1414fdefc58a8d0a88f9d959e86870bf1ffb889e768d2 -address /run/containerd/containerd.sock
+root      391345  0.0  0.0   5512   596 ?        Ss   May04   0:00  \_ tail --follow=name /var/log/clickhouse-server/clickhouse-server.err.log
+root      397609  0.0  0.0 110808  7360 ?        Sl   May04   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id c10bf57f678899cfdc62b1bb5bf8bee9561708c57691a012d6455e3ce84337b9 -address /run/containerd/containerd.sock
+root      397654  0.0  0.0    964     4 ?        Ss   May04   0:00  \_ /pause
+root      398520  0.0  0.0 112024  7632 ?        Sl   May04   0:25 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 4729aaf7a4ee88a8981e18298748d88429c5f73326d9b73860e9e86c2127fc49 -address /run/containerd/containerd.sock
+ubuntu    398541  0.0  0.0  15092  3404 ?        Ss   May04   0:00  \_ /bin/sh /opt/jboss/keycloak/bin/standalone.sh -Djboss.bind.address=10.21.40.44 -Djboss.bind.address.private=10.21.40.44 -Djboss.bind.address.management=0.0.0.0 -c=standalone-ha.xml -b 0.0.0.0
+ubuntu    401800  0.3  0.8 1705268 547372 ?      Sl   May04  14:32      \_ java -D[Standalone] -server -Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true --add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED --add-exports=jdk.unsupported/sun.reflect=ALL-UNNAMED -Dorg.jboss.boot.log.file=/opt/jboss/keycloak/standalone/log/server.log -Dlogging.configuration=file:/opt/jboss/keycloak/standalone/configuration/logging.properties -jar /opt/jboss/keycloak/jboss-modules.jar -mp /opt/jboss/keycloak/modules org.jboss.as.standalone -Djboss.home.dir=/opt/jboss/keycloak -Djboss.server.base.dir=/opt/jboss/keycloak/standalone -Djboss.bind.address=10.21.40.44 -Djboss.bind.address.private=10.21.40.44 -Djboss.bind.address.management=0.0.0.0 -c=standalone-ha.xml -b 0.0.0.0
+gnaimoli 1482807  0.0  0.0  21880 20940 ?        Ss   May04   0:04 tmux
+gnaimoli 1482808  0.0  0.0  15332 13344 pts/8    Ss   May04   0:00  \_ -bash
+gnaimoli 3586860  0.0  0.0  26028 15028 pts/8    S+   May04   0:08  |   \_ vim
+gnaimoli 3601336  0.0  0.0  15332 13300 pts/6    Ss+  May04   0:00  \_ -bash
+gnaimoli  286011  0.0  0.0  15332 13292 pts/7    Ss+  May04   0:00  \_ -bash
+root      810864  0.0  0.0 110808  7268 ?        Sl   May05   0:07 /usr/bin/containerd-shim-runc-v2 -namespace moby -id f8360d925775a16d76aad28a59f1ba4252d15fc97cdf12037e8b5d4dac5ee679 -address /run/containerd/containerd.sock
+root      810895  0.0  0.0    964     4 ?        Ss   May05   0:00  \_ /pause
+root      810922  0.0  0.0 110872  7116 ?        Sl   May05   0:07 /usr/bin/containerd-shim-runc-v2 -namespace moby -id f6b5b126d16032af253469a094d095a8f9d1d37502a20f4b0ec4e2e45356ce67 -address /run/containerd/containerd.sock
+root      810950  0.0  0.0    964     4 ?        Ss   May05   0:00  \_ /pause
+root      811147  0.0  0.0 112216  6528 ?        Sl   May05   0:07 /usr/bin/containerd-shim-runc-v2 -namespace moby -id cdfe4a73b5ea8795f91c9f4dc1895651c3ae6b94abaed4eaa572b6e2bbcc9065 -address /run/containerd/containerd.sock
+nobody    811176  0.0  0.0    964     4 ?        Ss   May05   0:00  \_ /pause
+root      811495  0.0  0.0 110808  6876 ?        Sl   May05   0:07 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 063abfe4a1067287aceb43f2c25fe39e50c8df4500a04ef4a564dfbb9cae8736 -address /run/containerd/containerd.sock
+ubuntu    811519  0.1  0.0 739636 37204 ?        Ssl  May05   6:54  \_ /app/cmd/webhook/webhook --v=2 --secure-port=10250 --dynamic-serving-ca-secret-namespace=cert-manager --dynamic-serving-ca-secret-name=cert-manager-webhook-ca --dynamic-serving-dns-names=cert-manager-webhook,cert-manager-webhook.cert-manager,cert-manager-webhook.cert-manager.svc
+root      811541  0.0  0.0 111960  6436 ?        Sl   May05   0:07 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 4c7519b16c851f1a18651bc0e691ad68b1790f621db6f22155838a81673ebe6f -address /run/containerd/containerd.sock
+nobody    811573  0.1  0.1 202640 91400 ?        Ssl  May05   4:39  \_ /kube-state-metrics --port=8080 --telemetry-port=8081 --collectors=certificatesigningrequests --collectors=configmaps --collectors=cronjobs --collectors=daemonsets --collectors=deployments --collectors=endpoints --collectors=horizontalpodautoscalers --collectors=ingresses --collectors=jobs --collectors=limitranges --collectors=mutatingwebhookconfigurations --collectors=namespaces --collectors=networkpolicies --collectors=nodes --collectors=persistentvolumeclaims --collectors=persistentvolumes --collectors=poddisruptionbudgets --collectors=pods --collectors=replicasets --collectors=replicationcontrollers --collectors=resourcequotas --collectors=secrets --collectors=services --collectors=statefulsets --collectors=storageclasses --collectors=validatingwebhookconfigurations --collectors=volumeattachments --telemetry-port=8081
+root      811680  0.0  0.0 112216  7664 ?        Sl   May05   0:08 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 5798f7cbc743a78115383a33d4f58c2ef0cea7543c7bf587c28af913d7aceca1 -address /run/containerd/containerd.sock
+root      811709  0.0  0.0   5988  4404 ?        Ss   May05   0:00  \_ nginx: master process nginx -g daemon off;
+systemd+  811752  0.0  0.0   6428  1892 ?        S    May05   0:00      \_ nginx: worker process
+systemd+  811753  0.0  0.0   6428  1892 ?        S    May05   0:00      \_ nginx: worker process
+systemd+  811754  0.0  0.0   6428  1892 ?        S    May05   0:00      \_ nginx: worker process
+systemd+  811755  0.0  0.0   6428  1892 ?        S    May05   0:00      \_ nginx: worker process
+systemd+  811756  0.0  0.0   6428  1892 ?        S    May05   0:00      \_ nginx: worker process
+systemd+  811757  0.0  0.0   6428  1892 ?        S    May05   0:00      \_ nginx: worker process
+systemd+  811758  0.0  0.0   6428  1892 ?        S    May05   0:00      \_ nginx: worker process
+systemd+  811759  0.0  0.0   6428  1892 ?        S    May05   0:00      \_ nginx: worker process
+root      816192  0.0  0.0 110808  7156 ?        Sl   May05   0:07 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 0a7892cfe9eab1ddd0a06591324dd6f2b8e3f4538d98acdac4a73a816b9734e8 -address /run/containerd/containerd.sock
+nobody    816214  0.0  0.0    964     4 ?        Ss   May05   0:00  \_ /pause
+root      816360  0.0  0.0 110808  7580 ?        Sl   May05   0:07 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 4681a0ed28a1cd0dba9d43d80b9b1bbfb566690564aafdce55bd2f1495b7cae4 -address /run/containerd/containerd.sock
+nobody    816433  0.0  0.0 712348  8928 ?        Ssl  May05   0:01  \_ /configmap-reload --volume-dir=/etc/config --webhook-url=http://127.0.0.1:9090/-/reload
+root      816391  0.0  0.0 112216  6696 ?        Sl   May05   0:07 /usr/bin/containerd-shim-runc-v2 -namespace moby -id be27f82c751417f5bb89b3ea996ebc1504e69929f4b7633a0e1c978c0754c7a2 -address /run/containerd/containerd.sock
+472       816442  0.0  0.0    964     4 ?        Ss   May05   0:00  \_ /pause
+root      817248  0.0  0.0 112216  6308 ?        Sl   May05   0:09 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 0a25bf00d72024b4d61c216ec7f15bae6b20e6f2c506cf035d3ce4dff962b5f8 -address /run/containerd/containerd.sock
+nobody    817276  9.7  7.6 17997388 4994768 ?    Ssl  May05 340:27  \_ /bin/prometheus --storage.tsdb.retention.time=15d --config.file=/etc/config/prometheus.yml --storage.tsdb.path=/data --web.console.libraries=/etc/prometheus/console_libraries --web.console.templates=/etc/prometheus/consoles --web.enable-lifecycle --web.external-url=https://prometheus.core.galileosuite.com/ --log.level=debug
+root      817562  0.0  0.0 110552  7584 ?        Sl   May05   0:10 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 34937f0e0c7e9a64b83e21a65a84287a8a48c1e568b921ed93060542ad344181 -address /run/containerd/containerd.sock
+472       817583  0.0  0.0 765276 55468 ?        Ssl  May05   1:31  \_ grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini --packaging=docker cfg:default.log.mode=console cfg:default.paths.data=/var/lib/grafana cfg:default.paths.logs=/var/log/grafana cfg:default.paths.plugins=/var/lib/grafana/plugins cfg:default.paths.provisioning=/etc/grafana/provisioning
+root     4055986  0.0  0.0 110872  7264 ?        Sl   May05   0:06 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 3b3e77a78bc4aefbfd7d8dcbbd621f781a14d8d260d8879687a9dbca096db1af -address /run/containerd/containerd.sock
+root     4056008  0.0  0.0    964     4 ?        Ss   May05   0:00  \_ /pause
+root     4058744  0.0  0.0 110616  6480 ?        Sl   May05   0:06 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 91d27d93c7850d23dd10ee9abf31ba97288efddf7baf01d8e8d4c792385945be -address /run/containerd/containerd.sock
+root     4058800  0.0  0.0   2220  1744 ?        Ss   May05   0:00  \_ bash /app/run.sh
+root     4058878  0.5  0.2 347988 130948 ?       Sl   May05  15:04      \_ node /app/server.js
+root     4059134  0.0  0.0 221872 31796 ?        Sl   May05   0:00          \_ /usr/local/bin/node /app/node_modules/script-manager/lib/worker-servers.js
+root     4059141  0.0  0.0 221880 32220 ?        Sl   May05   0:00              \_ /usr/local/bin/node /app/node_modules/script-manager/lib/worker-servers.js
+root      157906  0.0  0.0  13788  9124 ?        Ss   May05   0:00 sshd: jtroy [priv]
+jtroy     158509  0.0  0.0  13932  6216 ?        S    May05   0:38  \_ sshd: jtroy@notty
+jtroy     158531  0.0  0.0   5860  3448 ?        Ss   May05   0:00      \_ -bash
+jtroy     158550  0.0  0.0   6176  4100 ?        S    May05   0:00          \_ bash
+jtroy     158605  0.0  0.0   2608   544 ?        S    May05   0:00              \_ sh /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/jtroy/.vscode-server/.3c4e3df9e89829dce27b7b5c24508306b151f30d.token
+jtroy     158612  0.0  0.2 1051472 140440 ?      Sl   May05   1:27              |   \_ /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/vs/server/main.js --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/jtroy/.vscode-server/.3c4e3df9e89829dce27b7b5c24508306b151f30d.token
+jtroy     158650  0.0  0.0 952316 38996 ?        Sl   May05   1:44              |       \_ /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=ptyHost
+jtroy     159699  0.0  0.0  15132 13008 pts/39   Ss+  May05   0:00              |       |   \_ /bin/bash
+jtroy    1755639  0.0  0.0  15260 13288 pts/32   Ss+  May05   0:00              |       |   \_ /bin/bash
+jtroy     158689  0.0  0.0 857584 39364 ?        Sl   May05   0:02              |       \_ /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=watcherService
+jtroy     158817  3.3  0.2 1221736 167692 ?      Sl   May05  95:54              |       \_ /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=extensionHost --uriTransformerPath=/users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/vs/server/uriTransformer.js
+jtroy     159087  0.2  0.3 1817152 238020 ?      Sl   May05   6:04              |       |   \_ /users/jtroy/go/bin/gopls -mode=stdio
+jtroy     162563  3.3  0.2 1286428 169364 ?      Sl   May05  97:07              |       \_ /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=extensionHost --uriTransformerPath=/users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/vs/server/uriTransformer.js
+jtroy     162743  0.3  0.5 1963144 345116 ?      Sl   May05   9:45              |       |   \_ /users/jtroy/go/bin/gopls -mode=stdio
+jtroy     162574  0.0  0.0 859940 42508 ?        Sl   May05   0:03              |       \_ /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=watcherService
+jtroy     163976  3.3  0.2 1301216 174056 ?      Sl   May05  96:37              |       \_ /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=extensionHost --uriTransformerPath=/users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/vs/server/uriTransformer.js
+jtroy     164566  0.2  0.2 1748596 187936 ?      Sl   May05   5:46              |       |   \_ /users/jtroy/go/bin/gopls -mode=stdio
+jtroy     164019  0.0  0.2 1011720 173552 ?      Sl   May05   0:12              |       \_ /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/jtroy/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=watcherService
+jtroy    2638429  0.0  0.0   4260   532 ?        S    10:56   0:00              \_ sleep 180
+jtroy     157922  4.1  0.0  20108 11316 ?        Ss   May05 119:19 /lib/systemd/systemd --user
+jtroy     157926  0.0  0.0 171104  5836 ?        S    May05   0:00  \_ (sd-pam)
+root      165860  0.0  0.0  13792  9088 ?        Ss   May05   0:00 sshd: jtroy [priv]
+jtroy     165945  0.0  0.0  13936  6032 ?        S    May05   0:00  \_ sshd: jtroy@pts/36
+jtroy     165946  0.0  0.0  16380 14548 pts/36   Ss   May05   0:00      \_ -bash
+jtroy    2899458  0.0  0.0 752148 44652 pts/36   Sl+  May06   0:12          \_ kubectl exec -it deployment/jtroy-gpe-server -- bash
+rhamburg  309685  4.2  0.0  20124 11344 ?        Ss   May05 121:32 /lib/systemd/systemd --user
+rhamburg  309688  0.0  0.0 171104  5840 ?        S    May05   0:00  \_ (sd-pam)
+root     1372714  0.0  0.0  12176  7584 ?        Ss   May05   0:01 sshd: /usr/sbin/sshd -D -o AuthorizedKeysCommand /usr/share/ec2-instance-connect/eic_run_authorized_keys %u %f -o AuthorizedKeysCommandUser ec2-instance-connect [listener] 0 of 10-100 startups
+root     3300571  0.0  0.0  13796  9000 ?        Ss   May06   0:00  \_ sshd: mshevertalov [priv]
+mshever+ 3301174  0.0  0.0  14204  6512 ?        S    May06   0:02  |   \_ sshd: mshevertalov@pts/5
+mshever+ 3301185  0.0  0.0  15184 13260 pts/5    Ss   May06   0:00  |       \_ -bash
+mshever+ 3301733  0.0  0.0   4368  3212 pts/5    S+   May06   0:00  |           \_ tmux a -t corr
+root     1397949  0.0  0.0  13792  9112 ?        Ss   08:10   0:00  \_ sshd: agelwarg [priv]
+agelwarg 1398529  0.0  0.0  13928  6132 ?        S    08:10   0:00  |   \_ sshd: agelwarg@pts/0
+agelwarg 1398530  0.0  0.0  15180 13196 pts/0    Ss   08:10   0:00  |       \_ -bash
+agelwarg 1398815  0.0  0.0   4368  3188 pts/0    S+   08:10   0:00  |           \_ tmux attach
+root     1763356  0.0  0.0  13796  9140 ?        Ss   09:02   0:00  \_ sshd: ksoskin [priv]
+ksoskin  1763653  0.0  0.0  13932  5960 ?        S    09:02   0:00  |   \_ sshd: ksoskin@pts/20
+ksoskin  1763654  0.0  0.0  15368 13252 pts/20   Ss+  09:02   0:00  |       \_ -bash
+root     1791185  0.0  0.0  13788  9048 ?        Ss   09:06   0:00  \_ sshd: rhamburg [priv]
+rhamburg 1791265  0.0  0.0  13924  6084 ?        S    09:06   0:01  |   \_ sshd: rhamburg@notty
+rhamburg 1791266  0.0  0.0   5860  3592 ?        Ss   09:06   0:00  |       \_ -bash
+rhamburg 1791271  0.0  0.0   6176  4036 ?        S    09:06   0:00  |           \_ bash
+rhamburg 2615957  0.0  0.0   4260   596 ?        S    10:54   0:00  |               \_ sleep 180
+root     1795289  0.0  0.0  13792  9076 ?        Ss   09:07   0:00  \_ sshd: rhamburg [priv]
+rhamburg 1795384  0.0  0.0  13928  5992 ?        S    09:07   0:00  |   \_ sshd: rhamburg@pts/34
+rhamburg 1795385  0.0  0.0  15164 13176 pts/34   Ss   09:07   0:00  |       \_ -bash
+rhamburg 1795877  0.0  0.0   4368  3352 pts/34   S+   09:07   0:00  |           \_ tmux a
+root     1802578  0.0  0.0  13792  9036 ?        Ss   09:08   0:00  \_ sshd: jsipling [priv]
+jsipling 1802688  0.0  0.0  13936  6068 ?        S    09:08   0:00  |   \_ sshd: jsipling@pts/37
+jsipling 1802690  0.0  0.0  15192 13232 pts/37   Ss   09:08   0:00  |       \_ -bash
+jsipling 1803767  0.0  0.0   4368  3236 pts/37   S+   09:08   0:00  |           \_ tmux a
+root     1893778  0.0  0.0  13792  9016 ?        Ss   09:21   0:00  \_ sshd: rdavis [priv]
+rdavis   1894368  0.0  0.0  13932  6196 ?        S    09:21   0:00  |   \_ sshd: rdavis@pts/44
+rdavis   1894369  0.0  0.0  15464 13460 pts/44   Ss+  09:21   0:00  |       \_ -bash
+root     1897088  0.0  0.0  13796  9052 ?        Ss   09:21   0:00  \_ sshd: santo [priv]
+santo    1897192  0.0  0.0  13940  6120 ?        S    09:21   0:01  |   \_ sshd: santo@notty
+santo    1897193  0.0  0.0   5860  3592 ?        Ss   09:21   0:00  |       \_ -bash
+santo    1897201  0.0  0.0   6176  3888 ?        S    09:21   0:00  |           \_ bash
+santo    1897265  0.0  0.0   2608   612 ?        S    09:21   0:00  |               \_ sh /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/santo/.vscode-server/.cfa2e218100323074ac1948c885448fdf4de2a7f.token
+santo    1897272  0.0  0.1 1004364 67596 ?       Sl   09:21   0:05  |               |   \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/vs/server/main.js --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/santo/.vscode-server/.cfa2e218100323074ac1948c885448fdf4de2a7f.token
+santo    1897310  0.0  0.0 919836 40392 ?        Sl   09:21   0:04  |               |       \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/bootstrap-fork --type=ptyHost
+santo    1897647  0.0  0.0  15136 13180 pts/45   Ss+  09:21   0:00  |               |       |   \_ /bin/bash
+santo    1914378  0.0  0.0  15268 13220 pts/46   Ss   09:24   0:00  |               |       |   \_ /bin/bash
+santo    1915571  0.0  0.1 908636 100824 pts/46  Sl+  09:24   0:01  |               |       |       \_ node /usr/share/yarn/bin/yarn.js watch:all
+santo    1915661  0.0  0.0   2620   624 pts/46   S+   09:24   0:00  |               |       |           \_ /bin/sh -c ./node_modules/.bin/run-p watch watch:css
+santo    1915662  0.0  0.0 584184 39080 pts/46   Sl+  09:24   0:00  |               |       |               \_ /otto/nodenv/versions/10.24.0/bin/node ./node_modules/.bin/run-p watch watch:css
+santo    1915681  0.0  0.0 788572 46832 pts/46   Sl+  09:24   0:00  |               |       |                   \_ npm
+santo    1915709  0.0  0.0   2624   628 pts/46   S+   09:24   0:00  |               |       |                   |   \_ sh -c webpack --config ./webpack.config.js --watch --progress --debug
+santo    1915710  3.4  1.5 2051780 1005888 pts/46 Sl+ 09:24   3:10  |               |       |                   |       \_ /otto/nodenv/versions/10.24.0/bin/node /users/santo/src/gpe-server/ui/app/node_modules/.bin/webpack --config ./webpack.config.js --watch --progress --debug
+santo    1915682  0.0  0.0 788844 46476 pts/46   Sl+  09:24   0:00  |               |       |                   \_ npm
+santo    1915717  0.0  0.0   2624   620 pts/46   S+   09:24   0:00  |               |       |                       \_ sh -c webpack --config ./webpack.css.config.js --watch --progress --debug
+santo    1915718  0.0  0.1 1189612 112208 pts/46 Sl+  09:24   0:03  |               |       |                           \_ /otto/nodenv/versions/10.24.0/bin/node /users/santo/src/gpe-server/ui/app/node_modules/.bin/webpack --config ./webpack.css.config.js --watch --progress --debug
+santo    1897417  0.3  0.1 954304 118144 ?       Sl   09:21   0:19  |               |       \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/bootstrap-fork --type=watcherService
+santo    1897503  3.5  0.2 1304836 173232 ?      Sl   09:21   3:25  |               |       \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/bootstrap-fork --type=extensionHost --uriTransformerPath=/users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/vs/server/uriTransformer.js
+santo    1897683  0.0  0.2 680108 141240 ?       Sl   09:21   0:03  |               |           \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node --max-old-space-size=3072 /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/node_modules/typescript/lib/tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName /tmp/vscode-typescript1034/99642eed4bbc3af7adae/tscancellation-b7c15e2eb32c974e7425.tmp* --globalPlugins typescript-vscode-sh-plugin --pluginProbeLocations /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/typescript-language-features --locale en --noGetErrOnBackgroundUpdate --validateDefaultNpmLocation
+santo    1897694  1.0  0.9 1181128 644064 ?      Sl   09:21   1:01  |               |           \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node --max-old-space-size=3072 /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/node_modules/typescript/lib/tsserver.js --useInferredProjectPerProjectRoot --enableTelemetry --cancellationPipeName /tmp/vscode-typescript1034/99642eed4bbc3af7adae/tscancellation-852a41c235cf566be8c4.tmp* --globalPlugins typescript-vscode-sh-plugin --pluginProbeLocations /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/typescript-language-features --locale en --noGetErrOnBackgroundUpdate --validateDefaultNpmLocation
+santo    1897814  0.1  0.1 692480 93896 ?        Sl   09:21   0:10  |               |           |   \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/node_modules/typescript/lib/typingsInstaller.js --globalTypingsCacheLocation /users/santo/.cache/typescript/4.2 --enableTelemetry --typesMapLocation /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/node_modules/typescript/lib/typesMap.json --validateDefaultNpmLocation
+santo    1897921  0.1  0.1 649756 89920 ?        Sl   09:21   0:11  |               |           \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/santo/.vscode-server/extensions/dbaeumer.vscode-eslint-2.1.20/server/out/eslintServer.js --node-ipc --clientProcessId=1897503
+santo    1899083  0.0  0.0 615032 40584 ?        Sl   09:21   0:00  |               |           \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/json-language-features/server/dist/node/jsonServerMain --node-ipc --clientProcessId=1897503
+santo    1907010  0.0  0.0 622488 45952 ?        Sl   09:22   0:00  |               |           \_ /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/santo/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/css-language-features/server/dist/node/cssServerMain --node-ipc --clientProcessId=1897503
+santo    2614885  0.0  0.0   4260   580 ?        S    10:54   0:00  |               \_ sleep 180
+root     2017362  0.0  0.0  13792  9120 ?        Ss   09:38   0:00  \_ sshd: rdavis [priv]
+rdavis   2017475  0.1  0.0  13928  6216 ?        S    09:38   0:05  |   \_ sshd: rdavis@notty
+rdavis   2017476  0.0  0.0   5860  3488 ?        Ss   09:38   0:00  |       \_ -bash
+rdavis   2017484  0.0  0.0   6308  4048 ?        S    09:38   0:00  |           \_ bash
+rdavis   2017713  0.0  0.0   2608   604 ?        S    09:38   0:00  |               \_ sh /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/rdavis/.vscode-server/.cfa2e218100323074ac1948c885448fdf4de2a7f.token
+rdavis   2017720  0.5  0.1 1040668 106624 ?      Sl   09:38   0:25  |               |   \_ /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/vs/server/main.js --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/rdavis/.vscode-server/.cfa2e218100323074ac1948c885448fdf4de2a7f.token
+rdavis   2017776  0.2  0.0 951612 59336 ?        Sl   09:38   0:12  |               |       \_ /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/bootstrap-fork --type=ptyHost
+rdavis   2019730  0.0  0.0  15428 13408 pts/48   Ss+  09:38   0:00  |               |       |   \_ /bin/bash
+rdavis   2285908  0.2  0.0  15280 13292 pts/57   Ss   10:14   0:06  |               |       |   \_ /bin/bash
+rdavis   2644499  0.0  0.0   9172  4584 pts/57   R+   10:57   0:00  |               |       |       \_ ps auxf
+rdavis   2019657  0.0  0.0 923568 59076 ?        Sl   09:38   0:01  |               |       \_ /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/bootstrap-fork --type=watcherService
+rdavis   2019664  4.2  0.2 1238000 150416 ?      Sl   09:38   3:20  |               |       \_ /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/bootstrap-fork --type=extensionHost --uriTransformerPath=/users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/out/vs/server/uriTransformer.js
+rdavis   2019946  0.0  0.0 600820 49340 ?        Sl   09:38   0:01  |               |           \_ /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/rdavis/.vscode-server/extensions/streetsidesoftware.code-spell-checker-1.10.2/server/server.js --node-ipc --clientProcessId=2019664
+rdavis   2639943  0.5  0.0 581720 35272 ?        Sl   10:57   0:00  |               |           \_ /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/node /users/rdavis/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/extensions/json-language-features/server/dist/node/jsonServerMain --node-ipc --clientProcessId=2019664
+rdavis   2633655  0.0  0.0   4260   516 ?        S    10:56   0:00  |               \_ sleep 180
+root     2111460  0.0  0.0  13788  8960 ?        Ss   09:51   0:00  \_ sshd: gnaimoli [priv]
+gnaimoli 2111537  0.0  0.0  13924  6000 ?        S    09:51   0:00  |   \_ sshd: gnaimoli@pts/56
+gnaimoli 2111552  0.0  0.0  15296 13436 pts/56   Ss+  09:51   0:00  |       \_ -bash
+root     2443214  0.0  0.0  13788  9084 ?        Ss   10:34   0:00  \_ sshd: mdeforest [priv]
+mdefore+ 2443957  0.0  0.0  13924  5908 ?        S    10:34   0:00      \_ sshd: mdeforest@notty
+mdefore+ 2443967  0.0  0.0   5860  3508 ?        Ss   10:34   0:00          \_ -bash
+mdefore+ 2443986  0.0  0.0   6176  3992 ?        S    10:34   0:00              \_ bash
+mdefore+ 2623679  0.0  0.0   4260   528 ?        S    10:55   0:00                  \_ sleep 180
+rdavis   1896196  4.2  0.0  20188 11492 ?        Ss   May06  84:13 /lib/systemd/systemd --user
+rdavis   1896198  0.0  0.0 173152  5876 ?        S    May06   0:00  \_ (sd-pam)
+root      420848  0.0  0.0 112216  6912 ?        Sl   May06   0:03 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 700950cfe3eebf3abaaa0a6025c84a870c741137b1651761d5bd46651bd2c840 -address /run/containerd/containerd.sock
+mdefore+  420878  0.0  0.0    964     4 ?        Ss   May06   0:00  \_ /pause
+root      420997  0.0  0.0 112216 10020 ?        Sl   May06   0:45 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 2062eb4316b63c1ff845119e1fd2d141f8f3d8980d23ffa6f20b9b0dc1a5d53a -address /run/containerd/containerd.sock
+mdefore+  421017  0.0  0.0 169256 30344 ?        Ssl  May06   0:04  \_ /users/mdeforest/src/codebox/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+mdefore+  421250  0.0  0.0 284092  7600 ?        Ssl  May06   0:00      \_ Passenger watchdog
+mdefore+  421259  0.9  0.0 2185752 15328 ?       Sl   May06  14:27      |   \_ Passenger core
+mdefore+  421300  0.0  0.0   9908  1464 ?        Ss   May06   0:00      \_ nginx: master process /users/mdeforest/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.zfca46/nginx.conf -p /tmp/passenger-standalone.zfca46
+mdefore+  421301  0.0  0.0  11912  6568 ?        S    May06   0:01      |   \_ nginx: worker process
+mdefore+  421309  0.0  0.0  10956  2252 ?        Ss   May06   0:00      \_ /users/mdeforest/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.zfca46 --cleanup --daemonize --pid-file /tmp/passenger-standalone.zfca46/temp_dir_toucher.pid --log-file /users/mdeforest/src/codebox/gpe-server/ui/passenger.3000.log --nginx-pid 210
+mdefore+  421313  0.0  0.0   2612   552 ?        S    May06   0:00      \_ sh -c tail -f -n 0 "/users/mdeforest/src/codebox/gpe-server/ui/passenger.3000.log"
+mdefore+  421316  0.0  0.0   2548   536 ?        S    May06   0:00      |   \_ tail -f -n 0 /users/mdeforest/src/codebox/gpe-server/ui/passenger.3000.log
+mdefore+  422398  0.0  1.1 1012068 773840 ?      Sl   May06   0:23      \_ Passenger AppPreloader: /users/mdeforest/src/codebox/gpe-server/ui (forking...)
+mdefore+  422426  0.0  0.4 440848 269488 ?       Sl   May06   0:00      \_ Passenger AppPreloader: /users/mdeforest/src/codebox/gpe-server/ui (forking...)
+mdefore+  422460  0.0  0.4 441872 269488 ?       Sl   May06   0:00      \_ Passenger AppPreloader: /users/mdeforest/src/codebox/gpe-server/ui (forking...)
+rhamburg 1004510  0.0  0.0   5592  4592 ?        Ss   May06   0:02 tmux
+rhamburg 1004511  0.0  0.0  15304 13404 pts/33   Ss   May06   0:00  \_ -bash
+rhamburg 1213703  0.0  0.1 817316 73292 pts/33   Sl+  May06   0:07  |   \_ node /usr/share/yarn/bin/yarn.js watch
+rhamburg 1213769  0.0  0.0   2612   616 pts/33   S+   May06   0:00  |       \_ /bin/sh -c NODE_ENV=development rollup -c -w
+rhamburg 1213770  0.8  1.6 1815128 1049160 pts/33 Sl+ May06  12:06  |           \_ /otto/nodenv/versions/10.24.0/bin/node /users/rhamburg/galileo-ui/observatory/node_modules/.bin/rollup -c -w
+rhamburg 1005001  0.0  0.0  15304 13152 pts/35   Ss   May06   0:00  \_ -bash
+rhamburg 1036946  0.0  0.1 879788 71720 pts/35   Sl+  May06   0:07      \_ node /usr/share/yarn/bin/yarn.js watch
+rhamburg 1036979  0.0  0.0   2612   544 pts/35   S+   May06   0:00          \_ /bin/sh -c cd ui/app && yarn watch
+rhamburg 1036980  0.0  0.1 880788 69016 pts/35   Sl+  May06   0:07              \_ /otto/nodenv/versions/10.24.0/bin/node /usr/share/yarn/bin/yarn.js watch
+rhamburg 1037037  0.0  0.0   2620   620 pts/35   S+   May06   0:00                  \_ /bin/sh -c webpack --config ./webpack.config.js --watch --progress --debug
+rhamburg 1037038  0.6  1.2 1877104 833724 pts/35 Sl+  May06   9:47                      \_ /otto/nodenv/versions/10.24.0/bin/node /users/rhamburg/galileo/gpe-server/ui/app/node_modules/.bin/webpack --config ./webpack.config.js --watch --progress --debug
+rdavis   2490813  0.0  0.0 751892 43360 ?        Tl   May06   0:00 kubectl exec --context rdavis -ti rdavis-gpe-server-696658cb59-n69cl -- bash -i
+rhamburg  120375  0.0  0.0   2608   608 ?        S    May06   0:00 sh /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/rhamburg/.vscode-server/.3c4e3df9e89829dce27b7b5c24508306b151f30d.token
+rhamburg  120382  0.0  0.1 984976 73076 ?        Sl   May06   0:11  \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/vs/server/main.js --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/rhamburg/.vscode-server/.3c4e3df9e89829dce27b7b5c24508306b151f30d.token
+rhamburg  120423  0.0  0.0 657188 38628 ?        Sl   May06   0:05      \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=ptyHost
+rhamburg 1792985  0.0  0.0  15116 12976 pts/42   Ss+  09:06   0:00      |   \_ /bin/bash
+rhamburg 1791916  3.9  0.3 13101708 211676 ?     Sl   09:06   4:19      \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=extensionHost --uriTransformerPath=/users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/vs/server/uriTransformer.js
+rhamburg 1792278  0.0  0.2 658912 137716 ?       Sl   09:06   0:06      |   \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node --max-old-space-size=3072 /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/extensions/node_modules/typescript/lib/tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName /tmp/vscode-typescript1033/cd95e8b762fde915bc09/tscancellation-6ae93a8a0e5ad7cd92a2.tmp* --globalPlugins typescript-vscode-sh-plugin,@vsintellicode/typescript-intellicode-plugin --pluginProbeLocations /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/extensions/typescript-language-features,/users/rhamburg/.vscode-server/extensions/visualstudioexptteam.vscodeintellicode-1.2.12 --locale en --noGetErrOnBackgroundUpdate --validateDefaultNpmLocation
+rhamburg 1792284  1.5  1.2 1350044 823468 ?      Sl   09:06   1:40      |   \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node --max-old-space-size=3072 /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/extensions/node_modules/typescript/lib/tsserver.js --useInferredProjectPerProjectRoot --enableTelemetry --cancellationPipeName /tmp/vscode-typescript1033/cd95e8b762fde915bc09/tscancellation-151dddc53c7169b37124.tmp* --globalPlugins typescript-vscode-sh-plugin,@vsintellicode/typescript-intellicode-plugin --pluginProbeLocations /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/extensions/typescript-language-features,/users/rhamburg/.vscode-server/extensions/visualstudioexptteam.vscodeintellicode-1.2.12 --locale en --noGetErrOnBackgroundUpdate --validateDefaultNpmLocation
+rhamburg 1792358  0.0  0.1 588020 66420 ?        Sl   09:06   0:01      |   |   \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/extensions/node_modules/typescript/lib/typingsInstaller.js --globalTypingsCacheLocation /users/rhamburg/.cache/typescript/4.2 --enableTelemetry --typesMapLocation /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/extensions/node_modules/typescript/lib/typesMap.json --validateDefaultNpmLocation
+rhamburg 1792293  0.2  0.1 637884 83988 ?        Sl   09:06   0:16      |   \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/rhamburg/.vscode-server/extensions/stylelint.vscode-stylelint-0.86.0/server.js --stdio --clientProcessId=1791916
+rhamburg 1792762  1.3  0.2 678620 185064 ?       Sl   09:06   1:28      |   \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/rhamburg/.vscode-server/extensions/dbaeumer.vscode-eslint-2.1.20/server/out/eslintServer.js --node-ipc --clientProcessId=1791916
+rhamburg 1794570  0.0  0.0 591264 40192 ?        Sl   09:07   0:00      |   \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/extensions/json-language-features/server/dist/node/jsonServerMain --node-ipc --clientProcessId=1791916
+rhamburg 1791931  0.1  0.0 1017192 49232 ?       Sl   09:06   0:08      \_ /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/rhamburg/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=watcherService
+mdefore+  260829  4.3  0.0  20116 11364 ?        Ss   05:21  14:38 /lib/systemd/systemd --user
+mdefore+  260831  0.0  0.0 173152  6008 ?        S    05:21   0:00  \_ (sd-pam)
+mdefore+  261516  0.0  0.0   2608   612 ?        S    05:21   0:00 sh /users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/mdeforest/.vscode-server/.3c4e3df9e89829dce27b7b5c24508306b151f30d.token
+mdefore+  261523  0.0  0.1 974792 77952 ?        Sl   05:21   0:06  \_ /users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/vs/server/main.js --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /users/mdeforest/.vscode-server/.3c4e3df9e89829dce27b7b5c24508306b151f30d.token
+mdefore+  261580  0.0  0.0 894436 37676 ?        Sl   05:21   0:01      \_ /users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=ptyHost
+mdefore+ 2445892  0.0  0.0  15136 13188 pts/60   Ss+  10:34   0:00      |   \_ /bin/bash
+mdefore+ 2444118  0.6  0.2 993480 155364 ?       Sl   10:34   0:09      \_ /users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=watcherService
+mdefore+ 2444308  3.2  0.2 1223924 162580 ?      Sl   10:34   0:44      \_ /users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/node /users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/bootstrap-fork --type=extensionHost --uriTransformerPath=/users/mdeforest/.vscode-server/bin/3c4e3df9e89829dce27b7b5c24508306b151f30d/out/vs/server/uriTransformer.js
+mdefore+ 2445033  0.3  0.2 1674092 164700 ?      Sl   10:34   0:05          \_ /users/mdeforest/go/bin/gopls -mode=stdio
+ksoskin  1763490  4.3  0.0  20112 11448 ?        Ss   09:02   4:56 /lib/systemd/systemd --user
+ksoskin  1763545  0.0  0.0 173152  6016 ?        S    09:02   0:00  \_ (sd-pam)
+santo    1897108  4.3  0.0  20116 11432 ?        Ss   09:21   4:10 /lib/systemd/systemd --user
+santo    1897112  0.0  0.0 173152  6016 ?        S    09:21   0:00  \_ (sd-pam)
+root     2207960  0.0  0.0 110872  7500 ?        Sl   10:03   0:00 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 1e68bc53862afcfc670f50608ddaf1be77f07e5489a48c1e622e6e78e818d75c -address /run/containerd/containerd.sock
+gnaimoli 2207985  0.0  0.0    964     4 ?        Ss   10:03   0:00  \_ /pause
+root     2208287  0.0  0.0 112216  7136 ?        Sl   10:03   0:01 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 1d019cb6fd609d2b4c2d661a4898b64c6fc7e7332ca43f4a035667cb3bb7cfe0 -address /run/containerd/containerd.sock
+gnaimoli 2208311  0.0  0.0 169092 31252 ?        Ssl  10:03   0:00  \_ /users/gnaimoli/src/gpe-server/vendor/bundle/ruby/2.5.0/bin/passenger start --disable-log-prefix --min-instances 3 --max-pool-size 3 ui
+gnaimoli 2208535  0.0  0.0 284076  7532 ?        Ssl  10:03   0:00      \_ Passenger watchdog
+gnaimoli 2208550  0.8  0.0 2087428 13232 ?       Sl   10:03   0:26      |   \_ Passenger core
+gnaimoli 2208568  0.0  0.0   9900  1468 ?        Ss   10:03   0:00      \_ nginx: master process /users/gnaimoli/.passenger/support-binaries/6.0.4/nginx-1.17.3 -c /tmp/passenger-standalone.18h8a31/nginx.conf -p /tmp/passenger-standalone.18h8a31
+gnaimoli 2208575  0.0  0.0  11904  6704 ?        S    10:03   0:00      |   \_ nginx: worker process
+gnaimoli 2208584  0.0  0.0  10952   424 ?        Ss   10:03   0:00      \_ /users/gnaimoli/.passenger/support-binaries/6.0.4/PassengerAgent temp-dir-toucher /tmp/passenger-standalone.18h8a31 --cleanup --daemonize --pid-file /tmp/passenger-standalone.18h8a31/temp_dir_toucher.pid --log-file /users/gnaimoli/src/gpe-server/ui/passenger.3000.log --nginx-pid 195
+gnaimoli 2208589  0.0  0.0   2608   536 ?        S    10:03   0:00      \_ sh -c tail -f -n 0 "/users/gnaimoli/src/gpe-server/ui/passenger.3000.log"
+gnaimoli 2208592  0.0  0.0   2544   596 ?        S    10:03   0:00      |   \_ tail -f -n 0 /users/gnaimoli/src/gpe-server/ui/passenger.3000.log
+gnaimoli 2209485  0.1  0.7 637632 466404 ?       Sl   10:04   0:05      \_ Passenger AppPreloader: /users/gnaimoli/src/gpe-server/ui (forking...)
+gnaimoli 2209649  0.1  0.6 638656 453220 ?       Sl   10:04   0:04      \_ Passenger AppPreloader: /users/gnaimoli/src/gpe-server/ui (forking...)
+gnaimoli 2209781  0.0  0.4 442008 269456 ?       Sl   10:04   0:00      \_ Passenger AppPreloader: /users/gnaimoli/src/gpe-server/ui (forking...)
