@@ -1,0 +1,106 @@
+Date/Time: May 6, 2021 6:00:39 PM GMT IBM DSCLI Version: 7.8.55.22  DS: 
+IBM.2107-75KHP71
+
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:00:39 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Command:showextpool -metrics IBM.2107-75KHP71/P0 
+Date/Time: May 6, 2021 6:00:39 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/P0
+Date          05/06/2021 18:00:39 GMT
+realextcap    110787
+realext       7090306
+realallocext  5677866
+realextconv   0
+dyrelocsource 0
+dyreloctarget 0
+virextcap     100740
+virext        10074
+dataencrypted yes
+dscli> Command:showextpool -metrics IBM.2107-75KHP71/P1 
+Date/Time: May 6, 2021 6:00:39 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/P1
+Date          05/06/2021 18:00:39 GMT
+realextcap    110787
+realext       7090306
+realallocext  5677866
+realextconv   0
+dyrelocsource 0
+dyreloctarget 0
+virextcap     100740
+virext        10074
+dataencrypted yes
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:00:39 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Date/Time: May 6, 2021 6:15:36 PM GMT IBM DSCLI Version: 7.8.55.22  DS: 
+IBM.2107-75KHP71
+
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:15:36 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Command:showextpool -metrics IBM.2107-75KHP71/P0 
+Date/Time: May 6, 2021 6:15:36 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/P0
+Date          05/06/2021 18:15:36 GMT
+realextcap    110787
+realext       7090306
+realallocext  5677866
+realextconv   0
+dyrelocsource 0
+dyreloctarget 0
+virextcap     100740
+virext        10074
+dataencrypted yes
+dscli> Command:showextpool -metrics IBM.2107-75KHP71/P1 
+Date/Time: May 6, 2021 6:15:37 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/P1
+Date          05/06/2021 18:15:37 GMT
+realextcap    110787
+realext       7090306
+realallocext  5677866
+realextconv   0
+dyrelocsource 0
+dyreloctarget 0
+virextcap     100740
+virext        10074
+dataencrypted yes
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:15:37 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Date/Time: May 6, 2021 6:30:37 PM GMT IBM DSCLI Version: 7.8.55.22  DS: 
+IBM.2107-75KHP71
+
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:30:37 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Command:showextpool -metrics IBM.2107-75KHP71/P0 
+Date/Time: May 6, 2021 6:30:37 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/P0
+Date          05/06/2021 18:30:37 GMT
+realextcap    110787
+realext       7090306
+realallocext  5677866
+realextconv   0
+dyrelocsource 0
+dyreloctarget 0
+virextcap     100740
+virext        10074
+dataencrypted yes
+dscli> Command:showextpool -metrics IBM.2107-75KHP71/P1 
+Date/Time: May 6, 2021 6:30:37 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/P1
+Date          05/06/2021 18:30:37 GMT
+realextcap    110787
+realext       7090306
+realallocext  5677866
+realextconv   0
+dyrelocsource 0
+dyreloctarget 0
+virextcap     100740
+virext        10074
+dataencrypted yes
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:30:37 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> 

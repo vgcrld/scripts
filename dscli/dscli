@@ -37,28 +37,28 @@ return_cmd() {
       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'config_commands.txt'
       ;;
 
-    "quit")
+    "quit" | "q")
       end_me 0
       ;;
 
     *listout*)
-      tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt'
+      tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null
       ;;
 
     *lsioport*)
-       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsioport/,/Command:ver/'
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null | awk '/Command:lsioport/,/Command:ver/'
        ;;
 
     *lsrank*)
-       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsrank/,/Command:ver/'
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null | awk '/Command:lsrank/,/Command:ver/'
        ;;
 
     *lsextpool*)
-       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsextpool/,/Command:ver/'
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null | awk '/Command:lsextpool/,/Command:ver/'
        ;;
 
     **lsfbvol**)
-       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lsfbvol/,/Command:ver/'
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null | awk '/Command:lsfbvol/,/Command:ver/'
        ;;
 
     *lsckdvol*)
@@ -66,23 +66,23 @@ return_cmd() {
       echo "Date/Time: August 21, 2018 8:00:19 PM GMT IBM DSCLI Version: 7.7.21.39 DS: IBM.2107-75DAM11"
       echo "Name|ID|accstate|datastate|configstate|deviceMTM|voltype|orgbvols|extpool|cap (cyl)"
       echo "==================================================================================="
-      echo "ckd0900|IBM.2107-75DAM11/0900|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0901|IBM.2107-75DAM11/0901|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0902|IBM.2107-75DAM11/0902|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0903|IBM.2107-75DAM11/0903|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0904|IBM.2107-75DAM11/0904|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0905|IBM.2107-75DAM11/0905|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0980|IBM.2107-75DAM11/0980|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0981|IBM.2107-75DAM11/0981|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0982|IBM.2107-75DAM11/0982|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0983|IBM.2107-75DAM11/0983|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0984|IBM.2107-75DAM11/0984|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd0985|IBM.2107-75DAM11/0985|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      echo "ckd2100|IBM.2107-75DAM11/2100|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0900|IBM.2107-75DAM11/0900|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0901|IBM.2107-75DAM11/0901|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0902|IBM.2107-75DAM11/0902|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0903|IBM.2107-75DAM11/0903|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0904|IBM.2107-75DAM11/0904|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0905|IBM.2107-75DAM11/0905|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0980|IBM.2107-75DAM11/0980|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0981|IBM.2107-75DAM11/0981|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0982|IBM.2107-75DAM11/0982|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0983|IBM.2107-75DAM11/0983|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0984|IBM.2107-75DAM11/0984|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd0985|IBM.2107-75DAM11/0985|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      # echo "ckd2100|IBM.2107-75DAM11/2100|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
       ;;
 
     *lslss*)
-       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:lslss/,/Command:ver/'
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null | awk '/Command:lslss/,/Command:ver/'
        ;;
 
     *showfbvol*)
@@ -137,21 +137,21 @@ return_cmd() {
        echo "zHPFPrefetchHit           0"
        echo "GMCollisionsSidefileCount 0"
        echo "GMCollisionsSendSyncCount 0"
-      #  sleep .5
+      #  sleep .1
        ;;
 
     ver)
-       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' | awk '/Command:ver/,/Command:ver/'
+       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null | awk '/Command:ver/,/Command:ver/'
        ;;
 
     *)
-      echo "Command with delay: '$@'"
+      echo "Unkown command: '$@'"
       ;;
 
   esac
 
-  sleep .2
-  
+  sleep .1
+
 }
 
 startup() {
@@ -159,30 +159,21 @@ startup() {
   echo "IBM.2107-75DWA61"
 }
 
-startup
-
 while [[ "$#" -ne 0 ]]
 do 
   case "$1" in
     ver* | ls* | show* | quit | exit | config_commands)
+      startup
       return_cmd "$1"
-      shift
+      exit 0
       ;;
     *) 
-      echo "something else $1"
       shift
       ;;
   esac
 done
 
+startup
 looper
 
-exit
-if [[ "$@" = "" ]]; then
-  looper
-elif [[ "$@" = *-cfg* ]]; then
-  looper
-else
-  return_cmd "$@"
-fi
-
+exit 0

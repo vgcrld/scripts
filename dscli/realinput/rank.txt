@@ -1,0 +1,460 @@
+Date/Time: May 6, 2021 6:00:34 PM GMT IBM DSCLI Version: 7.8.55.22  DS: 
+IBM.2107-75KHP71
+
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:00:35 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R0 
+Date/Time: May 6, 2021 6:00:35 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R0
+Date          05/06/2021 18:00:35 GMT
+byteread      2713090466
+bytewrit      1976037259
+Reads         1172549945
+Writes        1338052331
+timeread      2608917675
+timewrite     1016000971
+dataencrypted yes
+timeload      182157565
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R1 
+Date/Time: May 6, 2021 6:00:35 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R1
+Date          05/06/2021 18:00:35 GMT
+byteread      2755234735
+bytewrit      1974551493
+Reads         1272577413
+Writes        1344851446
+timeread      2626514363
+timewrite     1014015185
+dataencrypted yes
+timeload      190867421
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R2 
+Date/Time: May 6, 2021 6:00:35 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R2
+Date          05/06/2021 18:00:35 GMT
+byteread      2744026746
+bytewrit      1967770298
+Reads         1248592008
+Writes        1290752472
+timeread      2637525635
+timewrite     1006575829
+dataencrypted yes
+timeload      190894993
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R3 
+Date/Time: May 6, 2021 6:00:35 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R3
+Date          05/06/2021 18:00:35 GMT
+byteread      2797485395
+bytewrit      1971186625
+Reads         1440402892
+Writes        1323556289
+timeread      2617847484
+timewrite     1015275377
+dataencrypted yes
+timeload      184288567
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R4 
+Date/Time: May 6, 2021 6:00:35 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R4
+Date          05/06/2021 18:00:35 GMT
+byteread      2727701630
+bytewrit      1970363702
+Reads         1221629175
+Writes        1273746813
+timeread      2633680501
+timewrite     1011076666
+dataencrypted yes
+timeload      191306802
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R5 
+Date/Time: May 6, 2021 6:00:35 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R5
+Date          05/06/2021 18:00:35 GMT
+byteread      2779820524
+bytewrit      1973614297
+Reads         1397336299
+Writes        1324421353
+timeread      2635243908
+timewrite     1016910610
+dataencrypted yes
+timeload      194051776
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R6 
+Date/Time: May 6, 2021 6:00:35 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R6
+Date          05/06/2021 18:00:36 GMT
+byteread      2737273669
+bytewrit      1974171952
+Reads         1245825439
+Writes        1349474177
+timeread      2612365920
+timewrite     1025858075
+dataencrypted yes
+timeload      186678047
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R7 
+Date/Time: May 6, 2021 6:00:36 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R7
+Date          05/06/2021 18:00:36 GMT
+byteread      2725222999
+bytewrit      1977331246
+Reads         1188970062
+Writes        1328142837
+timeread      2627081958
+timewrite     1016252933
+dataencrypted yes
+timeload      191567720
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R8 
+Date/Time: May 6, 2021 6:00:36 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R8
+Date          05/06/2021 18:00:36 GMT
+byteread      2759701244
+bytewrit      1978431893
+Reads         1293533221
+Writes        1342150668
+timeread      2639457969
+timewrite     1020342462
+dataencrypted yes
+timeload      196393105
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R9 
+Date/Time: May 6, 2021 6:00:36 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R9
+Date          05/06/2021 18:00:36 GMT
+byteread      2728085020
+bytewrit      1977564953
+Reads         1210477423
+Writes        1299759125
+timeread      2608182075
+timewrite     1016366232
+dataencrypted yes
+timeload      182010323
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R10 
+Date/Time: May 6, 2021 6:00:36 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R10
+Date          05/06/2021 18:00:36 GMT
+byteread      2717229380
+bytewrit      1971997312
+Reads         1181314252
+Writes        1296124418
+timeread      2631577165
+timewrite     1015472451
+dataencrypted yes
+timeload      192374939
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R11 
+Date/Time: May 6, 2021 6:00:36 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R11
+Date          05/06/2021 18:00:36 GMT
+byteread      2764763527
+bytewrit      1977153682
+Reads         1320966518
+Writes        1341526315
+timeread      2632192070
+timewrite     1018330501
+dataencrypted yes
+timeload      193758088
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:00:36 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Date/Time: May 6, 2021 6:15:32 PM GMT IBM DSCLI Version: 7.8.55.22  DS: 
+IBM.2107-75KHP71
+
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:15:32 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R0 
+Date/Time: May 6, 2021 6:15:32 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R0
+Date          05/06/2021 18:15:32 GMT
+byteread      2713115122
+bytewrit      1976048617
+Reads         1172617651
+Writes        1338097718
+timeread      2608920633
+timewrite     1016006895
+dataencrypted yes
+timeload      182160086
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R1 
+Date/Time: May 6, 2021 6:15:32 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R1
+Date          05/06/2021 18:15:32 GMT
+byteread      2755259347
+bytewrit      1974562599
+Reads         1272645409
+Writes        1344892005
+timeread      2626517336
+timewrite     1014021107
+dataencrypted yes
+timeload      190869954
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R2 
+Date/Time: May 6, 2021 6:15:32 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R2
+Date          05/06/2021 18:15:32 GMT
+byteread      2744051989
+bytewrit      1967781665
+Reads         1248661024
+Writes        1290793428
+timeread      2637528746
+timewrite     1006581758
+dataencrypted yes
+timeload      190897570
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R3 
+Date/Time: May 6, 2021 6:15:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R3
+Date          05/06/2021 18:15:33 GMT
+byteread      2797510440
+bytewrit      1971198111
+Reads         1440472193
+Writes        1323599315
+timeread      2617850489
+timewrite     1015281393
+dataencrypted yes
+timeload      184291130
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R4 
+Date/Time: May 6, 2021 6:15:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R4
+Date          05/06/2021 18:15:33 GMT
+byteread      2727726304
+bytewrit      1970374167
+Reads         1221696872
+Writes        1273784305
+timeread      2633683549
+timewrite     1011082051
+dataencrypted yes
+timeload      191309176
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R5 
+Date/Time: May 6, 2021 6:15:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R5
+Date          05/06/2021 18:15:33 GMT
+byteread      2779845729
+bytewrit      1973624971
+Reads         1397406119
+Writes        1324460912
+timeread      2635246937
+timewrite     1016916323
+dataencrypted yes
+timeload      194054271
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R6 
+Date/Time: May 6, 2021 6:15:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R6
+Date          05/06/2021 18:15:33 GMT
+byteread      2737298389
+bytewrit      1974182910
+Reads         1245893864
+Writes        1349514049
+timeread      2612368888
+timewrite     1025863920
+dataencrypted yes
+timeload      186680549
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R7 
+Date/Time: May 6, 2021 6:15:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R7
+Date          05/06/2021 18:15:33 GMT
+byteread      2725248497
+bytewrit      1977342722
+Reads         1189039767
+Writes        1328183521
+timeread      2627085054
+timewrite     1016258750
+dataencrypted yes
+timeload      191570250
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R8 
+Date/Time: May 6, 2021 6:15:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R8
+Date          05/06/2021 18:15:33 GMT
+byteread      2759726151
+bytewrit      1978442392
+Reads         1293601879
+Writes        1342192962
+timeread      2639461031
+timewrite     1020348270
+dataencrypted yes
+timeload      196395676
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R9 
+Date/Time: May 6, 2021 6:15:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R9
+Date          05/06/2021 18:15:33 GMT
+byteread      2728110379
+bytewrit      1977576931
+Reads         1210547269
+Writes        1299799141
+timeread      2608185170
+timewrite     1016372398
+dataencrypted yes
+timeload      182012925
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R10 
+Date/Time: May 6, 2021 6:15:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R10
+Date          05/06/2021 18:15:33 GMT
+byteread      2717255461
+bytewrit      1972007601
+Reads         1181386084
+Writes        1296169255
+timeread      2631580357
+timewrite     1015478255
+dataencrypted yes
+timeload      192377581
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R11 
+Date/Time: May 6, 2021 6:15:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R11
+Date          05/06/2021 18:15:34 GMT
+byteread      2764789113
+bytewrit      1977165537
+Reads         1321036919
+Writes        1341567770
+timeread      2632195151
+timewrite     1018336425
+dataencrypted yes
+timeload      193760638
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:15:34 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Date/Time: May 6, 2021 6:30:33 PM GMT IBM DSCLI Version: 7.8.55.22  DS: 
+IBM.2107-75KHP71
+
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:30:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R0 
+Date/Time: May 6, 2021 6:30:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R0
+Date          05/06/2021 18:30:33 GMT
+byteread      2713436328
+bytewrit      1976064579
+Reads         1173587482
+Writes        1338135675
+timeread      2608963474
+timewrite     1016014298
+dataencrypted yes
+timeload      182172947
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R1 
+Date/Time: May 6, 2021 6:30:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R1
+Date          05/06/2021 18:30:33 GMT
+byteread      2755576832
+bytewrit      1974578868
+Reads         1273603529
+Writes        1344925975
+timeread      2626560946
+timewrite     1014028237
+dataencrypted yes
+timeload      190882912
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R2 
+Date/Time: May 6, 2021 6:30:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R2
+Date          05/06/2021 18:30:33 GMT
+byteread      2744370745
+bytewrit      1967797500
+Reads         1249623774
+Writes        1290827945
+timeread      2637572516
+timewrite     1006588766
+dataencrypted yes
+timeload      190910558
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R3 
+Date/Time: May 6, 2021 6:30:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R3
+Date          05/06/2021 18:30:33 GMT
+byteread      2797823315
+bytewrit      1971213078
+Reads         1441418264
+Writes        1323632943
+timeread      2617893105
+timewrite     1015288524
+dataencrypted yes
+timeload      184303849
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R4 
+Date/Time: May 6, 2021 6:30:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R4
+Date          05/06/2021 18:30:33 GMT
+byteread      2728040048
+bytewrit      1970390133
+Reads         1222645283
+Writes        1273820151
+timeread      2633726054
+timewrite     1011089050
+dataencrypted yes
+timeload      191321841
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R5 
+Date/Time: May 6, 2021 6:30:33 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R5
+Date          05/06/2021 18:30:33 GMT
+byteread      2780166838
+bytewrit      1973640187
+Reads         1398375855
+Writes        1324495922
+timeread      2635290084
+timewrite     1016923291
+dataencrypted yes
+timeload      194067106
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R6 
+Date/Time: May 6, 2021 6:30:34 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R6
+Date          05/06/2021 18:30:34 GMT
+byteread      2737618845
+bytewrit      1974199234
+Reads         1246861711
+Writes        1349548559
+timeread      2612411216
+timewrite     1025871229
+dataencrypted yes
+timeload      186693239
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R7 
+Date/Time: May 6, 2021 6:30:34 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R7
+Date          05/06/2021 18:30:34 GMT
+byteread      2725565428
+bytewrit      1977358460
+Reads         1189997706
+Writes        1328219575
+timeread      2627128701
+timewrite     1016265886
+dataencrypted yes
+timeload      191583246
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R8 
+Date/Time: May 6, 2021 6:30:34 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R8
+Date          05/06/2021 18:30:34 GMT
+byteread      2760043251
+bytewrit      1978458262
+Reads         1294560162
+Writes        1342225398
+timeread      2639504717
+timewrite     1020355398
+dataencrypted yes
+timeload      196408661
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R9 
+Date/Time: May 6, 2021 6:30:34 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R9
+Date          05/06/2021 18:30:34 GMT
+byteread      2728430515
+bytewrit      1977591680
+Reads         1211514197
+Writes        1299833688
+timeread      2608228530
+timewrite     1016379295
+dataencrypted yes
+timeload      182025797
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R10 
+Date/Time: May 6, 2021 6:30:34 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R10
+Date          05/06/2021 18:30:34 GMT
+byteread      2717577395
+bytewrit      1972022857
+Reads         1182359116
+Writes        1296199860
+timeread      2631623988
+timewrite     1015485025
+dataencrypted yes
+timeload      192390433
+dscli> Command:showrank -metrics IBM.2107-75KHP71/R11 
+Date/Time: May 6, 2021 6:30:34 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID            IBM.2107-75KHP71/R11
+Date          05/06/2021 18:30:34 GMT
+byteread      2765109238
+bytewrit      1977182355
+Reads         1322004276
+Writes        1341604944
+timeread      2632238365
+timewrite     1018343984
+dataencrypted yes
+timeload      193773650
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:30:34 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> 

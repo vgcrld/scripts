@@ -1,0 +1,5500 @@
+Date/Time: May 6, 2021 6:00:27 PM GMT IBM DSCLI Version: 7.8.55.22  DS: 
+IBM.2107-75KHP71
+
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:00:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0000 
+Date/Time: May 6, 2021 6:00:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0000
+Date                    05/06/2021 18:00:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         875482647
+bytewrit (SCSI)         1117358295
+Reads (SCSI)            2628850229
+Writes (SCSI)           3968463172
+timeread (SCSI)         166627184
+timewrite (SCSI)        77838553
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       9
+CRCErr (FC)             2
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         32466
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(558.9 uW)
+RxPower(RDP)            -3.0 dBm(506.4 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3326.2 mV
+TxBiasCurrent(RDP)      7.614 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0001 
+Date/Time: May 6, 2021 6:00:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0001
+Date                    05/06/2021 18:00:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1408321453
+bytewrit (SCSI)         533872111
+Reads (SCSI)            36302740
+Writes (SCSI)           1071166330
+timeread (SCSI)         340150437
+timewrite (SCSI)        36191649
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       8100
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(567.1 uW)
+RxPower(RDP)            -3.3 dBm(462.8 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3316.3 mV
+TxBiasCurrent(RDP)      7.802 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0002 
+Date/Time: May 6, 2021 6:00:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0002
+Date                    05/06/2021 18:00:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1489667597
+bytewrit (SCSI)         547617083
+Reads (SCSI)            256368636
+Writes (SCSI)           1106440662
+timeread (SCSI)         344425062
+timewrite (SCSI)        36759413
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       12
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -3.2 dBm(480.8 uW)
+RxPower(RDP)            -2.5 dBm(566.2 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3296.9 mV
+TxBiasCurrent(RDP)      7.52 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0003 
+Date/Time: May 6, 2021 6:00:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0003
+Date                    05/06/2021 18:00:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -3.2 dBm(482.5 uW)
+RxPower(RDP)            -40.0 dBm(0.1 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3296.8 mV
+TxBiasCurrent(RDP)      7.488 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0030 
+Date/Time: May 6, 2021 6:00:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0030
+Date                    05/06/2021 18:00:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1534741540
+bytewrit (SCSI)         638256589
+Reads (SCSI)            993596010
+Writes (SCSI)           2672322824
+timeread (SCSI)         374881247
+timewrite (SCSI)        46275284
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       342869
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(533.3 uW)
+RxPower(RDP)            -2.6 dBm(547.0 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3319.8 mV
+TxBiasCurrent(RDP)      8.14 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0031 
+Date/Time: May 6, 2021 6:00:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0031
+Date                    05/06/2021 18:00:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1486153179
+bytewrit (SCSI)         548242427
+Reads (SCSI)            287306223
+Writes (SCSI)           1202353749
+timeread (SCSI)         473925908
+timewrite (SCSI)        37673188
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       79412
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         1
+SndBufZero (FC)         47852
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(535.9 uW)
+RxPower(RDP)            -3.3 dBm(466.7 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3311.0 mV
+TxBiasCurrent(RDP)      8.136 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0032 
+Date/Time: May 6, 2021 6:00:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0032
+Date                    05/06/2021 18:00:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(537.2 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3297.9 mV
+TxBiasCurrent(RDP)      8.15 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0033 
+Date/Time: May 6, 2021 6:00:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0033
+Date                    05/06/2021 18:00:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         234518
+byteread (PPRC)         2938441
+Writes (PPRC)           814915
+Reads (PPRC)            10037067
+timewrite (PPRC)        227564
+timeread (PPRC)         159755
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         1
+SndBufZero (FC)         7
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(537.0 uW)
+RxPower(RDP)            -3.1 dBm(491.9 uW)
+TransceiverTemp(RDP)    33 C
+SupplyVolt(RDP)         3331.4 mV
+TxBiasCurrent(RDP)      8.142 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0100 
+Date/Time: May 6, 2021 6:00:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0100
+Date                    05/06/2021 18:00:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         887820442
+bytewrit (SCSI)         1139969763
+Reads (SCSI)            3052401053
+Writes (SCSI)           429204613
+timeread (SCSI)         164187041
+timewrite (SCSI)        81498402
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       625713
+CRCErr (FC)             14
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         32071
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(556.5 uW)
+RxPower(RDP)            -2.2 dBm(602.6 uW)
+TransceiverTemp(RDP)    33 C
+SupplyVolt(RDP)         3320.7 mV
+TxBiasCurrent(RDP)      8.144 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0101 
+Date/Time: May 6, 2021 6:00:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0101
+Date                    05/06/2021 18:00:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1448164266
+bytewrit (SCSI)         554853884
+Reads (SCSI)            176433479
+Writes (SCSI)           1520235363
+timeread (SCSI)         466016647
+timewrite (SCSI)        39348522
+LinkFailErr (FC)        3
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       232982
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         47179
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(539.1 uW)
+RxPower(RDP)            -2.3 dBm(592.0 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3346.0 mV
+TxBiasCurrent(RDP)      8.126 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0102 
+Date/Time: May 6, 2021 6:00:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0102
+Date                    05/06/2021 18:00:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1284306981
+bytewrit (SCSI)         568535067
+Reads (SCSI)            3816844369
+Writes (SCSI)           1961821226
+timeread (SCSI)         282038268
+timewrite (SCSI)        40936962
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       131387
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(549.6 uW)
+RxPower(RDP)            -2.6 dBm(543.7 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3319.6 mV
+TxBiasCurrent(RDP)      8.15 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0103 
+Date/Time: May 6, 2021 6:00:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0103
+Date                    05/06/2021 18:00:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(543.1 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3311.3 mV
+TxBiasCurrent(RDP)      8.19 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0130 
+Date/Time: May 6, 2021 6:00:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0130
+Date                    05/06/2021 18:00:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1493953025
+bytewrit (SCSI)         566331408
+Reads (SCSI)            265603255
+Writes (SCSI)           1715168814
+timeread (SCSI)         356040862
+timewrite (SCSI)        39763564
+LinkFailErr (FC)        3
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       104986
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         2
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(544.5 uW)
+RxPower(RDP)            -2.6 dBm(544.6 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3326.3 mV
+TxBiasCurrent(RDP)      8.138 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0131 
+Date/Time: May 6, 2021 6:00:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0131
+Date                    05/06/2021 18:00:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1407793072
+bytewrit (SCSI)         550399749
+Reads (SCSI)            107324105
+Writes (SCSI)           1237898452
+timeread (SCSI)         349467423
+timewrite (SCSI)        37059040
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       87931
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(552.2 uW)
+RxPower(RDP)            -2.5 dBm(562.8 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3329.0 mV
+TxBiasCurrent(RDP)      8.134 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0132 
+Date/Time: May 6, 2021 6:00:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0132
+Date                    05/06/2021 18:00:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(531.4 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3317.0 mV
+TxBiasCurrent(RDP)      8.204 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0133 
+Date/Time: May 6, 2021 6:00:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0133
+Date                    05/06/2021 18:00:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         240845
+byteread (PPRC)         2952597
+Writes (PPRC)           832193
+Reads (PPRC)            10078478
+timewrite (PPRC)        242121
+timeread (PPRC)         159936
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         6
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(540.1 uW)
+RxPower(RDP)            -2.9 dBm(513.8 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3335.9 mV
+TxBiasCurrent(RDP)      8.13 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0200 
+Date/Time: May 6, 2021 6:00:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0200
+Date                    05/06/2021 18:00:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         877639452
+bytewrit (SCSI)         1118153763
+Reads (SCSI)            2615279439
+Writes (SCSI)           3965166978
+timeread (SCSI)         166440948
+timewrite (SCSI)        77716142
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       7
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         32428
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.8 dBm(522.7 uW)
+RxPower(RDP)            -2.9 dBm(509.1 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3374.2 mV
+TxBiasCurrent(RDP)      7.61 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0201 
+Date/Time: May 6, 2021 6:00:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0201
+Date                    05/06/2021 18:00:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1435716597
+bytewrit (SCSI)         538743618
+Reads (SCSI)            189675981
+Writes (SCSI)           1119942105
+timeread (SCSI)         341944580
+timewrite (SCSI)        36479196
+LinkFailErr (FC)        3
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       15615
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.8 dBm(526.9 uW)
+RxPower(RDP)            -3.3 dBm(471.3 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3367.7 mV
+TxBiasCurrent(RDP)      7.368 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0202 
+Date/Time: May 6, 2021 6:00:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0202
+Date                    05/06/2021 18:00:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1409906640
+bytewrit (SCSI)         534188974
+Reads (SCSI)            39827725
+Writes (SCSI)           1025845144
+timeread (SCSI)         338179896
+timewrite (SCSI)        35970744
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       10
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.8 uW)
+RxPower(RDP)            -2.7 dBm(537.3 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3365.5 mV
+TxBiasCurrent(RDP)      7.628 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0203 
+Date/Time: May 6, 2021 6:00:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0203
+Date                    05/06/2021 18:00:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(538.4 uW)
+RxPower(RDP)            -29.6 dBm(1.1 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3377.4 mV
+TxBiasCurrent(RDP)      7.7 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0230 
+Date/Time: May 6, 2021 6:00:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0230
+Date                    05/06/2021 18:00:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1530407455
+bytewrit (SCSI)         639314278
+Reads (SCSI)            916678371
+Writes (SCSI)           2675033831
+timeread (SCSI)         373814739
+timewrite (SCSI)        46204865
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       137783
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(547.6 uW)
+RxPower(RDP)            -3.1 dBm(485.1 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3326.5 mV
+TxBiasCurrent(RDP)      8.134 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0231 
+Date/Time: May 6, 2021 6:00:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0231
+Date                    05/06/2021 18:00:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1410395692
+bytewrit (SCSI)         534611491
+Reads (SCSI)            73009664
+Writes (SCSI)           1117687472
+timeread (SCSI)         466688078
+timewrite (SCSI)        36839187
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       69
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         46022
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.6 uW)
+RxPower(RDP)            -2.5 dBm(565.1 uW)
+TransceiverTemp(RDP)    33 C
+SupplyVolt(RDP)         3335.2 mV
+TxBiasCurrent(RDP)      8.068 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0232 
+Date/Time: May 6, 2021 6:00:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0232
+Date                    05/06/2021 18:00:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(533.7 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3323.2 mV
+TxBiasCurrent(RDP)      8.13 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0233 
+Date/Time: May 6, 2021 6:00:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0233
+Date                    05/06/2021 18:00:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         242443
+byteread (PPRC)         2995035
+Writes (PPRC)           838038
+Reads (PPRC)            10143087
+timewrite (PPRC)        221028
+timeread (PPRC)         164633
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         1
+SndBufZero (FC)         5
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(541.5 uW)
+RxPower(RDP)            -3.3 dBm(463.2 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3321.9 mV
+TxBiasCurrent(RDP)      8.142 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0300 
+Date/Time: May 6, 2021 6:00:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0300
+Date                    05/06/2021 18:00:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         801602624
+bytewrit (SCSI)         1114363192
+Reads (SCSI)            2778778885
+Writes (SCSI)           243935394
+timeread (SCSI)         161121458
+timewrite (SCSI)        79507791
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       97808
+CRCErr (FC)             1
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         31207
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.3 uW)
+RxPower(RDP)            -1.9 dBm(639.4 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3372.0 mV
+TxBiasCurrent(RDP)      7.57 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0301 
+Date/Time: May 6, 2021 6:00:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0301
+Date                    05/06/2021 18:00:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1447244772
+bytewrit (SCSI)         558034172
+Reads (SCSI)            114565776
+Writes (SCSI)           1561085135
+timeread (SCSI)         464801837
+timewrite (SCSI)        39520309
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       86622
+CRCErr (FC)             2
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         47300
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(539.9 uW)
+RxPower(RDP)            -2.5 dBm(565.2 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3374.2 mV
+TxBiasCurrent(RDP)      7.754 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0302 
+Date/Time: May 6, 2021 6:00:31 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0302
+Date                    05/06/2021 18:00:31 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1312741069
+bytewrit (SCSI)         573610376
+Reads (SCSI)            3982825305
+Writes (SCSI)           2025188320
+timeread (SCSI)         283562026
+timewrite (SCSI)        41262078
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       31585
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -3.0 dBm(496.2 uW)
+RxPower(RDP)            -4.0 dBm(398.6 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3309.5 mV
+TxBiasCurrent(RDP)      7.61 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0303 
+Date/Time: May 6, 2021 6:00:31 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0303
+Date                    05/06/2021 18:00:31 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.9 dBm(511.3 uW)
+RxPower(RDP)            -30.5 dBm(0.9 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3309.5 mV
+TxBiasCurrent(RDP)      7.658 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0330 
+Date/Time: May 6, 2021 6:00:31 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0330
+Date                    05/06/2021 18:00:31 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1416353372
+bytewrit (SCSI)         554094189
+Reads (SCSI)            70812155
+Writes (SCSI)           1656233938
+timeread (SCSI)         349629690
+timewrite (SCSI)        39007527
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       275730
+CRCErr (FC)             3
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.2 uW)
+RxPower(RDP)            -2.3 dBm(589.1 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3338.6 mV
+TxBiasCurrent(RDP)      8.186 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0331 
+Date/Time: May 6, 2021 6:00:31 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0331
+Date                    05/06/2021 18:00:31 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1396825331
+bytewrit (SCSI)         553549438
+Reads (SCSI)            25521331
+Writes (SCSI)           1278494366
+timeread (SCSI)         332965358
+timewrite (SCSI)        37163548
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       118558
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(561.2 uW)
+RxPower(RDP)            -2.5 dBm(558.3 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3337.4 mV
+TxBiasCurrent(RDP)      8.14 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0332 
+Date/Time: May 6, 2021 6:00:31 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0332
+Date                    05/06/2021 18:00:31 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.8 dBm(530.5 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    41 C
+SupplyVolt(RDP)         3344.4 mV
+TxBiasCurrent(RDP)      8.18 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0333 
+Date/Time: May 6, 2021 6:00:31 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0333
+Date                    05/06/2021 18:00:31 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         245610
+byteread (PPRC)         3006878
+Writes (PPRC)           847098
+Reads (PPRC)            10175962
+timewrite (PPRC)        232397
+timeread (PPRC)         164683
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         4
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(545.6 uW)
+RxPower(RDP)            -3.2 dBm(483.8 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3346.8 mV
+TxBiasCurrent(RDP)      8.144 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:00:31 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Date/Time: May 6, 2021 6:15:26 PM GMT IBM DSCLI Version: 7.8.55.22  DS: 
+IBM.2107-75KHP71
+
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:15:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0000 
+Date/Time: May 6, 2021 6:15:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0000
+Date                    05/06/2021 18:15:26 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         875483701
+bytewrit (SCSI)         1117363199
+Reads (SCSI)            2628866056
+Writes (SCSI)           3968535628
+timeread (SCSI)         166627222
+timewrite (SCSI)        77838972
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       9
+CRCErr (FC)             2
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         32466
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(558.9 uW)
+RxPower(RDP)            -3.0 dBm(506.4 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3326.2 mV
+TxBiasCurrent(RDP)      7.614 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0001 
+Date/Time: May 6, 2021 6:15:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0001
+Date                    05/06/2021 18:15:26 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1408340276
+bytewrit (SCSI)         533881391
+Reads (SCSI)            36351288
+Writes (SCSI)           1071259981
+timeread (SCSI)         340151061
+timewrite (SCSI)        36192291
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       8100
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(567.1 uW)
+RxPower(RDP)            -3.3 dBm(462.8 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3316.3 mV
+TxBiasCurrent(RDP)      7.802 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0002 
+Date/Time: May 6, 2021 6:15:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0002
+Date                    05/06/2021 18:15:26 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1489687129
+bytewrit (SCSI)         547625701
+Reads (SCSI)            256419166
+Writes (SCSI)           1106527641
+timeread (SCSI)         344425748
+timewrite (SCSI)        36759990
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       12
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -3.2 dBm(480.8 uW)
+RxPower(RDP)            -2.5 dBm(566.2 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3296.9 mV
+TxBiasCurrent(RDP)      7.52 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0003 
+Date/Time: May 6, 2021 6:15:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0003
+Date                    05/06/2021 18:15:26 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -3.1 dBm(485.9 uW)
+RxPower(RDP)            -40.0 dBm(0.1 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3293.6 mV
+TxBiasCurrent(RDP)      7.488 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0030 
+Date/Time: May 6, 2021 6:15:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0030
+Date                    05/06/2021 18:15:26 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1534761375
+bytewrit (SCSI)         638268108
+Reads (SCSI)            993647750
+Writes (SCSI)           2672438913
+timeread (SCSI)         374881932
+timewrite (SCSI)        46276063
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       342869
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(533.3 uW)
+RxPower(RDP)            -2.6 dBm(547.0 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3319.8 mV
+TxBiasCurrent(RDP)      8.14 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0031 
+Date/Time: May 6, 2021 6:15:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0031
+Date                    05/06/2021 18:15:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1486171930
+bytewrit (SCSI)         548250680
+Reads (SCSI)            287352697
+Writes (SCSI)           1202440810
+timeread (SCSI)         473926527
+timewrite (SCSI)        37673766
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       79412
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         1
+SndBufZero (FC)         47852
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(535.9 uW)
+RxPower(RDP)            -3.3 dBm(466.7 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3311.0 mV
+TxBiasCurrent(RDP)      8.136 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0032 
+Date/Time: May 6, 2021 6:15:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0032
+Date                    05/06/2021 18:15:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(537.9 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3299.0 mV
+TxBiasCurrent(RDP)      8.156 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0033 
+Date/Time: May 6, 2021 6:15:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0033
+Date                    05/06/2021 18:15:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         234518
+byteread (PPRC)         2938441
+Writes (PPRC)           814915
+Reads (PPRC)            10037073
+timewrite (PPRC)        227564
+timeread (PPRC)         159755
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         1
+SndBufZero (FC)         7
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(537.0 uW)
+RxPower(RDP)            -3.1 dBm(491.9 uW)
+TransceiverTemp(RDP)    33 C
+SupplyVolt(RDP)         3331.4 mV
+TxBiasCurrent(RDP)      8.142 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0100 
+Date/Time: May 6, 2021 6:15:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0100
+Date                    05/06/2021 18:15:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         887821502
+bytewrit (SCSI)         1139974613
+Reads (SCSI)            3052416327
+Writes (SCSI)           429290764
+timeread (SCSI)         164187078
+timewrite (SCSI)        81498876
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       625713
+CRCErr (FC)             14
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         32071
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(556.5 uW)
+RxPower(RDP)            -2.2 dBm(602.6 uW)
+TransceiverTemp(RDP)    33 C
+SupplyVolt(RDP)         3320.7 mV
+TxBiasCurrent(RDP)      8.144 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0101 
+Date/Time: May 6, 2021 6:15:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0101
+Date                    05/06/2021 18:15:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1448183650
+bytewrit (SCSI)         554863543
+Reads (SCSI)            176480853
+Writes (SCSI)           1520360746
+timeread (SCSI)         466017323
+timewrite (SCSI)        39349295
+LinkFailErr (FC)        3
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       232982
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         47179
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(539.1 uW)
+RxPower(RDP)            -2.3 dBm(592.0 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3346.0 mV
+TxBiasCurrent(RDP)      8.126 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0102 
+Date/Time: May 6, 2021 6:15:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0102
+Date                    05/06/2021 18:15:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1284326298
+bytewrit (SCSI)         568545448
+Reads (SCSI)            3816895101
+Writes (SCSI)           1961935486
+timeread (SCSI)         282038952
+timewrite (SCSI)        40937709
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       131387
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(549.6 uW)
+RxPower(RDP)            -2.6 dBm(543.7 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3319.6 mV
+TxBiasCurrent(RDP)      8.15 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0103 
+Date/Time: May 6, 2021 6:15:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0103
+Date                    05/06/2021 18:15:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(544.1 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3311.1 mV
+TxBiasCurrent(RDP)      8.19 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0130 
+Date/Time: May 6, 2021 6:15:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0130
+Date                    05/06/2021 18:15:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1493971790
+bytewrit (SCSI)         566340911
+Reads (SCSI)            265650384
+Writes (SCSI)           1715271190
+timeread (SCSI)         356041499
+timewrite (SCSI)        39764234
+LinkFailErr (FC)        3
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       104986
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         2
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(544.5 uW)
+RxPower(RDP)            -2.6 dBm(544.6 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3326.3 mV
+TxBiasCurrent(RDP)      8.138 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0131 
+Date/Time: May 6, 2021 6:15:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0131
+Date                    05/06/2021 18:15:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1407812706
+bytewrit (SCSI)         550408960
+Reads (SCSI)            107374500
+Writes (SCSI)           1237993363
+timeread (SCSI)         349468120
+timewrite (SCSI)        37059685
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       87931
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(552.2 uW)
+RxPower(RDP)            -2.5 dBm(562.8 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3329.0 mV
+TxBiasCurrent(RDP)      8.134 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0132 
+Date/Time: May 6, 2021 6:15:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0132
+Date                    05/06/2021 18:15:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(531.1 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3316.1 mV
+TxBiasCurrent(RDP)      8.206 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0133 
+Date/Time: May 6, 2021 6:15:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0133
+Date                    05/06/2021 18:15:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         240845
+byteread (PPRC)         2952597
+Writes (PPRC)           832193
+Reads (PPRC)            10078484
+timewrite (PPRC)        242121
+timeread (PPRC)         159936
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         6
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(540.1 uW)
+RxPower(RDP)            -2.9 dBm(513.8 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3335.9 mV
+TxBiasCurrent(RDP)      8.13 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0200 
+Date/Time: May 6, 2021 6:15:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0200
+Date                    05/06/2021 18:15:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         877640531
+bytewrit (SCSI)         1118158655
+Reads (SCSI)            2615295264
+Writes (SCSI)           3965238784
+timeread (SCSI)         166440985
+timewrite (SCSI)        77716557
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       7
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         32428
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.8 dBm(522.7 uW)
+RxPower(RDP)            -2.9 dBm(509.1 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3374.2 mV
+TxBiasCurrent(RDP)      7.61 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0201 
+Date/Time: May 6, 2021 6:15:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0201
+Date                    05/06/2021 18:15:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1435735281
+bytewrit (SCSI)         538753405
+Reads (SCSI)            189723924
+Writes (SCSI)           1120036405
+timeread (SCSI)         341945216
+timewrite (SCSI)        36479861
+LinkFailErr (FC)        3
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       15615
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.8 dBm(526.9 uW)
+RxPower(RDP)            -3.3 dBm(471.3 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3367.7 mV
+TxBiasCurrent(RDP)      7.368 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0202 
+Date/Time: May 6, 2021 6:15:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0202
+Date                    05/06/2021 18:15:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1409925744
+bytewrit (SCSI)         534197763
+Reads (SCSI)            39878300
+Writes (SCSI)           1025931839
+timeread (SCSI)         338180565
+timewrite (SCSI)        35971329
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       10
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.8 uW)
+RxPower(RDP)            -2.7 dBm(537.3 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3365.5 mV
+TxBiasCurrent(RDP)      7.628 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0203 
+Date/Time: May 6, 2021 6:15:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0203
+Date                    05/06/2021 18:15:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(535.0 uW)
+RxPower(RDP)            -37.0 dBm(0.2 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3377.4 mV
+TxBiasCurrent(RDP)      7.67 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0230 
+Date/Time: May 6, 2021 6:15:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0230
+Date                    05/06/2021 18:15:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1530427001
+bytewrit (SCSI)         639326172
+Reads (SCSI)            916729195
+Writes (SCSI)           2675152694
+timeread (SCSI)         373815419
+timewrite (SCSI)        46205668
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       137783
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(547.6 uW)
+RxPower(RDP)            -3.1 dBm(485.1 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3326.5 mV
+TxBiasCurrent(RDP)      8.134 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0231 
+Date/Time: May 6, 2021 6:15:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0231
+Date                    05/06/2021 18:15:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1410414485
+bytewrit (SCSI)         534620207
+Reads (SCSI)            73055831
+Writes (SCSI)           1117774971
+timeread (SCSI)         466688677
+timewrite (SCSI)        36839780
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       69
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         46022
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.6 uW)
+RxPower(RDP)            -2.5 dBm(565.1 uW)
+TransceiverTemp(RDP)    33 C
+SupplyVolt(RDP)         3335.2 mV
+TxBiasCurrent(RDP)      8.068 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0232 
+Date/Time: May 6, 2021 6:15:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0232
+Date                    05/06/2021 18:15:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(533.6 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3323.2 mV
+TxBiasCurrent(RDP)      8.134 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0233 
+Date/Time: May 6, 2021 6:15:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0233
+Date                    05/06/2021 18:15:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         242443
+byteread (PPRC)         2995035
+Writes (PPRC)           838038
+Reads (PPRC)            10143092
+timewrite (PPRC)        221028
+timeread (PPRC)         164633
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         1
+SndBufZero (FC)         5
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(541.5 uW)
+RxPower(RDP)            -3.3 dBm(463.2 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3321.9 mV
+TxBiasCurrent(RDP)      8.142 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0300 
+Date/Time: May 6, 2021 6:15:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0300
+Date                    05/06/2021 18:15:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         801603688
+bytewrit (SCSI)         1114367989
+Reads (SCSI)            2778794454
+Writes (SCSI)           244020813
+timeread (SCSI)         161121495
+timewrite (SCSI)        79508261
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       97808
+CRCErr (FC)             1
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         31207
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.3 uW)
+RxPower(RDP)            -1.9 dBm(639.4 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3372.0 mV
+TxBiasCurrent(RDP)      7.57 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0301 
+Date/Time: May 6, 2021 6:15:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0301
+Date                    05/06/2021 18:15:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1447263963
+bytewrit (SCSI)         558044407
+Reads (SCSI)            114613976
+Writes (SCSI)           1561213943
+timeread (SCSI)         464802476
+timewrite (SCSI)        39521114
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       86622
+CRCErr (FC)             2
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         47300
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(539.9 uW)
+RxPower(RDP)            -2.5 dBm(565.2 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3374.2 mV
+TxBiasCurrent(RDP)      7.754 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0302 
+Date/Time: May 6, 2021 6:15:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0302
+Date                    05/06/2021 18:15:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1312760119
+bytewrit (SCSI)         573621332
+Reads (SCSI)            3982875489
+Writes (SCSI)           2025304142
+timeread (SCSI)         283562703
+timewrite (SCSI)        41262849
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       31585
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -3.0 dBm(496.2 uW)
+RxPower(RDP)            -4.0 dBm(398.6 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3309.5 mV
+TxBiasCurrent(RDP)      7.61 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0303 
+Date/Time: May 6, 2021 6:15:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0303
+Date                    05/06/2021 18:15:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.9 dBm(510.4 uW)
+RxPower(RDP)            -30.5 dBm(0.9 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3309.5 mV
+TxBiasCurrent(RDP)      7.658 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0330 
+Date/Time: May 6, 2021 6:15:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0330
+Date                    05/06/2021 18:15:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1416371540
+bytewrit (SCSI)         554103460
+Reads (SCSI)            70858623
+Writes (SCSI)           1656335805
+timeread (SCSI)         349630299
+timewrite (SCSI)        39008186
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       275730
+CRCErr (FC)             3
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.2 uW)
+RxPower(RDP)            -2.3 dBm(589.1 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3338.6 mV
+TxBiasCurrent(RDP)      8.186 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0331 
+Date/Time: May 6, 2021 6:15:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0331
+Date                    05/06/2021 18:15:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1396845210
+bytewrit (SCSI)         553558695
+Reads (SCSI)            25572526
+Writes (SCSI)           1278591129
+timeread (SCSI)         332966049
+timewrite (SCSI)        37164199
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       118558
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(561.2 uW)
+RxPower(RDP)            -2.5 dBm(558.3 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3337.4 mV
+TxBiasCurrent(RDP)      8.14 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0332 
+Date/Time: May 6, 2021 6:15:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0332
+Date                    05/06/2021 18:15:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.8 dBm(530.3 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    41 C
+SupplyVolt(RDP)         3344.7 mV
+TxBiasCurrent(RDP)      8.176 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0333 
+Date/Time: May 6, 2021 6:15:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0333
+Date                    05/06/2021 18:15:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         245610
+byteread (PPRC)         3006878
+Writes (PPRC)           847098
+Reads (PPRC)            10175966
+timewrite (PPRC)        232397
+timeread (PPRC)         164683
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         4
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(545.6 uW)
+RxPower(RDP)            -3.2 dBm(483.8 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3346.8 mV
+TxBiasCurrent(RDP)      8.144 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:15:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Date/Time: May 6, 2021 6:30:26 PM GMT IBM DSCLI Version: 7.8.55.22  DS: 
+IBM.2107-75KHP71
+
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:30:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0000 
+Date/Time: May 6, 2021 6:30:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0000
+Date                    05/06/2021 18:30:26 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         875485001
+bytewrit (SCSI)         1117367016
+Reads (SCSI)            2628881494
+Writes (SCSI)           3968595137
+timeread (SCSI)         166627280
+timewrite (SCSI)        77839316
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       9
+CRCErr (FC)             2
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         32466
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(558.9 uW)
+RxPower(RDP)            -3.0 dBm(506.4 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3326.2 mV
+TxBiasCurrent(RDP)      7.614 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0001 
+Date/Time: May 6, 2021 6:30:26 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0001
+Date                    05/06/2021 18:30:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1408561667
+bytewrit (SCSI)         533898620
+Reads (SCSI)            36672740
+Writes (SCSI)           1071434367
+timeread (SCSI)         340161930
+timewrite (SCSI)        36193422
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       8100
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(567.1 uW)
+RxPower(RDP)            -3.3 dBm(462.8 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3316.3 mV
+TxBiasCurrent(RDP)      7.802 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0002 
+Date/Time: May 6, 2021 6:30:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0002
+Date                    05/06/2021 18:30:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1489916238
+bytewrit (SCSI)         547643652
+Reads (SCSI)            256750158
+Writes (SCSI)           1106731585
+timeread (SCSI)         344438141
+timewrite (SCSI)        36761273
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       12
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -3.2 dBm(480.8 uW)
+RxPower(RDP)            -2.5 dBm(566.2 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3296.9 mV
+TxBiasCurrent(RDP)      7.52 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0003 
+Date/Time: May 6, 2021 6:30:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0003
+Date                    05/06/2021 18:30:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -3.2 dBm(480.3 uW)
+RxPower(RDP)            -40.0 dBm(0.1 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3296.8 mV
+TxBiasCurrent(RDP)      7.518 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0030 
+Date/Time: May 6, 2021 6:30:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0030
+Date                    05/06/2021 18:30:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1535002456
+bytewrit (SCSI)         638288878
+Reads (SCSI)            993999261
+Writes (SCSI)           2672638304
+timeread (SCSI)         374895261
+timewrite (SCSI)        46277422
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       342869
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(533.3 uW)
+RxPower(RDP)            -2.6 dBm(547.0 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3319.8 mV
+TxBiasCurrent(RDP)      8.14 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0031 
+Date/Time: May 6, 2021 6:30:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0031
+Date                    05/06/2021 18:30:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1486398280
+bytewrit (SCSI)         548267020
+Reads (SCSI)            287680192
+Writes (SCSI)           1202607703
+timeread (SCSI)         473937482
+timewrite (SCSI)        37674849
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       79412
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         1
+SndBufZero (FC)         47852
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(535.9 uW)
+RxPower(RDP)            -3.3 dBm(466.7 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3311.0 mV
+TxBiasCurrent(RDP)      8.136 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0032 
+Date/Time: May 6, 2021 6:30:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0032
+Date                    05/06/2021 18:30:27 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(536.7 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3298.6 mV
+TxBiasCurrent(RDP)      8.156 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0033 
+Date/Time: May 6, 2021 6:30:27 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0033
+Date                    05/06/2021 18:30:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         234518
+byteread (PPRC)         2938441
+Writes (PPRC)           814915
+Reads (PPRC)            10037077
+timewrite (PPRC)        227564
+timeread (PPRC)         159755
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         1
+SndBufZero (FC)         7
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(537.0 uW)
+RxPower(RDP)            -3.1 dBm(491.9 uW)
+TransceiverTemp(RDP)    33 C
+SupplyVolt(RDP)         3331.4 mV
+TxBiasCurrent(RDP)      8.142 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0100 
+Date/Time: May 6, 2021 6:30:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0100
+Date                    05/06/2021 18:30:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         887822918
+bytewrit (SCSI)         1139978387
+Reads (SCSI)            3052432118
+Writes (SCSI)           429352213
+timeread (SCSI)         164187139
+timewrite (SCSI)        81499228
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       625713
+CRCErr (FC)             14
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         32071
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.5 dBm(556.5 uW)
+RxPower(RDP)            -2.2 dBm(602.6 uW)
+TransceiverTemp(RDP)    33 C
+SupplyVolt(RDP)         3320.7 mV
+TxBiasCurrent(RDP)      8.144 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0101 
+Date/Time: May 6, 2021 6:30:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0101
+Date                    05/06/2021 18:30:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1448411105
+bytewrit (SCSI)         554881918
+Reads (SCSI)            176812990
+Writes (SCSI)           1520583867
+timeread (SCSI)         466029911
+timewrite (SCSI)        39350673
+LinkFailErr (FC)        3
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       232982
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         47179
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        1 Dedicated
+TxPower(RDP)            -2.7 dBm(539.1 uW)
+RxPower(RDP)            -2.3 dBm(592.0 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3346.0 mV
+TxBiasCurrent(RDP)      8.126 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0102 
+Date/Time: May 6, 2021 6:30:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0102
+Date                    05/06/2021 18:30:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1284549667
+bytewrit (SCSI)         568567074
+Reads (SCSI)            3817220768
+Writes (SCSI)           1962153997
+timeread (SCSI)         282049870
+timewrite (SCSI)        40939187
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       131387
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        1 Dedicated
+TxPower(RDP)            -2.6 dBm(549.6 uW)
+RxPower(RDP)            -2.6 dBm(543.7 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3319.6 mV
+TxBiasCurrent(RDP)      8.15 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0103 
+Date/Time: May 6, 2021 6:30:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0103
+Date                    05/06/2021 18:30:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(543.7 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3311.1 mV
+TxBiasCurrent(RDP)      8.192 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0130 
+Date/Time: May 6, 2021 6:30:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0130
+Date                    05/06/2021 18:30:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1494198555
+bytewrit (SCSI)         566357963
+Reads (SCSI)            265979357
+Writes (SCSI)           1715448078
+timeread (SCSI)         356052250
+timewrite (SCSI)        39765371
+LinkFailErr (FC)        3
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       104986
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         2
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(544.5 uW)
+RxPower(RDP)            -2.6 dBm(544.6 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3326.3 mV
+TxBiasCurrent(RDP)      8.138 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0131 
+Date/Time: May 6, 2021 6:30:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0131
+Date                    05/06/2021 18:30:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1408044289
+bytewrit (SCSI)         550424677
+Reads (SCSI)            107711105
+Writes (SCSI)           1238157131
+timeread (SCSI)         349480753
+timewrite (SCSI)        37060734
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       87931
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(552.2 uW)
+RxPower(RDP)            -2.5 dBm(562.8 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3329.0 mV
+TxBiasCurrent(RDP)      8.134 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0132 
+Date/Time: May 6, 2021 6:30:28 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0132
+Date                    05/06/2021 18:30:28 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(531.0 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3318.0 mV
+TxBiasCurrent(RDP)      8.214 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0133 
+Date/Time: May 6, 2021 6:30:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0133
+Date                    05/06/2021 18:30:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         240845
+byteread (PPRC)         2952597
+Writes (PPRC)           832193
+Reads (PPRC)            10078485
+timewrite (PPRC)        242121
+timeread (PPRC)         159936
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         6
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(540.1 uW)
+RxPower(RDP)            -2.9 dBm(513.8 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3335.9 mV
+TxBiasCurrent(RDP)      8.13 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0200 
+Date/Time: May 6, 2021 6:30:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0200
+Date                    05/06/2021 18:30:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         877641834
+bytewrit (SCSI)         1118162513
+Reads (SCSI)            2615310126
+Writes (SCSI)           3965299185
+timeread (SCSI)         166441077
+timewrite (SCSI)        77716906
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       7
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         32428
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        1 Dedicated
+TxPower(RDP)            -2.8 dBm(522.7 uW)
+RxPower(RDP)            -2.9 dBm(509.1 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3374.2 mV
+TxBiasCurrent(RDP)      7.61 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0201 
+Date/Time: May 6, 2021 6:30:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0201
+Date                    05/06/2021 18:30:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1435958283
+bytewrit (SCSI)         538770407
+Reads (SCSI)            190047379
+Writes (SCSI)           1120212312
+timeread (SCSI)         341956225
+timewrite (SCSI)        36480989
+LinkFailErr (FC)        3
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       15615
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        1 Dedicated
+TxPower(RDP)            -2.8 dBm(526.9 uW)
+RxPower(RDP)            -3.3 dBm(471.3 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3367.7 mV
+TxBiasCurrent(RDP)      7.368 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0202 
+Date/Time: May 6, 2021 6:30:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0202
+Date                    05/06/2021 18:30:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1410154069
+bytewrit (SCSI)         534215346
+Reads (SCSI)            40208495
+Writes (SCSI)           1026136268
+timeread (SCSI)         338192809
+timewrite (SCSI)        35972600
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       10
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        1 Dedicated
+TxPower(RDP)            -2.7 dBm(534.8 uW)
+RxPower(RDP)            -2.7 dBm(537.3 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3365.5 mV
+TxBiasCurrent(RDP)      7.628 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0203 
+Date/Time: May 6, 2021 6:30:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0203
+Date                    05/06/2021 18:30:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(537.3 uW)
+RxPower(RDP)            -29.6 dBm(1.1 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3377.4 mV
+TxBiasCurrent(RDP)      7.7 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0230 
+Date/Time: May 6, 2021 6:30:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0230
+Date                    05/06/2021 18:30:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1530667753
+bytewrit (SCSI)         639347042
+Reads (SCSI)            917080724
+Writes (SCSI)           2675356533
+timeread (SCSI)         373828809
+timewrite (SCSI)        46207035
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       137783
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        1 Dedicated
+TxPower(RDP)            -2.6 dBm(547.6 uW)
+RxPower(RDP)            -3.1 dBm(485.1 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3326.5 mV
+TxBiasCurrent(RDP)      8.134 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0231 
+Date/Time: May 6, 2021 6:30:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0231
+Date                    05/06/2021 18:30:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1410638676
+bytewrit (SCSI)         534635700
+Reads (SCSI)            73380810
+Writes (SCSI)           1117938094
+timeread (SCSI)         466699458
+timewrite (SCSI)        36840820
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       69
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         46022
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.6 uW)
+RxPower(RDP)            -2.5 dBm(565.1 uW)
+TransceiverTemp(RDP)    33 C
+SupplyVolt(RDP)         3335.2 mV
+TxBiasCurrent(RDP)      8.068 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0232 
+Date/Time: May 6, 2021 6:30:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0232
+Date                    05/06/2021 18:30:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(533.3 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3323.0 mV
+TxBiasCurrent(RDP)      8.122 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0233 
+Date/Time: May 6, 2021 6:30:29 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0233
+Date                    05/06/2021 18:30:29 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         242443
+byteread (PPRC)         2995035
+Writes (PPRC)           838038
+Reads (PPRC)            10143096
+timewrite (PPRC)        221028
+timeread (PPRC)         164633
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         1
+SndBufZero (FC)         5
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(541.5 uW)
+RxPower(RDP)            -3.3 dBm(463.2 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3321.9 mV
+TxBiasCurrent(RDP)      8.142 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0300 
+Date/Time: May 6, 2021 6:30:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0300
+Date                    05/06/2021 18:30:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         801605076
+bytewrit (SCSI)         1114371711
+Reads (SCSI)            2778809401
+Writes (SCSI)           244081898
+timeread (SCSI)         161121580
+timewrite (SCSI)        79508609
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       97808
+CRCErr (FC)             1
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         31207
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.3 uW)
+RxPower(RDP)            -1.9 dBm(639.4 uW)
+TransceiverTemp(RDP)    36 C
+SupplyVolt(RDP)         3372.0 mV
+TxBiasCurrent(RDP)      7.57 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0301 
+Date/Time: May 6, 2021 6:30:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0301
+Date                    05/06/2021 18:30:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1447490973
+bytewrit (SCSI)         558062649
+Reads (SCSI)            114946334
+Writes (SCSI)           1561439394
+timeread (SCSI)         464814965
+timewrite (SCSI)        39522496
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       86622
+CRCErr (FC)             2
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         47300
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        1 Dedicated
+TxPower(RDP)            -2.7 dBm(539.9 uW)
+RxPower(RDP)            -2.5 dBm(565.2 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3374.2 mV
+TxBiasCurrent(RDP)      7.754 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0302 
+Date/Time: May 6, 2021 6:30:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0302
+Date                    05/06/2021 18:30:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1312983346
+bytewrit (SCSI)         573642675
+Reads (SCSI)            3983201670
+Writes (SCSI)           2025521512
+timeread (SCSI)         283573580
+timewrite (SCSI)        41264304
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       31585
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        1 Dedicated
+TxPower(RDP)            -3.0 dBm(496.2 uW)
+RxPower(RDP)            -4.0 dBm(398.6 uW)
+TransceiverTemp(RDP)    37 C
+SupplyVolt(RDP)         3309.5 mV
+TxBiasCurrent(RDP)      7.61 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0303 
+Date/Time: May 6, 2021 6:30:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0303
+Date                    05/06/2021 18:30:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.9 dBm(509.4 uW)
+RxPower(RDP)            -30.5 dBm(0.9 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3309.5 mV
+TxBiasCurrent(RDP)      7.658 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0330 
+Date/Time: May 6, 2021 6:30:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0330
+Date                    05/06/2021 18:30:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1416596850
+bytewrit (SCSI)         554120412
+Reads (SCSI)            71186237
+Writes (SCSI)           1656510149
+timeread (SCSI)         349640863
+timewrite (SCSI)        39009304
+LinkFailErr (FC)        2
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       275730
+CRCErr (FC)             3
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.7 dBm(534.2 uW)
+RxPower(RDP)            -2.3 dBm(589.1 uW)
+TransceiverTemp(RDP)    39 C
+SupplyVolt(RDP)         3338.6 mV
+TxBiasCurrent(RDP)      8.186 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0331 
+Date/Time: May 6, 2021 6:30:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0331
+Date                    05/06/2021 18:30:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         1397076953
+bytewrit (SCSI)         553574911
+Reads (SCSI)            25909895
+Writes (SCSI)           1278759748
+timeread (SCSI)         332978566
+timewrite (SCSI)        37165275
+LinkFailErr (FC)        1
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       118558
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       8 Gb/s
+%UtilizeCPU (FC)        1 Dedicated
+TxPower(RDP)            -2.5 dBm(561.2 uW)
+RxPower(RDP)            -2.5 dBm(558.3 uW)
+TransceiverTemp(RDP)    34 C
+SupplyVolt(RDP)         3337.4 mV
+TxBiasCurrent(RDP)      8.14 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0332 
+Date/Time: May 6, 2021 6:30:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0332
+Date                    05/06/2021 18:30:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         0
+byteread (PPRC)         0
+Writes (PPRC)           0
+Reads (PPRC)            0
+timewrite (PPRC)        0
+timeread (PPRC)         0
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        0
+LossSigErr (FC)         0
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         0
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       Inactive
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.8 dBm(529.3 uW)
+RxPower(RDP)            -25.7 dBm(2.7 uW)
+TransceiverTemp(RDP)    41 C
+SupplyVolt(RDP)         3345.8 mV
+TxBiasCurrent(RDP)      8.186 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:showioport -metrics IBM.2107-75KHP71/I0333 
+Date/Time: May 6, 2021 6:30:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KHP71
+ID                      IBM.2107-75KHP71/I0333
+Date                    05/06/2021 18:30:30 GMT
+byteread (FICON/ESCON)  0
+bytewrit (FICON/ESCON)  0
+Reads (FICON/ESCON)     0
+Writes (FICON/ESCON)    0
+timeread (FICON/ESCON)  0
+timewrite (FICON/ESCON) 0
+CmdRetries (FICON)      0
+TransferReady (FICON)   0
+bytewrit (PPRC)         245610
+byteread (PPRC)         3006878
+Writes (PPRC)           847098
+Reads (PPRC)            10175967
+timewrite (PPRC)        232397
+timeread (PPRC)         164683
+byteread (SCSI)         0
+bytewrit (SCSI)         0
+Reads (SCSI)            0
+Writes (SCSI)           0
+timeread (SCSI)         0
+timewrite (SCSI)        0
+LinkFailErr (FC)        0
+LossSyncErr (FC)        1
+LossSigErr (FC)         1
+PrimSeqErr (FC)         0
+InvTxWordErr (FC)       0
+CRCErr (FC)             0
+LRSent (FC)             0
+LRRec (FC)              0
+IllegalFrame (FC)       0
+OutOrdData (FC)         0
+OutOrdACK (FC)          0
+DupFrame (FC)           0
+InvRelOffset (FC)       0
+SeqTimeout (FC)         0
+BitErrRate (FC)         0
+RcvBufZero (FC)         0
+SndBufZero (FC)         4
+RetQFullBusy (FC)       0
+ExchOverrun (FC)        0
+ExchCntHigh (FC)        0
+ExchRemAbort (FC)       0
+CurrentSpeed (FC)       16 Gb/s
+%UtilizeCPU (FC)        0 Dedicated
+TxPower(RDP)            -2.6 dBm(545.6 uW)
+RxPower(RDP)            -3.2 dBm(483.8 uW)
+TransceiverTemp(RDP)    35 C
+SupplyVolt(RDP)         3346.8 mV
+TxBiasCurrent(RDP)      8.144 mA
+ConnectorType(RDP)      SFP+
+TxType(RDP)             Laser-SW
+FECStatus(RDP)          Inactive
+UncorrectedBlks(RDP)    -
+CorrectedBlks(RDP)      -
+dscli> Command:ver 
+Date/Time: May 6, 2021 6:30:30 PM GMT IBM DSCLI Version: 7.8.55.22 DS: -
+DSCLI 7.8.55.22
+dscli> 

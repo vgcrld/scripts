@@ -1,0 +1,19 @@
+#
+# DS CLI Profile
+#
+
+hmc1: 10.100.90.244
+hmc2: 10.100.90.245
+devid: IBM.2107-75KHP71
+fullid: on
+paging: off
+banner: on
+header: on
+verbose: off
+echo: on
+echoprefix: Command:
+timeout: 900
+format: delim
+delim: |
+
+# End of Profile
