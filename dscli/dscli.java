@@ -21,14 +21,14 @@ return_cmd() {
 
     "ver")
       echo "dscli> Command:ver"
-      echo "Date/Time: July 11, 2018 8:14:30 PM GMT IBM DSCLI Version: 7.8.24.11 DS: -"
+      echo "Date/Time: $(date) IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KDR91"
       echo "DSCLI 7.8.24.11"
       ;;
 
     *lssi*)
       echo "Command:lssi -l"
       echo "Date/Time: July 11, 2018 8:16:11 PM GMT IBM DSCLI Version: 7.8.24.11 DS: -"
-      echo "Name|ID|Storage Unit|Model|WWNN|State|ESSNet|Volume Group|desc"
+      echo "Date/Time: $(date) IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KDR91"
       echo "=============================================================="
       echo "DS8870-1_BCC_PROD|IBM.2107-75DWA61|IBM.2107-75DWA60|961|5005076306FFD5C1|Online|Enabled|IBM.2107-75DWA61/V0|-"
       ;;
@@ -57,28 +57,34 @@ return_cmd() {
        tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null | awk '/Command:lsextpool/,/Command:ver/'
        ;;
 
-    **lsfbvol**)
-       tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null | awk '/Command:lsfbvol/,/Command:ver/'
+    *lsfbvol*)
+       c=0
+       loops=0
+      #  loops=60
+       while [ "$c" -le "$loops" ]; do
+        tar -xvOf $HOME/code/scripts/dscli/usmnd01shmc0002d.20210503.080001.GMT__552251__.IBM-2107-75KDR91.ds8k.gz 'listout.txt' 2> /dev/null | awk '/Command:lsfbvol/,/Command:ver/'
+        c=$(( $c+1 ))
+       done
        ;;
 
     *lsckdvol*)
       echo "dscli> Command:lsckdvol"
-      echo "Date/Time: August 21, 2018 8:00:19 PM GMT IBM DSCLI Version: 7.7.21.39 DS: IBM.2107-75DAM11"
+      echo "Date/Time: $(date) IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KDR91"
       echo "Name|ID|accstate|datastate|configstate|deviceMTM|voltype|orgbvols|extpool|cap (cyl)"
       echo "==================================================================================="
-      # echo "ckd0900|IBM.2107-75DAM11/0900|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0901|IBM.2107-75DAM11/0901|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0902|IBM.2107-75DAM11/0902|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0903|IBM.2107-75DAM11/0903|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0904|IBM.2107-75DAM11/0904|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0905|IBM.2107-75DAM11/0905|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0980|IBM.2107-75DAM11/0980|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0981|IBM.2107-75DAM11/0981|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0982|IBM.2107-75DAM11/0982|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0983|IBM.2107-75DAM11/0983|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0984|IBM.2107-75DAM11/0984|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd0985|IBM.2107-75DAM11/0985|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
-      # echo "ckd2100|IBM.2107-75DAM11/2100|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0900|IBM.2107-75DAM11/0900|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0901|IBM.2107-75DAM11/0901|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0902|IBM.2107-75DAM11/0902|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0903|IBM.2107-75DAM11/0903|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0904|IBM.2107-75DAM11/0904|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0905|IBM.2107-75DAM11/0905|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0980|IBM.2107-75DAM11/0980|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0981|IBM.2107-75DAM11/0981|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0982|IBM.2107-75DAM11/0982|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0983|IBM.2107-75DAM11/0983|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0984|IBM.2107-75DAM11/0984|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd0985|IBM.2107-75DAM11/0985|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
+      echo "ckd2100|IBM.2107-75DAM11/2100|Online|Normal|Normal|3390-9|CKD Base|-|IBM.2107-75DAM11/P1|10017"
       ;;
 
     *lslss*)
@@ -87,7 +93,7 @@ return_cmd() {
 
     *showfbvol*)
        echo "dscli> Command:showfbvol -metrics IBM.2107-75KDR91/1A00"
-       echo "Date/Time: May 3, 2021 8:00:24 AM GMT IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KDR91"
+       echo "Date/Time: $(date) IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KDR91"
        echo "ID                        IBM.2107-75KDR91/1A00"
        echo "Date                      05/03/2021 08:00:24 GMT"
        echo "normrdrqts                7818509"
@@ -137,7 +143,7 @@ return_cmd() {
        echo "zHPFPrefetchHit           0"
        echo "GMCollisionsSidefileCount 0"
        echo "GMCollisionsSendSyncCount 0"
-      #  sleep .1
+       sleep .2
        ;;
 
     ver)
@@ -150,15 +156,36 @@ return_cmd() {
 
   esac
 
-  sleep .2
+  sleep .1
 
 }
 
 startup() {
-  echo "Date/Time: July 11, 2018 8:14:29 PM GMT IBM DSCLI Version: 7.8.24.11  DS:"
+  echo "Date/Time: $(date) IBM DSCLI Version: 7.8.55.22 DS: IBM.2107-75KDR91"
   echo "IBM.2107-75DWA61"
 }
 
+# if we have a -script provided
+if [[ "$*" == *"-script"* ]]; then
+while [[ "$#" -ne 0 ]]
+do 
+  if [ "$1" == "-script" ]; then 
+    file="$2"
+    if [ -f "$file" ]; then
+      while read o 
+      do
+        return_cmd "$o"
+      done < "$file"
+    else
+      echo "$file does not exist"
+      exit 1
+    fi
+  fi
+  shift
+done
+else
+
+# If not -script then do this
 while [[ "$#" -ne 0 ]]
 do 
   case "$1" in
@@ -175,5 +202,7 @@ done
 
 startup
 looper
+
+fi
 
 exit 0
