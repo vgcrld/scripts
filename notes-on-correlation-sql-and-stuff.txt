@@ -1,0 +1,21 @@
+select correlation_type, return_type, item_id, type, tags, cor_item_id, cor_type, cor_tags, correlation_tags, path, poll_start_ts, poll_end_ts from correlations where run_id = (SELECT id FROM correlation_runs where name='top_san_correlations' order by update_ts desc limit 1) and item_id=491292 
+
+
+SELECT  item_id,type,tags,cor_item_id,cor_type,cor_tags,correlation_name,correlation_tags,correlation_type,path,return_name,return_tags,return_type,return_path,epoch_start_ns,epoch_end_ns 
+FROM correlations 
+WHERE cor_item_id = 1 and item_id IN (604052) AND (epoch_start_ns <= 1622744100000000000) AND (epoch_end_ns >= 1622715300000000000) AND run_id IN (select id from correlation_runs WHERE name IN ('top_san_correlations') 
+ORDER BY update_ts DESC limit 1 by name) AND correlation_type = 'many' AND return_type = 'many' ORDER BY epoch_end_ns;
+
+
+
+
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75LFB21/2021/06/04/vwshmc001p.20210604.153001.GMT__525202__.IBM-2107-75LFB21.ds8k.gpe.gz ~/gpe/fix/gpe/
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75GKF41/2021/06/04/usmnd02shmc001d.20210604.153001.GMT__885560__.IBM-2107-75GKF41.ds8k.gpe.gz ~/gpe/fix/gpe/
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75KHY01/2021/06/04/usmnd01shmc0004p.20210604.153001.GMT__118677__.IBM-2107-75KHY01.ds8k.gpe.gz ~/gpe/fix/gpe/
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75LFR91/2021/06/04/lxshmc001p.20210604.153001.GMT__815642__.IBM-2107-75LFR91.ds8k.gpe.gz ~/gpe/fix/gpe/
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75HFN31/2021/06/04/vwshmc002p.20210604.153001.GMT__891543__.IBM-2107-75HFN31.ds8k.gpe.gz ~/gpe/fix/gpe/
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75HDN61/2021/06/04/usmnd02shmc002p.20210604.153001.GMT__581123__.IBM-2107-75HDN61.ds8k.gpe.gz ~/gpe/fix/gpe/
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75KBM71/2021/06/04/usmnd02shmc0004p.20210604.153001.GMT__497103__.IBM-2107-75KBM71.ds8k.gpe.gz ~/gpe/fix/gpe/
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75HGH81/2021/06/04/usmnd01shmc001d.20210604.153001.GMT__354202__.IBM-2107-75HGH81.ds8k.gpe.gz ~/gpe/fix/gpe/
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75KHP71/2021/06/04/usmnd02shmc0002d.20210604.153001.GMT__355168__.IBM-2107-75KHP71.ds8k.gpe.gz ~/gpe/fix/gpe/
+aws s3 --profile prod cp 	s3://etl-gpe.galileosuite.com/Prime_Therapeutics/IBM-2107-75KDR91/2021/06/04/usmnd01shmc0002d.20210604.153001.GMT__596497__.IBM-2107-75KDR91.ds8k.gpe.gz ~/gpe/fix/gpe/
