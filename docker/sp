@@ -1,0 +1,3 @@
+#!/bin/sh
+
+docker run -ti --rm -v $HOME/code:/root/code --name sp agents:sp

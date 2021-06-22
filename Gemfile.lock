@@ -1,19 +1,29 @@
+GIT
+  remote: git://github.com/vgcrld/vgctools.git
+  revision: 262e95c19906fb493f186721e39de1e1a1058cab
+  specs:
+    vgctools (0.3.0)
+      awesome_print (~> 1.9)
+      optimist (~> 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    awesome_print (1.8.0)
-    mustermann (1.0.3)
-    optimist (3.0.0)
-    rack (2.0.7)
-    rack-protection (2.0.7)
+    awesome_print (1.9.2)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    optimist (3.0.1)
+    rack (2.2.3)
+    rack-protection (2.1.0)
       rack
-    sinatra (2.0.7)
+    ruby2_keywords (0.0.4)
+    sinatra (2.1.0)
       mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.7)
+      rack (~> 2.2)
+      rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    tilt (2.0.9)
-    yard (0.9.25)
+    tilt (2.0.10)
+    yard (0.9.26)
 
 PLATFORMS
   ruby
@@ -22,6 +32,7 @@ DEPENDENCIES
   awesome_print
   optimist
   sinatra
+  vgctools!
   yard
 
 BUNDLED WITH

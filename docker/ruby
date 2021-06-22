@@ -1,0 +1,1 @@
+docker run --rm -ti --name rb -v $HOME/code:/root/code ruby:2.1.5 bash

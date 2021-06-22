@@ -1,4 +1,6 @@
 #!/bin/sh
 
 
-docker run -ti --rm -v $HOME/code:/root/code --name vmware agents:vmware
+docker run -ti --rm -v $HOME/code:/root/code --name vm agents:vmware
+#docker run -ti --rm -v $HOME/code:/root/code --name vm centos:latest
+#docker run -ti --rm -v $HOME/code:/root/code --name vm centos:centos7
