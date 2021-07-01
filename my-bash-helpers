@@ -22,6 +22,7 @@ qp () {
   eval "$cmd"
 }
 
+alias az1='ssh -i /Users/rdavis/code/gpegrid/examples/azure/rate_card_capture/rdavis01_key.pem azureuser@52.168.171.152'
 alias mygpeadmin="gpeadmin.rb"
 alias mygpefakefile='echo "gem.$(date +"%Y%m%d").$(date +"%H%M%S").$(date +"%Z").d60b21da185e11e682260894ef035c20.tsm.gz"'
 alias mygperedordavis='cd ~/code/admin-cli && ./unlock_site && ./remove_site && ./add_site paid'
