@@ -30,7 +30,6 @@ until resp.next_token.nil?
         max_results: 100
     })  
     results += resp.price_list.map{ |o| JSON.parse(o) }
-    break if c > 10
 end
 
 out_file = File.new(output_file_name, 'w+')
