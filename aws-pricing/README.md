@@ -8,3 +8,6 @@ To use this tool:
 * Run `bundle exec ruby aws-pricing.json`
 
 This creates an output file called: `xxxxxxxxx-aws-pricing.json` where xxxxxxxxx is the epoch timestamp.
+
+See this link for the SDK dock: https://docs.aws.amazon.com/sdk-for-ruby/v3/api/index.html
+
