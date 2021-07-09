@@ -13,44 +13,47 @@ require 'logger'
 #
 
 LOG              = Logger.new(STDOUT)
-client           = Aws::Pricing::Client.new
+CLIENT           = Aws::Pricing::Client.new
 
-def get_products(client, service_code: "AmazonEC2", limit: 1000000)
+# Get products is the pricing routine
+def get_products(options: nil, limit: 10)
     results = []
     err = 0
     c = 0 
     next_token = nil
     while true
         begin
-            resp = client.get_products({
-                service_code: service_code,
+            default_options = {
                 next_token: next_token,
-                max_results: 100
-            })
+                max_results: 100,
+            }
+            default_options.merge!( options ) unless options.nil?
+            resp = CLIENT.get_products(options)
             results += resp.price_list.map{ |o| JSON.parse(o) }
             next_token = resp.next_token
             break if next_token.nil?
             LOG.info(sprintf("Get next token: #{next_token}"))
             c += 1
             break if c > limit
-        rescue => e
-            LOG.error(e.message)
-            err += 1
-            break if err > 100
+        # rescue => e
+        #     LOG.error(e.message)
+        #     err += 1
+        #     break if err > 100
         end
     end
-    out_file = File.new("#{Time.now.to_i}-aws-pricing-products-#{service_code}.json", 'w+')
+    out_file = File.new("#{Time.now.to_i}-aws-pricing-products.json", 'w+')
     out_file.write(JSON.dump(results))
     out_file.close
 end
 
-def describe_services(client)
+# Get the service product list 
+def describe_services()
     results = []
     err = 0
     next_token = nil
     while true
         begin
-            resp = client.describe_services({ 
+            resp = CLIENT.describe_services({ 
                 max_results: 100,
                 next_token: next_token
             }) 
@@ -70,8 +73,32 @@ def describe_services(client)
     out_file.close
 end
 
-describe_services(client)
-get_products(client)
+
+get_products(
+    options: 
+    {
+        service_code: "AmazonEC2",
+        filters: [
+            {
+                type: "TERM_MATCH",
+                field: "ServiceCode",
+                value: "AmazonEC2"
+            },
+            {
+                type: "TERM_MATCH",
+                field: "volumeType",
+                value: "Provisioned IOPS"
+            },
+            {
+                type: "TERM_MATCH",
+                field: "location",
+                value: "US West (N. California)"
+            },
+        ]
+    }  
+)
 
 # get_products(client, service_code: "AmazonGuardDuty")
 # get_products(client, limit: 1)
+
+# describe_services(client)
